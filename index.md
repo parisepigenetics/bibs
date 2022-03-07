@@ -5,7 +5,7 @@ category: home
 description: main page
 ---
 
-![banner](/images/banner.png)
+![banner](/bibs/images/banner.png)
 # EDC BiBs core facility
 
 Welcome to the Epigenetics and Cell Fate (UMR7216) Bioinformatics and Biostatistics website.
@@ -22,7 +22,7 @@ The easiest is to pass by the 329 room in Lamarck A!
 
 You can also contact us by email : [bibsATparisepigenetics.com](mailto:bibsATparisepigenetics.com).
 
-If you need long-term help on a specific project, this has to be discussed with BiBs [steering committee](#steering-committee). Please download and fill-in the accession form ([docx](accession_plateforme.docx) or [odt](accession_plateforme.odt)) and send it via email. A meeting to discuss your needs will be set-up in the following days.
+If you need long-term help on a specific project, this has to be discussed with BiBs [steering committee](#steering-committee). Please download and fill-in the accession form ([docx](/bibs/documents/accession_plateforme.docx) or [odt](/bibs/documents/accession_plateforme.odt)) and send it via email. A meeting to discuss your needs will be set-up in the following days.
 
 Our protocols, scripts and workflows are hosted on our [GitHub repository](https://github.com/parisepigenetics). Some of the resources are private, please provide us your GitHub Username to get access.
 
