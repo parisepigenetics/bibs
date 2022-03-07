@@ -20,7 +20,7 @@ collections:
     tab-order: 2
   analysis:
     output: true
-    permalink: "/bibs/:collection/:path/"
+    permalink: "/:collection/:path/"
     title: Analysis Workflows
     tab-order: 3
 
