@@ -253,9 +253,6 @@ You can also work on your computer and copy the files to the cluster using the `
 
 If you're using the IFB Jupyter Hub, it's **easier** as text and table editors are included, you just have to double click on the file you want to edit, modify and save it using the menu File/Save or Ctrl+S. 
 
-- TOC
-{::options toc_levels="2" /}
-{:toc}
 
 ## metadata.tsv
 
