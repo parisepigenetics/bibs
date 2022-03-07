@@ -15,7 +15,7 @@ order: 1
 
 <small>Maintained by [Magali Hennion](mailto:magali.hennion@u-paris.fr). Last update : 28/02/2022. RASflow_EDC v0.6.2. </small>  
 
-Implemented by [BiBs-EDC](https://parisepigenetics.github.io/umr7216bioinfofacility/), this workflow for RNA-seq data analysis is based on RASflow which was originally published by [X. Zhang](https://doi.org/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP clusters and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. If you encounter troubles or need additional tools or features, you can create an issue on the [GitHub repository](https://github.com/parisepigenetics/RASflow_EDC/issues), email directly [BiBs](mailto:bibsATparisepigenetics.com), or pass by the 329 room.  
+Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workflow for RNA-seq data analysis is based on RASflow which was originally published by [X. Zhang](https://doi.org/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP clusters and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. If you encounter troubles or need additional tools or features, you can create an issue on the [GitHub repository](https://github.com/parisepigenetics/RASflow_EDC/issues), email directly [BiBs](mailto:bibsATparisepigenetics.com), or pass by the 329 room.  
 
 ---
 IMPORTANT: The only difference when running the workflow on the IFB core cluster or on the iPOP-UP cluster is the starting sbatch file. Use **Workflow_ifb.sh** for the IFB and **Workflow_ipop.sh** for iPOP-UP. In this tutorial, it is named **Workflow_\<cluster\>.sh**. 
@@ -27,7 +27,7 @@ IMPORTANT: The only difference when running the workflow on the IFB core cluster
 {:.no_toc}
 
 - TOC
-{::options toc_levels="1,2" /}
+{::options toc_levels="1" /}
 {:toc}
 
 ---
@@ -244,11 +244,20 @@ There are **2 files that you have to modify** before running your analysis (`met
 
 To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. Nota: in order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit). 
 
-You can also work on your computer and copy the files to the cluster using the `scp` command or the graphic interface FileZilla. **Never copy/past code to word processor** (like Microsoft Word or LibreOffice Writer), use only text editors.  
+**Tip!** In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions: 
+- [Navigating on iPOP-UP server on Windows]({{site.baseurl}}/cluster/tips/mounting_win) 
+- [Navigating on iPOP-UP server on Linux]({{site.baseurl}}/cluster/tips/mounting_linux)
+This way, you can modify your files directly using any local text editor. Be careful, **never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares**. Use only **text editors** and **UTF-8 encoding**.
+
+You can also work on your computer and copy the files to the cluster using the `scp` command or the graphic interface FileZilla. 
 
 If you're using the IFB Jupyter Hub, it's **easier** as text and table editors are included, you just have to double click on the file you want to edit, modify and save it using the menu File/Save or Ctrl+S. 
 
-## 1. **metadata.tsv**
+- TOC
+{::options toc_levels="2" /}
+{:toc}
+
+## metadata.tsv
 
 The experimental description is set up in `config/metadata.tsv`: 
 
@@ -276,7 +285,7 @@ On Jupyter Hub:
 
 The first column contains the **sample** names that have to **correspond to the FASTQ names** (for instance here D197-D192T27_R1.fastq.gz). The second column describes the **group** the sample belongs to and will be used for differential expression analysis. The last column contains the replicate number or **subject**. If the samples are paired, for instance 2 samples from the same patient taken at different times, the **subject** number should be the same (this information is important for differential expression analysis). You can rename or move that file, as long as you adapt the `METAFILE` entry in `config_main.yaml` (see below).  
 
-## 2. **config_main.yaml**
+## config_main.yaml
  
 The configuration of the workflow (see [step by step description](#running-your-analysis-step-by-step) below) is done in `config/config_main.yaml`. This is the most important file. It controls the workflow and many tool parameters. 
 
@@ -397,7 +406,7 @@ COUNTER: featureCounts # "featureCounts" or "htseq-count" or "STARcount" (only w
 [...]
 ```
 
-## 3. **Workflow_\<cluster\>.sh** [Facultative] 
+## Workflow_\<cluster\>.sh [Facultative] 
 
 In `Workflow_<cluster>.sh`, you can modify the **Job name** and the **Output** folder to save SLURM outputs. If you don't change this file, SLURM outputs will be saved in a `slurm_output` folder that will be created in your working directory. The line is read if it starts with one `#` and is not used if it starts with 2 (or more) `#`. For instance here
 
@@ -432,7 +441,7 @@ the default names `slurm-xxx` will be used, whereas here
 
 the job name will be `RASflow` and SLURM output (only for the snakemake commands, not for the jobs launched by snakemake) will go to `TheFolderIwant/RASflow-%j.out`.
 
-## 4. **env.yaml** [Facultative]
+## env.yaml [Facultative]
 
 RASflow relies on a Conda environment, you can check the version of the tools (and eventually modify them) in `workflow/env.yaml`. Note that conflicts between versions are frequent and might be tricky to solve. 
 
@@ -1156,7 +1165,7 @@ You@YourComputer:~$ scp -pr username@core.cluster.france-bioinformatique.fr:/sha
 and the huge files will stay on the server. You can of course download them as well if you have space (and this is recommended for the long term). 
 
 ## Final report
-A report named as `20210727T1030_report.html` summarizes your experiment and your results. You'll find links to fastQC results, to mapping quality report, to exploratory analysis of all the samples and finally to pairwise differential expression analyses. Interactive plots are included in the report. They are very helpful to dig into the results. A compressed archive names `report.tar.bz2` is also generated and contains the report and the targets of the different links, excluding the count and DEA tables to make it small enough to be sent to your collaborators. An example of report is visible [here](https://parisepigenetics.github.io/umr7216bioinfofacility/pages/report/report.html). 
+A report named as `20210727T1030_report.html` summarizes your experiment and your results. You'll find links to fastQC results, to mapping quality report, to exploratory analysis of all the samples and finally to pairwise differential expression analyses. Interactive plots are included in the report. They are very helpful to dig into the results. A compressed archive names `report.tar.bz2` is also generated and contains the report and the targets of the different links, excluding the count and DEA tables to make it small enough to be sent to your collaborators. An example of report is visible [here](report/report.html). 
 
 Detailed description of all the outputs of the workflow is included below. 
 
