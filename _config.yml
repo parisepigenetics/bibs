@@ -10,17 +10,17 @@ attributions:
 collections:
   facility:
     output: true
-    permalink: "/:collection/:path/"
+    permalink: "/bibs/:collection/:path/"
     title: BiBs helps you
     tab-order: 1
   cluster:
     output: true
-    permalink: "/:collection/:path/"
+    permalink: "/bibs/:collection/:path/"
     title: HPC Clusters
     tab-order: 2
   analysis:
     output: true
-    permalink: "/:collection/:path/"
+    permalink: "/bibs/:collection/:path/"
     title: Analysis Workflows
     tab-order: 3
 
