@@ -1,0 +1,331 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 30
+Job counts:
+	count	jobs
+	1	all
+	12	getReads
+	1	summaryReport
+	12	trim
+	26
+
+[Thu Nov 19 09:08:45 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T36_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T36_reverse.fastq.gz
+    jobid: 23
+    wildcards: sample=D197-D192T36
+
+Submitted DRMAA job 23 with external jobid 13674798.
+
+[Thu Nov 19 09:08:45 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T38_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T38_reverse.fastq.gz
+    jobid: 25
+    wildcards: sample=D197-D192T38
+
+Submitted DRMAA job 25 with external jobid 13674799.
+
+[Thu Nov 19 09:08:45 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T30_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T30_reverse.fastq.gz
+    jobid: 17
+    wildcards: sample=D197-D192T30
+
+Submitted DRMAA job 17 with external jobid 13674800.
+
+[Thu Nov 19 09:08:45 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T29_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T29_reverse.fastq.gz
+    jobid: 16
+    wildcards: sample=D197-D192T29
+
+Submitted DRMAA job 16 with external jobid 13674801.
+
+[Thu Nov 19 09:08:46 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T33_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T33_reverse.fastq.gz
+    jobid: 20
+    wildcards: sample=D197-D192T33
+
+Submitted DRMAA job 20 with external jobid 13674802.
+
+[Thu Nov 19 09:08:46 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T34_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T34_reverse.fastq.gz
+    jobid: 21
+    wildcards: sample=D197-D192T34
+
+Submitted DRMAA job 21 with external jobid 13674803.
+
+[Thu Nov 19 09:08:46 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T35_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T35_reverse.fastq.gz
+    jobid: 22
+    wildcards: sample=D197-D192T35
+
+Submitted DRMAA job 22 with external jobid 13674804.
+
+[Thu Nov 19 09:08:46 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T32_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T32_reverse.fastq.gz
+    jobid: 19
+    wildcards: sample=D197-D192T32
+
+Submitted DRMAA job 19 with external jobid 13674805.
+
+[Thu Nov 19 09:08:46 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T28_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T28_reverse.fastq.gz
+    jobid: 15
+    wildcards: sample=D197-D192T28
+
+Submitted DRMAA job 15 with external jobid 13674806.
+
+[Thu Nov 19 09:08:47 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T37_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T37_reverse.fastq.gz
+    jobid: 24
+    wildcards: sample=D197-D192T37
+
+Submitted DRMAA job 24 with external jobid 13674807.
+
+[Thu Nov 19 09:08:47 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T27_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T27_reverse.fastq.gz
+    jobid: 14
+    wildcards: sample=D197-D192T27
+
+Submitted DRMAA job 14 with external jobid 13674808.
+
+[Thu Nov 19 09:08:47 2020]
+rule getReads:
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T31_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T31_reverse.fastq.gz
+    jobid: 18
+    wildcards: sample=D197-D192T31
+
+Submitted DRMAA job 18 with external jobid 13674809.
+[Thu Nov 19 09:09:06 2020]
+Finished job 23.
+1 of 26 steps (4%) done
+[Thu Nov 19 09:09:06 2020]
+Finished job 25.
+2 of 26 steps (8%) done
+
+[Thu Nov 19 09:09:06 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T36_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T36_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T36_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T36_R2_trimmed.fq.gz
+    jobid: 11
+    wildcards: sample=D197-D192T36
+
+[Thu Nov 19 09:09:06 2020]
+Finished job 17.
+3 of 26 steps (12%) done
+Submitted DRMAA job 11 with external jobid 13674811.
+[Thu Nov 19 09:09:06 2020]
+Finished job 16.
+4 of 26 steps (15%) done
+[Thu Nov 19 09:09:06 2020]
+Finished job 20.
+5 of 26 steps (19%) done
+
+[Thu Nov 19 09:09:06 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T38_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T38_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T38_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T38_R2_trimmed.fq.gz
+    jobid: 13
+    wildcards: sample=D197-D192T38
+
+[Thu Nov 19 09:09:06 2020]
+Finished job 21.
+6 of 26 steps (23%) done
+Submitted DRMAA job 13 with external jobid 13674812.
+
+[Thu Nov 19 09:09:06 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T30_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T30_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T30_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T30_R2_trimmed.fq.gz
+    jobid: 5
+    wildcards: sample=D197-D192T30
+
+[Thu Nov 19 09:09:06 2020]
+Finished job 22.
+7 of 26 steps (27%) done
+Submitted DRMAA job 5 with external jobid 13674813.
+
+[Thu Nov 19 09:09:07 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T29_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T29_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T29_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T29_R2_trimmed.fq.gz
+    jobid: 4
+    wildcards: sample=D197-D192T29
+
+[Thu Nov 19 09:09:07 2020]
+Finished job 19.
+8 of 26 steps (31%) done
+Submitted DRMAA job 4 with external jobid 13674814.
+[Thu Nov 19 09:09:07 2020]
+Finished job 15.
+9 of 26 steps (35%) done
+[Thu Nov 19 09:09:07 2020]
+Finished job 24.
+10 of 26 steps (38%) done
+
+[Thu Nov 19 09:09:07 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T35_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T35_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T35_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T35_R2_trimmed.fq.gz
+    jobid: 10
+    wildcards: sample=D197-D192T35
+
+[Thu Nov 19 09:09:07 2020]
+Finished job 14.
+11 of 26 steps (42%) done
+Submitted DRMAA job 10 with external jobid 13674815.
+
+[Thu Nov 19 09:09:07 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T28_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T28_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T28_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T28_R2_trimmed.fq.gz
+    jobid: 3
+    wildcards: sample=D197-D192T28
+
+[Thu Nov 19 09:09:07 2020]
+Finished job 18.
+12 of 26 steps (46%) done
+Submitted DRMAA job 3 with external jobid 13674816.
+
+[Thu Nov 19 09:09:07 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T32_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T32_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T32_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T32_R2_trimmed.fq.gz
+    jobid: 7
+    wildcards: sample=D197-D192T32
+
+Submitted DRMAA job 7 with external jobid 13674817.
+
+[Thu Nov 19 09:09:07 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T34_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T34_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T34_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T34_R2_trimmed.fq.gz
+    jobid: 9
+    wildcards: sample=D197-D192T34
+
+Submitted DRMAA job 9 with external jobid 13674818.
+
+[Thu Nov 19 09:09:07 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T33_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T33_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T33_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T33_R2_trimmed.fq.gz
+    jobid: 8
+    wildcards: sample=D197-D192T33
+
+Submitted DRMAA job 8 with external jobid 13674819.
+
+[Thu Nov 19 09:09:08 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T37_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T37_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T37_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T37_R2_trimmed.fq.gz
+    jobid: 12
+    wildcards: sample=D197-D192T37
+
+Submitted DRMAA job 12 with external jobid 13674820.
+
+[Thu Nov 19 09:09:08 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T31_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T31_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T31_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T31_R2_trimmed.fq.gz
+    jobid: 6
+    wildcards: sample=D197-D192T31
+
+Submitted DRMAA job 6 with external jobid 13674821.
+
+[Thu Nov 19 09:09:08 2020]
+rule trim:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T27_forward.fastq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T27_reverse.fastq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T27_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T27_R2_trimmed.fq.gz
+    jobid: 2
+    wildcards: sample=D197-D192T27
+
+Submitted DRMAA job 2 with external jobid 13674822.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T27_reverse.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T27_forward.fastq.gz.
+[Thu Nov 19 12:57:04 2020]
+Finished job 2.
+13 of 26 steps (50%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T35_forward.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T35_reverse.fastq.gz.
+[Thu Nov 19 13:14:40 2020]
+Finished job 10.
+14 of 26 steps (54%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T38_forward.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T38_reverse.fastq.gz.
+[Thu Nov 19 13:42:56 2020]
+Finished job 13.
+15 of 26 steps (58%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T37_reverse.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T37_forward.fastq.gz.
+[Thu Nov 19 13:47:28 2020]
+Finished job 12.
+16 of 26 steps (62%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T36_forward.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T36_reverse.fastq.gz.
+[Thu Nov 19 14:05:52 2020]
+Finished job 11.
+17 of 26 steps (65%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T29_forward.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T29_reverse.fastq.gz.
+[Thu Nov 19 14:07:02 2020]
+Finished job 4.
+18 of 26 steps (69%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T28_reverse.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T28_forward.fastq.gz.
+[Thu Nov 19 14:14:03 2020]
+Finished job 3.
+19 of 26 steps (73%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T34_forward.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T34_reverse.fastq.gz.
+[Thu Nov 19 14:36:36 2020]
+Finished job 9.
+20 of 26 steps (77%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T30_reverse.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T30_forward.fastq.gz.
+[Thu Nov 19 14:45:48 2020]
+Finished job 5.
+21 of 26 steps (81%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T31_reverse.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T31_forward.fastq.gz.
+[Thu Nov 19 15:09:40 2020]
+Finished job 6.
+22 of 26 steps (85%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T33_reverse.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T33_forward.fastq.gz.
+[Thu Nov 19 15:15:01 2020]
+Finished job 8.
+23 of 26 steps (88%) done
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T32_forward.fastq.gz.
+Removing temporary output file /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/reads/D197-D192T32_reverse.fastq.gz.
+[Thu Nov 19 15:15:41 2020]
+Finished job 7.
+24 of 26 steps (92%) done
+
+[Thu Nov 19 15:15:41 2020]
+rule summaryReport:
+    input: /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T27_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T28_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T29_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T30_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T31_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T32_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T33_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T34_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T35_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T36_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T37_R1_trimmed.fq.gz, /shared/projects/bi4edc/RASflow_IFB/data/LXACT_wholedata/trim/D197-D192T38_R1_trimmed.fq.gz
+    output: /shared/projects/bi4edc/RASflow_IFB/results/LXACT_wholedata/fastqc_after_trimming/report_quality_control_after_trimming.html
+    jobid: 1
+
+Submitted DRMAA job 1 with external jobid 13678774.
+[Thu Nov 19 15:18:31 2020]
+Finished job 1.
+25 of 26 steps (96%) done
+
+[Thu Nov 19 15:18:31 2020]
+localrule all:
+    input: /shared/projects/bi4edc/RASflow_IFB/results/LXACT_wholedata/fastqc_after_trimming/report_quality_control_after_trimming.html
+    jobid: 0
+
+[Thu Nov 19 15:18:31 2020]
+Finished job 0.
+26 of 26 steps (100%) done
+Complete log: /shared/mfs/data/projects/bi4edc/RASflow_IFB/.snakemake/log/2020-11-19T090812.791562.snakemake.log

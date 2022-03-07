@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 42 of /shared/mfs/data/projects/bi4edc/RASflow_IFB/workflow/dea_genome.rules:
+Missing input files for rule combineSamples:
+/shared/projects/bi4edc/RASflow_IFB/results/LXACT_wholedata/mapping_hisat2/counting_featureCounts/countTables/D197-D192T30_count.tsv
+/shared/projects/bi4edc/RASflow_IFB/results/LXACT_wholedata/mapping_hisat2/counting_featureCounts/countTables/D197-D192T28_count.tsv

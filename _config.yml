@@ -1,0 +1,38 @@
+project:
+  name: BiBs
+  owner: parisepigenetics
+  repo: https://github.com/parisepigenetics/umr7216bioinfofacility
+  version: 0.0
+
+attributions:
+  rasflow_edc: Magali  
+  
+collections:
+  facility:
+    output: true
+    permalink: "/:collection/:path/"
+    title: BiBs helps you
+    tab-order: 1
+  cluster:
+    output: true
+    permalink: "/:collection/:path/"
+    title: HPC Clusters
+    tab-order: 2
+  analysis:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Analysis Workflows
+    tab-order: 3
+
+highlighter: rouge
+kramdown:
+  footnote_backlink: "⮌"
+permalink: pretty
+sass:
+  style: compressed
+plugins:
+- jemoji
+- jekyll-remote-theme
+
+#remote_theme: pixeldroid/programming-pages
+theme: programming-pages
