@@ -8,6 +8,9 @@ order: 1
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
 
 # Using IFB core cluster 
+
+<img src="{{site.baseurl}}/images/ifb.png" alt="drawing" width="300" align=right/>
+
 ---
 ## Resources 
   - Create and manage your [account](https://my.cluster.france-bioinformatique.fr/manager2/login).  
