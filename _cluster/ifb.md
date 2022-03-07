@@ -9,7 +9,7 @@ order: 1
 
 # Using IFB core cluster 
 
-<img src="{{site.baseurl}}/images/ifb.png" alt="drawing" width="300" align=right/>
+<img src="{{site.baseurl}}/images/ifb.png" alt="drawing" width="200" align=right/>
 
 ---
 ## Resources 
