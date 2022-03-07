@@ -33,7 +33,7 @@ ATAC-seq peak-calling, QC and differential analysis pipeline
 
 ## Running on IFB core cluster
 
-In order to run the pipelines, you first need an account and a project on IFB core cluster. See the documentation [here](/pages/ifb.md). 
+In order to run the pipelines, you first need an account and a project on IFB core cluster. See the documentation [here](/bibs/cluster/ifb/#/cluster). 
 
 Below is a short description of the steps to run a workflow with a simple example of ChIPseq. Please refer to the full documentation of the workflow you want to use to set up the parameters correctly. 
 
@@ -140,6 +140,6 @@ Be aware that some workflows generate a huge amount of data, be sure to have eno
 ## Running on iPOP-UP cluster [coming soon]
 ---
 ## Getting help
-If you want to get help to configure or start a workflow, please contact [the platform](mailto:bibs@parisepigenetics.com). 
+If you want to get help to configure or start a workflow, please contact [the platform](mailto:bibsATparisepigenetics.com). 
 
 ---
