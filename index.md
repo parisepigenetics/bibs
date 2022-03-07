@@ -52,9 +52,9 @@ In order to get news about bioinformatics in the unit, you can follow us on Slac
 One important goal of the BiBs facility is to make you able to analyse your data yourself! To do so, we develop easy-to-use workflows and we support community workflows such as the ones from nf-core. We also guide you to use calculation clusters to analyse large datasets. 
 
 ### Using HPC clusters
-1. [Getting started on IFB core cluster](/cluster/ifb/#/cluster)
-2. [Getting started on iPOP-UP cluster](/cluster/ipopup/#/cluster)
-3. [Tips and Tricks](/cluster/tips/#/cluster)
+1. [Getting started on IFB core cluster](/bibs/cluster/ifb/#/cluster)
+2. [Getting started on iPOP-UP cluster](/bibs/cluster/ipopup/#/cluster)
+3. [Tips and Tricks](/bibs/cluster/tips/#/cluster)
 
 ### Analysis workflows
   1. [RNA-seq by RASflow_EDC](/analysis/rasflow_edc/#/analysis)  

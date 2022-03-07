@@ -1,7 +1,7 @@
 project:
   name: BiBs
   owner: parisepigenetics
-  repo: https://github.com/parisepigenetics/umr7216bioinfofacility
+  repo: https://github.com/parisepigenetics/bibs
   version: 0.0
 
 attributions:
