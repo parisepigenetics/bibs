@@ -37,13 +37,24 @@ In order to get news about bioinformatics in the unit, you can follow us on Slac
 
 ## How can we help you ?
 
+### Experimental design
+You're planning to run high-throughput omics experiments? Please come to discuss with us about the design of your experiment. We'll help you to choose the best technical approach, with appropriate depth, number of replications, controls. 
+
 ### Answer specific questions
+Don't hesitate to pass by or to mail us about the problem you encounter while analysing your data. We'll try to answer directly or to put you in contact with a competent person. 
 
 ### Proofreading of grant applications or articles
+You're not an expert in bioinformatics, but you're planning to use, or using, high-throughput data analysis? Before submitting your grant application or your article, an extra proofreading by a bioinformatician might be beneficial. Your manuscript will be kept confidential. Last-minute overnight proofreading request will not be accepted! 
 
 ### Literature mining
+Not sure about which technology or bioinformatics tool is the most appropriate to answer your biological question? If the topic is new to us, we can review the literature to guide your choices. 
 
 ### On-demand training 
+You'd like to use a tool but you don't know how? We can guide you until you become autonomous. 
+
+### Help to hire
+- Proofreading of job description
+- Candidate examination
 
 <br/>
 
