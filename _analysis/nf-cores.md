@@ -8,7 +8,7 @@ order: 1
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
 
 
-# How to run nf-cores workflows on IFB  [and iPOP-UP, comming soon]
+# How to run nf-cores workflows on IFB  [and iPOP-UP, coming soon]
 ---
 ## Resources
 Please look at [nf-core website](https://nf-co.re/) to see existing workflows and their documentation. 
