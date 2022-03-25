@@ -11,7 +11,7 @@ order: 1
 
 <img src="{{site.baseurl}}/images/ipop-up.png" alt="drawing" width="80" align=right/>
 
-A complete documentation is currently under construction. For now you can refer to the [IFB core cluster documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/) as the iPOP-UP cluster is very similar and uses SLURM as well. 
+A [complete documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/) is currently under construction. For now you can refer to the [IFB core cluster documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/) as the iPOP-UP cluster is very similar and uses SLURM as well. 
 
 Below are the specificities of the iPOP-UP cluster.
 
