@@ -24,7 +24,7 @@ You can also contact us by email : [bibsATparisepigenetics.com](mailto:bibsATpar
 
 If you need long-term help on a specific project, this has to be discussed with BiBs [steering committee](#steering-committee). Please download and fill-in the accession form ([docx](/bibs/documents/accession_plateforme.docx) or [odt](/bibs/documents/accession_plateforme.odt)) and send it via email. A meeting to discuss your needs will be set-up in the following days.
 
-Our protocols, scripts and workflows are hosted on our [GitHub repository](https://github.com/parisepigenetics). Some of the resources are private, please provide us your GitHub Username to get access.
+Our protocols, scripts and workflows are hosted on our [GitHub repository](https://github.com/parisepigenetics). Some of the resources are private, please provide us your GitHub Username to get access. A description of all the tools developped in-house is available [here](/bibs/edctools/githubrepo/#/edctools). 
 
 
 <br/>
@@ -38,7 +38,7 @@ In order to get news about bioinformatics in the unit, you can follow us on Slac
 ## How can we help you ?
 
 ### Experimental design
-You're planning to run high-throughput omics experiments? Please come to discuss with us about the design of your experiment. We'll help you to choose the best technical approach, with appropriate depth, number of replications, controls. 
+You're planning to run high-throughput omics experiments? Please come to discuss with us about the design of your experiment. We'll help you to choose the best technical approach, with appropriate depth, number of replicates, controls. 
 
 ### Answer specific questions
 Don't hesitate to pass by or to mail us about the problem you encounter while analysing your data. We'll try to answer directly or to put you in contact with a competent person. 
@@ -53,8 +53,7 @@ Not sure about which technology or bioinformatics tool is the most appropriate t
 You'd like to use a tool but you don't know how? We can guide you until you become autonomous. 
 
 ### Help to hire
-- Proofreading of job description
-- Candidate examination
+You want to hire a student/postdoc/engineer to analyse omics data? We can help you by proofreading the job description, and later on, by conducting or assisting in job interviews. 
 
 <br/>
 
