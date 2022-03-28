@@ -247,7 +247,7 @@ There are **2 files that you have to modify** before running your analysis (`met
 To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. 
 
 
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Nota</b></span><br> In order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit).
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Nota</b></span><br> In order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit-on-ifb).
 {:.ui.info.message}
 
 <span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). This way, you can modify your files directly using any local text editor.
