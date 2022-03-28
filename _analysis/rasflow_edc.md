@@ -24,11 +24,6 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 
 
 ---
-IMPORTANT: The only difference when running the workflow on the IFB core cluster or on the iPOP-UP cluster is the starting sbatch file. Use **Workflow_ifb.sh** for the IFB and **Workflow_ipop.sh** for iPOP-UP. In this tutorial, it is named **Workflow_\<cluster\>.sh**. 
-
-
-
----
 # Table of content
 {:.no_toc}
 
@@ -184,6 +179,7 @@ Then start the workflow.
 ```
 [username@clust-slurm-client RASflow_EDC]$ sbatch Workflow_<cluster>.sh
 ```
+
 **Nota:** The first time you run this command, the Conda environment will be made (see [below](#4-envyaml-facultative)). This takes ~30 min as it dowloads and installs all the tools you'll need. 
 
 This will run the quality control of the raw FASTQ. See [FASTQ quality control](#fastq-quality-control) for detailed explanations. If everything goes find you will see the results in `TestDataset/results/Test1/fastqc`. See also [how to follow your jobs](#how-to-follow-your-jobs) to know how to check that the run went fine.  
@@ -248,14 +244,22 @@ Check that the transfer went fine using `md5sum`.
 
 There are **2 files that you have to modify** before running your analysis (`metadata.tsv` and `config_main.yaml` in the `configs` folder), and eventually some others not mandatory. 
 
-To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. Nota: in order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit). 
+To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. 
 
-**Tip!** In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions: 
+Nota: in order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit). 
+
+<span>{% include icon.liquid id='check-circle' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions: 
 - [Navigating on iPOP-UP server on Windows]({{site.baseurl}}/cluster/tips/mounting_win) 
 - [Navigating on iPOP-UP server on Linux]({{site.baseurl}}/cluster/tips/mounting_linux)
-This way, you can modify your files directly using any local text editor. Be careful, **never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares**. Use only **text editors** and **UTF-8 encoding**.
+
+This way, you can modify your files directly using any local text editor.
+{:.ui.success.message}
+
 
 You can also work on your computer and copy the files to the cluster using the `scp` command or the graphic interface FileZilla. 
+
+<span>{% include icon.liquid id='exclamation-circle' %} <b>Tip</b></span><br> Be careful, **never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares**. Use only **text editors** and **UTF-8 encoding**.
+{:.ui.success.message}
 
 If you're using the IFB Jupyter Hub, it's **easier** as text and table editors are included, you just have to double click on the file you want to edit, modify and save it using the menu File/Save or Ctrl+S. 
 
