@@ -17,6 +17,12 @@ order: 1
 
 Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workflow for RNA-seq data analysis is based on RASflow which was originally published by [X. Zhang](https://doi.org/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP clusters and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. If you encounter troubles or need additional tools or features, you can create an issue on the [GitHub repository](https://github.com/parisepigenetics/RASflow_EDC/issues), email directly [BiBs](mailto:bibsATparisepigenetics.com), or pass by the 329 room.  
 
+
+
+<span>{% include icon.liquid id='info-circle' %} <b>Info</b></span><br>The only difference when running the workflow on the IFB core cluster or on the iPOP-UP cluster is the starting sbatch file. Use **Workflow_ifb.sh** for the IFB and **Workflow_ipop.sh** for iPOP-UP. In this tutorial, it is named **Workflow_\<cluster\>.sh**.
+{: .ui.info.message}
+
+
 ---
 IMPORTANT: The only difference when running the workflow on the IFB core cluster or on the iPOP-UP cluster is the starting sbatch file. Use **Workflow_ifb.sh** for the IFB and **Workflow_ipop.sh** for iPOP-UP. In this tutorial, it is named **Workflow_\<cluster\>.sh**. 
 
@@ -41,7 +47,7 @@ IMPORTANT: The only difference when running the workflow on the IFB core cluster
 
 Here is a simplified scheme of the workflow. The main steps are indicated in the blue boxes. RASflow_EDC will allow you to choose which steps you want to execute for your project. In the green circles are the input files you have to give for the different steps. 
 
-<img src="Tuto_pictures/workflow_chart.pdf.png" alt="drawing" width="600"/>
+<img src="Tuto_pictures/workflow_chart.pdf.png" alt="drawing" width="500"/>
 
 ---
 ---
