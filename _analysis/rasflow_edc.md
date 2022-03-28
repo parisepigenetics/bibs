@@ -16,7 +16,7 @@ order: 1
 <small>Maintained by [Magali Hennion](mailto:magali.hennion@u-paris.fr). Last update : 28/02/2022. RASflow_EDC v0.6.2. </small>  
 
 Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workflow for RNA-seq data analysis is based on RASflow which was originally published by [X. Zhang](https://doi.org/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP clusters and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. If you encounter troubles or need additional tools or features, you can create an issue on the [GitHub repository](https://github.com/parisepigenetics/RASflow_EDC/issues), email directly [BiBs](mailto:bibsATparisepigenetics.com), or pass by the 329 room.  
-
+{:.larger.text}
 
 
 <span>{% include icon.liquid id='info-circle' %} <b>Info</b></span><br>The only difference when running the workflow on the IFB core cluster or on the iPOP-UP cluster is the starting sbatch file. Use **Workflow_ifb.sh** for the IFB and **Workflow_ipop.sh** for iPOP-UP. In this tutorial, it is named **Workflow_\<cluster\>.sh**.
@@ -247,16 +247,16 @@ There are **2 files that you have to modify** before running your analysis (`met
 To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. 
 
 
-<span>{% include icon.liquid id='check-circle' %} <b>Nota</b></span><br> In order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit).
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Nota</b></span><br> In order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit).
 {:.ui.info.message}
 
-<span>{% include icon.liquid id='check-circle' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). This way, you can modify your files directly using any local text editor.
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). This way, you can modify your files directly using any local text editor.
 {:.ui.success.message}
 
 You can also work on your computer and copy the files to the cluster using the `scp` command or the graphic interface FileZilla. 
 
-<span>{% include icon.liquid id='exclamation-circle' %} <b>Caution!</b></span><br> **Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares**. Use only **text editors** and **UTF-8 encoding**.
-{:.ui.success.message}
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Caution</b></span><br> **Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares**. Use only **text editors** and **UTF-8 encoding**.
+{:.ui.warning.message}
 
 You can find useful help to manage your data on [IFB core documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/data/). 
 
