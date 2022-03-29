@@ -18,11 +18,16 @@ collections:
     permalink: "/:collection/:path/"
     title: Analysis Workflows
     tab-order: 2
+  facility:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Services
+    tab-order: 3
   edctools:
     output: true
     permalink: "/:collection/:path/"
     title: EDC tools
-    tab-order: 3 
+    tab-order: 4 
 
 highlighter: rouge
 kramdown:
