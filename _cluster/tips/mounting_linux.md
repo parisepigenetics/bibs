@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Navigating on iPOP-UP server on Linux
-description: Navigating on iPOP-UP server on Linux
+title: Connect iPOP-UP server on Linux
+description: Connect iPOP-UP server on Linux
 ---
 
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>

@@ -8,26 +8,21 @@ attributions:
   rasflow_edc: Magali  
   
 collections:
-  cluster:
-    output: true
-    permalink: "/:collection/:path/"
-    title: HPC Clusters
-    tab-order: 1
-  analysis:
-    output: true
-    permalink: "/:collection/:path/"
-    title: Analysis Workflows
-    tab-order: 2
   facility:
     output: true
     permalink: "/:collection/:path/"
     title: Services
+    tab-order: 1
+  cluster:
+    output: true
+    permalink: "/:collection/:path/"
+    title: HPC Clusters
     tab-order: 3
   edctools:
     output: true
     permalink: "/:collection/:path/"
     title: EDC tools
-    tab-order: 4 
+    tab-order: 2
 
 highlighter: rouge
 kramdown:

@@ -5,14 +5,13 @@ category: home
 description: main page
 ---
 
-![banner](/bibs/images/banner.png)
+![banner]({{site.baseurl}}/images/banner.png)
 # EDC BiBs core facility
 
-Welcome to the Epigenetics and Cell Fate (UMR7216) Bioinformatics and Biostatistics website.
+## Welcome to the Epigenetics and Cell Fate Bioinformatics and Biostatistics website!
 
-The UMR7216 BiBs platform provides and develops user-friendly, state of the art epigenomics protocols.  We also maintain access to a local computing cluster and provide the teams of the UMR7216 a variety of bioinformatics related services such as technology monitoring, project-specific analyses and user-tailored, on-demand training. 
-
-This website is the main resource for protocols, scripts and instructions on how to use the HPC clusters.
+The UMR7216 BiBs platform provides and develops user-friendly, state of the art epigenomics protocols.  We also maintain access to a local computing cluster and provide the teams of the UMR7216 a variety of bioinformatics related services such as technology monitoring, project-specific analyses and user-tailored, on-demand training. This website is the main resource for protocols, scripts and instructions on how to use the HPC clusters.
+{:.ui.large.message}
 
 <br/>
 
@@ -22,10 +21,7 @@ The easiest is to pass by the 329 room in Lamarck A!
 
 You can also contact us by email : [bibsATparisepigenetics.com](mailto:bibsATparisepigenetics.com).
 
-If you need long-term help on a specific project, this has to be discussed with BiBs [steering committee](#steering-committee). Please download and fill-in the accession form ([docx](/bibs/documents/accession_plateforme.docx) or [odt](/bibs/documents/accession_plateforme.odt)) and send it via email. A meeting to discuss your needs will be set-up in the following days.
-
-Our protocols, scripts and workflows are hosted on our [GitHub repository](https://github.com/parisepigenetics). Some of the resources are private, please provide us your GitHub Username to get access. A description of all the tools developped in-house is available [here](/bibs/edctools/githubrepo/#/edctools). 
-
+If you need long-term help on a specific project, this has to be discussed with BiBs [steering committee](#steering-committee). Please download and fill-in the accession form ([docx]({{site.baseurl}}/documents/accession_plateforme.docx) or [odt]({{site.baseurl}}/documents/accession_plateforme.odt)) and send it via email. A meeting to discuss your needs will be set-up in the following days.
 
 <br/>
 
@@ -63,16 +59,18 @@ In order to get news about bioinformatics in the unit, you can follow us on Slac
 One important goal of the BiBs facility is to make you able to analyse your data yourself! To do so, we develop easy-to-use workflows and we support community workflows such as the ones from nf-core. We also guide you to use calculation clusters to analyse large datasets. 
 
 ### Using HPC clusters
-1. [Getting started on IFB core cluster](/bibs/cluster/ifb/#/cluster)
-2. [Getting started on iPOP-UP cluster](/bibs/cluster/ipopup/#/cluster)
-3. [Tips and Tricks](/bibs/cluster/tips/#/cluster)
+1. [Getting started on IFB core cluster]({{site.baseurl}}/cluster/ifb/#/cluster)
+2. [Getting started on iPOP-UP cluster]({{site.baseurl}}/cluster/ipopup/#/cluster)
+3. [Tips and Tricks]({{site.baseurl}}/cluster/tips/#/cluster)
 
 ### Analysis workflows
-  1. [RNA-seq by RASflow_EDC](/bibs/analysis/rasflow_edc/#/analysis)  
+  1. [RNA-seq by RASflow_EDC]({{site.baseurl}}/analysis/rasflow_edc/#/analysis)  
   Implemented by BiBs, this workflow for RNA-seq data analysis is based on RASflow which was originally published by [X. Zhang](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP core cluster and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. 
-  2. [nf-cores worflows](/bibs/analysis/nf-cores/#/analysis)  
+  2. [nf-cores worflows]({{site.baseurl}}/analysis/nf-cores/#/analysis)  
   Curated set of analysis pipelines built using Nextflow. They can run on both [IFB-core](https://www.france-bioinformatique.fr/cluster-ifb-core/) and [iPOP-UP](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/) clusters. 
 
+### EDC toolbox
+Our protocols, scripts and workflows are hosted on our [GitHub repository](https://github.com/parisepigenetics). Some of the resources are private, please provide us your GitHub Username to get access. A description of all the tools developped in-house is available [here]({{site.baseurl}}/edctools/githubrepo/#/edctools). 
 
 <br/>
 
