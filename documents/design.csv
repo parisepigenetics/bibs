@@ -1,0 +1,9 @@
+group,replicate,fastq_1,fastq_2,antibody,control
+Neuron_K4me3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922213.fastq.gz,,H3K4me3,Neuron_H3
+Neuron_K4me3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922214.fastq.gz,,H3K4me3,Neuron_H3
+Non-neuron_K4me3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922215.fastq.gz,,H3K4me3,Non-neuron_H3
+Non-neuron_K4me3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922216.fastq.gz,,H3K4me3,Non-neuron_H3
+Neuron_H3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922277.fastq.gz,,,
+Neuron_H3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922278.fastq.gz,,,
+Non-neuron_H3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922279.fastq.gz,,,
+Non-neuron_H3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922280.fastq.gz,,,

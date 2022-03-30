@@ -1,0 +1,7 @@
+
+Project name: LXACT_wholedata
+Start time: Thu Nov 19 09:08:08 2020
+Time of running trimming: 6:10:33
+Time of running genome alignment: 4:57:26
+Time of running DEA genome based: 0:00:39
+Finish time: Thu Nov 19 20:16:48 2020
