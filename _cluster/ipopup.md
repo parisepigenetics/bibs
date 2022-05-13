@@ -118,7 +118,7 @@ or directly in your sbatch script adding the line :
 ---
 ## Join the community forum 
 
-iPOP-UP community forum is available at https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up/. Please register in order to stay updated and use the forum to ask for help or new reference files. 
+iPOP-UP community forum is available at [https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up). Please register in order to stay updated and use the forum to ask for help or new reference files. 
 
 ---
 
