@@ -11,7 +11,14 @@ order: 1
 
 <img src="{{site.baseurl}}/images/ipop-up.png" alt="drawing" width="80" align=right/>
 
-A [complete documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/) is currently under construction. For now you can refer to the [IFB core cluster documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/) as the iPOP-UP cluster is very similar and uses SLURM as well. 
+---
+## Join the community forum 
+
+iPOP-UP community forum is available at [https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up). Please register in order to stay updated and use the forum to ask for help or new reference files. 
+
+---
+## Documentation 
+A [complete documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/) is currently under construction. For now you can refer to the [IFB core cluster documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/) as the iPOP-UP cluster is very similar and uses Slurm as well. 
 
 Below are the specificities of the iPOP-UP cluster.
 
@@ -20,9 +27,8 @@ Below are the specificities of the iPOP-UP cluster.
 
 If you had an account on the "old" RPBS cluster, your login and password are unchanged. Otherwise we'll create a new account for you. In any case you have to ask for a project. 
 
-Of note: 
-- you can have several projects
-- you can share a project between several collaborators. All collaborators will have the read and write permissions on the project. 
+<span>{% include icon.liquid id='info-circle' %} <b>Info</b></span><br>You can have several projects.<br>You can share a project between several collaborators. All collaborators will have the read and write permissions on the project.
+{: .ui.info.message}
 
 To create an account and/or a project, write an email to [BiBs](mailto:bibsATparisepigenetics.com) with the following information: 
 - NAME, Surname 
@@ -97,7 +103,7 @@ Once your project is created you will see it in the list, with the used and avai
 
 ## Launch jobs
 
-The scheduler is [SLURM](https://slurm.schedmd.com/). You'll find some examples of scripts in [IFB cluster quick start guide](https://ifb-elixirfr.gitlab.io/cluster/doc/quick-start/).  
+The scheduler is [Slurm](https://slurm.schedmd.com/). You'll find some examples of scripts in [IFB cluster quick start guide](https://ifb-elixirfr.gitlab.io/cluster/doc/quick-start/).  
 
 The only difference is that you have to use the `ipop-up` partition when starting a job. You can define it using `srun` : 
 ```
@@ -114,11 +120,6 @@ or directly in your sbatch script adding the line :
 ```sh
 #SBATCH --partition=ipop-up
 ```
-
----
-## Join the community forum 
-
-iPOP-UP community forum is available at [https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up). Please register in order to stay updated and use the forum to ask for help or new reference files. 
 
 ---
 
