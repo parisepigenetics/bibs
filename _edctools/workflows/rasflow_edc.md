@@ -201,7 +201,7 @@ Detailed explanation of the outputs are available in [Workflow results](#workflo
 ----
 
 # Transfer your data
-You should transfer your data in your project folder `/shared/projects/YourProjectName` before doing your analysis. 
+If you want to use your own data, you should transfer the FASTQ files into your project folder `/shared/projects/YourProjectName` before doing your analysis. Alternatively the workflow allows you to download data from [SRA](https://www.ncbi.nlm.nih.gov/sra/docs/sradownload/) simply giving the `SRRxxx` IDs, see below [metadata.tsv](#metadata-tsv). 
 
 ## FASTQ names
 {:.no_toc}
@@ -310,6 +310,9 @@ On Jupyter Hub:
 
 The first column contains the **sample** names that have to **correspond to the FASTQ names** (for instance here D197-D192T27_R1.fastq.gz). The second column describes the **group** the sample belongs to and will be used for differential expression analysis. The last column contains the replicate number or **subject**. If the samples are paired, for instance 2 samples from the same patient taken at different times, the **subject** number should be the same (this information is important for differential expression analysis). You can rename or move that file, as long as you adapt the `METAFILE` entry in `config_main.yaml` (see below).  
 
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> It is also possible to download and use directly SRA data! That's easy, just enter the SRRxxxx IDs in the first column instead of the sample names! 
+{:.ui.success.message}
+
 ## config_main.yaml
  
 The configuration of the workflow (see [step by step description](#running-your-analysis-step-by-step) below) is done in `config/config_main.yaml`. This is the most important file. It controls the workflow and many tool parameters. 
@@ -323,12 +326,12 @@ The configuration file contains 3 parts:
 
 ```yaml
 [username@clust-slurm-client RASflow_EDC]$ cat configs/config_main.yaml 
-# Please check the parameters, and adjust them according to your circumstance
-
 # Project name
-PROJECT: EXAMPLE
-
+PROJECT: Awesome_experience
 # ================== Control of the workflow ==================
+
+## Do you want to download FASTQ files from public from Sequence Read Archive (SRA) ? 
+SRA: no  # "yes" or "no". If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set it to "no".
 
 ## Do you need to do quality control?
 QC: yes  # "yes" or "no". If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set it to "no".
@@ -349,7 +352,7 @@ REPEATS: yes # "yes" or "no"
 DEA: yes  # "yes" or "no"
 ```
 
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> if `QC` is set to `yes`, the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set `QC` to `no`.
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> if `QC` or `SRA` is set to `yes`, the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set both `QC` and `SRA` to `no`.
 {:.ui.large.warning.message}
 
 ### 2) Shared parameters   
@@ -527,11 +530,11 @@ When the configuration files are ready, you can start the run by `sbatch Workflo
 
 Please see below detailed explanation. 
 
-## FASTQ quality control
+## FASTQ quality control (eventually after SRA data retrieval)
 
 Prerequisite:   
-- Your FASTQ files are on the cluster, in our example in `/shared/projects/YourProjectName/Raw_fastq` (but you can name your folders as you want, as long as you adjust the `READSPATH` parameter in `config_main.yaml`). 
-- You have modified `config/metadata.tsv` according to your experimental design.
+- Using your own data: your FASTQ files are on the cluster, in our example in `/shared/projects/YourProjectName/Raw_fastq` (but you can name your folders as you want, as long as you adjust the `READSPATH` parameter in `config_main.yaml`). 
+- You have modified `config/metadata.tsv` according to your experimental design (with sample names or SRR identifiers).
 
 Now you have to check in `config/config_main.yaml` that: 
 
@@ -542,10 +545,14 @@ Now you have to check in `config/config_main.yaml` that:
 PROJECT: EXAMPLE
 ```
 
-- In `Control of the workflow`, QC is set to `yes`: 
+- In `Control of the workflow`, `QC` or `SRA` is set to `yes`:
+
+If you want to download data from SRA, set `SRA` to `yes`. The QC will follow automatically. If you use your own data, put `QC` to `yes` and `SRA` to `no`.  
 
 ```yaml
-# ================== Control of the workflow ==================
+## Do you want to download FASTQ files from public from Sequence Read Archive (SRA) ? 
+SRA: no  # "yes" or "no". If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set it to "no".
+
 ## Do you need to do quality control?
 QC: yes  # "yes" or "no". If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set it to "no".
 ```
