@@ -1,0 +1,213 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 30
+Provided resources: load=100
+Job counts:
+	count	jobs
+	6	BamIndex
+	6	BigWig
+	1	PCA
+	1	TEPCA
+	6	alignmentQC
+	1	end
+	6	getReads
+	6	hisat2
+	6	mergeCountGene
+	6	mergeCountTE
+	6	mergeSummaries
+	6	sortBam
+	1	spliceSites
+	6	splitBam
+	1	summaryReport
+	65
+
+[Thu Jul 29 15:05:00 2021]
+rule getReads:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016964_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016964_rv.fastq.gz
+    jobid: 63
+    wildcards: sample=SRR9016964
+
+Submitted DRMAA job 63 with external jobid 17744330.
+
+[Thu Jul 29 15:05:00 2021]
+rule getReads:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016960_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016960_rv.fastq.gz
+    jobid: 61
+    wildcards: sample=SRR9016960
+
+Submitted DRMAA job 61 with external jobid 17744331.
+
+[Thu Jul 29 15:05:00 2021]
+rule getReads:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016959_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016959_rv.fastq.gz
+    jobid: 60
+    wildcards: sample=SRR9016959
+
+Submitted DRMAA job 60 with external jobid 17744332.
+
+[Thu Jul 29 15:05:00 2021]
+rule getReads:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016958_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016958_rv.fastq.gz
+    jobid: 59
+    wildcards: sample=SRR9016958
+
+Submitted DRMAA job 59 with external jobid 17744333.
+
+[Thu Jul 29 15:05:00 2021]
+rule spliceSites:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt
+    jobid: 58
+
+Submitted DRMAA job 58 with external jobid 17744334.
+
+[Thu Jul 29 15:05:00 2021]
+rule getReads:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016965_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016965_rv.fastq.gz
+    jobid: 64
+    wildcards: sample=SRR9016965
+
+Submitted DRMAA job 64 with external jobid 17744335.
+
+[Thu Jul 29 15:05:00 2021]
+rule getReads:
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016963_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016963_rv.fastq.gz
+    jobid: 62
+    wildcards: sample=SRR9016963
+
+Submitted DRMAA job 62 with external jobid 17744336.
+[Thu Jul 29 15:05:10 2021]
+Finished job 63.
+1 of 65 steps (2%) done
+[Thu Jul 29 15:05:10 2021]
+Finished job 61.
+2 of 65 steps (3%) done
+[Thu Jul 29 15:05:10 2021]
+Finished job 60.
+3 of 65 steps (5%) done
+[Thu Jul 29 15:05:10 2021]
+Finished job 59.
+4 of 65 steps (6%) done
+[Thu Jul 29 15:05:10 2021]
+Finished job 64.
+5 of 65 steps (8%) done
+[Thu Jul 29 15:05:10 2021]
+Finished job 62.
+6 of 65 steps (9%) done
+[Thu Jul 29 15:05:40 2021]
+Finished job 58.
+7 of 65 steps (11%) done
+
+[Thu Jul 29 15:05:40 2021]
+rule hisat2:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016964_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016964_rv.fastq.gz
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016964.sortByName.bam
+    jobid: 56
+    benchmark: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/benchmarks/SRR9016964.hisat2.benchmark.txt
+    wildcards: sample=SRR9016964
+
+Submitted DRMAA job 56 with external jobid 17744337.
+
+[Thu Jul 29 15:05:40 2021]
+rule hisat2:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016960_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016960_rv.fastq.gz
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016960.sortByName.bam
+    jobid: 54
+    benchmark: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/benchmarks/SRR9016960.hisat2.benchmark.txt
+    wildcards: sample=SRR9016960
+
+Submitted DRMAA job 54 with external jobid 17744338.
+
+[Thu Jul 29 15:05:40 2021]
+rule hisat2:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016965_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016965_rv.fastq.gz
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016965.sortByName.bam
+    jobid: 57
+    benchmark: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/benchmarks/SRR9016965.hisat2.benchmark.txt
+    wildcards: sample=SRR9016965
+
+Submitted DRMAA job 57 with external jobid 17744339.
+
+[Thu Jul 29 15:05:40 2021]
+rule hisat2:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016959_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016959_rv.fastq.gz
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016959.sortByName.bam
+    jobid: 53
+    benchmark: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/benchmarks/SRR9016959.hisat2.benchmark.txt
+    wildcards: sample=SRR9016959
+
+Submitted DRMAA job 53 with external jobid 17744340.
+
+[Thu Jul 29 15:05:40 2021]
+rule hisat2:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016958_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016958_rv.fastq.gz
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016958.sortByName.bam
+    jobid: 52
+    benchmark: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/benchmarks/SRR9016958.hisat2.benchmark.txt
+    wildcards: sample=SRR9016958
+
+Submitted DRMAA job 52 with external jobid 17744341.
+
+[Thu Jul 29 15:05:40 2021]
+rule hisat2:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/splicesites.txt, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016963_fw.fastq.gz, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/reads/SRR9016963_rv.fastq.gz
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016963.sortByName.bam
+    jobid: 55
+    benchmark: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/benchmarks/SRR9016963.hisat2.benchmark.txt
+    wildcards: sample=SRR9016963
+
+Submitted DRMAA job 55 with external jobid 17744342.
+[Thu Jul 29 15:09:10 2021]
+Finished job 53.
+8 of 65 steps (12%) done
+
+[Thu Jul 29 15:09:10 2021]
+rule sortBam:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016959.sortByName.bam
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam
+    jobid: 30
+    wildcards: sample=SRR9016959
+
+Submitted DRMAA job 30 with external jobid 17744372.
+
+[Thu Jul 29 15:09:10 2021]
+checkpoint splitBam:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/bam_byName/SRR9016959.sortByName.bam
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/SRR9016959_split
+    jobid: 47
+    wildcards: sample=SRR9016959
+Downstream jobs will be updated after completion.
+
+Submitted DRMAA job 47 with external jobid 17744373.
+[Thu Jul 29 15:10:00 2021]
+Finished job 30.
+9 of 65 steps (14%) done
+
+[Thu Jul 29 15:10:00 2021]
+rule alignmentQC:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam
+    output: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/alignmentQC/SRR9016959_BAMqc
+    jobid: 23
+    wildcards: sample=SRR9016959
+
+Submitted DRMAA job 23 with external jobid 17744375.
+
+[Thu Jul 29 15:10:00 2021]
+rule BamIndex:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam
+    output: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam.bai
+    jobid: 31
+    wildcards: sample=SRR9016959
+
+Submitted DRMAA job 31 with external jobid 17744376.
+[Thu Jul 29 15:10:31 2021]
+Finished job 31.
+10 of 65 steps (15%) done
+
+[Thu Jul 29 15:10:31 2021]
+rule BigWig:
+    input: /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam, /shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam.bai
+    output: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/bw/SRR9016959.bw
+    jobid: 4
+    wildcards: sample=SRR9016959
+
+Submitted DRMAA job 4 with external jobid 17744377.

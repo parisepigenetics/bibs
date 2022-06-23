@@ -1,0 +1,65 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 30
+Job counts:
+	count	jobs
+	1	DEA
+	1	TE_DEA
+	1	TE_combineSamples
+	1	all
+	1	combineSamples
+	5
+
+[Thu Jul 29 19:42:35 2021]
+rule TE_combineSamples:
+    input: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/SRR9016958_countTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/SRR9016959_countTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/SRR9016960_countTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/SRR9016963_countTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/SRR9016964_countTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/SRR9016965_countTE.tsv
+    output: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/D1KO_countsTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/D1WT_countsTE.tsv
+    jobid: 5
+
+Submitted DRMAA job 5 with external jobid 17752151.
+
+[Thu Jul 29 19:42:35 2021]
+rule combineSamples:
+    input: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/SRR9016958_countGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/SRR9016959_countGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/SRR9016960_countGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/SRR9016963_countGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/SRR9016964_countGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/SRR9016965_countGenes.tsv
+    output: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/D1KO_countsGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/D1WT_countsGenes.tsv
+    jobid: 6
+
+Submitted DRMAA job 6 with external jobid 17752152.
+[Thu Jul 29 19:42:55 2021]
+Finished job 5.
+1 of 5 steps (20%) done
+
+[Thu Jul 29 19:42:55 2021]
+rule TE_DEA:
+    input: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/D1KO_countsTE.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/countTables/D1WT_countsTE.tsv
+    output: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables/dea_D1WT_D1KO.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_D1WT_D1KO.html
+    jobid: 2
+
+Submitted DRMAA job 2 with external jobid 17752153.
+[Thu Jul 29 19:42:55 2021]
+Finished job 6.
+2 of 5 steps (40%) done
+
+[Thu Jul 29 19:42:55 2021]
+rule DEA:
+    input: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/D1KO_countsGenes.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/countTables/D1WT_countsGenes.tsv
+    output: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables/dea_D1WT_D1KO.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_D1WT_D1KO.html
+    jobid: 4
+
+Submitted DRMAA job 4 with external jobid 17752154.
+[Thu Jul 29 19:44:36 2021]
+Finished job 2.
+3 of 5 steps (60%) done
+[Thu Jul 29 19:46:06 2021]
+Finished job 4.
+4 of 5 steps (80%) done
+
+[Thu Jul 29 19:46:06 2021]
+localrule all:
+    input: /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/PCA_TE.pdf, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables/dea_D1WT_D1KO.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_D1WT_D1KO.html, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/PCA.pdf, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables/dea_D1WT_D1KO.tsv, /shared/projects/repeats/RASflow_IFB/results/Dnmt1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_D1WT_D1KO.html
+    jobid: 0
+
+[Thu Jul 29 19:46:06 2021]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: /shared/ifbstor1/projects/bi4edc/RASflow_preprod/RASflow_IFB_dev/.snakemake/log/2021-07-29T194233.477343.snakemake.log

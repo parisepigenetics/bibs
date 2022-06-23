@@ -1,0 +1,316 @@
+# Please check the parameters, and adjust them according to your circumstance
+
+# Project name
+PROJECT: Dnmt1
+
+# ================== Control of the workflow ==================
+
+## Do you need to do quality control?
+QC: no  # "yes" or "no". If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set it to "no".
+
+## Do you need to do trimming?
+TRIMMED: no  # "yes" or "no"? 
+
+## Do you need to do mapping and feature counting?
+MAPPING: yes # "yes" or "no"
+
+## Which mapping reference do you want to use? Genome or transcriptome?
+REFERENCE: genome  # "genome" or "transcriptome", I haven't implemented transcriptome yet.
+
+## Do you want to study the repeats?
+REPEATS: yes # "yes" or "no"   if you want to analyse the repeats, the counter should be TEcount ou featureCounts
+
+## Do you want to do Differential Expression Analysis (DEA)?
+DEA: yes  # "yes" or "no"
+
+# ================== Shared parameters for some or all of the sub-workflows ==================
+
+## key file if the data is stored remotely, otherwise leave it empty
+KEY: 
+
+## the path to fastq files
+READSPATH: /shared/projects/repeats/Dnmt1-_Fastq  # for testing purpose we put here the relative paths, but we recommend to always use full paths such as /shared/projects/YourProjectName/Raw_Fastq
+
+## the meta file describing the experiment settings
+METAFILE: configs/metadata.tsv 
+
+## paths for intermediate final results
+BIGDATAPATH: /shared/projects/repeats/RASflow_IFB/data # for big files
+RESULTPATH: /shared/projects/repeats/RASflow_IFB/results
+
+## is the sequencing paired-end or single-end?
+END: pair  # "pair" or "single"
+
+## number of cores you want to allocate to this workflow
+NCORE: 24  # Use command "getconf _NPROCESSORS_ONLN" to check the number of cores/CPU on your machine
+
+# ================== Configuration for Quality Control ==================
+
+## All required params have already been defined in the public params
+
+# ================== Configuration for trimming ==================
+
+## Number of trimmed bases
+## put "no" for TRIM3 and TRIM5 if you don't want to trim a fixed number of bases. 
+TRIM5: no #  integer or "no", remove N bp from the 5' end of reads. This may be useful if the qualities were very poor, or if there is some sort of unwanted bias at the 5' end.
+TRIM3: no # integer or "no", remove N bp from the 3' end of reads AFTER adapter/quality trimming has been performed.
+
+# ================== Configuration for quantification using transcriptome ==================
+
+## transcriptome file
+TRANS: /shared/.. # not yet implemented
+
+# ================== Configuration for alignment to genome and feature count ==================
+
+## aligner
+ALIGNER: HISAT2 # "STAR" or "HISAT2"
+
+## genome and annotation files
+INDEXPATH: /shared/projects/bi4edc/mm39/hisat_index # /shared/bank/homo_sapiens/hg38/hisat2 # folder containing index files
+INDEXBASE: hisat2_mm39 # for hisat2, base of the name of the index files (ie "genome" if the file format is as genome.1.ht2)
+ANNOTATION: /shared/projects/bi4edc/mm39/gencode.vM27.annotation.gtf # GTF file 
+
+## bigwig option
+BWSTRANDED: no # "no": bw merging forward and reverse reads, "yes": get 2 bw files, one forward and one reverse; "both": get the two bw per strand as well as the merge one. 
+
+## tool for feature count
+COUNTER: featureCounts # "featureCounts" or "htseq-count" or "STARcount" (only with STAR aligner, --quantMode GeneCounts option) or "TEcount" (if REPEATS: yes)
+
+## counting options
+COUNTOPTIONS: "-O --fraction" # add extra options for the counter (for featureCounts or htseq-count only). 
+# featureCounts: '-O' (set allowMultiOverlap to TRUE), '-M' (set countMultiMappingReads to TRUE), '--fraction'.
+# htseq-count: -m <mode> ; --nonunique=<nonunique mode>; for instance "-m intersection-nonempty --nonunique=all" .. see https://htseq.readthedocs.io
+ATTRIBUTE: gene_id  # the attribute used in annotation file. It's usually "gene_id", but double check that since it may also be "gene", "ID"...
+STRAND: reverse # "no", "yes", "reverse". For stranded=no, a read is considered overlapping with a feature regardless of whether it is mapped to the same or the opposite strand as the feature. For stranded=yes and single-end reads, the read has to be mapped to the same strand as the feature. For paired-end reads, the first read has to be on the same strand and the second read on the opposite strand. For stranded=reverse, these rules are reversed.
+FEATURE: transcript # "exon", "gene", "transcript", ... depending on your GTF file and on the feature you're interested in.
+
+# ================== Configuration for repeat analysis ==================
+
+GTFTE: /shared/projects/bi4edc/mm39/mm39_TE_rmsk.gtf  # GTF ANNOTATION file for repeats, must be adapted to have the FEATURE you chose ("exon", "gene", "transcript") as 3rd column. 
+
+
+# ================== Configuration for DEA ==================
+
+## Do you want to use edgeR or DESeq2 to do DEA?
+DEATOOL: DESeq2 # "edgeR" or "DESeq2"? DESeq2 is recommended for transcriptome-based DEA
+
+## Is your experiment designed in a pair-wise way?
+PAIR: no  # Is this a pair test or not? (yes or no). For instance 2 samples from the same patient taken at different times.
+
+## the comparison(s) you want to do. If multiple comparisons, specify each pair (CONTROL & TREAT) in order respectively
+CONTROL: ["D1WT"]
+TREAT: ["D1KO"]
+## length of 'CONTROL' should agree with that of 'TREAT'
+## what you fill in there should agree with the "group" column in metadata.tsv
+
+FILTER: yes  # Filter out low expressed transcripts/genes or not? (yes or no) It's better to be set to "yes".
+
+
+# ================== Configuration for visualization ==================
+
+## All required params have already been defined in the public params
+
+# ================== Path to main scripts  ==================
+
+MAINPATH: "" # leave "" empty for IFB core cluster, "/scratch/epigenetique/workflows/RASflow_RPBS/" for RPBS cluster.
+
+==========================================
+
+SAMPLE PLAN
+sample	group	subject
+SRR9016958	D1WT	1
+SRR9016959	D1WT	2
+SRR9016960	D1WT	3
+SRR9016963	D1KO	1
+SRR9016964	D1KO	2
+SRR9016965	D1KO	3
+
+==========================================
+
+CONDA ENV
+
+name: rasflow_IFB 
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+# conda-forge channel installs
+  - R=4.0
+  - python=3.7.6
+  - graphviz=2.42.3
+  - r-yaml=2.2.1
+  - r-statmod=1.4.34
+  - r-gplots=3.0.3
+  - r-magick=2.3
+  - r-dt=0.13
+  - r-sessioninfo=1.1.1
+  - r-knitr=1.29
+  - r-heatmap.plus=1.3
+  - r-readr=1.3.1
+  - r-hash=3.0.1
+  - r-pheatmap=1.0.12
+  - r-rcolorbrewer=1.1_2
+  - imagemagick=7.0.10
+# bioconda channel installs
+  - snakemake=5.14.0
+  - fastqc=0.11.9
+  - trim-galore=0.6.5
+  - multiqc=1.9
+  - salmon=1.2.1
+  - hisat2=2.2.0
+  - star=2.7.5a
+  - samtools=1.10
+  - subread=2.0.1  # featureCounts included
+  - htseq=0.12.4  # htseq-count included
+  - bioconductor-edger=3.30.0
+  - bioconductor-deseq2=1.28.0
+  - qualimap=2.2.2a
+  - bioconductor-mygene=1.24.0
+  - bioconductor-tximport=1.16.0
+  - bioconductor-enhancedvolcano=1.6.0
+  - bioconductor-biomart=2.44.0
+  - deeptools=3.4.3
+  - bioconductor-regionreport=1.22.0
+  - bioconductor-glimma=1.16.0
+  - pysam=0.16.0 
+  - picard=2.25.5
+
+==========================================
+
+CLUSTER
+
+__default__:
+  mem: 500
+  name: snakejob
+  cpus: 1
+
+qualityControl:
+  mem: 6000
+  name: QC
+  cpus: 2
+
+trim:
+  mem: 6000
+  name: trimming
+  cpus: 8
+  
+trimS:
+  mem: 6000
+  name: trimming
+  cpus: 4
+
+hisat2:
+  mem: 7000
+  name: hisat2
+  cpus: 32
+
+star:
+  mem: 40000
+  name: star
+
+alignmentQC:
+  mem: 10000
+  name: aligQC
+  cpus: 8
+
+BigWig:
+  mem: 10000
+  name: BigWig
+  cpus: 8
+
+BigWigR:
+  mem: 10000
+  name: BigWigR
+  cpus: 8
+
+BigWigF:
+  mem: 10000
+  name: BigWigF
+  cpus: 8
+
+featureCount:
+  mem: 10000
+  name: featureCount
+  cpus: 4
+
+htseqCount:
+  mem: 50000
+  name: htseqCount
+
+plot:
+  name: visualization
+
+BamIndex:
+  name: BamIndex
+
+PCA:
+  name: PCA
+  mem: 2000
+  
+TEPCA:
+  name: TEPCA
+  mem: 2000
+
+summaryReport:
+  name: multiQC
+
+MappingReport:
+  name: multiQC
+
+DEA:
+  name: DEA
+  mem: 2000
+
+TE_DEA:
+  name: TE_DEA
+  mem: 2000
+
+quantify:
+  name: quantTrans
+
+getReads:
+  name: getReads
+
+starCount:
+  name: starCount
+  
+TEcount:
+  mem: 30000
+  name : TEcount
+  cpus: 24
+  
+Samtools:
+  mem: 30000
+  name : Samtools
+  cpus: 8
+
+splitBam : 
+  mem: 10000
+  name : Picards
+  
+sortBam:
+  name: sortBam
+  cpus: 8
+  mem: 10000
+
+spliceSites:
+  name: spliceSites
+  
+splitCountTables:
+  name: splitCountTables
+  
+mergeCountTables:
+  name: mergeCountTables
+  
+mergeSummaries:
+  name: mergeSummaries
+  
+TE_index:
+  name: TE_index
+  mem: 10000
+  
+gene_index:
+  name: gene_index
+  mem: 1000

@@ -1,3 +1,0 @@
-Building DAG of jobs...
-Nothing to be done.
-Complete log: /shared/mfs/data/projects/bi4edc/RASflow_IFB/.snakemake/log/2020-11-20T090508.461941.snakemake.log
