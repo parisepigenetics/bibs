@@ -42,7 +42,7 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 
 Here is a simplified scheme of the workflow. The main steps are indicated in the blue boxes. RASflow_EDC will allow you to choose which steps you want to execute for your project. In the green circles are the input files you have to give for the different steps. 
 
-<img src="Tuto_pictures/workflow_chart.png" alt="drawing" width="500"/>
+<img src="Tuto_pictures/workflow_chart.png" alt="drawing" width="800"/>
 
 [![Back to toc][1]][2]
 
