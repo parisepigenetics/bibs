@@ -5,7 +5,7 @@ description: List of the tools developped by EDC members
 order: 1
 ---
 
-<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
 
 # Description of EDC bioinformatics tools

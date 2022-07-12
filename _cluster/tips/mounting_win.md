@@ -5,7 +5,7 @@ description: Connect on iPOP-UP server on Windows
 order: 2
 ---
 
-<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
 # Navigating on iPOP-UP server on Windows 10
 

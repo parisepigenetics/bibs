@@ -5,7 +5,7 @@ description: Workflows developped or supported by BiBs
 order: 1
 ---
 
-<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
 # Analysis workflows developped or supported by BiBs
 

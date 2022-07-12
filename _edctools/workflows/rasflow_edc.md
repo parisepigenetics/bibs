@@ -5,7 +5,7 @@ description: RNAseq workflow
 order: 1
 ---
 
-<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
 ---
 # RNA-seq analysis using RASflow_EDC

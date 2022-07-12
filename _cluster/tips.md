@@ -5,7 +5,7 @@ description: Tips and Tricks to use the clusters
 order: 1
 ---
 
-<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
 # Small or big tips and tricks offered by your BiBs facility!
 {:.no_toc}
