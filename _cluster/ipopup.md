@@ -55,7 +55,8 @@ You@YourComputer:~/PathTo/RNAseqProject$ ssh username@ipop-up.rpbs.univ-paris-di
 
 You will have to enter your password and then you'll be connected. 
 
-**Tip!** Once connected, you can change your password using the `passwd` command. 
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> Once connected, you can change your password using the `passwd` command.
+{:.ui.success.message}
 
 
 ```
@@ -93,11 +94,8 @@ Once your project is created you will see it in the list, with the used and avai
 ```
 [username@ipop-up ~]$ cd /shared/projects/YourProjectName
 ```
-
-**Tip!** In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions: 
-- [Mounting iPOP-UP server on Windows]({{site.baseurl}}/cluster/tips/mounting_win) 
-- [Mounting iPOP-UP server on Linux]({{site.baseurl}}/cluster/tips/mounting_linux)
-
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). This way, you can modify your files directly using any local text editor.
+{:.ui.success.message}
 
 ---
 
