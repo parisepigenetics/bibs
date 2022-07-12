@@ -121,7 +121,7 @@ or directly in your sbatch script adding the line :
 
 ---
 
-## Where to find banks?
+## Where to find reference genomes and annotations?
 
 In order to avoid having dozens of copies of the human or mouse genome on the cluster, shared reference files are available in `/shared/banks`. This folder contains :
 - reference genome FASTA files
