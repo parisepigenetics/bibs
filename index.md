@@ -75,7 +75,7 @@ Our protocols, scripts and workflows are hosted on our [GitHub repository](https
 
 ### Guidelines
 
-1. [Submit raw sequencing reads to ENA]({{site.baseurl}}/guidelines/ena_submission/#/guidelines)  
+1. [Submit raw sequencing reads to ENA]({{site.baseurl}}/guidelines/enasubmission/#/guidelines)  
 Summary of the different steps one has to follow to put raw FASTQ files into the European Nucleotide Archive. 
 <br/>
 
