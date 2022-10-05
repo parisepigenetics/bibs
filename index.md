@@ -27,7 +27,8 @@ If you need long-term help on a specific project, this has to be discussed with 
 
 ## Stay up to date
 
-In order to get news about bioinformatics in the unit, you can follow us on Slack at hpc-edc.slack.com. To get access, please email us at bibsATparisepigenetics.com.
+<span> <b>Slack</b></span><br> In order to get news about bioinformatics in the unit, you can follow us on Slack at hpc-edc.slack.com. To get access, please email us at bibsATparisepigenetics.com.
+{:.ui.message}
 
 <br/>
 
@@ -72,6 +73,10 @@ One important goal of the BiBs facility is to make you able to analyse your data
 ### EDC toolbox
 Our protocols, scripts and workflows are hosted on our [GitHub repository](https://github.com/parisepigenetics). Some of the resources are private, please provide us your GitHub Username to get access. A description of all the tools developped in-house is available [here]({{site.baseurl}}/edctools/githubrepo/#/edctools). 
 
+### Guidelines
+
+1. [Submit raw sequencing reads to ENA]({{site.baseurl}}/guidelines/ena_submission#/guidelines)  
+Summary of the different steps one has to follow to put raw FASTQ files into the European Nucleotide Archive. 
 <br/>
 
 ## Steering committee
