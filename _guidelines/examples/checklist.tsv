@@ -1,0 +1,11 @@
+Checklist	ERC000011	ENA default sample checklist		
+tax_id	scientific_name	sample_alias	sample_title	sample_description
+#units	 	 	 	 
+4932	Saccharomyces cerevisiae	OK-seq_1	MCM869 OK-seq rep1	MCM869 OK-seq Replicate 1
+4932	Saccharomyces cerevisiae	OK-seq_2	MCM869 OK-seq rep2	MCM869 OK-seq Replicate 2
+562	Escherichia coli	dTTP	pTYB21 - primer extension with dTTP	Primer extension of linear plasmid in the presence of dTTP
+562	Escherichia coli	BrdUTP	pTYB21 - primer extension with BrdUTP	Primer extension of linear plasmid in the presence of BrdUTP
+4932	Saccharomyces cerevisiae	Thy_R1	MCM869 in thymidine rep 1	Yeast MCM869 grown in thymidine (gDNA) Replicate 1
+4932	Saccharomyces cerevisiae	BrdU_R1	MCM869 in BrdU rep 1	Yeast MCM869 grown in BrdU (gDNA) Replicate 1
+4932	Saccharomyces cerevisiae	Thy_R2	MCM869 in thymidine rep 2	Yeast MCM869 grown in thymidine (gDNA) Replicate 2
+4932	Saccharomyces cerevisiae	BrdU_R2	MCM869 in BrdU rep 2	Yeast MCM869 grown in BrdU (gDNA) Replicate 2

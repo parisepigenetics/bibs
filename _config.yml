@@ -23,6 +23,11 @@ collections:
     permalink: "/:collection/:path/"
     title: EDC tools
     tab-order: 2
+  guidelines:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Guidelines
+    tab-order: 4
 
 highlighter: rouge
 kramdown:
