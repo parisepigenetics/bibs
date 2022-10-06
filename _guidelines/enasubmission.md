@@ -57,7 +57,7 @@ https://ena-docs.readthedocs.io/en/latest/submit/samples.html).
 - From https://www.ebi.ac.uk/ena/submit/webin/ click on `Register Samples`. 
 - Click on `Download spreadsheet to register samples`
 - Select the appropriate checklist, often "ENA default sample checklist"
-- File in the checklist. Please see an example [here](examples/checklist.tsv). 
+- File in the checklist. Please see an example [here]({{site.baseurl}}/documents/checklist.tsv). 
 - Upload the checklist after cliking on 
 `Upload filled spreadsheet to register samples`.
 If everything goes fine, you can save accessions at this step.
@@ -68,7 +68,7 @@ Finally, you can register your reads (FASTQ files) to make the link with the fil
 
 - From https://www.ebi.ac.uk/ena/submit/webin/ click on `Submit Reads`. 
 - Click on `Download spreadsheet template for Read submission` and choose the appropriate template. 
-- File in the spreadsheet. Please see an example [here](examples/reads.tsv). 
+- File in the spreadsheet. Please see an example [here]({{site.baseurl}}/documents/reads.tsv). 
 - Upload the spreadsheet by cliking on 
 `Upload filled spreadsheet template for Read submission`.
 
