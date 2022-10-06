@@ -1,3 +1,12 @@
+---
+layout: page
+title: ENA submission
+description: Guidelines to submit raw sequences to the European Nucleotide Archive 
+order: 1
+---
+
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
+
 # ENA submission
 
 The European Nucleotide Archive provides a [general guide](
