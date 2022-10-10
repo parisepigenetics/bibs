@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Connect iPOP-UP server on Windows
-description: Connect on iPOP-UP server on Windows
+title: Easy navigation on iPOP-UP (Windows) 
+description: Navigating on iPOP-UP server on Windows
 order: 2
 ---
 
