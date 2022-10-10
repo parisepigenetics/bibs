@@ -6,14 +6,15 @@ description: main page
 ---
 
 ![banner]({{site.baseurl}}/images/banner.png)
-# EDC BiBs core facility
+# Epigenetics and Cell Fate BiBs core facility
 
-## Welcome to the Epigenetics and Cell Fate Bioinformatics and Biostatistics website!
+## Welcome to EDC Bioinformatics and Biostatistics facility website!
 
 The [Paris Epigenetics](http://parisepigenetics.com) BiBs platform provides and develops user-friendly, state of the art epigenomics protocols.  We also maintain access to a local computing cluster and provide the teams of the UMR7216 a variety of bioinformatics related services such as technology monitoring, project-specific analyses and user-tailored, on-demand training. This website is the main resource for protocols, scripts and instructions on how to use the HPC clusters.
 {:.ui.large.message}
 
 <br/>
+  
 
 ## How to access the facility
 
@@ -22,6 +23,12 @@ The easiest is to pass by the 366b room in Lamarck B!
 You can also contact us by email : [bibsATparisepigenetics.com](mailto:bibsATparisepigenetics.com).
 
 If you need long-term help on a specific project, this has to be discussed with BiBs [steering committee](#steering-committee). Please download and fill-in the accession form ([docx]({{site.baseurl}}/documents/accession_plateforme.docx) or [odt]({{site.baseurl}}/documents/accession_plateforme.odt)) and send it via email. A meeting to discuss your needs will be set-up in the following days.
+
+<br/>
+
+
+## BiBs charter
+Our user charter is available [here]({{site.baseurl}}/documents/BiBs_charte.v0.3.pdf). It defines the rules to use the facility. Please read and sign it!
 
 <br/>
 
