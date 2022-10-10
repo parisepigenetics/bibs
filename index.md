@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Introduction
+title: BiBs - EDC lab
 category: home
 description: main page
 ---
