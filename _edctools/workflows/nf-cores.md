@@ -29,6 +29,8 @@ Methylation (Bisulfite-Sequencing) analysis pipeline using Bismark or bwa-meth +
 ATAC-seq peak-calling, QC and differential analysis pipeline
 - [And much more!](https://nf-co.re/pipelines)
 
+In addition, some [useful tips from U-BDS](https://u-bds.github.io/training_guides/nf_core_tips.html). 
+
 ---
 
 ## Running on IFB core cluster

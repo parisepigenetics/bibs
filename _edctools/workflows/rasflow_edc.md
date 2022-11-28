@@ -1308,7 +1308,7 @@ If not already done, you can specifically get the BigWig files on your computer 
 You@YourComputer:~$ scp -pr username@core.cluster.france-bioinformatique.fr:/shared/projects/YourProjectName/RASflow_EDC/results/EXAMPLE/mapping_ALIGNER/bw_str PathTo/WhereYouWantToSave/
 ```
 
-Snapshot of BigWig tracks visualized on IGV. 
+Snapshot of BigWig tracks visualized on [IGV](http://software.broadinstitute.org/software/igv/home). 
 
 <img src="Tuto_pictures/igv_RF.png" alt="drawing" width="600"/>
 
