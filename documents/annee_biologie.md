@@ -5,7 +5,7 @@ description: Ressources pour les ateliers
 order: 1
 ---
 
-<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
+<img src="{{site.baseurl}}/images/annee_biologie.png" alt="drawing" width="300"/>
 
 # Année de la biologie
 
@@ -14,8 +14,12 @@ order: 1
 Mercredi 7 décembre 2022  
 De 9h00 à 17h30
 
-## L’ADN : de l’extraction à la caractérisation
+------
+<img src="{{site.baseurl}}/images/banner_edc.png" alt="drawing" width="600"/>
 
-## L'Analyse de la méthylation de l’ADN
 
-## La Bio-informatique
+### L’ADN : de l’extraction à la caractérisation
+
+### L'Analyse de la méthylation de l’ADN
+
+### La Bio-informatique
