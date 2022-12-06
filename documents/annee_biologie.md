@@ -42,13 +42,13 @@ Q3? Quelle taille fait le gène Dmd? Et Sox2?
 
 ## Observation de données d'expression
 
-1. Ajouter les données de transcription: File/Load from File... Dossier "expression"
+1. Ajouter les données de transcription: Menu File/Load from File... Dossier "expression".
 - ESC_SRR14102760.bw
 - MEFs_SRR14102762.bw
 
 2. Pour que ce soit plus lisible: 
 - changer les couleurs (ESC = bleu, MEFs = vert): clic droit sur le nom de la piste, puis "Change Track Color..."
-- changer la hauteur des tracks: Menu Tracks/Set Tracks Height... -> 80 (ou Fit Data to Window)
+- changer la hauteur des pistes: Menu Tracks/Set Tracks Height... -> 80 (ou Fit Data to Window)
 - pour que les données soient à la même échelle: sélectionner les 2 pistes (Ctrl+clic), clic droit, "Group Autoscale".
 
 3. Se ballader, zoomer, aller voir les gènes:
@@ -63,7 +63,7 @@ Q3? Quelle taille fait le gène Dmd? Et Sox2?
 Q4? Lesquels sont exprimés spécifiquement dans les cellules ES? et dans les MEFs? 
 
 ## Observation de données de méthylation de l'ADN
-1. Ajouter les données de méthylation  
+1. Ajouter les données de méthylation: Menu File/Load from File... Dossier "methylation".  
  - ESC_me_GSM6070571.bw (entre 0 et 1)
  - MEFs_me_SRR8146641.bw (entre 0 et 100)
 
@@ -75,7 +75,7 @@ Q4? Lesquels sont exprimés spécifiquement dans les cellules ES? et dans les ME
 
 Votre fenêtre devrait maintenant ressembler à ça: 
 
-<img src="{{site.baseurl}}/images/igv.png" alt="drawing" width="600"/>
+<img src="{{site.baseurl}}/images/igv.png" alt="drawing" width="900"/>
 
 Q5? Les îlots CpG sont-ils généralement méthylés?  
 
@@ -83,7 +83,10 @@ Q5? Les îlots CpG sont-ils généralement méthylés?
 - Acta2
 - Brdt
 - Sox2  
+
 Observer l'expression et la méthylation (au niveau des promoteurs). 
+
+Q6? Y-a-t'il une corrélation entre l'expression d'un gène et la méthylation de ses régions promotrices? Est-ce que tous les gènes suivent le même schéma?   
 
 ## Infos sur les gènes observés
 
