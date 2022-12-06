@@ -16,7 +16,7 @@ De 9h00 à 17h30
 ------
 <img src="{{site.baseurl}}/images/banner_edc.png" alt="drawing" width="600"/>
 
-Vous allez participer à 3 ateliers qui ont pour but de vous donner un aperçu des méthodes utilisées au laboratoire pour étudier les génomes et leur régulation. 
+Vous allez participer à 3 ateliers qui ont pour but de vous donner un aperçu des méthodes utilisées au laboratoire pour étudier les génomes et leur régulation.  
 Ces ateliers sont animés par : 
 - Léo Carrillo 
 - Emmanuel Cazottes
@@ -67,13 +67,11 @@ Les diapos présentées sont disponibles [ici]({{site.baseurl}}/documents/202212
 - pour que les données soient à la même échelle: sélectionner les 2 pistes (Ctrl+clic), clic droit, "Group Autoscale".
 
 3. Se ballader, zoomer, aller voir les gènes:
-    - *Vim*
     - *Rfx2*
-    - *Sgk1*
     - *Rps24*
     - *Sox2*
     - *Fst*
-    - *Acta2*
+    - *Vim*
 
 <span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 4</b></span><br> Lesquels sont exprimés spécifiquement dans les cellules ES? et dans les MEFs? 
 {:.ui.info.message}
@@ -101,16 +99,28 @@ Votre fenêtre devrait maintenant ressembler à ça:
 
 5. Aller voir quelques gènes comme:
 - *Acta2*
-- *Brdt*
 - *Sox2*  
+- *Ezh1*
+- *Vim*
+- *Rfx2*
+
 
 Observer l'expression et la méthylation (au niveau des promoteurs). 
 
 <span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 7</b></span><br> Y-a-t'il une corrélation entre l'expression d'un gène et la méthylation de ses régions promotrices? Est-ce que tous les gènes suivent le même schéma?  
 {:.ui.info.message}
 
-### Infos sur les gènes observés
+### Information sur les gènes observés
 
-- *Rfx2*: regulatory factor X 2, regulation of transcription by RNA polymerase II
-- *Vim*: vimentin, cytosquelette
-- *Acta2*: actine alpha
+- *Acta2* actine alpha
+- *Atf4* Activating transcription factor 4, facteur de transcription 
+- *Ezh1* composant du complexe Polycomb PRC2 (méthylation de la lysine 27 de l'histone H3)
+- *Fst* Follistatine, régulation des facteurs de croissance de la famille de TGFβ
+- *Rfx2* regulatory factor X 2, regulation de la transcription par l'ARN polymérase II
+- *Rps24* protéine ribosomique (40S)
+- *Sox2* facteur de transcription essentiel dans le maintien de l'auto renouvellement des cellules souches
+- *Vim* vimentine, filaments intermédiaires faisant partie du cytosquelette
+
+
+
+ 
