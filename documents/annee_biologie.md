@@ -17,6 +17,13 @@ De 9h00 à 17h30
 <img src="{{site.baseurl}}/images/banner_edc.png" alt="drawing" width="600"/>
 
 Vous allez participer à 3 ateliers qui ont pour but de vous donner un aperçu des méthodes utilisées au laboratoire pour étudier les génomes et leur régulation. 
+Ces ateliers sont animés par : 
+- Léo Carrillo 
+- Emmanuel Cazottes
+- Laure Ferry
+- Magali Hennion
+- Olivier Kirsh
+- Jean-François Ouimette
 
 ------
 ## L’ADN : de l’extraction à la caractérisation
