@@ -38,9 +38,12 @@ Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données 
 <span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 1</b></span><br> Que représentent les boites bleues et les lignes avec les chevrons?
 {:.ui.info.message}
 
-Q1?    
-Q2? Combien d'exons le gène Ltbr contient-il?  
-Q3? Quelle taille fait le gène Dmd? Et Sox2? 
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 2</b></span><br> Combien d'exons le gène *Ltbr* contient-il? 
+{:.ui.info.message}
+
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 3</b></span><br> Quelle taille fait le gène *Dmd*? Et *Sox2*?
+{:.ui.info.message}
+
 
 
 ## Observation de données d'expression
@@ -55,15 +58,16 @@ Q3? Quelle taille fait le gène Dmd? Et Sox2?
 - pour que les données soient à la même échelle: sélectionner les 2 pistes (Ctrl+clic), clic droit, "Group Autoscale".
 
 3. Se ballader, zoomer, aller voir les gènes:
-    - Vim
-    - Rfx2
-    - Sgk1
-    - Rps24
-    - Sox2
-    - Fst
-    - Acta2
-    
-Q4? Lesquels sont exprimés spécifiquement dans les cellules ES? et dans les MEFs? 
+    - *Vim*
+    - *Rfx2*
+    - *Sgk1*
+    - *Rps24*
+    - *Sox2*
+    - *Fst*
+    - *Acta2*
+
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 4</b></span><br> Lesquels sont exprimés spécifiquement dans les cellules ES? et dans les MEFs? 
+{:.ui.info.message}
 
 ## Observation de données de méthylation de l'ADN
 1. Ajouter les données de méthylation: Menu File/Load from File... Dossier "methylation".  
@@ -80,19 +84,21 @@ Votre fenêtre devrait maintenant ressembler à ça:
 
 <img src="{{site.baseurl}}/images/igv.png" alt="drawing" width="900"/>
 
-Q5? Les îlots CpG sont-ils généralement méthylés?  
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 5</b></span><br> Les îlots CpG sont-ils généralement méthylés?  
+{:.ui.info.message}
 
 5. Aller voir quelques gènes comme:
-- Acta2
-- Brdt
-- Sox2  
+- *Acta2*
+- *Brdt*
+- *Sox2*  
 
 Observer l'expression et la méthylation (au niveau des promoteurs). 
 
-Q6? Y-a-t'il une corrélation entre l'expression d'un gène et la méthylation de ses régions promotrices? Est-ce que tous les gènes suivent le même schéma?   
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 6</b></span><br> Y-a-t'il une corrélation entre l'expression d'un gène et la méthylation de ses régions promotrices? Est-ce que tous les gènes suivent le même schéma?  
+{:.ui.info.message}
 
 ## Infos sur les gènes observés
 
-- Rfx2: regulatory factor X 2, regulation of transcription by RNA polymerase II
-- Vim: vimentin, cytosquelette
-- Acta2: actine alpha
+- *Rfx2*: regulatory factor X 2, regulation of transcription by RNA polymerase II
+- *Vim*: vimentin, cytosquelette
+- *Acta2*: actine alpha
