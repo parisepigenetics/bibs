@@ -16,10 +16,12 @@ De 9h00 à 17h30
 ------
 <img src="{{site.baseurl}}/images/banner_edc.png" alt="drawing" width="600"/>
 
+Vous allez participer à 3 ateliers qui ont pour but de vous donner un aperçu des méthodes utilisées au laboratoire pour étudier les génomes et leur régulation. 
+
 ------
 ### L’ADN : de l’extraction à la caractérisation
 ------
-### L'Analyse de la méthylation de l’ADN
+### L'analyse de la méthylation de l’ADN
 ------
 ### La bio-informatique
 
