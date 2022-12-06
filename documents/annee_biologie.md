@@ -28,6 +28,8 @@ Vous allez participer à 3 ateliers qui ont pour but de vous donner un aperçu d
 Avec l'essor du séquençage à haut-débit, les besoins en analyses de données ont explosés dans les laboratoires de biologie. En tout premier lieu, il y a un besoin de visualisation des données qui sortent du séquenceur sous la forme de fichiers texte de plusieurs dizaines voire centaines de millions de lignes. 
 Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données de séquençage après alignement sur le génome. 
 
+Les diapos présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
+
 ### Navigateur de génome
 1. Ouvrir IGV 
 2. Choisir le génome : souris (mouse), version mm10
