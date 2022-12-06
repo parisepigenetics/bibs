@@ -78,13 +78,16 @@ Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données 
 
 3. Ajuster l'affichage : Menu Tracks/Fit Data to Window
 
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 5</b></span><br> Globalement, quel type cellulaire présente le plus de méthylation de l'ADN?  
+{:.ui.info.message}
+
 4. Ajouter la piste de la densité en dinucléotides CG (CpG_density.bw) et celle des îlots CpG (CpG_Islands.bed). Changer les couleurs selon vos goûts. 
 
 Votre fenêtre devrait maintenant ressembler à ça: 
 
 <img src="{{site.baseurl}}/images/igv.png" alt="drawing" width="900"/>
 
-<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 5</b></span><br> Les îlots CpG sont-ils généralement méthylés?  
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 6</b></span><br> Les îlots CpG sont-ils généralement méthylés?  
 {:.ui.info.message}
 
 5. Aller voir quelques gènes comme:
@@ -94,7 +97,7 @@ Votre fenêtre devrait maintenant ressembler à ça:
 
 Observer l'expression et la méthylation (au niveau des promoteurs). 
 
-<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 6</b></span><br> Y-a-t'il une corrélation entre l'expression d'un gène et la méthylation de ses régions promotrices? Est-ce que tous les gènes suivent le même schéma?  
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 7</b></span><br> Y-a-t'il une corrélation entre l'expression d'un gène et la méthylation de ses régions promotrices? Est-ce que tous les gènes suivent le même schéma?  
 {:.ui.info.message}
 
 ### Infos sur les gènes observés
