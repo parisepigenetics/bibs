@@ -35,7 +35,10 @@ Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données 
 4. Taper "actb" dans la barre puis cliquer sur "Go".  
 5. Avec un clic droit sur la piste Refseq, il est possible de changer le format d'affichage (Collapsed, Expanded, Squished). 
 
-Q1? Que représentent les boites bleues et les lignes avec les chevrons?   
+<span>{% include icon.liquid id='awesome-question-circle-o' %} <b>Question 1</b></span><br> Que représentent les boites bleues et les lignes avec les chevrons?
+{:.ui.info.message}
+
+Q1?    
 Q2? Combien d'exons le gène Ltbr contient-il?  
 Q3? Quelle taille fait le gène Dmd? Et Sox2? 
 
