@@ -121,6 +121,7 @@ Observer l'expression et la méthylation (au niveau des promoteurs).
 - *Sox2* facteur de transcription essentiel dans le maintien de l'auto renouvellement des cellules souches
 - *Vim* vimentine, filaments intermédiaires faisant partie du cytosquelette
 
+Vous pouvez trouver plus d'information sur les gènes sur les bases de données en ligne, comme celle de [Ensembl](http://www.ensembl.org/Mus_musculus/Info/Index). 
 
 
  
