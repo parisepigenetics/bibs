@@ -44,7 +44,7 @@ Les diapositives d'introduction présentées sont disponibles [ici]({{site.baseu
 ### Navigateur de génome
 1. Ouvrir IGV 
 2. Choisir le génome : souris (mouse), version mm10
-3. Cliquer sur un chromosome, observer la piste "Refseq genes", zommer en cliquant sur le "+". Cette piste indique la position des gènes. 
+3. Cliquer sur un chromosome, observer la piste "Refseq genes", zoomer en cliquant sur le "+". Cette piste indique la position des gènes. 
 4. Taper "actb" dans la barre puis cliquer sur "Go".  
 5. Avec un clic droit sur la piste Refseq, il est possible de changer le format d'affichage (Collapsed, Expanded, Squished). 
 
