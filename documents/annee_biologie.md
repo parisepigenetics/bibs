@@ -27,15 +27,19 @@ Ces ateliers sont animés par :
 
 ------
 ## L’ADN : de l’extraction à la caractérisation
+Dans cet atelier vous allez observer sur gel d'électrophorèse le produit d'amplification par PCR d'une région de l'ADN génomique issu de différents types cellulaires murins. Vous comparerez également les niveaux d'expression des transcrits provenant de cette même région dans les différents types cellulaires. 
+
 ------
 ## L'analyse de la méthylation de l’ADN
+Dans cet atelier vous allez mesurer le niveau global de méthylation de l'ADN génomique issu de différents types cellulaires murins. Pour cela vous utiliserez la technique LUMA (LUminometric Methylation Assay), basée sur le Pyroséquençage des produits de digestion par des enzymes sensibles à la méthylation. 
+
 ------
 ## La bio-informatique
 
 Avec l'essor du séquençage à haut-débit, les besoins en analyses de données ont explosés dans les laboratoires de biologie. En tout premier lieu, il y a un besoin de visualisation des données qui sortent du séquenceur sous la forme de fichiers texte de plusieurs dizaines voire centaines de millions de lignes. 
 Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données de séquençage après alignement sur le génome. 
 
-Les diapos présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
+Les diapositives d'introduction présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
 
 ### Navigateur de génome
 1. Ouvrir IGV 
