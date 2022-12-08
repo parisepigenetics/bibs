@@ -41,6 +41,10 @@ Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données 
 
 Les diapositives d'introduction présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
 
+Les données test (700 MB) peuvent être téléchargées [ici](https://mycore.core-cloud.net/index.php/s/PzPy58RchYTC3iF) si vous voulez réessayer chez vous.
+
+Le logiciel IGV est disponible [ici](https://software.broadinstitute.org/software/igv/download). 
+
 ### Navigateur de génome
 1. Ouvrir IGV 
 2. Choisir le génome : souris (mouse), version mm10
