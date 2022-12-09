@@ -43,7 +43,7 @@ Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données 
 
 Les diapositives d'introduction présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
 
-Les données test (700 MB) peuvent être téléchargées [ici](https://mycore.core-cloud.net/index.php/s/PzPy58RchYTC3iF) si vous voulez réessayer chez vous. Un fichier `igv_session.xml` est inclus dans ce dossier et permet de charger directement toutes les données dans IGV (Menu File/Open Session...). 
+Les données de test (700 MB) peuvent être téléchargées [ici](https://mycore.core-cloud.net/index.php/s/PzPy58RchYTC3iF) si vous voulez réessayer chez vous. Un fichier `igv_session.xml` est inclus dans ce dossier et permet de charger directement toutes les données dans IGV (Menu File/Open Session...). 
 
 Le logiciel IGV est disponible [ici](https://software.broadinstitute.org/software/igv/download). 
 
