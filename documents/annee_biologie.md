@@ -16,6 +16,12 @@ De 9h00 à 17h30
 ------
 <img src="{{site.baseurl}}/images/banner_edc.png" alt="drawing" width="600"/>
 
+## Introduction de l'unité 
+
+La directrice Valérie Mezger présentera l'unité. Retrouvez [ici le support de sa présentation]({{site.baseurl}}/documents/Mezger_Presentation_UMR_Annee_de_la_Biologie_2022.pdf).
+
+## Ateliers
+
 Vous allez participer à 3 ateliers qui ont pour but de vous donner un aperçu des méthodes utilisées au laboratoire pour étudier les génomes et leur régulation.  
 Ces ateliers sont animés par : 
 - Léo Carrillo 
