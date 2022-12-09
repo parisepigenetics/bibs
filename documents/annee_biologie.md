@@ -28,12 +28,12 @@ Ces ateliers sont animés par :
 ------
 ## L’ADN : de l’extraction à la caractérisation
 Dans cet atelier nous allons observer sur gel d'électrophorèse le produit d'amplification par PCR d'une région de l'ADN génomique issu de différents types cellulaires murins. Nous comparerons également les niveaux d'expression des transcrits provenant de cette même région dans les différents types cellulaires.  
-Les diapositives présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_expression.pdf). 
+Les [diapositives présentées sont disponibles ici]({{site.baseurl}}/documents/20221207_expression.pdf). 
 
 ------
 ## L'analyse de la méthylation de l’ADN
 Dans cet atelier nous allons mesurer le niveau global de méthylation de l'ADN génomique issu de différents types cellulaires murins. Pour cela nous utiliserons la technique LUMA (LUminometric Methylation Assay), basée sur le Pyroséquençage des produits de digestion par des enzymes sensibles à la méthylation.  
-Les diapositives présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_methylation.pdf). 
+Les [diapositives présentées sont disponibles ici]({{site.baseurl}}/documents/20221207_methylation.pdf). 
 
 ------
 ## La bio-informatique
@@ -41,7 +41,7 @@ Les diapositives présentées sont disponibles [ici]({{site.baseurl}}/documents/
 Avec l'essor du séquençage à haut-débit, les besoins en analyses de données ont explosés dans les laboratoires de biologie. En tout premier lieu, il y a un besoin de visualisation des données qui sortent du séquenceur sous la forme de fichiers texte de plusieurs dizaines voire centaines de millions de lignes. 
 Dans cet atelier, nous allons utiliser un logiciel pour visualiser les données de séquençage après alignement sur le génome. 
 
-Les diapositives d'introduction présentées sont disponibles [ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
+Les [diapositives d'introduction présentées sont disponibles ici]({{site.baseurl}}/documents/20221207_atelier_igv.pdf). 
 
 Les données de test (700 MB) peuvent être téléchargées [ici](https://mycore.core-cloud.net/index.php/s/PzPy58RchYTC3iF) si vous voulez réessayer chez vous. Un fichier `igv_session.xml` est inclus dans ce dossier et permet de charger directement toutes les données dans IGV (Menu File/Open Session...). 
 
