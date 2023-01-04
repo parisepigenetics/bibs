@@ -82,10 +82,17 @@ Our protocols, scripts and workflows are hosted on our [GitHub repository](https
 
 ### Guidelines
 
-1. [Submit raw sequencing reads to ENA]({{site.baseurl}}/guidelines/enasubmission/#/guidelines)  
-Summary of the different steps one has to follow to put raw FASTQ files into the European Nucleotide Archive. 
-<br/>
+- [Collection of cheatsheets]({{site.baseurl}}/guidelines/cheatsheets/#/guidelines)  
+We selected cheatsheets that we find useful to speed up bioinformatics-related tasks, including programming, versionning and documenting.
 
+- [Submit raw sequencing reads to ENA]({{site.baseurl}}/guidelines/enasubmission/#/guidelines)  
+Summary of the different steps one has to follow to put raw FASTQ files into the European Nucleotide Archive. 
+
+- [Develop Snakemake workflows - under construction]({{site.baseurl}}/guidelines/snakemake/#/guidelines)  
+
+
+
+<br/>
 ## Steering committee
 
 - Magali Hennion
