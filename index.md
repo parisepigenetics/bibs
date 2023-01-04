@@ -91,8 +91,8 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 - [Develop Snakemake workflows - under construction]({{site.baseurl}}/guidelines/snakemake/#/guidelines)  
 
 
-
 <br/>
+
 ## Steering committee
 
 - Magali Hennion
