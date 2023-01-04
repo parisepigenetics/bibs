@@ -119,6 +119,7 @@ Votre fenêtre devrait maintenant ressembler à ça:
 - *Ezh1*
 - *Vim*
 - *Rfx2*
+- *Dazl*
 
 
 Observer l'expression et la méthylation (au niveau des promoteurs). 
