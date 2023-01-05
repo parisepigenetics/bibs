@@ -28,7 +28,7 @@ If you need long-term help on a specific project, this has to be discussed with 
 
 
 ## BiBs charter
-Our user charter is available [here]({{site.baseurl}}/documents/BiBs_charte.v0.3.pdf). It defines the rules to use the facility. Please read and sign it!
+Our user charter is available [here]({{site.baseurl}}/documents/BiBs_charte_v0.4.pdf). It defines the rules to use the facility. Please read and sign it!
 
 <br/>
 
