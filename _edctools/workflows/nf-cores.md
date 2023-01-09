@@ -12,7 +12,7 @@ order: 1
 {:.no_toc}
 
 - TOC
-{::options toc_levels="1,2" /}
+{::options toc_levels="1,2,3" /}
 {:toc}
 
 ---
