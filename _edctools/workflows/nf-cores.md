@@ -81,7 +81,7 @@ The `input` entry should be the design file you created before.
 Then the best is to create a sbatch file to launch the workflow. In this script you will load Nextflow module and then run the pipeline. All necessary tools will be downloaded automatically.  
 
 ### Example on IFB core cluster
-Here is an example of sbatch file for IFB cluster: [nf-core-ChIPseq.sh]({{site.baseurl}}/documents/nf-core-ChIPseq.sh)
+Here is an example of sbatch file for IFB cluster: [nf-core-ChIPseq_IFB.sh]({{site.baseurl}}/documents/nf-core-ChIPseq_IFB.sh)
 ```sh
 #!/bin/bash
 
@@ -149,7 +149,7 @@ Be aware that some workflows generate a huge amount of data, be sure to have eno
 
 
 ### Example on iPOP-UP core cluster
-Here is an example of sbatch file for iPOP-UP cluster: [nf-core-ChIPseq.sh]({{site.baseurl}}/documents/nf-core-ChIPseq_ipop.sh). 
+Here is an example of sbatch file for iPOP-UP cluster: [nf-core-ChIPseq_ipop.sh]({{site.baseurl}}/documents/nf-core-ChIPseq_ipop.sh). 
 ```sh
 #!/bin/bash
 
