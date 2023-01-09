@@ -140,7 +140,7 @@ In the nexflow command, you have to give :
 - the configuration file you prepared (`-params-file`). 
 
 
-From you IFB project, you can now run in a terminal: 
+From your project, you can now run in a terminal: 
 ```
 [username @ clust-slurm-client 14:24]$ nf-core : sbatch -A YourProjectName nf-core-ChIPseq.sh
 ```
@@ -208,16 +208,16 @@ In the nexflow command, you have to give :
 - the configuration file you prepared (`-params-file`). 
 
 
-From you IFB project, you can now run in a terminal: 
+From your project, you can now run in a terminal: 
 ```
-[username @ clust-slurm-client 14:24]$ nf-core : sbatch nf-core-ChIPseq_ipop.sh.sh
+[username @ ipop-up 14:24]$ nf-core : sbatch nf-core-ChIPseq_ipop.sh.sh
 ```
 And the workflow should run! 
 Be aware that some workflows generate a huge amount of data, be sure to have enough space in your project folder.  
 
 ### Test dataset
 
-nf-core provides some test for each workflow: To use them, you just need to add `,test` to the `-profile` option. For instance: 
+nf-core provides some test datasets for each workflow: To use them, you just need to add `,test` to the `-profile` option. For instance: 
 
 ```bash
 #!/bin/bash
