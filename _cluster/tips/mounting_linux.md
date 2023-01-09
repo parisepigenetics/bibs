@@ -74,7 +74,10 @@ drwxr-xr-x 117 mag mag 12288  1 mars  16:38 ../
 ```
 `ipop_mount_point` folder is not linked anymore to the server. 
 
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Security warning</b></span><br>
 Never leave your computer unsupervised with your session open and iPOP-UP server connected.  
+{:.ui.large.warning.message}
+
 
 
 ---

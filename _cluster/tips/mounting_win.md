@@ -71,7 +71,9 @@ You can now modify your files directly using a text editor. Be careful, never us
 
 The server will be disconnected when you switch off your computer or log out. You will just have to type your password to reconnect. You can also remove completly the mounting point by right clicking on it in "This PC" ("Ce PC" in French). This is recommended if you use a computer shared between several users. 
 
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Security warning</b></span><br>
 Never leave your computer unsupervised with your session open and iPOP-UP server connected.  
+{:.ui.large.warning.message}
 
 
 ---
