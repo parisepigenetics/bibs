@@ -224,9 +224,9 @@ nf-core provides some test datasets for each workflow: To use them, you just nee
 #SBATCH --partition=ipop-up
 #SBATCH --mem=4G
 
-module purge
-export JAVA_LD_LIBRARY_PATH=/shared/software/conda/envs/nextflow-21.04.0/lib/server
 export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
+
+module purge
 module load nextflow/21.04.0 
 
 nextflow run nf-core/atacseq  -profile ipop_up,test
