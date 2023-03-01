@@ -39,7 +39,7 @@ export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
 module load nextflow/21.04.0 
 
 # Run a downloaded/git-cloned nextflow workflow 
-nextflow run nf-core/chipseq -name chip_ko -profile ipop-up -params-file nf-params.json
+nextflow run nf-core/chipseq -name chip_ko -profile ipop_up -params-file nf-params.json
 
 echo '########################################'
 echo 'Job finished' $(date --iso-8601=seconds)

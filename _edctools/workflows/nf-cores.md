@@ -192,7 +192,7 @@ export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
 module load nextflow/21.04.0 
 
 # Run a downloaded/git-cloned nextflow workflow 
-nextflow run nf-core/chipseq -name chip_ko -profile ipop-up -params-file nf-params.json
+nextflow run nf-core/chipseq -name chip_ko -profile ipop_up -params-file nf-params.json
 
 echo '########################################'
 echo 'Job finished' $(date --iso-8601=seconds)
@@ -204,7 +204,7 @@ echo "---- Total runtime $runtime s ; $((runtime/minute)) min ----"
 In the nexflow command, you have to give : 
 - the name of the pipeline you want to launch (here `nf-core/chipseq`)
 - the name of the run (of your choice, `-name` option)
-- the profile to use, predefined for IFB (`-profile ipop-up`) 
+- the profile to use, predefined for iPOP-UP (`-profile ipop_up`) 
 - the configuration file you prepared (`-params-file`). 
 
 
@@ -229,7 +229,7 @@ export JAVA_LD_LIBRARY_PATH=/shared/software/conda/envs/nextflow-21.04.0/lib/ser
 export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
 module load nextflow/21.04.0 
 
-nextflow run nf-core/atacseq  -profile ipop-up,test
+nextflow run nf-core/atacseq  -profile ipop_up,test
 ```
 
 ## Databanks
@@ -241,3 +241,5 @@ A local copy of several genomes are available in `/shared/banks/` (iPOP-UP) or `
 If you want to get help to configure or start a workflow, please contact [the platform](mailto:bibsATparisepigenetics.com). 
 
 ---
+## Having errors? 
+You'll find help to understand the errors at [https://nf-co.re/usage/troubleshooting](https://nf-co.re/usage/troubleshooting). 
