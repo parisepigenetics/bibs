@@ -185,10 +185,11 @@ echo 'ChIP_nf test 01'
 
 start0=`date +%s`
 
-## Export Java paths and load Nextflow environment module
-module purge
-export JAVA_LD_LIBRARY_PATH=/shared/software/conda/envs/nextflow-21.04.0/lib/server
+## Export Java path 
 export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
+
+# load Nextflow environment module
+module purge
 module load nextflow/21.04.0 
 
 # Run a downloaded/git-cloned nextflow workflow 
