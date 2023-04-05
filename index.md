@@ -10,7 +10,7 @@ description: main page
 
 ## Welcome to EDC Bioinformatics and Biostatistics facility website!
 
-The [Paris Epigenetics](http://parisepigenetics.com) BiBs platform provides and develops user-friendly, state of the art epigenomics protocols.  We also maintain access to a local computing cluster and provide the teams of the UMR7216 a variety of bioinformatics related services such as technology monitoring, project-specific analyses and user-tailored, on-demand training. This website is the main resource for protocols, scripts and instructions on how to use the HPC clusters.
+The [Paris Epigenetics](https://epigenetics.u-paris.fr) BiBs platform provides and develops user-friendly, state of the art epigenomics protocols.  We also maintain access to a local computing cluster and provide the teams of the UMR7216 a variety of bioinformatics related services such as technology monitoring, project-specific analyses and user-tailored, on-demand training. This website is the main resource for protocols, scripts and instructions on how to use the HPC clusters.
 {:.ui.large.message}
 
 <br/>
@@ -90,6 +90,19 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 
 - [Develop Snakemake workflows - under construction]({{site.baseurl}}/guidelines/snakemake/#/guidelines)  
 
+
+<br/>
+
+## BiBs members
+
+
+<span> <b>Magali Hennion</b></span><br> Head of BiBs, CNRS research engineer
+{:.ui.success.message}
+
+<span> <b>Olivier Kirsh</b></span><br> Assistant professor, Université Paris Cité
+{:.ui.success.message}
+
+<span> <b>Elouan Bethuel</b></span><br> M1 [BI-IPFB](https://odf.u-paris.fr/fr/offre-de-formation/master-XB/sciences-technologies-sante-STS/bio-informatique-K2VO60MU.html), CNRS apprentice
 
 <br/>
 
