@@ -103,6 +103,7 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 {:.ui.success.message}
 
 <span> <b>Elouan Bethuel</b></span><br> M1 [BI-IPFB](https://odf.u-paris.fr/fr/offre-de-formation/master-XB/sciences-technologies-sante-STS/bio-informatique-K2VO60MU.html), CNRS apprentice
+{:.ui.success.message}
 
 <br/>
 
