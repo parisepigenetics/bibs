@@ -1,3 +1,12 @@
+---
+layout: page
+title: Nanopore-seq analysis
+description: Nanopore sequencing analysis
+order: 1
+---
+
+<img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
+
 # Nanopore sequencing analysis
 Author: Magali Hennion.  
 Last update : April 2023.  
