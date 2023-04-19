@@ -141,22 +141,69 @@ Submitted batch job 508442
 ```
 with modbam2bed.sh 
 ```sh
+#!/bin/bash
+
+################################ Slurm options #################################
+
+### Job name
+#SBATCH --job-name=modbam2bed
+
+### Limit run time "days-hours:minutes:seconds"
+#SBATCH --time=24:00:00
+
+### Requirements
+#SBATCH --partition=ipop-up
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=10GB
+
+### Email
+##SBATCH --mail-user=email@address
+##SBATCH --mail-type=ALL
+
+### Output
+#SBATCH --output=modbam2bed-%j.out
+##SBATCH --error=modbam2bed-%j.err
+
+################################################################################
+
+echo '########################################'
+echo 'Date:' $(date --iso-8601=seconds)
+echo 'User:' $USER
+echo 'Host:' $HOSTNAME
+echo 'Job Name:' $SLURM_JOB_NAME
+echo 'Job Id:' $SLURM_JOB_ID
+echo 'Directory:' $(pwd)
+echo '########################################'
+
+start0=`date +%s`
+
 # load conda env
 source /shared/home/${USER}/.bashrc
 conda activate nanopore
 
-OUTPUTDIR="Mod_counts"
+OUTPUTDIR="BED_modifications"
 REF="references/mm39.fa"
 DATA_FOLDER="2023_01_26_TKO"
 SAMPLE="TKO"
 
 mkdir -p ${OUTPUTDIR}
 
+# merge bam files
 samtools merge --threads 8 - ${DATA_FOLDER}/*.bam | samtools sort --threads 8 -o ${DATA_FOLDER}/${SAMPLE}_Merged.bam
+
+# index merged bam
 samtools index ${DATA_FOLDER}/${SAMPLE}_Merged.bam
 
+# convert to BED file
 modbam2bed --aggregate -e -m 5mC --cpg -t 8 $REF ${DATA_FOLDER}/${SAMPLE}_Merged.bam > ${OUTPUTDIR}/${SAMPLE}_Merged.cpg.bed
 mv mod-counts.cpg.acc.bed ${OUTPUTDIR}/${SAMPLE}_mod-counts.cpg.acc.bed
+
+echo '########################################'
+echo 'Job finished' $(date --iso-8601=seconds)
+end=`date +%s`
+runtime=$((end-start0))
+minute=60
+echo "---- Total runtime $runtime s ; $((runtime/minute)) min ----"
 ```
 
 ## Copy the output file to your computer
