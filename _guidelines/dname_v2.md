@@ -56,8 +56,19 @@ To do only once. Done on Angus, it is doable on any Linux computer or Windows us
 
 ---
 # Basic QC on IFB cluster
-See the [introduction to IFB cluster]({{site.baseurl}}/cluster/ifb/#/cluster). Connect to the Jupyter Hub: https://jupyterhub.cluster.france-bioinformatique.fr. 
+See the [introduction to IFB cluster]({{site.baseurl}}/cluster/ifb/#/cluster). Connect to the [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr). 
 
+## Add missing libraries (only once)
+Open a new notebook in Python 3.9. 
+Type the following commands:
+```py 
+!pip install aplanat
+```
+```py
+!pip install epi2melabs
+```
+
+## Run the analysis
 The file necessary for the basic QC is `sequencing_summary.txt`. Upload this file to the cluster. 
 
 Open `Template_basicQC_v1.0.ipynb` and save as `RUNID_basicQC_v1.0.ipynb`. The run the cells adapting the path to your `sequencing_summary.txt`. 
