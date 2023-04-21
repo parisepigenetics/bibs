@@ -8,9 +8,18 @@ order: 1
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
 # Nanopore sequencing analysis
+{:.no_toc}
 Author: Magali Hennion.  
 Last update : April 2023.  
 Collaboration between Laure Ferry (EpiG) and Magali Hennion (BiBs), Epigenetics and Cell Fate lab.
+
+---
+# Table of content
+{:.no_toc}
+
+- TOC
+{::options toc_levels="1,2" /}
+{:toc}
 
 ---
 # Basecalling
