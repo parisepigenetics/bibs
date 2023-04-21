@@ -53,7 +53,7 @@ The file necessary for the basic QC is `sequencing_summary.txt`. Upload this fil
 
 Open `Template_basicQC_v1.0.ipynb` and save as `RUNID_basicQC_v1.0.ipynb`. The run the cells adapting the path to your `sequencing_summary.txt`. 
 
-`Template_basicQC_v1.0.ipynb` can downloaded [here](({{site.baseurl}}/documents/Template_basicQC_v1.0.ipynb).
+`Template_basicQC_v1.0.ipynb` can downloaded [here]({{site.baseurl}}/documents/Template_basicQC_v1.0.ipynb).
 
 ---
 # Methylation analysis
