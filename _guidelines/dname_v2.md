@@ -12,7 +12,7 @@ Author: Magali Hennion.
 Last update : April 2023.  
 Collaboration between Laure Ferry (EpiG) and Magali Hennion (BiBs), Epigenetics and Cell Fate lab.
 
-
+---
 # Basecalling
 
 ## Option 1: Directly on MinKnow Software
@@ -29,7 +29,7 @@ It is possible to use other config `cfg` file.
 Look at ONT resources for the analysis: 
 https://nanoporetech.com/support/nanopore-sequencing-data-analysis
 
-
+---
 # Measure number of duplex reads using guppy duplex
 
 ## Install the tool 
@@ -45,6 +45,7 @@ To do only once. Done on Angus, it is doable on any Linux computer or Windows us
 (duplex) (base) angus@angus:~$ duplex_tools pairs_from_summary /mnt/c/data/Nanopore/2023_01_26_TKO/sequencing_summary.txt /mnt/c/data/Nanopore/2023_01_26_TKO/
 ```
 
+---
 # Basic QC on IFB cluster
 See the [introduction to IFB cluster]({{site.baseurl}}/cluster/ifb/#/cluster). Connect to the Jupyter Hub: https://jupyterhub.cluster.france-bioinformatique.fr. 
 
@@ -54,10 +55,10 @@ Open `Template_basicQC_v1.0.ipynb` and save as `RUNID_basicQC_v1.0.ipynb`. The r
 
 `Template_basicQC_v1.0.ipynb` can downloaded [here](({{site.baseurl}}/documents/Template_basicQC_v1.0.ipynb).
 
-
+---
 # Methylation analysis
 
-## Copy the processed data to the cluster : 
+## Copy the processed data to the cluster
 
 Open Ubuntu shell and type: 
 
