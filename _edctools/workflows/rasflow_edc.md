@@ -77,7 +77,7 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
   - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
   - [MultiQC](https://multiqc.info/docs/)
   - [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
-  - [HISAT2](https://ccb.jhu.edu/software/hisat2/manual.shtml)
+  - [HISAT2](http://daehwankimlab.github.io/hisat2/manual/)
   - [STAR](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)
   - [Samtools](http://www.htslib.org/doc/samtools.html)
   - [deepTools](https://deeptools.readthedocs.io/en/develop/)

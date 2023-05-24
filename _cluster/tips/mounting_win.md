@@ -63,7 +63,12 @@ or in English:
 ---
 ## Edit your files
 
-You can now modify your files directly using a text editor. Be careful, never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**. 
+You can now modify your files directly using a text editor. Be careful, never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**. Ensure that the "End of Line Sequence" is **LF** (UNIX-style, and not CR LF), otherwise you might have errors when executing your scripts. For instance if a Slurm sbatch file is not correctly formatted, you will have:
+```
+sbatch: error: Batch script contains DOS line breaks (\r\n) 
+sbatch: error: instead of expected UNIX line breaks (\n).
+```
+Most text editors can be configured to use UTF-8 encoding and UNIX-style line endings. 
 
 
 ---
