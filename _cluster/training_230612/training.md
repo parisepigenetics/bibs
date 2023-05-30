@@ -304,7 +304,9 @@ Use workflow managers such as Snakemake or Nextflow.
 # Thanks
 - iPOP-UP's technical and steering comitees
 
-<img src="{{site.baseurl}}/images/RPBS.jpg" alt="drawing" width="200"/> 
+<img src="{{site.baseurl}}/images/ipopup.png" alt="drawing" width="100"/> 
+
+<img src="{{site.baseurl}}/images/RPBS.jpg" alt="drawing" width="150"/> 
 
 <img src="{{site.baseurl}}/images/UniversiteLogo.png" alt="drawing" width="200"/> 
 
