@@ -14,15 +14,23 @@ ssh username@ipop-up.rpbs.univ-paris-diderot.fr
 
 ## Optional: use a file explorer to navigate on iPOP-UP server
 
-TODO : check on the machines what is the navigator, if it easy or not
+Using the file manager from GNOME, you can navigate easily on iPOP-UP file server. 
+- Open the file manager `Fichiers`.
+- Click on `Autres emplacements` on the side bar.
+- In the bar `Connexion à un serveur`, type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
+- Enter your login and password.  
 
-sftp://ipop-up.rpbs.univ-paris-diderot.fr/shared/projects/wgbs_flow
+This way, you can modify your files directly using any local text editor.
 
-visible using firefox on my computer (not modifiable), also on other navigators? 
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Be careful</b></span><br> Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**.
+{:.ui.warning.message}
 
-https://parisepigenetics.github.io/bibs/cluster/tips/mounting_linux/#/cluster/
+ 
 
-https://parisepigenetics.github.io/bibs/cluster/tips/mounting_linux/#/cluster/
+
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
+{:.ui.success.message}
+
 
 
 ## Get information about the cluster

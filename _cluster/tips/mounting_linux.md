@@ -24,6 +24,14 @@ You will be asked for your password, and that's it!
 You can save the link into your favorite locations on the left side. To do so, just drag and drop the folder of interest. 
 
 ---
+## With GNOME file manager
+
+- Open the file manager `Fichiers` (or `Files`)
+- Click on `Autres emplacements` (`Other Locations`) on the side bar
+- In the bar `Connexion à un serveur` (`Connect to Server`), type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
+- Enter your login and password. 
+
+---
 ## With any file manager
 
 You can create a mounting point on your computer that point to your project on iPOP-UP server.  
