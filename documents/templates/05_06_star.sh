@@ -21,6 +21,6 @@ outputFileName= ?? # choose your output file name
 STAR --genomeDir $pathToIndex \
 --readFilesIn $pathToFastq1 $pathToFastq2 \
 --outFileNamePrefix $outputFileName \
---readFilesCommand zcat \
+--readFilesCommand zcat
 
-# --runThreadN ??  # exo 6 use the Slurm variable to adjust the number of threads to available CPUs
+# --runThreadN ??  # exercice 6 use the Slurm variable to adjust the number of threads to available CPUs

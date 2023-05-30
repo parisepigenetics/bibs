@@ -11,6 +11,6 @@ SAMPLE_LIST=(S01 S02 S03 S04 S05 S06)
 SAMPLE=${SAMPLE_LIST[$SLURM_ARRAY_TASK_ID]} # take the nth element of the list, n being the task number
 
 ### COMMANDS ###
-echo "Hello I am the task number $SLURM_ARRAY_TASK_ID from the job array $?." # Look for the Slurm variable for the job ID. 
+echo "Hello I am the task number $SLURM_ARRAY_TASK_ID from the job array $?." # $? Look for the Slurm variable for the job ID. 
 sleep 20
 echo "And I will process sample $SAMPLE."

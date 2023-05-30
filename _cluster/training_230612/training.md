@@ -46,7 +46,7 @@ sbatch flatter.sh
 ```
 The output that should have appeared on your screen has been diverted to slurm-xxxxx.out but this name can be changed using SBATCH options. 
 
-![flatter.png]({{site.baseurl}}/documents/flatter.png)
+<img src="{{site.baseurl}}/images/flatter.png" alt="drawing" width="600"/>
 
 ### Exercise 2: my first SBATCH option
 
@@ -81,22 +81,22 @@ To find out more, the Slurm manual `man sbatch` or [https://slurm.schedmd.com/sb
     
 
 ## Modules
-A lot of tools are installed on the cluster.
+A lot of tools are installed on the cluster. To list them, use one of the following commands. 
 ```
 module available
 module avail
 module av
 ```
-For example : Look for the different versions of multiqc on the cluster using `module av multiqc`.  
+You can limit the search for a specific tool, for example look for the different versions of multiqc on the cluster using `module av multiqc`.  
 
-![multiqc.png]({{site.baseurl}}/documents/multiqc.png)
+<img src="{{site.baseurl}}/images/multiqc.png" alt="drawing" width="600"/>
 
 ### To load a tool
 ```
 module load tool/1.3
 module load tool1 tool2 tool3
 ```
-### To list modules loaded
+### To list the modules loaded
 ```
 module list
 ```
@@ -104,7 +104,9 @@ module list
 ```
 module purge
 ```
-Load your modules within your "sbatch" file for consistency. 
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> Load your modules within your "sbatch" file for consistency. 
+{:.ui.success.message}
+
 
 
 ## Job handling and monitoring
@@ -121,8 +123,7 @@ On your terminal, type
 ```
 squeue
 ``` 
-
-![squeue.png]({{site.baseurl}}/documents/squeue.png)
+<img src="{{site.baseurl}}/images/squeue.png" alt="drawing" width="600"/>
 
 `ST` Status of the job.  
 `R` = Running  
@@ -151,7 +152,7 @@ Re-run `sleep.sh` and type
 ```
 sacct
 ``` 
-![sacct.png]({{site.baseurl}}/documents/sacct.png)
+<img src="{{site.baseurl}}/images/sacct.png" alt="drawing" width="600"/>cct.png)
 
 
 You can pass the option `--format` to list the information that you want to display, including memory usage, time of running,...  
@@ -166,23 +167,23 @@ To see every options, run `sacct --helpformat`
 
 After the run, the `seff` command allows you to access information about the efficiency of a job.
 ```
-seff <jobid>`
+seff <jobid>
 ```
-![sacct.png]({{site.baseurl}}/documents/sacct.png)
+<img src="{{site.baseurl}}/images/seff.png" alt="drawing" width="600"/>
 
 ## Bringing it all together
 
 ### Exercise 5 : Alignment
 
-Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh](({{site.baseurl}}/documents/templates/05_06_star.sh). 
+Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.baseurl}}/documents/templates/05_06_star.sh). 
 
-The FASTQ files to align are in `/shared/banks/mus_musculus/test_fastq`.  
-You need an index folder for STAR (version 2.7.5a) for the mouse mm39 genome, look for it in the banks.  
-Increase the RAM to 25G. 
+- The FASTQ files to align are in `/shared/banks/mus_musculus/test_fastq`.  
+- You need an index folder for STAR (version 2.7.5a) for the mouse mm39 genome, look for it in the banks.  
+- You have to increase the RAM to 25G. 
 
 
 ### After the run
-Check the resource that was used using seff.  
+Check the resource that was used using `seff`.  
 
 
 ## Parallelization
@@ -200,21 +201,22 @@ Check the resource that was used using seff.
 | −−mem-per-cpu     | 2GB     | Memory required per allocated CPU                             |
 | −−array           |         | Submit multiple jobs to be executed with identical parameters |
 
+## Multi-threading
 
-\begin{frame}[fragile]{Ask for more CPUs for a tool}
-
-Some tools allow multi-threading, i.e. the use of several CPUs to accelerate one task. \\
-It is the case of STAR with the `--runThreadN` option. 
+Some tools allow multi-threading, i.e. the use of several CPUs to accelerate one task. It is the case of STAR with the `--runThreadN` option. 
 
 ### Exercise 6: Alignment, parallel
 
-Modify the previous sbatch file to use 4 threads to align the FASTQ files on the reference. Run and check time and memory usage. 
-```
-$SLURM_CPUS_PER_TASK
-```
+Modify the previous sbatch file to use 4 threads to align the FASTQ files on the reference. Run and check time and memory usage.
+
+## Use Slurm variables
+
+The Slurm controller will set some variables in the environment of the batch script. They can be very useful. For instance, you can improve the previous script using `$SLURM_CPUS_PER_TASK`. 
+
+The full list of variables is visible [here](https://slurm.schedmd.com/sbatch.html). 
 
 ## Job arrays
-Job arrays allow to start the same job a lot of times (same executable, same resources)
+Job arrays allow to start the same job a lot of times (same executable, same resources). If you add the following line to your script, the job will be launch 6 times (at the same time), the variable `$SLURM_ARRAY_TASK_ID` taking the value 0 to 5. 
 
 ```
 #SBATCH --array=0-5
@@ -222,13 +224,17 @@ Job arrays allow to start the same job a lot of times (same executable, same res
 
 ### Exercice 7 : Job array
 
-Starting from [07_08_array_example.sh](({{site.baseurl}}/documents/templates/07_08_array_example.sh) : 
+Starting from [07_08_array_example.sh]({{site.baseurl}}/documents/templates/07_08_array_example.sh), make a simple script launching 6 jobs in parallel. 
 
+### Exercice 8 : fair resource sharing
+It is possible to limit the number of jobs running at the same time using `%max_running_jobs` in `#SBATCH --array` option. 
 
+Modify your script to run only 2 jobs at the time.  
 
 ## Job arrays examples
 
-Take all FASTQ files in a directory:
+### Take all files matching a patern in a directory
+Example
 ```sh
 FQ=(*fastq.gz)
 echo ${FQ[@]}
@@ -236,7 +242,8 @@ INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}")
 echo $INPUT
 ```
 
-List or find files to process (`ls` or `find`) and get the nth with `sed` (or `awk`)
+### List or find files to process 
+You can use `ls` or `find` to identify the files to process and get the nth with `sed` (or `awk`)
 ```sh
 #SBATCH --array=1-4   # If 4 files, as sed index start at 1
 INPUT=$(ls $PATH2/*.fq.gz ` sed -n ${SLURM_ARRAY_TASK_ID}p)
@@ -253,7 +260,7 @@ echo $INPUT
     
 ## Complex workflows
 
-![snakemake.png]({{site.baseurl}}/documents/snakemake.png) 
+<img src="{{site.baseurl}}/images/snakemake.png" alt="drawing" width="600"/>
 
 Use workflow managers such as Snakemake or Nextflow. 
     
@@ -261,17 +268,19 @@ Use workflow managers such as Snakemake or Nextflow.
 
 ## Useful resources
 
-- To find out more, the SLURM manual : `man sbatch` or \href{https://slurm.schedmd.com/sbatch.html}{https://slurm.schedmd.com/sbatch.html} \\
+- To find out more, read the SLURM manual : `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html)
     
     
-- Ask for help or signal problems on the cluster : \href{https://discourse.rpbs.univ-paris-diderot.fr/}{https://discourse.rpbs.univ-paris-diderot.fr/} \\
+- Ask for help or signal problems on the cluster : [https://discourse.rpbs.univ-paris-diderot.fr/](https://discourse.rpbs.univ-paris-diderot.fr/)
 
-- iPOP-UP cluster documentation: \\
-    \href{https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/}
-    {https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/}
+- iPOP-UP cluster documentation: [https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
+
+- BiBs practical guide: [https://parisepigenetics.github.io/bibs/cluster/ipopup](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster/)
     
 ## Thanks
-![RPBS.jpg]({{site.baseurl}}/documents/RPBS.jpg)
-![UniversiteLogo.png]({{site.baseurl}}/documents/UniversiteLogo.png)
-
 - iPOP-UP's technical and steering comitees
+
+<img src="{{site.baseurl}}/images/RPBS.jpg" alt="drawing" width="200"/> 
+
+<img src="{{site.baseurl}}/images/UniversiteLogo.png" alt="drawing" width="200"/> 
+
