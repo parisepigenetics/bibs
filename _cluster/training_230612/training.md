@@ -35,7 +35,7 @@ sinfo
 
 `sbatch` allows you to send an executable file to be ran on a computation node.
 
-### Exo 1
+### Exercise 1: my first sbatch script
 
 Starting from [01_02_flatter.sh]({{site.baseurl}}/documents/templates/01_02_flatter.sh), make a script named `flatter.sh` printing "What a nice training !"
 
@@ -46,9 +46,9 @@ sbatch flatter.sh
 ```
 The output that should have appeared on your screen has been diverted to slurm-xxxxx.out but this name can be changed using SBATCH options. 
 
-![Images/flatter.png]({{site.baseurl}}/documents/flatter.png)
+![flatter.png]({{site.baseurl}}/documents/flatter.png)
 
-### Exo 2: my first SBATCH option
+### Exercise 2: my first SBATCH option
 
 Modify `flatter.sh` to add this line:
 
@@ -58,9 +58,9 @@ Modify `flatter.sh` to add this line:
 then run it. Anything different ?
 
 
-### Exo 3: hostname
+### Exercise 3: hostname
 
-Run using sbatch the command `hostname` in a way that the sbatch outfile is called hostname.out. 
+Run using sbatch the command `hostname` in a way that the sbatch outfile is called `hostname.out`. 
 
 What is the output ? How does it differ from typing directly `hostname` in the terminal and why ?
 
@@ -87,19 +87,20 @@ module available
 module avail
 module av
 ```
-For example : Look for the different versions of multiqc on the cluster using `module av multiqc`. 
-![Images/multiqc.png]({{site.baseurl}}/documents/multiqc.png)
+For example : Look for the different versions of multiqc on the cluster using `module av multiqc`.  
 
-To load a tool
+![multiqc.png]({{site.baseurl}}/documents/multiqc.png)
+
+### To load a tool
 ```
 module load tool/1.3
 module load tool1 tool2 tool3
 ```
-To list modules loaded
+### To list modules loaded
 ```
 module list
 ```
-To remove all loaded modules
+### To remove all loaded modules
 ```
 module purge
 ```
@@ -108,7 +109,7 @@ Load your modules within your "sbatch" file for consistency.
 
 ## Job handling and monitoring
 
-### Exo 4. 
+### Exercise 4: follow your jobs
 
 The `sleep` command : do nothing (delay) for the set number of seconds. 
 
@@ -121,11 +122,11 @@ On your terminal, type
 squeue
 ``` 
 
-![Images/squeue.png]({{site.baseurl}}/documents/squeue.png)
+![squeue.png]({{site.baseurl}}/documents/squeue.png)
 
-ST : Status of the job. 
-R means Running
-PD means Pending
+`ST` Status of the job.  
+`R` = Running  
+`PD` = Pending  
 
 To see only iPOP-UP jobs
 ```
@@ -150,10 +151,11 @@ Re-run `sleep.sh` and type
 ```
 sacct
 ``` 
-![Images/sacct.png]({{site.baseurl}}/documents/sacct.png)
+![sacct.png]({{site.baseurl}}/documents/sacct.png)
 
 
-You can pass the option `--format` to list the information that you want to display, including memory usage, time of running, ... For instance
+You can pass the option `--format` to list the information that you want to display, including memory usage, time of running,...  
+For instance
 ```
 sacct --format=JobID,JobName,Start,Elapsed,CPUTime,NCPUS,NodeList,MaxRSS,ReqMeM,State
 ```
@@ -166,13 +168,13 @@ After the run, the `seff` command allows you to access information about the eff
 ```
 seff <jobid>`
 ```
-![Images/sacct.png]({{site.baseurl}}/documents/sacct.png)
+![sacct.png]({{site.baseurl}}/documents/sacct.png)
 
 ## Bringing it all together
 
-Exercise : Alignment
+### Exercise 5 : Alignment
 
-Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh](05_06_star.sh). 
+Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh](({{site.baseurl}}/documents/templates/05_06_star.sh). 
 
 The FASTQ files to align are in `/shared/banks/mus_musculus/test_fastq`.  
 You need an index folder for STAR (version 2.7.5a) for the mouse mm39 genome, look for it in the banks.  
@@ -220,7 +222,7 @@ Job arrays allow to start the same job a lot of times (same executable, same res
 
 ### Exo 7
 
-Starting from [07_08_array_example.sh](07_08_array_example.sh) : 
+Starting from [07_08_array_example.sh](({{site.baseurl}}/documents/templates/07_08_array_example.sh) : 
 
 
 
@@ -251,7 +253,7 @@ echo $INPUT
     
 ## Complex workflows
 
-![Images/snakemake.png]({{site.baseurl}}/documents/snakemake.png) 
+![snakemake.png]({{site.baseurl}}/documents/snakemake.png) 
 
 Use workflow managers such as Snakemake or Nextflow. 
     
@@ -269,7 +271,7 @@ Use workflow managers such as Snakemake or Nextflow.
     {https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/}
     
 ## Thanks
-![Images/RPBS.jpg]({{site.baseurl}}/documents/RPBS.jpg)
-![Images/UniversiteLogo.png]({{site.baseurl}}/documents/UniversiteLogo.png)
+![RPBS.jpg]({{site.baseurl}}/documents/RPBS.jpg)
+![UniversiteLogo.png]({{site.baseurl}}/documents/UniversiteLogo.png)
 
 - iPOP-UP's technical and steering comitees
