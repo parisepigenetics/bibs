@@ -288,6 +288,14 @@ echo $INPUT
 
 Use workflow managers such as Snakemake or Nextflow. 
     
+nf-core workflows can be used directly on the cluster. 
+
+## Exercice 9: nf-core workflows
+
+Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh), write a script running ChIP-seq workflow on test data. 
+
+Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). 
+
 
 
 # Useful resources
