@@ -292,10 +292,9 @@ nf-core workflows can be used directly on the cluster.
 
 ## Exercice 9: nf-core workflows
 
-Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh), write a script running ChIP-seq workflow on test data. 
+Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh), write a script running ChIP-seq workflow on nf-core test data. 
 
-Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). 
-
+Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). Please also see the [full documentation](https://nf-co.re/chipseq). 
 
 
 # Useful resources
