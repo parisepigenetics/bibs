@@ -220,7 +220,7 @@ Job arrays allow to start the same job a lot of times (same executable, same res
 #SBATCH --array=0-5
 ```
 
-### Exo 7
+### Exercice 7 : Job array
 
 Starting from [07_08_array_example.sh](({{site.baseurl}}/documents/templates/07_08_array_example.sh) : 
 
