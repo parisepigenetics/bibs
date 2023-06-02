@@ -240,7 +240,7 @@ The Slurm controller will set some variables in the environment of the batch scr
 The full list of variables is visible [here](https://slurm.schedmd.com/sbatch.html). 
 
 # Job arrays
-Job arrays allow to start the same job a lot of times (same executable, same resources). If you add the following line to your script, the job will be launch 6 times (at the same time), the variable `$SLURM_ARRAY_TASK_ID` taking the value 0 to 5. 
+Job arrays allow to start the same job a lot of times (same executable, same resources) on different files for example. If you add the following line to your script, the job will be launch 6 times (at the same time), the variable `$SLURM_ARRAY_TASK_ID` taking the value 0 to 5. 
 
 ```
 #SBATCH --array=0-5
@@ -260,23 +260,25 @@ Modify your script to run only 2 jobs at the time.
 ## Take all files matching a patern in a directory
 Example
 ```sh
-FQ=(*fastq.gz)
-echo ${FQ[@]}
-INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}")
-echo $INPUT
+FQ=(*fastq.gz)  #Create a bash array
+echo ${FQ[@]}   #Echos array contents
+INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}") #Each elements of the array are indexed (from 0 to n-1) for slurm 
+echo $INPUT     #Echos simplified names of the fastq files
 ```
 
+
+
 ## List or find files to process 
-You can use `ls` or `find` to identify the files to process and get the nth with `sed` (or `awk`)
+If for any reason you can't use bash array, you can alternatively use `ls` or `find` to identify the files to process and get the nth with `sed` (or `awk`).   
 ```sh
 #SBATCH --array=1-4   # If 4 files, as sed index start at 1
-INPUT=$(ls $PATH2/*.fq.gz ` sed -n ${SLURM_ARRAY_TASK_ID}p)
+INPUT=$(ls $PATH2/*.fq.gz | sed -n ${SLURM_ARRAY_TASK_ID}p)
 echo $INPUT
 ```
 
 # Job Array Common Mistakes
 
-- The index of bash lists starts at 0
+- The index of bash arrays starts at 0
 - Don't forget to have different output files for each task of the array
 - Same with your log names (\%a or \%J in the name will do the trick)
 - Do not overload the cluster! Please use \%50 (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
