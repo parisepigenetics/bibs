@@ -304,7 +304,7 @@ echo $INPUT
 
 Use workflow managers such as Snakemake or Nextflow. 
     
-nf-core workflows can be used directly on the cluster. 
+[nf-core](https://nf-co.re) workflows can be used directly on the cluster. 
 
 ## Exercice 9: nf-core workflows
 
@@ -317,15 +317,16 @@ Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/w
 
 - To find out more, read the SLURM manual : `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html)
     
-    
 - Ask for help or signal problems on the cluster : [https://discourse.rpbs.univ-paris-diderot.fr/](https://discourse.rpbs.univ-paris-diderot.fr/)
 
 - iPOP-UP cluster documentation: [https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
 
 - BiBs practical guide: [https://parisepigenetics.github.io/bibs/cluster/ipopup](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster/)
+
+- IFB community support : [https://community.france-bioinformatique.fr/](https://community.france-bioinformatique.fr/)
     
 # Thanks
-- iPOP-UP's technical and steering comitees
+- iPOP-UP's technical and steering committees
 
 <img src="{{site.baseurl}}/images/ipopup.png" alt="drawing" width="100"/> 
 
@@ -333,3 +334,4 @@ Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/w
 
 <img src="{{site.baseurl}}/images/UniversiteLogo.png" alt="drawing" width="200"/> 
 
+<img src="{{site.baseurl}}/images/ifb.png" alt="drawing" width="200"/>
