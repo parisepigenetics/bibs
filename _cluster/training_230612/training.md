@@ -239,6 +239,20 @@ The Slurm controller will set some variables in the environment of the batch scr
 
 The full list of variables is visible [here](https://slurm.schedmd.com/sbatch.html). 
 
+Some useful ones:
+- $SLURM_CPUS_PER_TASK
+- $SLURM_JOB_ID
+- $SLURM_JOB_ACCOUNT
+- $SLURM_JOB_NAME
+- $SLURM_JOB_PARTITION
+
+Of note, Bash shell variables can also be used in the sbatch script: 
+- $USER
+- $HOME
+- $HOSTNAME
+- $PWD
+- $PATH
+
 # Job arrays
 Job arrays allow to start the same job a lot of times (same executable, same resources). If you add the following line to your script, the job will be launch 6 times (at the same time), the variable `$SLURM_ARRAY_TASK_ID` taking the value 0 to 5. 
 
