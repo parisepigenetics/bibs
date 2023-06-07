@@ -277,6 +277,7 @@ Modify your script to run only 2 jobs at the time.
 ## Take all files matching a patern in a directory
 Example
 ```sh
+#SBATCH --array=0-7   # if 8 files to proccess 
 FQ=(*fastq.gz)  #Create a bash array
 echo ${FQ[@]}   #Echos array contents
 INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}") #Each elements of the array are indexed (from 0 to n-1) for slurm 
