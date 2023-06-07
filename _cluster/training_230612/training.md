@@ -24,6 +24,9 @@ Trainers: Olivier Kirsh, Julien Rey, Magali Hennion
 ```
 ssh username@ipop-up.rpbs.univ-paris-diderot.fr
 ```
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Security warning</b></span><br>
+Never leave your computer unsupervised with your session open and iPOP-UP server connected.  
+{:.ui.large.warning.message}
 
 ## Warm-up
 
