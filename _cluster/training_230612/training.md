@@ -12,6 +12,12 @@ Date: 12/06/2023
 Trainers: Olivier Kirsh, Julien Rey, Magali Hennion
 
 ---
+# Presentation
+{:.no_toc}
+
+The slides of the presentation can be downloaded [here]({{site.baseurl}}/documents/20230612_ipop_training.pdf). 
+
+---
 # Table of content
 {:.no_toc}
 
