@@ -30,7 +30,7 @@ Never leave your computer unsupervised with your session open and iPOP-UP server
 
 ## Warm-up
 
-There is a `training` folder in the common banks, navigate to this folder and list what is inside. 
+There is a `training` project accessible to you, navigate to this folder and list what is inside. 
 
 Then go to one of your projects and create a folder named `230612_training`. This is where you will do all the exercices. 
 
@@ -160,9 +160,13 @@ To see only iPOP-UP jobs
 ```
 squeue -p ipop-up
 ```
+To see only the jobs of untel
+```
+squeue -u untel
+```
 To see only your jobs
 ```
-squeue -u username
+squeue --me
 ```
 
 ## scancel
@@ -198,7 +202,7 @@ seff <jobid>
 ```
 <img src="{{site.baseurl}}/images/seff.png" alt="drawing" width="400"/>
 
-# Bringing it all together
+# Practical example
 
 ## Exercise 5 : Alignment
 
