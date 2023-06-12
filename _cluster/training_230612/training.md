@@ -28,7 +28,7 @@ The slides of the presentation can be downloaded [here]({{site.baseurl}}/documen
 ---
 # Connect to the cluster
 ```
-ssh username@ipop-up.rpbs.univ-paris-diderot.fr
+ssh -o PubkeyAuthentication=no username@ipop-up.rpbs.univ-paris-diderot.fr
 ```
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Security warning</b></span><br>
 Never leave your computer unsupervised with your session open and iPOP-UP server connected.  
