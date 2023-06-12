@@ -6,7 +6,7 @@
 #SBATCH --job-name=ChIP_nf
 
 ### Output
-#SBATCH --output=ChIP_nf-%j.out  # both STDOUT and STDERR
+#SBATCH --output=%x-%j.out  # both STDOUT and STDERR
 
 ### Requirements
 #SBATCH --partition=??
@@ -34,8 +34,8 @@ export JAVA_HOME=/shared/software/conda/envs/nextflow-?? # same module version a
 module purge
 module load ?? # find a nextflow module version 21  
 
-# Run a downloaded/git-cloned nextflow workflow 
-nextflow run ?? -profile ?? 
+# Run a the chipseq workflow on nf-core test dataset
+nextflow run ?? -profile ?? --outdir ?? 
 
 echo '########################################'
 echo 'Job finished' $(date --iso-8601=seconds)

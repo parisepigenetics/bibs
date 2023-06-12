@@ -36,6 +36,19 @@ Never leave your computer unsupervised with your session open and iPOP-UP server
 
 ## Warm-up
 
+Where are you on the cluster?  
+```
+pwd
+```
+Then explore the `/shared` folder  
+```
+tree -L 1 /shared
+```
+
+`/shared/banks` folder contains commonly used data and resources. Explore it by yourself with commmands like `ls` or `cd`. 
+
+Can you see the first 10 lines of the `mm10.fa` file? (mm10.fa = mouse genomic sequence version 10) 
+
 There is a `training` project accessible to you, navigate to this folder and list what is inside. 
 
 Then go to one of your projects and create a folder named `230612_training`. This is where you will do all the exercices. 
@@ -48,7 +61,7 @@ Using the file manager from GNOME, you can navigate easily on iPOP-UP file serve
 - In the bar `Connexion à un serveur`, type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
 - Enter your login and password.  
 
-This way, you can modify your files directly using any local text editor.
+This way, you can modify your files directly using any local **text editor**.
 
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Be careful</b></span><br> Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**.
 {:.ui.warning.message}
@@ -64,7 +77,7 @@ This way, you can modify your files directly using any local text editor.
 sinfo
 ```
 
-# sbatch 
+# Slurm sbatch command 
 
 `sbatch` allows you to send an executable file to be ran on a computation node.
 
@@ -214,7 +227,7 @@ seff <jobid>
 
 Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.baseurl}}/documents/templates/05_06_star.sh). 
 
-- The FASTQ files to align are in `/shared/banks/mus_musculus/test_fastq`.  
+- The FASTQ files to align are in `/shared/projects/training/test_fastq`.  
 - You need an index folder for STAR (version 2.7.5a) for the mouse mm39 genome, look for it in the banks.  
 - You have to increase the RAM to 25G. 
 
