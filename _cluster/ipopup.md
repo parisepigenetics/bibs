@@ -34,7 +34,7 @@ If you had an account on the "old" RPBS cluster, your login and password are unc
 <span>{% include icon.liquid id='info-circle' %} <b>Info</b></span><br>You can have several projects.<br>You can share a project between several collaborators. All collaborators will have the read and write permissions on the project.
 {: .ui.info.message}
 
-To create an account and/or a project, write an email to [BiBs](mailto:bibsATparisepigenetics.com) with the following information: 
+To create an account and/or a project, write an email to [ipop-up-account-request@rpbs.univ-paris-diderot.fr](mailto:ipop-up-account-request@rpbs.univ-paris-diderot.fr) with the following information: 
 - NAME, Surname 
 - Unit
 - Email (institutional adress)
