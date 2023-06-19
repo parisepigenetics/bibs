@@ -300,7 +300,7 @@ Job arrays allow to start the same job a lot of times (same executable, same res
 
 Starting from [07_08_array_example.sh]({{site.baseurl}}/documents/templates/07_08_array_example.sh), make a simple script launching 6 jobs in parallel. 
 
-[Correction]({{site.baseurl}}/documents/corrections/
+[Correction]({{site.baseurl}}/documents/corrections/07_array_example.txt)
 
 ## Exercice 8 : fair resource sharing
 It is possible to limit the number of jobs running at the same time using `%max_running_jobs` in `#SBATCH --array` option. 
@@ -357,7 +357,8 @@ Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh
 
 Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). Please also see the [full documentation](https://nf-co.re/chipseq). 
 
-[Correction]({{site.baseurl}}/documents/corrections/09_nf-core.txt)
+[Correction]({{site.baseurl}}/documents/corrections/09_nf-core.txt)  
+[Of note, even with the test dataset, it takes a lot of time and resources!]
 
 # Useful resources
 
