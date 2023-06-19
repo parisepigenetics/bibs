@@ -105,7 +105,7 @@ Modify `flatter.sh` to add this line:
 ```
 then run it. Anything different ?
 
-[Correction]({{site.baseurl}}/documents/corrections/02_flatter_o.sh)
+[Correction]({{site.baseurl}}/documents/corrections/02_flatter_o.txt)
 
 ## Exercise 3: hostname
 
@@ -113,7 +113,7 @@ Run using sbatch the command `hostname` in a way that the sbatch outfile is call
 
 What is the output ? How does it differ from typing directly `hostname` in the terminal and why ?
 
-[Correction]({{site.baseurl}}/documents/corrections/03_hostname.sh)
+[Correction]({{site.baseurl}}/documents/corrections/03_hostname.txt)
 
 # Useful sbatch options 1/2
 
@@ -167,7 +167,7 @@ The `sleep` command : do nothing (delay) for the set number of seconds.
 
 Restart from [03_04_hostname_sleep.sh]({{site.baseurl}}/documents/templates/03_04_hostname_sleep.sh) and launch a simple job that will launch `sleep 600`.
 
-[Correction]({{site.baseurl}}/documents/corrections/04_sleep.sh)
+[Correction]({{site.baseurl}}/documents/corrections/04_sleep.txt)
 
 ## squeue
 
@@ -242,7 +242,7 @@ Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.
 ## After the run
 Check the resource that was used using `seff`.  
 
-[Correction]({{site.baseurl}}/documents/corrections/05_star.sh)
+[Correction]({{site.baseurl}}/documents/corrections/05_star.txt)
 
 # Parallelization
 
@@ -271,7 +271,7 @@ Modify the previous sbatch file to use 4 threads to align the FASTQ files on the
 
 The Slurm controller will set some variables in the environment of the batch script. They can be very useful. For instance, you can improve the previous script using `$SLURM_CPUS_PER_TASK`. 
 
-[Correction]({{site.baseurl}}/documents/corrections/06_star_4cpu.sh)
+[Correction]({{site.baseurl}}/documents/corrections/06_star_4cpu.txt)
 
 The full list of variables is visible [here](https://slurm.schedmd.com/sbatch.html). 
 
@@ -311,7 +311,7 @@ You will see using `squeue` command that some of the tasks are pending until the
 
 <img src="{{site.baseurl}}/images/arraytasklimit.png" alt="drawing" width="800"/>
 
-[Correction]({{site.baseurl}}/documents/corrections/08_array_limited.sh)
+[Correction]({{site.baseurl}}/documents/corrections/08_array_limited.txt)
 
 
 
@@ -357,7 +357,7 @@ Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh
 
 Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). Please also see the [full documentation](https://nf-co.re/chipseq). 
 
-[Correction]({{site.baseurl}}/documents/corrections/09_nf-core.sh)
+[Correction]({{site.baseurl}}/documents/corrections/09_nf-core.txt)
 
 # Useful resources
 
