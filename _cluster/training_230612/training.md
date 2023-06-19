@@ -94,7 +94,7 @@ The output that should have appeared on your screen has been diverted to slurm-x
 
 <img src="{{site.baseurl}}/images/flatter.png" alt="drawing" width="600"/>
 
-[Correction]({{site.baseurl}}/documents/corrections/01_flatter.sh)
+[Correction]({{site.baseurl}}/documents/corrections/01_flatter.txt)
 
 ## Exercise 2: my first SBATCH option
 
