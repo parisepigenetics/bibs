@@ -18,9 +18,11 @@ iPOP-UP community forum is available at [https://discourse.rpbs.univ-paris-dider
 
 ---
 ## Documentation 
-A [complete documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/) is currently under construction. For now you can refer to the [IFB core cluster documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/) as the iPOP-UP cluster is very similar and uses Slurm as well. 
+Please see the [complete documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/). 
 
 The slides of the training we gave in November 2022 are [available here]({{site.baseurl}}/documents/Cluster_formation_iPOP_UP.pdf), as well as [exemplary sbatch scripts]({{site.baseurl}}/documents/corrections.zip) as corrections of the exercices.  
+
+The presentation, exercices and corrections of the 2nd session (June 2023) are [available here]({{site.baseurl}}/cluster/training_230612/training/#cluster)
 
 Below are the specificities of the iPOP-UP cluster.
 
