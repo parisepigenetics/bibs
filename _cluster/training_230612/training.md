@@ -94,6 +94,8 @@ The output that should have appeared on your screen has been diverted to slurm-x
 
 <img src="{{site.baseurl}}/images/flatter.png" alt="drawing" width="600"/>
 
+[Correction]({{site.baseurl}}/documents/corrections/01_flatter.sh)
+
 ## Exercise 2: my first SBATCH option
 
 Modify `flatter.sh` to add this line:
@@ -103,6 +105,7 @@ Modify `flatter.sh` to add this line:
 ```
 then run it. Anything different ?
 
+[Correction]({{site.baseurl}}/documents/corrections/02_flatter_o.sh)
 
 ## Exercise 3: hostname
 
@@ -110,6 +113,7 @@ Run using sbatch the command `hostname` in a way that the sbatch outfile is call
 
 What is the output ? How does it differ from typing directly `hostname` in the terminal and why ?
 
+[Correction]({{site.baseurl}}/documents/corrections/03_hostname.sh)
 
 # Useful sbatch options 1/2
 
@@ -163,6 +167,8 @@ The `sleep` command : do nothing (delay) for the set number of seconds.
 
 Restart from [03_04_hostname_sleep.sh]({{site.baseurl}}/documents/templates/03_04_hostname_sleep.sh) and launch a simple job that will launch `sleep 600`.
 
+[Correction]({{site.baseurl}}/documents/corrections/04_sleep.sh)
+
 ## squeue
 
 On your terminal, type 
@@ -195,6 +201,7 @@ To cancel a job which you started, use the `scancel` command followed by the job
 ```
 scancel jobID
 ```
+You can stop the previous `sleep` job with this command. 
 
 ## sacct
 
@@ -235,6 +242,7 @@ Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.
 ## After the run
 Check the resource that was used using `seff`.  
 
+[Correction]({{site.baseurl}}/documents/corrections/05_star.sh)
 
 # Parallelization
 
@@ -263,6 +271,8 @@ Modify the previous sbatch file to use 4 threads to align the FASTQ files on the
 
 The Slurm controller will set some variables in the environment of the batch script. They can be very useful. For instance, you can improve the previous script using `$SLURM_CPUS_PER_TASK`. 
 
+[Correction]({{site.baseurl}}/documents/corrections/06_star_4cpu.sh)
+
 The full list of variables is visible [here](https://slurm.schedmd.com/sbatch.html). 
 
 Some useful ones:
@@ -290,10 +300,20 @@ Job arrays allow to start the same job a lot of times (same executable, same res
 
 Starting from [07_08_array_example.sh]({{site.baseurl}}/documents/templates/07_08_array_example.sh), make a simple script launching 6 jobs in parallel. 
 
+[Correction]({{site.baseurl}}/documents/corrections/
+
 ## Exercice 8 : fair resource sharing
 It is possible to limit the number of jobs running at the same time using `%max_running_jobs` in `#SBATCH --array` option. 
 
 Modify your script to run only 2 jobs at the time.  
+
+You will see using `squeue` command that some of the tasks are pending until the others are over. 
+
+<img src="{{site.baseurl}}/images/arraytasklimit.png" alt="drawing" width="800"/>
+
+[Correction]({{site.baseurl}}/documents/corrections/08_array_limited.sh)
+
+
 
 # Job arrays examples
 
@@ -306,8 +326,6 @@ echo ${FQ[@]}   #Echos array contents
 INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}") #Each elements of the array are indexed (from 0 to n-1) for slurm 
 echo $INPUT     #Echos simplified names of the fastq files
 ```
-
-
 
 ## List or find files to process 
 If for any reason you can't use bash array, you can alternatively use `ls` or `find` to identify the files to process and get the nth with `sed` (or `awk`).   
@@ -323,7 +341,7 @@ echo $INPUT
 - Don't forget to have different output files for each task of the array
 - Same with your log names (\%a or \%J in the name will do the trick)
 - Do not overload the cluster! Please use \%50 (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
-- The RAM defined using `#SBATCH --mem=25G` is for each task
+- The RAM defined using `#SBATCH --mem=25G` is for **each task**
     
 # Complex workflows
 
@@ -339,6 +357,7 @@ Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh
 
 Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). Please also see the [full documentation](https://nf-co.re/chipseq). 
 
+[Correction]({{site.baseurl}}/documents/corrections/09_nf-core.sh)
 
 # Useful resources
 
