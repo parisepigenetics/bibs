@@ -37,11 +37,12 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 
 ---
 # Your analysis in a nutshell
-- Get an [account](#get-an-account-on-ifb-core-cluster-and-create-a-project) on a cluster and create a project
+- Get an [account](#before-starting-create-an-account-and-a-project-on-your-favorite-cluster) on a cluster and create a project
 - [Transfer your data](#transfer-your-data) to the cluster
-- [Clone](#rasflow_edc-installation-and-description) RASflow_EDC [repository](https://github.com/parisepigenetics/RASflow_EDC)
+- [Clone](#rasflow_edc-installation-and-description) RASflow_EDC repository
+- [Adapt the workflow to your cluster](#adapt-the-workflow-to-your-cluster)
 - [Modify](#preparing-the-run) `metadata.tsv` and `config_main.yaml`
-- Run the [workflow](#running-the-workflow) typing `sbatch Workflow.sh`
+- Run the [workflow](#start-the-workflow) typing `sbatch Workflow.sh`
 - Look at the [results](#workflow-results)
 
 Here is a simplified scheme of the workflow. The main steps are indicated in the blue boxes. RASflow_EDC will allow you to choose which steps you want to execute for your project. In the green circles are the input files you have to give for the different steps. 

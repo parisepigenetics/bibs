@@ -39,11 +39,12 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 
 ---
 # Your analysis in a nutshell
-- Get an [account](#get-an-account-on-ifb-core-cluster-and-create-a-project) on a cluster and create a project
+- Get an [account](#before-starting-create-an-account-and-a-project-on-your-favorite-cluster) on a cluster and create a project
 - [Transfer your data](#transfer-your-data) to the cluster
-- [Clone](#methylator-installation-and-description) Methylator [repository](https://github.com/parisepigenetics/Methylator)
+- [Clone](#methylator-installation-and-description) Methylator repository
+- [Adapt the workflow to your cluster](#adapt-the-workflow-to-your-cluster)
 - [Modify](#preparing-the-run) `metadata.tsv` and `config_main.yaml`
-- Run the [workflow](#running-the-workflow) typing `sbatch Workflow.sh`
+- Run the [workflow](#start-the-workflow) typing `sbatch Workflow.sh wgbs`
 - Look at the [results](#workflow-results)
 
 Here is a simplified scheme of the workflow. The main steps are indicated in the blue boxes. Methylator will allow you to choose which steps you want to execute for your project. In the green circles are the input files you have to give for the different steps. 
@@ -130,11 +131,9 @@ Methylator is launched as a python script named `main_cluster.py` which calls th
 
  On the cluster, the main python script is launched via the shell script `Workflow.sh`, which basically contains only one command `python main_cluster.py` (+ loading of basic modules and information about the run).
 
-[![Back to toc][1]][2]
-
 ----
 
-# Adapt to your cluster
+# Adapt the workflow to your cluster
 A configuration file with the specifity of your cluster is needed. It has to be named `configs/cluster_config.yaml`. Predefined files are available for IFB and iPOP-UP clusters. 
 
 For IFB, you should type: 
