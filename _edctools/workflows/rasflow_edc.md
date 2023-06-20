@@ -207,6 +207,8 @@ cp configs/cluster_config_ipop.yaml configs/cluster_config.yaml
 ```
 For other clusters, you have to edit the file yourself... 
 
+----
+
 # Quick start with the test dataset
 Before running your analyses you can use the test dataset to make and check your installation. 
 First copy the configuration file corresponding to the test. 
@@ -588,7 +590,7 @@ or look at them directly in the Jupyter Hub or using your file navigator.
 It's time to decide if you need trimming or not. 
 If you have no sequence bias, and little amount of adapters, trimming is not necessary and you can proceed directly to the [mapping step](#mapping-and-counting).
 
-<span>{% include icon.liquid id='info-circle' %} <b>Satisfactory data quality? </b></span><br>In principle you can now run all the rest of the pipeline at once. To do so you have set QC to "no" and to configure the other parts of `config_main.yaml`.
+<span>{% include icon.liquid id='info-circle' %} <b>Satisfactory data quality? </b></span><br>In principle you can now run all the rest of the pipeline at once. To do so you have set SRA and QC to "no" and to configure the other parts of `config_main.yaml`.
 {: .ui.large.info.message}
 
 
@@ -1042,7 +1044,7 @@ Time of running DEA genome based: 0:01:32
 Finish time: Mon Jun 15 15:50:43 2020
 ```
 
-- A log file named `20200925T1057_configuration.txt` keeps a track of the **configuration of the run** (`config_main.yaml` followed by `metadata.tsv`, the environment contained in the Apptainer image with all tool versions, and resource configuration `workflow/resources.yaml`)
+- A log file named `20230605T1057_configuration.txt` keeps a track of the **configuration of the run** (`config_main.yaml` followed by `metadata.tsv`, the environment contained in the Apptainer image with all tool versions, and resource configuration `workflow/resources.yaml`)
 
 ```yaml
 [username@clust-slurm-client RASflow_EDC]$: cat logs/20230605T1057_configuration.txt 
@@ -1754,7 +1756,7 @@ Sometimes you may reach the quota you have for your project. To check the quota,
 [username@clust-slurm-client RASflow_EDC]$ lfsgetquota YourProjectName
 ```
 
-In principle it should raise an error, but sometimes it doesn't and it's hard to find out what is the problem. So if a task fails with no error (typically mapping or counting), try to make more space (or ask for more space on [Community support](https://community.cluster.france-bioinformatique.fr)) before trying again. 
+In principle it should raise an error, but sometimes it doesn't and it's hard to find out what is the problem. So if a task fails with no error (typically mapping or counting), try to make more space (or ask for more space on [IFB Community support](https://community.cluster.france-bioinformatique.fr) or [iPOP-UP Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up)) before trying again. 
 
 
 
