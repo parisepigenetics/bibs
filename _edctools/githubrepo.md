@@ -23,7 +23,7 @@ Jupyter notebooks giving an example of ATAC-seq analysis.
 Maintainer : Alix Silvert, Magali Hennion 
 
 ### [RASflow_EDC](https://github.com/parisepigenetics/RASflow_EDC)  
-Workflow for RNA-seq data analysis, based on RASflow which was originally published by [X. Zhang](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP core cluster and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. See [full documentation](/bibs/analysis/rasflow_edc/#/analysis).  
+Workflow for RNA-seq data analysis, based on RASflow which was originally published by [X. Zhang](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-3433-x). It has been modified to run effectively on both IFB and iPOP-UP core cluster and to fit our specific needs. Moreover, several tools and features were added, including a comprehensive report, as well as the possibility to incorporate the repeats in the analysis. See [full documentation]({{site.baseurl}}/edctools/workflows/rasflow_edc/#/edctools/).  
 Maintainer : Magali Hennion
 
 ### [rna_feat_ext](https://github.com/parisepigenetics/rna_feat_ext)  

@@ -68,7 +68,7 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
   - Community [support](https://community.cluster.france-bioinformatique.fr)   
   - [Documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/)
   - [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr)  
-  -- BiBs [practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster) 
+  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster) 
 
 - Tools implemented
   - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)

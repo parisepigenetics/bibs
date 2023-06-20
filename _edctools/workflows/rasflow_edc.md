@@ -58,15 +58,15 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
 
 - iPOP-UP 
   - [Documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
-  - Community [support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up) 
-  - BiBs [practical guide](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster)
+  - [Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up) 
+  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster)
 
 - IFB  
   - Create and manage your [account](https://my.cluster.france-bioinformatique.fr/manager2/login)  
-  - Community [support](https://community.cluster.france-bioinformatique.fr)   
+  - [Community support](https://community.cluster.france-bioinformatique.fr)   
   - [Documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/)
   - [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr)  
-  -- BiBs [practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster)
+  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster)
   
 - RASflow, Zhang, X.  
   - [Original article](https://doi.org/10.1186/s12859-020-3433-x): RASflow: an RNA-Seq analysis workflow with Snakemake, Xiaokang Zhang & Inge Jonassen, BMC Bioinformatics  21, 110 (2020)  
