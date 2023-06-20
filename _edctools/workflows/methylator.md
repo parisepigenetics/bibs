@@ -450,7 +450,7 @@ TRIM5: 10 #  integer or "no", remove N bp from the 5' end of reads. This may be 
 TRIM3: no # integer or "no", remove N bp from the 3' end of reads AFTER adapter/quality trimming has been performed. 
 ```
 
-## Mapping and counting
+## Mapping
 
 At this step you have to provide the path to your genome index as well as to a GTF annotation file and a BED file with CpG island coordinates. 
 
@@ -603,14 +603,8 @@ Here is a description of one of those files (splitted):
 Building DAG of jobs...
 Using shell: /usr/bin/bash
 Provided cluster nodes: 30
-Job counts:
-	count	jobs
-	1	all
-	1	getReads
-	1	summaryReport
-	1	trim
-	1	trimstart
-	5
+
+???
 ```
 
 - Start the first job (or jobs if there are several independant jobs). The rule is indicated, with the expected outputs. For the first steps one job is started per sample. 
