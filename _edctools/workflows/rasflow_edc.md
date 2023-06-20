@@ -38,9 +38,9 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 ---
 # Your analysis in a nutshell
 - [Get an account](#before-starting--create-an-account-and-a-project-on-your-favorite-cluster) on a cluster and create a project
-- [Transfer your data](#transfer-your-data) to the cluster
 - [Clone RASflow_EDC repository](#rasflow_edc-installation-and-description)
 - [Adapt the workflow to your cluster](#adapt-the-workflow-to-your-cluster)
+- [Transfer your data](#transfer-your-data) to the cluster
 - [Modify](#preparing-the-run) `metadata.tsv` and `config_main.yaml`
 - [Run the workflow](#start-the-workflow) typing `sbatch Workflow.sh`
 - [Look at the results](#workflow-results)
