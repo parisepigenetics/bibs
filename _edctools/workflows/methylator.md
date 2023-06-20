@@ -39,13 +39,13 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 
 ---
 # Your analysis in a nutshell
-- Get an [account](#before-starting-create-an-account-and-a-project-on-your-favorite-cluster) on a cluster and create a project
+- [Get an account](#before-starting) on a cluster and create a project
 - [Transfer your data](#transfer-your-data) to the cluster
-- [Clone](#methylator-installation-and-description) Methylator repository
+- [Clone Methylator repository](#methylator-installation-and-description)
 - [Adapt the workflow to your cluster](#adapt-the-workflow-to-your-cluster)
 - [Modify](#preparing-the-run) `metadata.tsv` and `config_main.yaml`
-- Run the [workflow](#start-the-workflow) typing `sbatch Workflow.sh wgbs`
-- Look at the [results](#workflow-results)
+- [Run the workflow](#start-the-workflow) typing `sbatch Workflow.sh wgbs`
+- [Look at the results](#workflow-results)
 
 Here is a simplified scheme of the workflow. The main steps are indicated in the blue boxes. Methylator will allow you to choose which steps you want to execute for your project. In the green circles are the input files you have to give for the different steps. 
 
@@ -82,7 +82,9 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
 ---
 ---
 
-# Before starting : create an account and a project on your favorite cluster
+# Before starting 
+
+**Create an account and a project on your favorite cluster.**
 
 Please find instructions using the links below  
 - [IFB core cluster]({{site.baseurl}}/cluster/ifb/#/cluster)
