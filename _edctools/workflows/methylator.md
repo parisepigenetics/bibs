@@ -39,7 +39,7 @@ Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workfl
 
 ---
 # Your analysis in a nutshell
-- [Get an account](#before-starting) on a cluster and create a project
+- [Get an account](#before-starting--create-an-account-and-a-project-on-your-favorite-cluster) on a cluster and create a project
 - [Transfer your data](#transfer-your-data) to the cluster
 - [Clone Methylator repository](#methylator-installation-and-description)
 - [Adapt the workflow to your cluster](#adapt-the-workflow-to-your-cluster)
@@ -82,9 +82,7 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
 ---
 ---
 
-# Before starting 
-
-**Create an account and a project on your favorite cluster.**
+# Before starting : create an account and a project on your favorite cluster
 
 Please find instructions using the links below  
 - [IFB core cluster]({{site.baseurl}}/cluster/ifb/#/cluster)
