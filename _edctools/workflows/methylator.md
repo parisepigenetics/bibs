@@ -59,14 +59,16 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
 # Resources
 
 - iPOP-UP 
-  - Documentation [coming soon!]
+  - [Documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
   - Community [support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up) 
+  - BiBs [practical guide](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster)
 
 - IFB  
   - Create and manage your [account](https://my.cluster.france-bioinformatique.fr/manager2/login)  
   - Community [support](https://community.cluster.france-bioinformatique.fr)   
   - [Documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/)
   - [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr)  
+  -- BiBs [practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster) 
 
 - Tools implemented
   - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
