@@ -25,9 +25,7 @@ If you use this workflow to analyse your data, don't forget to **acknowledge BiB
 <span>{% include icon.liquid id='check-circle' %} <b>External users</b></span><br> "We thank the Bioinformatics and Biostatistics Core Facility, Paris Epigenetics and Cell Fate Center for sharing their analysis workflows."
 {: .ui.success.message}
 
-Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workflow for DNA methylation data analysis runs effectively on both IFB and iPOP-UP clusters.
-
-If you encounter troubles or need additional tools or features, you can create an issue on the [GitHub repository](https://github.com/parisepigenetics/Methylator/issues), email directly [BiBs](mailto:bibsATparisepigenetics.com), or pass by the 366b room.  
+Implemented by [BiBs-EDC](https://parisepigenetics.github.io/bibs/), this workflow for DNA methylation data analysis runs effectively on both IFB and iPOP-UP clusters. If you encounter troubles or need additional tools or features, you can create an issue on the [GitHub repository](https://github.com/parisepigenetics/Methylator/issues), email directly [BiBs](mailto:bibsATparisepigenetics.com), or pass by the 366b room.  
 {:.larger.text}
 
 
@@ -231,7 +229,7 @@ Check that the transfer went fine using `md5sum`.
 
 # Preparing the run
 
-There are **2 files that you have to modify** before running your analysis (`metadata.tsv` and `config_main.yaml` in the `configs` folder), and eventually some others not mandatory. 
+There are **2 files that you have to modify** before running your analysis (`metadata.tsv` and `config_main.yaml` in the `configs` folder). 
 
 To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. 
 
@@ -335,41 +333,6 @@ Here you precise parameters that are specific to one of the steps of the workflo
 ??????
 ```
 
-## Workflow.sh [Facultative] 
-{:.no_toc}
-In `Workflow.sh`, you can modify the **Job name** and the **Output** folder to save SLURM outputs. If you don't change this file, SLURM outputs will be saved in a `slurm_output` folder that will be created in your working directory. The line is read if it starts with one `#` and is not used if it starts with 2 (or more) `#`. For instance here
-
-```bash
-[username@clust-slurm-client Methylator]$ cat Workflow.sh
-#!/bin/bash
-
-################################ Slurm options #################################
-
-### Job name 
-##SBATCH --job-name=RASflow 
-
-### Output
-##SBATCH --output=RASflow-%j.out
-[...]
-```
-
-the default names `slurm-xxx` will be used, whereas here
-
-```bash
-#!/bin/bash
-
-################################ Slurm options #################################
-
-### Job name 
-#SBATCH --job-name=RASflow 
-
-### Output
-#SBATCH --output=TheFolderIwant/RASflow-%j.out
-[...]
-```
-
-the job name will be `RASflow` and SLURM output (only for the snakemake commands, not for the jobs launched by snakemake) will go to `TheFolderIwant/RASflow-%j.out`.
-
 [![Back to toc][1]][2]
 
 ---------------
@@ -465,7 +428,7 @@ You@YourComputer:~$ scp -pr username@core.cluster.france-bioinformatique.fr:/sha
 or look at them directly in the Jupyter Hub.  
 It's time to decide if how much trimming you need. Trimming is generally necessary with WGBS or RRBS data. 
 
-<span>{% include icon.liquid id='info-circle' %} <b>Satisfactory data quality? </b></span><br>In principle you can now run all the rest of the pipeline at once. To do so you have set SAR and QC to "no" and to configure the other parts of `config_main.yaml`.
+<span>{% include icon.liquid id='info-circle' %} <b>Satisfactory data quality? </b></span><br>In principle you can now run all the rest of the pipeline at once. To do so you have set SRA and QC to "no" and to configure the other parts of `config_main.yaml`.
 {: .ui.large.info.message}
 
 
