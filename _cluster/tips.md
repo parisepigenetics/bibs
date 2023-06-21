@@ -25,6 +25,7 @@ order: 1
 
 - [Easy navigation on iPOP-UP server on Windows](mounting_win) 
 - [Easy navigation on iPOP-UP server on Linux](mounting_linux)
+- [Easy navigation on iPOP-UP server on Mac](mounting_macos)
 
 ---
 
