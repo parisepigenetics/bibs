@@ -98,7 +98,7 @@ Once your project is created you will see it in the list, with the used and avai
 ```
 [username@ipop-up ~]$ cd /shared/projects/YourProjectName
 ```
-<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). This way, you can modify your files directly using any local text editor.
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> In order to navigate easily in your files with your regular file manager, you can mount your project folder as a disk on your local system. Please follow the instructions for [Linux]({{site.baseurl}}/cluster/tips/mounting_linux) or  [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or  [MacOS]({{site.baseurl}}/cluster/tips/mounting_macos). This way, you can modify your files directly using any local text editor.
 {:.ui.success.message}
 
 ---

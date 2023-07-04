@@ -60,7 +60,7 @@ hennion@ipop-up.rpbs.univ-paris-diderot.fr's password:
 ```
 Open the `Finder` and go to the folder you created as mounting point, it will now appear as a disk named `iPOP-UP`. Inside, you will see the files from your project. 
 
-<img src="{{site.baseurl}}/images/FUSE.png" alt="drawing" width="600"/>
+<img src="{{site.baseurl}}/images/FUSE.png" alt="drawing" width="800"/>
 
 ---
 ## Edit your files
