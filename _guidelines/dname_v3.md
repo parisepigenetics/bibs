@@ -11,7 +11,7 @@ order: 1
 {:.no_toc}
 Author: Magali Hennion.  
 Last update : July 2023.  
-Collaboration between Laure Ferry (EpiG) and Magali Hennion (BiBs), Epigenetics and Cell Fate lab.
+Collaboration between Laure Ferry (EpiG) and Magali Hennion (BiBs), with the help of Olivier Kirsh and Elouan Bethuel, Epigenetics and Cell Fate lab.
 
 ---
 # Table of content
@@ -28,19 +28,32 @@ We followed [this protocol]({{site.baseurl}}/documents/ligation-sequencing-gdna-
 ---
 # Basecalling
 
-After the run open the terminal "invite de commandes", and start the basecalling using "dna_r10.4_e8.1_modbases_5mc_cg_sup.cfg" model. 
+After the run open the Windows terminal "invite de commandes", and start the basecalling using "dna_r10.4_e8.1_modbases_5mc_cg_sup.cfg" model. 
 ```
-> "C:\Program Files\OxfordNanopore\MinKNOW\guppy\bin\guppy_basecaller.exe" --input_path E:\data\Nanopore\RUNS\2023XXX_runID\no_sample\PATH2\pod5 --save_path  E:\data\Nanopore\RUNS\2023XXX_runID\basecalled --config dna_r10.4_e8.1_modbases_5mc_cg_sup.cfg --device cuda:all --align_ref C:\data\Nanopore\References\mm39.fa --compress_fastq --bam_out --recursive --num_callers 5 --cpu_threads_per_caller 4
+> "C:\Program Files\OxfordNanopore\MinKNOW\guppy\bin\guppy_basecaller.exe" --input_path E:\data\Nanopore\RUNS\2023XXX_runID\no_sample\PATH2\pod5 --recursive --save_path  E:\data\Nanopore\RUNS\2023XXX_runID\basecalled --config dna_r10.4_e8.1_modbases_5mc_cg_sup.cfg --align_ref C:\data\Nanopore\References\mm39.fa --compress_fastq --bam_out --device cuda:all --chunks_per_runner 256
 ```
-Replacing `2023XXX_runID` by your un folder. 
+Replacing `2023XXX_runID` by your run folder. 
 
-It is possible to use other config `cfg` file. 
+## Options: 
+--input_path path to the pod5 files
+--recursive -> use all pod5 files in all the folders (contained in input_path)
+--save_path  path to the folder for the results
+--config configuration file
+--align_ref path to the reference fasta file
+--compress_fastq  -> compress FASTQ files to save space
+--bam_out -> do the mapping and output bam file (with the methylation)
+--device cuda:all -> to use GPU 
+--chunks_per_runner 256 -> configuration for GPU usage (optimized for Angus)
+
+It is possible to use other config `cfg` file. Check in the folder `C:\Program Files\OxfordNanopore\MinKNOW\guppy\data\` what is available. 
+
 Look at ONT resources for the analysis: 
 https://nanoporetech.com/support/nanopore-sequencing-data-analysis
 
 ---
 # Basic QC on IFB cluster
-See the [introduction to IFB cluster]({{site.baseurl}}/cluster/ifb/#/cluster). Connect to the [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr). You need 5 Gb to run the analysis, so you have to increase the RAM when starting your Jupyter session. 
+See the [introduction to IFB cluster]({{site.baseurl}}/cluster/ifb/#/cluster). Connect to the [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr). You need 20 Gb to run the analysis, so you have to increase the RAM when starting your Jupyter session. 
+For now we work in `edc_nanopore` project. 
 
 ## Add missing libraries (only once)
 Open a new notebook in Python 3.9. 
@@ -55,9 +68,11 @@ Type the following commands:
 ## Run the analysis
 The file necessary for the basic QC is `sequencing_summary.txt` obtained AFTER basecalling. Upload this file to the cluster. 
 
-Open `Template_basicQC_v1.1.ipynb` and save as `RUNID_basicQC_v1.0.ipynb`. Then run the cells adapting the path to your `sequencing_summary.txt` and choosing the name of your HTML report. 
+Open `Template_basicQC_v1.1.ipynb` and save as `RUNID_basicQC_v1.1.ipynb`. Then run the cells adapting the path to your `sequencing_summary.txt` and choosing the name of your HTML report. 
 
 `Template_basicQC_v1.1.ipynb` can downloaded [here]({{site.baseurl}}/documents/Template_basicQC_v1.1.ipynb). 
+
+For adaptive sampling, use `Template_QC_adaptive_v1.0.ipynb`. 
 
 ---
 # Methylation analysis
@@ -73,7 +88,7 @@ cd /mnt/e/Data/Nanopore/RUNS
 Copy the bamfiles to the cluster (here only pass files)
 
 ```
-rsync /mnt/e/Data/Nanopore/RUNS/2023XXX_runID/basecalled/pass/*bam ferry@ipop-up.rpbs.univ-paris-diderot.fr:/shared/projects/nano4edc/BAM_files/2023XXX_runID
+rsync -av /mnt/e/Data/Nanopore/RUNS/2023XXX_runID/basecalled/pass/*bam ferry@ipop-up.rpbs.univ-paris-diderot.fr:/shared/projects/nano4edc/BAM_files/2023XXX_runID
 ```
 
 ## Run Methylator
@@ -177,7 +192,7 @@ sample	group
 20230608_E14_mouse_ES_WT_RRMS	WT-E14-rrms-1
 20230626_E14_mouse_ES_WT_RRMS_150ng_8kb_pass	WT-E14-rrms-2
 ```
-The sample have to be the name of the folder containing the bam files. 
+The sample have to be the name of the folder containing the BAM files. 
 
 When the configuration is fine, start the workflow using the command `sbatch WGBSworkflow.sh nanopore`. 
 
