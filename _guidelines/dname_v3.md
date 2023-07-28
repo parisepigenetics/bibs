@@ -48,7 +48,7 @@ Replacing `2023XXX_runID` by your run folder.
 It is possible to use other config `cfg` file. Check in the folder `C:\Program Files\OxfordNanopore\MinKNOW\guppy\data\` what is available. 
 
 Look at ONT resources for the analysis: 
-https://nanoporetech.com/support/nanopore-sequencing-data-analysis
+[https://nanoporetech.com/support/nanopore-sequencing-data-analysis](https://nanoporetech.com/support/nanopore-sequencing-data-analysis).
 
 ---
 # Basic QC on IFB cluster
