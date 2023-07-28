@@ -35,15 +35,15 @@ After the run open the Windows terminal "invite de commandes", and start the bas
 Replacing `2023XXX_runID` by your run folder. 
 
 ## Options: 
---input_path path to the pod5 files
---recursive -> use all pod5 files in all the folders (contained in input_path)
---save_path  path to the folder for the results
---config configuration file
---align_ref path to the reference fasta file
---compress_fastq  -> compress FASTQ files to save space
---bam_out -> do the mapping and output bam file (with the methylation)
---device cuda:all -> to use GPU 
---chunks_per_runner 256 -> configuration for GPU usage (optimized for Angus)
+`--input_path` path to the pod5 files  
+`--recursive` -> use all pod5 files in all the folders (contained in input_path)  
+`--save_path`  path to the folder for the results  
+`--config` configuration file   
+`--align_ref` path to the reference fasta file  
+`--compress_fastq`  -> compress FASTQ files to save space  
+`--bam_out` -> do the mapping and output bam file (with the methylation)  
+`--device cuda:all` -> to use GPU   
+`--chunks_per_runner 256` -> configuration for GPU usage (optimized for Angus)  
 
 It is possible to use other config `cfg` file. Check in the folder `C:\Program Files\OxfordNanopore\MinKNOW\guppy\data\` what is available. 
 
