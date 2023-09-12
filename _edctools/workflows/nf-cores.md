@@ -232,7 +232,7 @@ module load nextflow/21.04.0
 
 nextflow run nf-core/atacseq  -profile ipop_up,test
 ```
-## Custom configuration [advanced user]
+### Custom configuration [advanced user]
 For some steps, you might need to modify default values used to run the different tools. This can be done using a custom configuration file. Please see the [documentation](https://nf-co.re/docs/usage/configuration). If you need to increase the memory and the number of CPUs allocated to one job, you should add a `custom.config` file that should look like this: 
 ```
 process {
