@@ -232,6 +232,20 @@ module load nextflow/21.04.0
 
 nextflow run nf-core/atacseq  -profile ipop_up,test
 ```
+## Custom configuration
+For some steps, you might need to modify default values used to run the different tools. This can be done using a custom configuration file. Please see the [documentation](https://nf-co.re/docs/usage/configuration). If you need to increase the memory and the number of CPUs allocated to one job, you should add a `custom.config` file that should look like this: 
+```
+process {
+  withName: STAR_ALIGN {
+    cpus = 16
+    memory = 100.GB
+  }
+}
+```
+And run the workflow adding `-c pathto/custom.config`, as in the following example. 
+```
+nextflow run nf-core/chipseq -name chip_ko -profile ipop_up -params-file nf-params.json -c pathto/custom.config
+```
 
 ## Databanks
 
