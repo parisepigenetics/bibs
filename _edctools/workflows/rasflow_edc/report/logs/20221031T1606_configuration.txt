@@ -1,0 +1,378 @@
+# Please check the parameters, and adjust them according to your needs
+
+# Project name
+PROJECT: Test1
+
+# ================== Control of the workflow ==================
+
+## Do you want to download FASTQ files from public from Sequence Read Archive (SRA) ? 
+SRA: no # "yes" or "no". 
+# If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. 
+# In order to run the rest of the workflow, you have to set it to "no".
+
+## Do you need to do quality control?
+QC: no  # "yes" or "no". 
+# If set to "yes", the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. 
+# In order to run the rest of the workflow, you have to set it to "no".
+
+## Do you need to do trimming?
+TRIMMED: yes  # "yes" or "no"? 
+
+## Do you need to do mapping and feature counting?
+MAPPING: yes # "yes" or "no"
+
+## Which mapping reference do you want to use? Genome or transcriptome?
+REFERENCE: genome  # "genome" or "transcriptome"
+
+## Do you want to study the repeats?
+REPEATS: yes # "yes" or "no"
+
+## Do you want to do Differential Expression Analysis (DEA)?
+DEA: yes  # "yes" or "no"
+
+# ================== Shared parameters for some or all of the sub-workflows ==================
+
+## key file if the data is stored remotely, otherwise leave it empty
+KEY: 
+
+## place to save singularity/apptainer image (1.5Go) 
+SINGULARITY: /shared/projects/bi4edc
+
+## the path to fastq files
+READSPATH: TestDataset/Raw_fastq  # for testing purpose we put here the relative paths, but we recommend to always use full paths such as /shared/projects/YourProjectName/Raw_Fastq
+
+## the meta file describing the experiment settings
+METAFILE: TestDataset/configs/metadata.tsv 
+
+## paths for intermediate final results
+BIGDATAPATH: TestDataset/data # for big files
+RESULTPATH: TestDataset/results
+
+## is the sequencing paired-end or single-end?
+END: pair  # "pair" or "single"
+
+## maximum number of cores you want to allocate to one job of the workflow (mapping and feature counting)
+NCORE: 32 
+
+## maximum number of jobs running in parallel
+NJOBS: 100
+
+# ================== Configuration for Quality Control ==================
+
+## All required params have already been defined in the public params
+
+# ================== Configuration for trimming ==================
+
+## Number of trimmed bases
+## put "no" for TRIM3 and TRIM5 if you don't want to trim a fixed number of bases. 
+TRIM5: no #  integer or "no", remove N bp from the 5' end of reads. This may be useful if the qualities were very poor, or if there is some sort of unwanted bias at the 5' end.
+TRIM3: no # integer or "no", remove N bp from the 3' end of reads AFTER adapter/quality trimming has been performed.
+
+# ================== Configuration for quantification using transcriptome ==================
+
+## transcriptome file
+TRANS: /shared/banks/homo_sapiens/hg38/transcriptome/gencode.v41.transcripts.fa # tests on going
+
+## Do you need to do gene-level differential expression analysis?
+GENE_LEVEL: TRUE  # TRUE or FALSE. If FALSE, ignore the following 3 parameters.
+## If TRUE, specify the corresponding dataset in ENSEMBL for your interested organism or provide your own tx2gene
+ENSEMBL: TRUE  # TRUE or FALSE. Specify whether you're using transcriptome from Ensembl 
+EnsemblDataSet: hsapiens_gene_ensembl  # only if ENSEMBL was set to TRUE. Search for your dataset in the file EnsemblDataSet_look_up_table.csv 
+## If you're not using ENSEMBL, you have to provide your homemade tx2gene file (two columns, 1st col: transcript ID; 2nd col: gene ID)
+TX2GENE: tx2gene_custom.tsv  # only if ENSEMBL was set to FALSE
+
+
+# ================== Configuration for alignment to genome and feature count ==================
+
+## aligner
+ALIGNER: HISAT2 # "STAR" or "HISAT2"
+
+## genome and annotation files
+INDEXPATH: TestDataset/hisat2_index  # /shared/bank/homo_sapiens/hg38/hisat2 # folder containing index files
+INDEXBASE: hisat2_hg38_chr22 # for hisat2, base of the name of the index files (ie "genome" if the file format is as genome.1.ht2)
+ANNOTATION: TestDataset/gtf/gencode.v34.annotation_chr22.gtf # GTF file 
+
+## bigwig option
+BWSTRANDED: yes # "no": bw merging forward and reverse reads, "yes": get 2 bw files, one forward and one reverse; "both": get the two bw per strand as well as the merge one. 
+
+## tool for feature count
+COUNTER: featureCounts # "featureCounts" or "htseq-count" or "STARcount" (only with STAR aligner, --quantMode GeneCounts option) or "TEcount" (if REPEATS: yes)
+
+## counting options
+COUNTOPTIONS: "-M --fraction" # add extra options for the counter (for featureCounts or htseq-count only). 
+# featureCounts: '-O' (set allowMultiOverlap to TRUE), '-M' (set countMultiMappingReads to TRUE), '--fraction'.
+# htseq-count: -m <mode> ; --nonunique=<nonunique mode>; for instance "-m intersection-nonempty --nonunique=all" ... see https://htseq.readthedocs.io
+ATTRIBUTE: gene_id  # the attribute used in annotation file. It's usually "gene_id", but double check that since it may also be "gene", "ID"...
+STRAND: reverse # "no", "yes", "reverse". For stranded=no, a read is considered overlapping with a feature regardless of whether it is mapped to the same or the opposite strand as the feature. For stranded=yes and single-end reads, the read has to be mapped to the same strand as the feature. For paired-end reads, the first read has to be on the same strand and the second read on the opposite strand. For stranded=reverse, these rules are reversed.
+FEATURE: transcript # "exon", "gene", "transcript", ... depending on your GTF file and on the feature you're interested in.
+SPLITBY: 50000000 # To get efficient counting, the big bam files have to be split into smaller files. Put here the number of reads per sub-file. ie 50000000 for featureCounts, 20000000 for htseq-count. 
+
+# ================== Configuration for repeat analysis ==================
+
+GTFTE: TestDataset/gtf/hg38_TE_rmsk_chr22.gtf # GTF ANNOTATION file for repeats, must be adapted to have the FEATURE you chose ("exon", "gene", "transcript") as 3rd column. 
+
+
+# ================== Configuration for DEA ==================
+
+## Do you want to start the workflow directly from the count tables obtained independently? If yes, give the path of your count tables. 
+FROMCOUNTS: no   # put 'no' when using the whole workflow, or the path of your count tables. Format: one file / sample named {sample}_countGenes.tsv, 2 columns gene'\tab'count. 
+
+## Do you want to use edgeR or DESeq2 to do DEA?
+DEATOOL: DESeq2 # "edgeR" or "DESeq2"? DESeq2 is recommended for transcriptome-based DEA
+
+## Is your experiment designed in a pair-wise way?
+PAIR: no  # Is this a pair test or not? (yes or no). For instance 2 samples from the same patient taken at different times.
+
+## the comparison(s) you want to do. If multiple comparisons, specify each pair (CONTROL & TREAT) in order respectively
+CONTROL: ["J0_WT"]
+TREAT: ["J10_WT"]
+## length of 'CONTROL' should agree with that of 'TREAT'
+## what you fill in there should agree with the "group" column in metadata.tsv
+
+FILTER: yes  # Filter out low expressed transcripts/genes or not? (yes or no) It's better to be set to "yes".
+
+
+# ================== Configuration for visualization ==================
+
+## All required params have already been defined in the public params
+
+==========================================
+
+SAMPLE PLAN
+sample	group	subject
+D197-D192T27r	J0_WT	1
+D197-D192T28r	J0_WT	2
+D197-D192T29r	J0_WT	3
+D197-D192T33r	J10_WT	1
+D197-D192T34r	J10_WT	2
+D197-D192T35r	J10_WT	3
+
+==========================================
+
+CONDA ENV
+
+name: rasflow_EDC
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+# conda-forge channel installs
+  - R=4.1
+  - python=3.9.13
+  - graphviz=3.0.0
+  - r-yaml=2.3.5
+  - r-statmod=1.4.36
+  - r-gplots=3.1.3
+  - r-magick=2.7.3
+  - r-dt=0.23
+  - r-sessioninfo=1.2.2
+  - r-knitr=1.39
+  - r-heatmap.plus=1.3
+  - r-readr=2.1.2
+  - r-hash
+  - r-pheatmap=1.0.12
+  - r-rcolorbrewer=1.1_3
+  - imagemagick=7.1.0
+# bioconda channel installs
+  - snakemake=7.8.3
+  - fastqc=0.11.9
+  - trim-galore=0.6.7
+  - multiqc=1.12
+  - salmon=1.9.0
+  - hisat2=2.2.1
+  - star=2.7.10a
+  - samtools=1.15.1
+  - subread=2.0.1  # featureCounts included
+  - htseq=2.0.1  # htseq-count included
+  - bioconductor-edger=3.36.0
+  - bioconductor-deseq2=1.34.0
+  - qualimap=2.2.2d
+  - bioconductor-mygene=1.30.0
+  - bioconductor-tximport=1.22.0
+  - bioconductor-enhancedvolcano=1.12.0
+  - bioconductor-biomart=2.50.0
+  - deeptools=3.5.1
+  - bioconductor-regionreport=1.27.1
+  - bioconductor-glimma=2.4.0
+  - pysam=0.19.1
+  - picard=2.27.3
+  - parallel-fastq-dump=0.6.7
+  - salmon=1.9.0
+
+==========================================
+
+CLUSTER
+
+__default__:
+  mem: 500
+  name: snakejob
+  cpus: 1
+
+download_singularity_img:
+  name: singImage
+
+qualityControl:
+  mem: 6000
+  name: QC
+  cpus: 2
+
+trim:
+  mem: 6000
+  name: trimming
+  cpus: 8
+  
+trimS:
+  mem: 6000
+  name: trimming
+  cpus: 4
+
+hisat2:
+  mem: 7000
+  name: hisat2
+  cpus: 32
+
+star:
+  mem: 40000
+  name: star
+  cpus: 4
+
+alignmentQC:
+  mem: 10000
+  name: aligQC
+  cpus: 8
+
+BigWig:
+  mem: 5000
+  name: BigWig
+  cpus: 8
+
+BigWigR:
+  mem: 5000
+  name: BigWigR
+  cpus: 8
+
+BigWigF:
+  mem: 5000
+  name: BigWigF
+  cpus: 8
+
+featureCount:
+  mem: 10000
+  name: featureCount
+  cpus: 4
+
+htseqCount:
+  mem: 100000
+  name: htseqCount
+
+plot:
+  name: visualization
+
+BamIndex:
+  name: BamIndex
+
+PCA:
+  name: PCA
+  mem: 2000
+  
+TEPCA:
+  name: TEPCA
+  mem: 2000
+
+summaryReport:
+  name: multiQC
+  mem: 1000
+
+MappingReport:
+  name: multiQC
+
+DEA:
+  name: DEA
+  mem: 2000
+
+TE_DEA:
+  name: TE_DEA
+  mem: 2000
+
+quantify:
+  name: quantTrans
+
+getReads:
+  name: getReads
+
+starCount:
+  name: starCount
+  
+TEcount:
+  mem: 30000
+  name : TEcount
+  cpus: 24
+  
+Samtools:
+  mem: 30000
+  name : Samtools
+  cpus: 8
+
+splitBam : 
+  mem: 1000
+  name : Picards
+  
+sortBam:
+  name: sortBam
+  cpus: 8
+  mem: 10000
+
+spliceSites:
+  name: spliceSites
+  mem: 1000
+ 
+splitCountTables:
+  name: splitCountTables
+  
+mergeCountTables:
+  name: mergeCountTables
+  
+mergeSummaries:
+  name: mergeSummaries
+  
+TE_index:
+  name: TE_index
+  mem: 10000
+  
+gene_index:
+  name: gene_index
+  mem: 1000
+
+mergeGTF:
+  name: mergeGTF
+  mem: 10000
+
+fastqDump:
+  mem: 10000
+  name: parallel-fastq-dump
+  cpus: 4
+  
+indexTrans:
+  mem: 10000
+  name: salmon_index
+  cpus: 8
+  
+quantify:
+  mem: 10000
+  name: salmon_quant
+  cpu: 8
+
+combineSamples:
+  mem: 5000
+  name: combine_trans
+  
+
+==========================================
+
+VERSION
+
+commit b83b90ffcf7aad2d0448ccc8697f8697da94b914
+Author: hennion <magali.hennion@cnrs.fr>
+Date:   Mon Oct 31 15:44:04 2022 +0100

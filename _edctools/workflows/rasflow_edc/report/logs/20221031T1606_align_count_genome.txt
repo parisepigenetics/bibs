@@ -1,0 +1,830 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+BamIndex                6              1              1
+BigWigF                 6              1              1
+BigWigR                 6              1              1
+PCA                     1              1              1
+TEPCA                   1              1              1
+alignmentQC             6              1              1
+end                     1              1              1
+featureCount            6              1              1
+getReads                6              1              1
+hisat2                  6              1              1
+mergeGTF                1              1              1
+sortBam                 6              1              1
+spliceSites             1              1              1
+splitCountTables        6              1              1
+summaryReport           1              1              1
+total                  60              1              1
+
+Select jobs to execute...
+
+[Mon Oct 31 16:07:52 2022]
+rule getReads:
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T27r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T27r_rv.fastq.gz
+    jobid: 7
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 7 with external jobid 267107.
+
+[Mon Oct 31 16:07:52 2022]
+rule getReads:
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T34r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T34r_rv.fastq.gz
+    jobid: 24
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 24 with external jobid 267108.
+
+[Mon Oct 31 16:07:52 2022]
+rule getReads:
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T35r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T35r_rv.fastq.gz
+    jobid: 28
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 28 with external jobid 267109.
+
+[Mon Oct 31 16:07:52 2022]
+rule mergeGTF:
+    input: TestDataset/gtf/gencode.v34.annotation_chr22.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    jobid: 8
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 8 with external jobid 267110.
+
+[Mon Oct 31 16:07:52 2022]
+rule getReads:
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T28r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T28r_rv.fastq.gz
+    jobid: 12
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 12 with external jobid 267111.
+
+[Mon Oct 31 16:07:52 2022]
+rule getReads:
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T29r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T29r_rv.fastq.gz
+    jobid: 16
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 16 with external jobid 267112.
+
+[Mon Oct 31 16:07:52 2022]
+rule getReads:
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T33r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T33r_rv.fastq.gz
+    jobid: 20
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 20 with external jobid 267113.
+
+[Mon Oct 31 16:07:52 2022]
+rule spliceSites:
+    input: rasflow_edc.simg
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt
+    jobid: 5
+    resources: mem_mb=3404, disk_mb=3404, tmpdir=/tmp
+
+Submitted DRMAA job 5 with external jobid 267114.
+[Mon Oct 31 16:08:02 2022]
+Finished job 7.
+1 of 60 steps (2%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 24.
+2 of 60 steps (3%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 28.
+3 of 60 steps (5%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 8.
+4 of 60 steps (7%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 12.
+5 of 60 steps (8%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 16.
+6 of 60 steps (10%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 20.
+7 of 60 steps (12%) done
+[Mon Oct 31 16:08:02 2022]
+Finished job 5.
+8 of 60 steps (13%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:02 2022]
+rule hisat2:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T28r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T28r_rv.fastq.gz
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T28r.sortByName.bam
+    jobid: 11
+    benchmark: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/benchmarks/D197-D192T28r.hisat2.benchmark.txt
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 11 with external jobid 267115.
+
+[Mon Oct 31 16:08:02 2022]
+rule hisat2:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T29r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T29r_rv.fastq.gz
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T29r.sortByName.bam
+    jobid: 15
+    benchmark: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/benchmarks/D197-D192T29r.hisat2.benchmark.txt
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 15 with external jobid 267116.
+
+[Mon Oct 31 16:08:02 2022]
+rule hisat2:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T33r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T33r_rv.fastq.gz
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T33r.sortByName.bam
+    jobid: 19
+    benchmark: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/benchmarks/D197-D192T33r.hisat2.benchmark.txt
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 19 with external jobid 267117.
+
+[Mon Oct 31 16:08:02 2022]
+rule hisat2:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T27r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T27r_rv.fastq.gz
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T27r.sortByName.bam
+    jobid: 4
+    benchmark: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/benchmarks/D197-D192T27r.hisat2.benchmark.txt
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 4 with external jobid 267118.
+
+[Mon Oct 31 16:08:02 2022]
+rule hisat2:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T34r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T34r_rv.fastq.gz
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T34r.sortByName.bam
+    jobid: 23
+    benchmark: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/benchmarks/D197-D192T34r.hisat2.benchmark.txt
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 23 with external jobid 267119.
+
+[Mon Oct 31 16:08:02 2022]
+rule hisat2:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/splicesites.txt, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T35r_fw.fastq.gz, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T35r_rv.fastq.gz
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T35r.sortByName.bam
+    jobid: 27
+    benchmark: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/benchmarks/D197-D192T35r.hisat2.benchmark.txt
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 27 with external jobid 267120.
+[Mon Oct 31 16:08:22 2022]
+Finished job 11.
+9 of 60 steps (15%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T28r_fw.fastq.gz.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T28r_rv.fastq.gz.
+Select jobs to execute...
+
+[Mon Oct 31 16:08:22 2022]
+rule featureCount:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T28r.sortByName.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_table.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_table.tsv.summary
+    jobid: 10
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 10 with external jobid 267121.
+
+[Mon Oct 31 16:08:22 2022]
+rule sortBam:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T28r.sortByName.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam
+    jobid: 33
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 33 with external jobid 267122.
+[Mon Oct 31 16:08:22 2022]
+Finished job 15.
+10 of 60 steps (17%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T29r_fw.fastq.gz.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T29r_rv.fastq.gz.
+[Mon Oct 31 16:08:22 2022]
+Finished job 19.
+11 of 60 steps (18%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T33r_fw.fastq.gz.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T33r_rv.fastq.gz.
+Select jobs to execute...
+
+[Mon Oct 31 16:08:22 2022]
+rule featureCount:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T29r.sortByName.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_table.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_table.tsv.summary
+    jobid: 14
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 14 with external jobid 267123.
+
+[Mon Oct 31 16:08:22 2022]
+rule sortBam:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T29r.sortByName.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam
+    jobid: 35
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 35 with external jobid 267124.
+
+[Mon Oct 31 16:08:22 2022]
+rule sortBam:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T33r.sortByName.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam
+    jobid: 37
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 37 with external jobid 267125.
+
+[Mon Oct 31 16:08:22 2022]
+rule featureCount:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T33r.sortByName.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_table.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_table.tsv.summary
+    jobid: 18
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 18 with external jobid 267126.
+[Mon Oct 31 16:08:32 2022]
+Finished job 4.
+12 of 60 steps (20%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T27r_fw.fastq.gz.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T27r_rv.fastq.gz.
+Select jobs to execute...
+
+[Mon Oct 31 16:08:32 2022]
+rule featureCount:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T27r.sortByName.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_table.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_table.tsv.summary
+    jobid: 3
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 3 with external jobid 267127.
+
+[Mon Oct 31 16:08:32 2022]
+rule sortBam:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T27r.sortByName.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam
+    jobid: 31
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 31 with external jobid 267128.
+[Mon Oct 31 16:08:32 2022]
+Finished job 23.
+13 of 60 steps (22%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T34r_rv.fastq.gz.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T34r_fw.fastq.gz.
+[Mon Oct 31 16:08:32 2022]
+Finished job 27.
+14 of 60 steps (23%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T35r_fw.fastq.gz.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/reads/D197-D192T35r_rv.fastq.gz.
+[Mon Oct 31 16:08:32 2022]
+Finished job 10.
+15 of 60 steps (25%) done
+[Mon Oct 31 16:08:32 2022]
+Finished job 33.
+16 of 60 steps (27%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T28r.sortByName.bam.
+[Mon Oct 31 16:08:32 2022]
+Finished job 14.
+17 of 60 steps (28%) done
+[Mon Oct 31 16:08:32 2022]
+Finished job 35.
+18 of 60 steps (30%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T29r.sortByName.bam.
+[Mon Oct 31 16:08:32 2022]
+Finished job 37.
+19 of 60 steps (32%) done
+[Mon Oct 31 16:08:32 2022]
+Finished job 18.
+20 of 60 steps (33%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T33r.sortByName.bam.
+Select jobs to execute...
+
+[Mon Oct 31 16:08:32 2022]
+rule splitCountTables:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T28r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_countGenes.tsv
+    jobid: 9
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 9 with external jobid 267129.
+
+[Mon Oct 31 16:08:32 2022]
+rule featureCount:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T34r.sortByName.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_table.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_table.tsv.summary
+    jobid: 22
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 22 with external jobid 267130.
+
+[Mon Oct 31 16:08:32 2022]
+rule sortBam:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T34r.sortByName.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam
+    jobid: 39
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 39 with external jobid 267131.
+
+[Mon Oct 31 16:08:32 2022]
+rule sortBam:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T35r.sortByName.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam
+    jobid: 41
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 41 with external jobid 267132.
+
+[Mon Oct 31 16:08:32 2022]
+rule featureCount:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T35r.sortByName.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_table.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_table.tsv.summary
+    jobid: 26
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 26 with external jobid 267133.
+
+[Mon Oct 31 16:08:32 2022]
+rule splitCountTables:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T29r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_countGenes.tsv
+    jobid: 13
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 13 with external jobid 267134.
+
+[Mon Oct 31 16:08:32 2022]
+rule BamIndex:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam.bai
+    jobid: 45
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 45 with external jobid 267135.
+
+[Mon Oct 31 16:08:32 2022]
+rule splitCountTables:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T33r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_countGenes.tsv
+    jobid: 17
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 17 with external jobid 267136.
+
+[Mon Oct 31 16:08:32 2022]
+rule BamIndex:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam.bai
+    jobid: 47
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 47 with external jobid 267137.
+
+[Mon Oct 31 16:08:32 2022]
+rule alignmentQC:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T28r_BAMqc
+    jobid: 32
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 32 with external jobid 267138.
+
+[Mon Oct 31 16:08:32 2022]
+rule BamIndex:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam.bai
+    jobid: 49
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 49 with external jobid 267139.
+
+[Mon Oct 31 16:08:33 2022]
+rule alignmentQC:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T29r_BAMqc
+    jobid: 34
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 34 with external jobid 267140.
+
+[Mon Oct 31 16:08:33 2022]
+rule alignmentQC:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T33r_BAMqc
+    jobid: 36
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 36 with external jobid 267141.
+[Mon Oct 31 16:08:42 2022]
+Finished job 3.
+21 of 60 steps (35%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:42 2022]
+rule splitCountTables:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T27r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_countGenes.tsv
+    jobid: 2
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 2 with external jobid 267142.
+[Mon Oct 31 16:08:42 2022]
+Finished job 31.
+22 of 60 steps (37%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T27r.sortByName.bam.
+[Mon Oct 31 16:08:42 2022]
+Finished job 9.
+23 of 60 steps (38%) done
+[Mon Oct 31 16:08:42 2022]
+Finished job 22.
+24 of 60 steps (40%) done
+[Mon Oct 31 16:08:42 2022]
+Finished job 39.
+25 of 60 steps (42%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T34r.sortByName.bam.
+[Mon Oct 31 16:08:42 2022]
+Finished job 41.
+26 of 60 steps (43%) done
+[Mon Oct 31 16:08:42 2022]
+Finished job 26.
+27 of 60 steps (45%) done
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/bam_byName/D197-D192T35r.sortByName.bam.
+Removing temporary output /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/merge_genes_te.gtf.
+[Mon Oct 31 16:08:42 2022]
+Finished job 13.
+28 of 60 steps (47%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:42 2022]
+rule BamIndex:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam.bai
+    jobid: 43
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 43 with external jobid 267143.
+
+[Mon Oct 31 16:08:42 2022]
+rule alignmentQC:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T27r_BAMqc
+    jobid: 30
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 30 with external jobid 267144.
+
+[Mon Oct 31 16:08:42 2022]
+rule splitCountTables:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T34r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_countGenes.tsv
+    jobid: 21
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 21 with external jobid 267145.
+
+[Mon Oct 31 16:08:42 2022]
+rule BamIndex:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam.bai
+    jobid: 51
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 51 with external jobid 267146.
+
+[Mon Oct 31 16:08:42 2022]
+rule BamIndex:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam.bai
+    jobid: 53
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 53 with external jobid 267147.
+
+[Mon Oct 31 16:08:42 2022]
+rule alignmentQC:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T34r_BAMqc
+    jobid: 38
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 38 with external jobid 267148.
+
+[Mon Oct 31 16:08:42 2022]
+rule alignmentQC:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T35r_BAMqc
+    jobid: 40
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 40 with external jobid 267149.
+
+[Mon Oct 31 16:08:42 2022]
+rule splitCountTables:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_countAll.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/Ngenes.txt
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T35r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_countGenes.tsv
+    jobid: 25
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 25 with external jobid 267150.
+[Mon Oct 31 16:08:42 2022]
+Finished job 45.
+29 of 60 steps (48%) done
+[Mon Oct 31 16:08:42 2022]
+Finished job 17.
+30 of 60 steps (50%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:42 2022]
+rule BigWigF:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T28r_fw.bw
+    jobid: 44
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 44 with external jobid 267151.
+
+[Mon Oct 31 16:08:42 2022]
+rule BigWigR:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T28r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T28r_rv.bw
+    jobid: 55
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 55 with external jobid 267152.
+[Mon Oct 31 16:08:43 2022]
+Finished job 47.
+31 of 60 steps (52%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:43 2022]
+rule BigWigF:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T29r_fw.bw
+    jobid: 46
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 46 with external jobid 267153.
+
+[Mon Oct 31 16:08:43 2022]
+rule BigWigR:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T29r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T29r_rv.bw
+    jobid: 56
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 56 with external jobid 267154.
+[Mon Oct 31 16:08:43 2022]
+Finished job 49.
+32 of 60 steps (53%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:43 2022]
+rule BigWigF:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T33r_fw.bw
+    jobid: 48
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 48 with external jobid 267155.
+
+[Mon Oct 31 16:08:43 2022]
+rule BigWigR:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T33r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T33r_rv.bw
+    jobid: 57
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 57 with external jobid 267156.
+[Mon Oct 31 16:08:53 2022]
+Finished job 2.
+33 of 60 steps (55%) done
+[Mon Oct 31 16:08:53 2022]
+Finished job 43.
+34 of 60 steps (57%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:53 2022]
+rule BigWigF:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T27r_fw.bw
+    jobid: 42
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 42 with external jobid 267157.
+
+[Mon Oct 31 16:08:53 2022]
+rule BigWigR:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T27r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T27r_rv.bw
+    jobid: 54
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 54 with external jobid 267158.
+[Mon Oct 31 16:08:53 2022]
+Finished job 21.
+35 of 60 steps (58%) done
+[Mon Oct 31 16:08:53 2022]
+Finished job 51.
+36 of 60 steps (60%) done
+[Mon Oct 31 16:08:53 2022]
+Finished job 53.
+37 of 60 steps (62%) done
+[Mon Oct 31 16:08:53 2022]
+Finished job 25.
+38 of 60 steps (63%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:08:53 2022]
+rule BigWigF:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T34r_fw.bw
+    jobid: 50
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 50 with external jobid 267159.
+
+[Mon Oct 31 16:08:53 2022]
+rule BigWigF:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T35r_fw.bw
+    jobid: 52
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 52 with external jobid 267160.
+
+[Mon Oct 31 16:08:53 2022]
+rule BigWigR:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T34r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T34r_rv.bw
+    jobid: 58
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 58 with external jobid 267161.
+
+[Mon Oct 31 16:08:53 2022]
+rule PCA:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_countGenes.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_countGenes.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_countGenes.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_countGenes.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_countGenes.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_countGenes.tsv
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/PCA.pdf
+    jobid: 60
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 60 with external jobid 267162.
+
+[Mon Oct 31 16:08:53 2022]
+rule TEPCA:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T27r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T28r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T29r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T33r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T34r_countTE.tsv, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T35r_countTE.tsv
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/PCA_TE.pdf
+    jobid: 1
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 1 with external jobid 267163.
+
+[Mon Oct 31 16:08:53 2022]
+rule BigWigR:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/data/Test1/mapping_HISAT2/Sorted_bam/D197-D192T35r.sort.bam.bai
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T35r_rv.bw
+    jobid: 59
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 59 with external jobid 267164.
+[Mon Oct 31 16:08:54 2022]
+Finished job 32.
+39 of 60 steps (65%) done
+[Mon Oct 31 16:08:54 2022]
+Finished job 34.
+40 of 60 steps (67%) done
+[Mon Oct 31 16:08:54 2022]
+Finished job 36.
+41 of 60 steps (68%) done
+[Mon Oct 31 16:09:04 2022]
+Finished job 30.
+42 of 60 steps (70%) done
+[Mon Oct 31 16:09:04 2022]
+Finished job 38.
+43 of 60 steps (72%) done
+[Mon Oct 31 16:09:05 2022]
+Finished job 40.
+44 of 60 steps (73%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:09:05 2022]
+rule summaryReport:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_table.tsv.summary, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_table.tsv.summary, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_table.tsv.summary, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_table.tsv.summary, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_table.tsv.summary, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_table.tsv.summary, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T27r_BAMqc, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T28r_BAMqc, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T29r_BAMqc, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T33r_BAMqc, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T34r_BAMqc, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/alignmentQC/D197-D192T35r_BAMqc
+    output: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/report_align_count_featureCounts.html
+    jobid: 29
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 29 with external jobid 267165.
+[Mon Oct 31 16:09:15 2022]
+Finished job 60.
+45 of 60 steps (75%) done
+[Mon Oct 31 16:09:15 2022]
+Finished job 1.
+46 of 60 steps (77%) done
+[Mon Oct 31 16:09:15 2022]
+Finished job 44.
+47 of 60 steps (78%) done
+[Mon Oct 31 16:09:15 2022]
+Finished job 55.
+48 of 60 steps (80%) done
+[Mon Oct 31 16:09:16 2022]
+Finished job 46.
+49 of 60 steps (82%) done
+[Mon Oct 31 16:09:16 2022]
+Finished job 56.
+50 of 60 steps (83%) done
+[Mon Oct 31 16:09:16 2022]
+Finished job 48.
+51 of 60 steps (85%) done
+[Mon Oct 31 16:09:16 2022]
+Finished job 57.
+52 of 60 steps (87%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 42.
+53 of 60 steps (88%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 54.
+54 of 60 steps (90%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 50.
+55 of 60 steps (92%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 52.
+56 of 60 steps (93%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 58.
+57 of 60 steps (95%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 59.
+58 of 60 steps (97%) done
+[Mon Oct 31 16:09:26 2022]
+Finished job 29.
+59 of 60 steps (98%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:09:26 2022]
+localrule end:
+    input: /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/PCA_TE.pdf, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/report_align_count_featureCounts.html, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T27r_fw.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T28r_fw.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T29r_fw.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T33r_fw.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T34r_fw.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T35r_fw.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T27r_rv.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T28r_rv.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T29r_rv.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T33r_rv.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T34r_rv.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/bw_str/D197-D192T35r_rv.bw, /shared/projects/bi4edc/Singularity/RASflow_EDC/TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/PCA.pdf
+    jobid: 0
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+[Mon Oct 31 16:09:26 2022]
+Finished job 0.
+60 of 60 steps (100%) done
+Complete log: .snakemake/log/2022-10-31T160751.163473.snakemake.log

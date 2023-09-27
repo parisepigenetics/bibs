@@ -40,17 +40,21 @@
     <body style="background-color:#d9e4ec;font-family:verdana;">
     <p><br></p>
     <h1 >RNA-seq analysis report</h1>
-    <p style="text-align:center;">This report was generated on 29/07/2021 by BIBS-EDC RASflow implementation on IFB cluster.<br><br></p>
-    <h2 id="project-name-projectname">  Project Dnmt1</h2>
+    <p style="text-align:center;">This report was generated on 31/10/2022 by RASflow_EDC on iPOP-UP cluster.<br><br></p>
+    <h2 id="project-name-projectname">  Project Test1</h2>
     <p><br></p>
     <h2 id="project-settings">  Analysis settings</h2>
-    <p>The settings used for the analysis can be found in the <a href="logs/20210729T1504_configuration.txt">logs/20210729T1504_configuration.txt</a>.<br></p>
+    <p>The settings used for the analysis can be found in the <a href="logs/20221031T1606_configuration.txt">logs/20221031T1606_configuration.txt</a>.<br></p>
     
-    <h2 id="fastq-quality-control">Fastq quality control</h2>
+    <h2 id="SRA">FASTQ files from personal data</h2>
+    <p> The FASTQ files were not downloaded from SRA, but come from your personal data. <br></p>
+    
+    <h2 id="fastq-quality-control">FASTQ quality control</h2>
     <p> QC report could not be found. Have you run QC before the rest of the analysis? If not, all the results might be impaired by low quality FASTQ reads. Running QC on raw sequences is highly recommended!<br></p>
     
     <h2 id="trimming">Trimming</h2>
-    <p> The sequences were not trimmed and raw sequences were used for subsequent mapping. <br></p>
+    <p> Raw sequences were trimmed. A summary of the quality of the trimmed sequences can be found in 
+    <a href="fastqc_after_trimming/report_quality_control_after_trimming.html">report_quality_control_after_trimming.html</a>. <br></p>
     
     <h2 id="mapping-and-counting">Mapping and counting</h2>
     <p> The mapping was done using HISAT2. </p>
@@ -81,63 +85,68 @@
             <h2 id="pairwise-differential-expression-analyses">Pairwise differential expression analyses</h2>
             <p>You have made one pairwise comparison using DESeq2. Please see below the results for this comparison.</p>
             
-        <p><br></p>
-        <h3 id="Comparison-between-D1WT-and-D1KO">Comparison between D1WT and D1KO for genes</h3>
-        <p>The <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/regionReport/D1WT_D1KO/exploration.html">regionReport exploratory report</a> 
-        is a good start to get an idea of the results.</p> 
-        <p>Glimma interactive <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_D1WT_D1KO.html">MDS plot</a> 
-        can help you to identify problematic samples.</p>
-        <p> <embed type="text/html" src="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_D1WT_D1KO.html" width="1000" height="900"> </p>
-        <p>To be easily shared and reused the <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/PCA_D1WT_D1KO.pdf">PCA</a> 
-        and the 
-        <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_D1WT_D1KO.pdf">heatmap with sample clustering </a>
-        are also available as PDF files.  </p> 
-        <p>
-        <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/PCA_D1WT_D1KO.pdf" type="application/pdf" width= "700" height= "700">
-        <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_D1WT_D1KO.pdf" width= "700" height= "700">
-        </p>
-        <p>DEA result tables (all genes or significantly differentially expressed genes) are stored in 
-        <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables">mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables</a> [not available in the online report].</p>
-        <p>Importantly, the results can be deeply explored thanks to <b>interactive</b>
-        <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_D1WT_D1KO.html">MD</a>
-        and 
-        <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_D1WT_D1KO.html">Volcano</a> 
-        plots.</p>
-        <p> <embed type="text/html" src="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_D1WT_D1KO.html" width="1050" height="1000"> </p>
-        <p>A static <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf">Volcano plot</a> 
-        is also available, as well as a 
-        <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_D1WT_D1KO.pdf">heatmap of the 30 top-regulated genes</a>. </p>
-        <p>
-        <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf" type="application/pdf" width= "700" height= "700">
-        <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_D1WT_D1KO.pdf" width= "700" height= "700">
-        </p> 
-            
-        <h3 id="Comparison-between-D1WT-and-D1KO">Comparison between D1WT and D1KO for repeats</h3>
-        <p>Similar outputs are available for repeat analysis: </p> 
-        <ul>
-        <li><a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/regionReport/D1WT_D1KO/exploration.html">regionReport exploratory report</a> </li> 
-        <li><a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/PCA_D1WT_D1KO.pdf">PCA</a> </li>
-        <li> <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_D1WT_D1KO.pdf">Heatmap with sample clustering </a></li> 
-        <p>
-        <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/PCA_D1WT_D1KO.pdf" type="application/pdf" width= "700" height= "700">
-        <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_D1WT_D1KO.pdf" width= "700" height= "700">
-        </p>
-        <li>Glimma interactive <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_D1WT_D1KO.html">MDS plot</a> </li>
-        <p> <embed type="text/html" src="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_D1WT_D1KO.html" width="1000" height="900"> </p>
-        <li>DEA result tables (all repeats or significantly differentially expressed repeats), stored in 
-        <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables">mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables</a> [not available in the online report]</li>
-        <li>Interactive <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_D1WT_D1KO.html">MD plot</a> </li>
-        <li> Interactive <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_D1WT_D1KO.html">Volcano plot</a> </li>
-        <p> <embed type="text/html" src="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_D1WT_D1KO.html" width="1050" height="1000"> </p>
-        <li>Static <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf">Volcano plot</a> </li>
-        <li><a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_D1WT_D1KO.pdf">Heatmap of the 30 top-regulated repeats</a> </li>
-        </ul>
-        <p>
-        <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_D1WT_D1KO.pdf" type="application/pdf" width= "700" height= "700">
-        <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_D1WT_D1KO.pdf" width= "700" height= "700">
-        </p> 
-        
-        
+            <p><br></p>
+            <h3 id="Comparison-between-J0_WT-and-J10_WT">Comparison between J0_WT and J10_WT for genes</h3>
+            <p>The <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/regionReport/J0_WT_J10_WT/exploration.html">regionReport exploratory report</a> 
+            is a good start to get an idea of the results.</p> 
+            <p>Glimma interactive <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_J0_WT_J10_WT.html">MDS plot</a> 
+            can help you to identify problematic samples.</p>
+            <p> <embed type="text/html" src="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_J0_WT_J10_WT.html" width="1000" height="900"> </p>
+            <p>To be easily shared and reused the <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/PCA_J0_WT_J10_WT.pdf">PCA</a> 
+            and the 
+            <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_J0_WT_J10_WT.pdf">heatmap with sample clustering </a>
+            are also available as PDF files.  </p> 
+            <p>
+            <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/PCA_J0_WT_J10_WT.pdf" type="application/pdf" width= "700" height= "700">
+            <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_J0_WT_J10_WT.pdf" width= "700" height= "700">
+            </p>
+            <p>DEA result tables (all genes or significantly differentially expressed genes) are stored in 
+            <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables">mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables</a> [not available in the online report].</p>
+            <p>Importantly, the results can be deeply explored thanks to <b>interactive</b>
+            <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_J0_WT_J10_WT.html">MD</a>
+            and 
+            <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_J0_WT_J10_WT.html">Volcano</a> 
+            plots.</p>
+            <p> <embed type="text/html" src="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_J0_WT_J10_WT.html" width="1050" height="1000"> </p>
+            <p>A static <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf">Volcano plot</a> 
+            is also available, as well as a 
+            <a href="mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_J0_WT_J10_WT.pdf">heatmap of the 30 top-regulated genes</a>. </p>
+            <p>
+            <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf" type="application/pdf" width= "700" height= "700">
+            <embed src= "mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_J0_WT_J10_WT.pdf" width= "700" height= "700">
+            </p> 
+                
+            <p><br></p>
+            <h3 id="Comparison-between-J0_WT-and-J10_WT">Comparison between J0_WT and J10_WT for repeats</h3>
+            <p>The <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/regionReport/J0_WT_J10_WT/exploration.html">regionReport exploratory report</a> 
+            is a good start to get an idea of the results.</p> 
+            <p>Glimma interactive <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_J0_WT_J10_WT.html">MDS plot</a> 
+            can help you to identify problematic samples.</p>
+            <p> <embed type="text/html" src="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDSPlot_J0_WT_J10_WT.html" width="1000" height="900"> </p>
+            <p>To be easily shared and reused the <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/PCA_J0_WT_J10_WT.pdf">PCA</a> 
+            and the 
+            <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_J0_WT_J10_WT.pdf">heatmap with sample clustering </a>
+            are also available as PDF files.  </p> 
+            <p>
+            <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/PCA_J0_WT_J10_WT.pdf" type="application/pdf" width= "700" height= "700">
+            <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/SampleDistances_J0_WT_J10_WT.pdf" width= "700" height= "700">
+            </p>
+            <p>DEA result tables (all repeats or significantly differentially expressed repeats) are stored in 
+            <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables">mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables</a> [not available in the online report].</p>
+            <p>Importantly, the results can be deeply explored thanks to <b>interactive</b>
+            <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_J0_WT_J10_WT.html">MD</a>
+            and 
+            <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_J0_WT_J10_WT.html">Volcano</a> 
+            plots.</p>
+            <p> <embed type="text/html" src="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/Volcano_J0_WT_J10_WT.html" width="1050" height="1000"> </p>
+            <p>A static <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf">Volcano plot</a> 
+            is also available, as well as a 
+            <a href="mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_J0_WT_J10_WT.pdf">heatmap of the 30 top-regulated repeats</a>. </p>
+            <p>
+            <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf" type="application/pdf" width= "700" height= "700">
+            <embed src= "mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/heatmapTop_J0_WT_J10_WT.pdf" width= "700" height= "700">
+            </p> 
+                
     </body> 
     </html>
     

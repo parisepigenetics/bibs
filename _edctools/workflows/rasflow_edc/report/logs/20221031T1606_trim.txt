@@ -1,0 +1,202 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+all                  1              1              1
+getReads             6              1              1
+summaryReport        1              1              1
+trim                 6              1              1
+total               14              1              1
+
+Select jobs to execute...
+
+[Mon Oct 31 16:06:20 2022]
+rule getReads:
+    output: TestDataset/data/Test1/trimming/reads/D197-D192T28r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T28r_reverse.fastq.gz
+    jobid: 6
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 6 with external jobid 267094.
+
+[Mon Oct 31 16:06:20 2022]
+rule getReads:
+    output: TestDataset/data/Test1/trimming/reads/D197-D192T29r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T29r_reverse.fastq.gz
+    jobid: 8
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 8 with external jobid 267095.
+
+[Mon Oct 31 16:06:20 2022]
+rule getReads:
+    output: TestDataset/data/Test1/trimming/reads/D197-D192T33r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T33r_reverse.fastq.gz
+    jobid: 10
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 10 with external jobid 267096.
+
+[Mon Oct 31 16:06:20 2022]
+rule getReads:
+    output: TestDataset/data/Test1/trimming/reads/D197-D192T34r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T34r_reverse.fastq.gz
+    jobid: 12
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 12 with external jobid 267097.
+
+[Mon Oct 31 16:06:20 2022]
+rule getReads:
+    output: TestDataset/data/Test1/trimming/reads/D197-D192T35r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T35r_reverse.fastq.gz
+    jobid: 14
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 14 with external jobid 267098.
+
+[Mon Oct 31 16:06:20 2022]
+rule getReads:
+    output: TestDataset/data/Test1/trimming/reads/D197-D192T27r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T27r_reverse.fastq.gz
+    jobid: 4
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 4 with external jobid 267099.
+[Mon Oct 31 16:06:30 2022]
+Finished job 6.
+1 of 14 steps (7%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:06:30 2022]
+rule trim:
+    input: rasflow_edc.simg, TestDataset/data/Test1/trimming/reads/D197-D192T28r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T28r_reverse.fastq.gz
+    output: TestDataset/data/Test1/trimming/D197-D192T28r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T28r_R2_clean.fastq.gz
+    jobid: 5
+    wildcards: sample=D197-D192T28r
+    resources: mem_mb=3598, disk_mb=3598, tmpdir=/tmp
+
+Submitted DRMAA job 5 with external jobid 267100.
+[Mon Oct 31 16:06:30 2022]
+Finished job 8.
+2 of 14 steps (14%) done
+[Mon Oct 31 16:06:30 2022]
+Finished job 10.
+3 of 14 steps (21%) done
+[Mon Oct 31 16:06:30 2022]
+Finished job 12.
+4 of 14 steps (29%) done
+[Mon Oct 31 16:06:30 2022]
+Finished job 14.
+5 of 14 steps (36%) done
+[Mon Oct 31 16:06:30 2022]
+Finished job 4.
+6 of 14 steps (43%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:06:30 2022]
+rule trim:
+    input: rasflow_edc.simg, TestDataset/data/Test1/trimming/reads/D197-D192T33r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T33r_reverse.fastq.gz
+    output: TestDataset/data/Test1/trimming/D197-D192T33r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T33r_R2_clean.fastq.gz
+    jobid: 9
+    wildcards: sample=D197-D192T33r
+    resources: mem_mb=3596, disk_mb=3596, tmpdir=/tmp
+
+Submitted DRMAA job 9 with external jobid 267101.
+
+[Mon Oct 31 16:06:30 2022]
+rule trim:
+    input: rasflow_edc.simg, TestDataset/data/Test1/trimming/reads/D197-D192T34r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T34r_reverse.fastq.gz
+    output: TestDataset/data/Test1/trimming/D197-D192T34r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T34r_R2_clean.fastq.gz
+    jobid: 11
+    wildcards: sample=D197-D192T34r
+    resources: mem_mb=3597, disk_mb=3597, tmpdir=/tmp
+
+Submitted DRMAA job 11 with external jobid 267102.
+
+[Mon Oct 31 16:06:30 2022]
+rule trim:
+    input: rasflow_edc.simg, TestDataset/data/Test1/trimming/reads/D197-D192T35r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T35r_reverse.fastq.gz
+    output: TestDataset/data/Test1/trimming/D197-D192T35r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T35r_R2_clean.fastq.gz
+    jobid: 13
+    wildcards: sample=D197-D192T35r
+    resources: mem_mb=3596, disk_mb=3596, tmpdir=/tmp
+
+Submitted DRMAA job 13 with external jobid 267103.
+
+[Mon Oct 31 16:06:30 2022]
+rule trim:
+    input: rasflow_edc.simg, TestDataset/data/Test1/trimming/reads/D197-D192T27r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T27r_reverse.fastq.gz
+    output: TestDataset/data/Test1/trimming/D197-D192T27r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T27r_R2_clean.fastq.gz
+    jobid: 2
+    wildcards: sample=D197-D192T27r
+    resources: mem_mb=3598, disk_mb=3598, tmpdir=/tmp
+
+Submitted DRMAA job 2 with external jobid 267104.
+
+[Mon Oct 31 16:06:30 2022]
+rule trim:
+    input: rasflow_edc.simg, TestDataset/data/Test1/trimming/reads/D197-D192T29r_forward.fastq.gz, TestDataset/data/Test1/trimming/reads/D197-D192T29r_reverse.fastq.gz
+    output: TestDataset/data/Test1/trimming/D197-D192T29r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T29r_R2_clean.fastq.gz
+    jobid: 7
+    wildcards: sample=D197-D192T29r
+    resources: mem_mb=3599, disk_mb=3599, tmpdir=/tmp
+
+Submitted DRMAA job 7 with external jobid 267105.
+[Mon Oct 31 16:07:20 2022]
+Finished job 5.
+7 of 14 steps (50%) done
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T28r_reverse.fastq.gz.
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T28r_forward.fastq.gz.
+[Mon Oct 31 16:07:20 2022]
+Finished job 9.
+8 of 14 steps (57%) done
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T33r_forward.fastq.gz.
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T33r_reverse.fastq.gz.
+[Mon Oct 31 16:07:20 2022]
+Finished job 11.
+9 of 14 steps (64%) done
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T34r_reverse.fastq.gz.
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T34r_forward.fastq.gz.
+[Mon Oct 31 16:07:20 2022]
+Finished job 13.
+10 of 14 steps (71%) done
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T35r_reverse.fastq.gz.
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T35r_forward.fastq.gz.
+[Mon Oct 31 16:07:20 2022]
+Finished job 2.
+11 of 14 steps (79%) done
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T27r_reverse.fastq.gz.
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T27r_forward.fastq.gz.
+[Mon Oct 31 16:07:20 2022]
+Finished job 7.
+12 of 14 steps (86%) done
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T29r_reverse.fastq.gz.
+Removing temporary output TestDataset/data/Test1/trimming/reads/D197-D192T29r_forward.fastq.gz.
+Select jobs to execute...
+
+[Mon Oct 31 16:07:20 2022]
+rule summaryReport:
+    input: TestDataset/data/Test1/trimming/D197-D192T27r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T28r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T29r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T33r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T34r_R1_clean.fastq.gz, TestDataset/data/Test1/trimming/D197-D192T35r_R1_clean.fastq.gz
+    output: TestDataset/results/Test1/fastqc_after_trimming/report_quality_control_after_trimming.html
+    jobid: 1
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 1 with external jobid 267106.
+[Mon Oct 31 16:07:40 2022]
+Finished job 1.
+13 of 14 steps (93%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:07:40 2022]
+localrule all:
+    input: TestDataset/results/Test1/fastqc_after_trimming/report_quality_control_after_trimming.html
+    jobid: 0
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+[Mon Oct 31 16:07:40 2022]
+Finished job 0.
+14 of 14 steps (100%) done
+Complete log: .snakemake/log/2022-10-31T160617.937454.snakemake.log

@@ -1,7 +1,0 @@
-Sample	bam_file	total_reads	mapped_reads	mapped_bases	sequenced_bases	mean_insert_size	median_insert_size	mean_mapping_quality	general_error_rate	mean_coverage	percentage_aligned
-SRR9016958.sort	/shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016958.sort.bam	84719344.0	80375180.0	62777526838.0	8023666472.0	8366.8022	251.0	7.4104	0.0002	23.0104	94.8722879629474
-SRR9016959.sort	/shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016959.sort.bam	16292948.0	15424841.0	12539421341.0	1539808854.0	6330.7826	263.0	6.8372	0.0002	4.5962	94.6718850388524
-SRR9016960.sort	/shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016960.sort.bam	242249732.0	227237009.0	204621370753.0	22682436194.0	2005.238	241.0	6.5373	0.0002	75.0017	93.8027906672772
-SRR9016963.sort	/shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016963.sort.bam	203318538.0	189535879.0	158254866152.0	18918986517.0	5190.0242	242.0	7.4916	0.0002	58.0066	93.22114985894694
-SRR9016964.sort	/shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016964.sort.bam	50320566.0	44872976.0	32432771292.0	4478587088.0	4829.4432	251.0	7.7322	0.0003	11.8879	89.17422749179728
-SRR9016965.sort	/shared/projects/repeats/RASflow_IFB/data/Dnmt1/mapping_HISAT2/Sorted_bam/SRR9016965.sort.bam	204398358.0	188329379.0	189466912661.0	18796675635.0	4593.0285	245.0	6.581	0.0002	69.447	92.13840113138286

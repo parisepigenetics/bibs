@@ -1,0 +1,76 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job                  count    min threads    max threads
+-----------------  -------  -------------  -------------
+DEA                      1              1              1
+TE_DEA                   1              1              1
+TE_combineSamples        1              1              1
+all                      1              1              1
+combineSamples           1              1              1
+total                    5              1              1
+
+Select jobs to execute...
+
+[Mon Oct 31 16:09:38 2022]
+rule TE_combineSamples:
+    input: TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T27r_countTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T28r_countTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T29r_countTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T33r_countTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T34r_countTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/D197-D192T35r_countTE.tsv
+    output: TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/J0_WT_countsTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/J10_WT_countsTE.tsv
+    jobid: 3
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 3 with external jobid 267166.
+
+[Mon Oct 31 16:09:38 2022]
+rule combineSamples:
+    input: rasflow_edc.simg, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T27r_countGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T28r_countGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T29r_countGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T33r_countGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T34r_countGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/D197-D192T35r_countGenes.tsv
+    output: TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/J0_WT_countsGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/J10_WT_countsGenes.tsv
+    jobid: 7
+    resources: mem_mb=3404, disk_mb=3404, tmpdir=/tmp
+
+Submitted DRMAA job 7 with external jobid 267167.
+[Mon Oct 31 16:09:48 2022]
+Finished job 3.
+1 of 5 steps (20%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:09:48 2022]
+rule TE_DEA:
+    input: TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/J0_WT_countsTE.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/countTables/J10_WT_countsTE.tsv
+    output: TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables/dea_J0_WT_J10_WT.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_J0_WT_J10_WT.html
+    jobid: 2
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 2 with external jobid 267168.
+[Mon Oct 31 16:09:48 2022]
+Finished job 7.
+2 of 5 steps (40%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:09:48 2022]
+rule DEA:
+    input: TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/J0_WT_countsGenes.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/countTables/J10_WT_countsGenes.tsv
+    output: TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables/dea_J0_WT_J10_WT.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_J0_WT_J10_WT.html
+    jobid: 6
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+Submitted DRMAA job 6 with external jobid 267169.
+[Mon Oct 31 16:10:28 2022]
+Finished job 2.
+3 of 5 steps (60%) done
+[Mon Oct 31 16:10:28 2022]
+Finished job 6.
+4 of 5 steps (80%) done
+Select jobs to execute...
+
+[Mon Oct 31 16:10:28 2022]
+localrule all:
+    input: TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/PCA_TE.pdf, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Tables/dea_J0_WT_J10_WT.tsv, TestDataset/results/Test1/mapping_HISAT2/repeats_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_J0_WT_J10_WT.html, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/PCA.pdf, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/plots/volcano_plot_J0_WT_J10_WT.pdf, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Tables/dea_J0_WT_J10_WT.tsv, TestDataset/results/Test1/mapping_HISAT2/counting_featureCounts/DEA_DESeq2/Report/Glimma/MDPlot_J0_WT_J10_WT.html
+    jobid: 0
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp
+
+[Mon Oct 31 16:10:28 2022]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: .snakemake/log/2022-10-31T160937.643060.snakemake.log
