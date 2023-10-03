@@ -77,6 +77,10 @@ You can check the jobs that are running using `squeue`.
 
 Only your jobs: 
 ```
+[username@ipop-up]$ squeue --me
+```
+Only the jobs of `username`: 
+```
 [username@ipop-up]$ squeue -u username
 ```
 All ipop-up jobs:
