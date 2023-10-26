@@ -13,7 +13,8 @@ order: 1
 #### Detailed tutorial
 {:.no_toc}
 
-<small>Maintained by [Magali Hennion](mailto:magali.hennion@u-paris.fr). Last update : 06/06/2023. RASflow_EDC v1.2. </small>
+<small>Maintained by [Magali Hennion](mailto:magali.hennion@cnrs.fr).  
+Last update : 06/06/2023. RASflow_EDC v1.2. </small>
 
 
 If you use this workflow to analyse your data, don't forget to **acknowledge BiBs** in all your communications ! 

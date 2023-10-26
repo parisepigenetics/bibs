@@ -90,3 +90,7 @@ Data release is controlled from the level of study objects. When a study is made
 Follow all the steps except `Register Study`. And put the correct study name in the spreadsheet for Read submission. 
 
 Right after submission the data is private. If the study is `public`, the new samples will turn public within a few days (??). 
+
+---
+<small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
+Last update : 06/10/2022</small>

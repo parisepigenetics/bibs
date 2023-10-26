@@ -150,3 +150,8 @@ Job Wall-clock time: 00:03:46
 Memory Utilized: 25.24 GB
 Memory Efficiency: 84.12% of 30.00 GB
 ```
+
+
+---
+<small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
+Last update : 03/10/2023</small>

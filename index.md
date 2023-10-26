@@ -102,7 +102,7 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 <span> <b>Olivier Kirsh</b></span><br> Assistant professor, Université Paris Cité
 {:.ui.success.message}
 
-<span> <b>Elouan Bethuel</b></span><br> M1 [BI-IPFB](https://odf.u-paris.fr/fr/offre-de-formation/master-XB/sciences-technologies-sante-STS/bio-informatique-K2VO60MU.html), CNRS apprentice
+<span> <b>Elouan Bethuel</b></span><br> M2 [BI-IPFB](https://odf.u-paris.fr/fr/offre-de-formation/master-XB/sciences-technologies-sante-STS/bio-informatique-K2VO60MU.html), CNRS apprentice
 {:.ui.success.message}
 
 <br/>
@@ -110,7 +110,6 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 ## Steering committee
 
 - Magali Hennion
-- Florent Hubé
 - Olivier Kirsh
 - Valérie Mezger
 - Jean-François Ouimette
@@ -119,9 +118,14 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 
 ## Feedback request
 
-This website is currently under construction. We kindly ask our users to provide some feedback about this resource. Please contact us if :
+This website is always evolving. We kindly ask our users to provide some feedback about this resource. Please contact us if :
 
 - something is unclear, 
 - you spot some typos,
 - you would like to request topic specific documentation/workflow,
 - you would like to contribute to this resource. 
+
+
+---
+<small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
+Last update : 20/10/2023</small>
