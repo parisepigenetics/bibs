@@ -16,7 +16,7 @@ EDC workflows are expecting **gzip-compressed FASTQ files** with names formatted
 - `SampleName_R1.fastq.gz` and `SampleName_R2.fastq.gz` for pair-end data, 
 - `SampleName.fastq.gz` for single-end data. 
 
-If your files are not fitting this format, please see [how to correct the names of a batch of FASTQ files](tips/#quickly-change-fastq-names). 
+If your files are not fitting this format, please see [how to correct the names of a batch of FASTQ files]({{site.baseurl}}/cluster/tips/#quickly-change-fastq-names). 
 
 ## Generate md5sum
 {:.no_toc}
@@ -47,7 +47,7 @@ You will be asked to enter your password, and then the transfer will begin. If i
 
 ## Check md5sum
 {:.no_toc}
-After the transfer, connect to the cluster ([IFB](#connect-to-ifb-core-cluster), [iPOP-UP](#connect-to-ipop-up-cluster)) and check the presence of the files in `Raw_fastq` using `ls` command. 
+After the transfer, connect to the cluster ([IFB]({{site.baseurl}}/cluster/ifb/#/cluster), [iPOP-UP]({{site.baseurl}}/cluster/ipopup/#/cluster)) and check the presence of the files in `Raw_fastq` using `ls` command. 
 
 ```
 [username@clust-slurm-client YourProjectName]$ ls Raw_fastq
