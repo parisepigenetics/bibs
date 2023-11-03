@@ -13,7 +13,7 @@ Given that
 - your brain can memorise many passwords, but probably not as many as you need (I have >200 passwords...), 
 the use of a password manager is strongly recommended! 
 
-# Why I chose Bitwarden
+# Why I have chosen Bitwarden
 - Cross platform access for mobile, browser, and desktop apps
 - Vaults accessible online and locally
 - End-to-end encryption
