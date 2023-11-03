@@ -36,6 +36,9 @@ You can do something similar starting from random words.
 3. Modify some characters (for instance E -> €, a -> @, l -> 1, o -> 0, etc...)
 > V@l1de(secoué_p0rte)cette!vo1R
 
+--- 
+
+You can also find online many other tips (for instance [here](https://www.howtogeek.com/195430/how-to-create-a-strong-password-and-remember-it/)). 
 
 ---
 <small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  

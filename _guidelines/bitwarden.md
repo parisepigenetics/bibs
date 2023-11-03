@@ -23,7 +23,7 @@ the use of a password manager is strongly recommended!
 
 
 # Create an account
-- Go to https://vault.bitwarden.com/#/register and fill in the formular. You will receive an email to activate your account. 
+- Go to [https://vault.bitwarden.com/#/register](https://vault.bitwarden.com/#/register) and fill in the formular. You will receive an email to activate your account. 
 - Choose a very strong master keypass (do not write it down, remember it!). Please see our [tips to choose a password]({{site.baseurl}}/guidelines/password/#/guidelines) you can remember. You can also find online many other tips (for instance [here](https://www.howtogeek.com/195430/how-to-create-a-strong-password-and-remember-it/)). 
 - You can add a sentence to help you recover your password (don't be too explicite!). 
 
