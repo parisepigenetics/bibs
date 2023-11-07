@@ -55,46 +55,6 @@ Here is a simplified scheme of the workflow. The main steps are indicated in the
 ---
 ---
 
-# Resources
-
-- iPOP-UP 
-  - [Documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
-  - [Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up) 
-  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster)
-
-- IFB  
-  - Create and manage your [account](https://my.cluster.france-bioinformatique.fr/manager2/login)  
-  - [Community support](https://community.cluster.france-bioinformatique.fr)   
-  - [Documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/)
-  - [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr)  
-  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster)
-  
-- RASflow, Zhang, X.  
-  - [Original article](https://doi.org/10.1186/s12859-020-3433-x): RASflow: an RNA-Seq analysis workflow with Snakemake, Xiaokang Zhang & Inge Jonassen, BMC Bioinformatics  21, 110 (2020)  
-  - RASflow [original git repository](https://github.com/zhxiaokang/RASflow)  
-
-- Tools implemented
-  - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
-  - [MultiQC](https://multiqc.info/docs/)
-  - [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
-  - [HISAT2](http://daehwankimlab.github.io/hisat2/manual/)
-  - [STAR](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)
-  - [Salmon](https://salmon.readthedocs.io/en/latest/salmon.html)
-  - [Samtools](http://www.htslib.org/doc/samtools.html)
-  - [deepTools](https://deeptools.readthedocs.io/en/develop/)
-  - [Qualimap](http://qualimap.bioinfo.cipf.es/doc_html/index.html)
-  - featureCounts ([SubReads](http://subread.sourceforge.net/)) 
-  - [HTseq-count](https://htseq.readthedocs.io/en/master/count.html)
-  - [edgeR](https://bioconductor.org/packages/release/bioc/manuals/edgeR/man/edgeR.pdf) 
-  - [DESeq2](https://bioconductor.org/packages/release/bioc/manuals/DESeq2/man/DESeq2.pdf)
-  - [Glimma](http://www.bioconductor.org/packages/release/bioc/manuals/Glimma/man/Glimma.pdf)
-  - TEcount from [TEtranscripts](https://github.com/mhammell-laboratory/TEtranscripts)
-
-[![Back to toc][1]][2]
-
----
----
-
 # Before starting : create an account and a project on your favorite cluster
 
 Please find instructions using the links below  
@@ -1523,6 +1483,46 @@ And search in the bar for your favorite gene.
 All those plots are included in the [final report](#final-report). 
 
 <br>
+
+[![Back to toc][1]][2]
+
+---
+---
+
+# Resources
+
+- iPOP-UP 
+  - [Documentation](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
+  - [Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up) 
+  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster)
+
+- IFB  
+  - Create and manage your [account](https://my.cluster.france-bioinformatique.fr/manager2/login)  
+  - [Community support](https://community.cluster.france-bioinformatique.fr)   
+  - [Documentation](https://ifb-elixirfr.gitlab.io/cluster/doc/)
+  - [Jupyter Hub](https://jupyterhub.cluster.france-bioinformatique.fr)  
+  - [BiBs practical guide](https://parisepigenetics.github.io/bibs/cluster/ifb/#/cluster)
+  
+- RASflow, Zhang, X.  
+  - [Original article](https://doi.org/10.1186/s12859-020-3433-x): RASflow: an RNA-Seq analysis workflow with Snakemake, Xiaokang Zhang & Inge Jonassen, BMC Bioinformatics  21, 110 (2020)  
+  - RASflow [original git repository](https://github.com/zhxiaokang/RASflow)  
+
+- Tools implemented
+  - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+  - [MultiQC](https://multiqc.info/docs/)
+  - [Trim Galore](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
+  - [HISAT2](http://daehwankimlab.github.io/hisat2/manual/)
+  - [STAR](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf)
+  - [Salmon](https://salmon.readthedocs.io/en/latest/salmon.html)
+  - [Samtools](http://www.htslib.org/doc/samtools.html)
+  - [deepTools](https://deeptools.readthedocs.io/en/develop/)
+  - [Qualimap](http://qualimap.bioinfo.cipf.es/doc_html/index.html)
+  - featureCounts ([SubReads](http://subread.sourceforge.net/)) 
+  - [HTseq-count](https://htseq.readthedocs.io/en/master/count.html)
+  - [edgeR](https://bioconductor.org/packages/release/bioc/manuals/edgeR/man/edgeR.pdf) 
+  - [DESeq2](https://bioconductor.org/packages/release/bioc/manuals/DESeq2/man/DESeq2.pdf)
+  - [Glimma](http://www.bioconductor.org/packages/release/bioc/manuals/Glimma/man/Glimma.pdf)
+  - TEcount from [TEtranscripts](https://github.com/mhammell-laboratory/TEtranscripts)
 
 [![Back to toc][1]][2]
 
