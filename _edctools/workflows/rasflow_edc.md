@@ -1748,6 +1748,12 @@ In principle it should raise an error, but sometimes it doesn't and it's hard to
 
 It is also important to check if the limit in the number of files is not reached (it happens frequenctly if you use conda, check in your `~/.conda` folder).  
 
+### DRMAA error
+If you use an old version of RASflow_EDC, you might have the following error: 
+```
+DRMAA Error: code 2: slurm_load_jobs error: Socket timed out on send/recv operation,job_id:xxxx
+```
+This is because slurm-drmaa package is not maintained by the SLURM vendor SchedMD and less well supported. We decided to use a different way to allow Snakemake to talk to SLURM. Please use RASflow_EDC version `v1.3` or later. 
 
 ## Good practice
 - Always save **job ID** or the **dateTtime** (ie 20200615T1540) in your notes when launching `Workflow.sh`. It's easier to find the outputs you're interested in days/weeks/months/years later.
