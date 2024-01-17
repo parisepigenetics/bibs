@@ -14,7 +14,7 @@ order: 1
 {:.no_toc}
 
 <small>Maintained by [Magali Hennion](mailto:magali.hennion@cnrs.fr).  
-Last update : 06/06/2023. RASflow_EDC v1.2. </small>
+Last update : 17/01/2024. RASflow_EDC v1.3. </small>
 
 
 If you use this workflow to analyse your data, don't forget to **acknowledge BiBs** in all your communications ! 
@@ -139,7 +139,6 @@ Enter `RASflow_EDC` directory (`cd`) and look at the files using `tree` or `ls`.
 │   ├── quality_control.rules
 │   ├── quantify_trans.rules
 │   ├── rasflow.yaml
-│   ├── resources.yaml
 │   ├── Singularity_ncbi
 │   └── trim.rules
 └── Workflow.sh
@@ -920,7 +919,7 @@ rule getReads:
     jobid: 4
     wildcards: sample=Test
 
-Submitted DRMAA job 4 with external jobid 7908074.
+Submitted job 4 with external jobid 7908074.
 ```
 
 You have here the corresponding **job ID**. You can follow that particular job in `slurm-7908074.out`. 
@@ -939,7 +938,7 @@ rule trimstart:
     jobid: 3
     wildcards: sample=Test
 
-Submitted DRMAA job 3 with external jobid 7908075.
+Submitted job 3 with external jobid 7908075.
 ```
 
 - At the end of the job, it removes temporary files if any:
@@ -1006,7 +1005,7 @@ Time of running DEA genome based: 0:01:32
 Finish time: Mon Jun 15 15:50:43 2020
 ```
 
-- A log file named `20230605T1057_configuration.txt` keeps a track of the **configuration of the run** (`config_main.yaml` followed by `metadata.tsv`, the environment contained in the Apptainer image with all tool versions, and resource configuration `workflow/resources.yaml`)
+- A log file named `20230605T1057_configuration.txt` keeps a track of the **configuration of the run** (`config_main.yaml` followed by `metadata.tsv` and the environment contained in the Apptainer image with all tool versions). 
 
 ```yaml
 [username@clust-slurm-client RASflow_EDC]$: cat logs/20230605T1057_configuration.txt 
@@ -1057,20 +1056,6 @@ dependencies:
   - r-gplots=3.1.3
 [...]
 
-==========================================
-
-CLUSTER
-
-__default__:
-  mem: 500
-  name: rnaseq
-  cpus: 1
-
-qualityControl:
-  mem: 6000
-  name: QC
-  cpus: 2
-[...]
 ```
 - A log file named `20200925T1057_free_disk.txt` stores the disk usage during the run (every minute, the remaining space is measured). 
 ```
@@ -1641,7 +1626,7 @@ rule DEA:
     output: ...
     jobid: 1
 
-Submitted DRMAA job 1 with external jobid 13605307.
+Submitted job 1 with external jobid 13605307.
 [Wed Nov  4 09:25:10 2020]
 Error in rule DEA:
     jobid: 1
@@ -1708,29 +1693,31 @@ slurmstepd: error: *** JOB 8430179 ON cpu-node-13 CANCELLED AT 2020-05-20T09:58:
 Will exit after finishing currently running jobs.
 ```
 
-In that case, you can increase the memory request by modifying in `workflow/resources.yaml` the `mem` entry corresponding to the rule that failed. 
+In that case, you can increase the memory request by modifying in `workflow/xxx.rules` the `mem_mb` entry corresponding to the rule that failed. 
 
-```yaml
-[username@clust-slurm-client RASflow_EDC]$ cat workflow/resources.yaml
-__default__:
-  mem: 500
-  name: rnaseq
-  cpus: 1
-
-qualityControl:
-  mem: 6000
-  name: QC
-  cpus: 2
-
-trim:
-  mem: 6000
-  name: trimming
-  cpus: 8
+```py
+rule summaryReport:
+    input:
+        trimFiles
+    output:
+        report = final_path + "/fastqc_after_trimming/report_quality_control_after_trimming.html"
+    singularity:
+        "rasflow_edc.simg"
+    resources:
+           mem_mb=1000
+    params:
+        path = final_path + "/fastqc_after_trimming"
+    shell:
+        """
+        cp {intermediate_path}/*fastqc* {params.path}
+        cp {intermediate_path}/*report.txt {params.path}
+        multiqc {params.path} --filename {output.report}
+        """
 ...  
   
 ```
 
-If the rule that failed is not listed here, you can add it respecting the format. And restart your workflow. 
+Then restart your workflow. 
 
 ### Folder locked
 
@@ -1760,6 +1747,7 @@ Sometimes you may reach the quota you have for your project. To check the quota,
 
 In principle it should raise an error, but sometimes it doesn't and it's hard to find out what is the problem. So if a task fails with no error (typically mapping or counting), try to make more space (or ask for more space on [IFB Community support](https://community.cluster.france-bioinformatique.fr) or [iPOP-UP Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up)) before trying again. 
 
+It is also important to check if the limit in the number of files is not reached (it happens frequenctly if you use conda, check in your `~/.conda` folder).  
 
 
 ## Good practice

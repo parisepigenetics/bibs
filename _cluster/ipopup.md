@@ -103,6 +103,21 @@ Once your project is created you will see it in the list, with the used and avai
 
 ---
 
+## Set the default account
+The first time you use the cluster, it is necessary to define your default account. To do so, run the following command: 
+```
+sacctmgr update user $USER set defaultaccount=YourProjectName
+```
+If you don't do it, your jobs will quickly be blocked forever in the queue with the `AssocGrpCPUMinutesLimit` reason. 
+
+An alternative in to add the account in your sbatch scripts (see below) using 
+
+```sh
+#SBATCH --partition=ipop-up
+```
+
+---
+
 ## Launch jobs
 
 The scheduler is [Slurm](https://slurm.schedmd.com/). You'll find some examples of scripts in [IFB cluster quick start guide](https://ifb-elixirfr.gitlab.io/cluster/doc/quick-start/).  

@@ -230,7 +230,7 @@ Check that the transfer went fine using `md5sum`.
 
 # Preparing the run
 
-There are **2 files that you have to modify** before running your analysis (`metadata.tsv` and `config_main.yaml` in the `configs` folder). 
+There are **2 files that you have to modify** before running your analysis: `metadata.tsv` and the yaml file corresponding to your sequencing technology (`config_wgbs.yaml` or `config_nanopore.yaml`) in the `configs` folder. They control the workflow and many tool parameters.
 
 To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. 
 
@@ -258,21 +258,15 @@ The experimental description is set up in `config/metadata.tsv`:
 ```
 [username@clust-slurm-client Methylator]$ cat configs/metadata.tsv 
 sample	group
-D197-D192T27	J0_WT
-D197-D192T28	J0_WT
-D197-D192T29	J0_WT
-D197-D192T30	J0_KO
-D197-D192T31	J0_KO
-D197-D192T32	J0_KO
-D197-D192T33	J10_WT
-D197-D192T34	J10_WT
-D197-D192T35	J10_WT
-D197-D192T36	J10_KO
-D197-D192T37	J10_KO
-D197-D192T38	J10_KO
+SRR9016926	WT
+SRR9016927	1KO
+SRR9016928	DKO
+SRR11806587	WT
+SRR11806588	1KO
+SRR11806589	DKO
 ```   
 
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The columns have to be **tab-separated** and the header to remain unchanged.
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The columns have to be **tab-separated** and the header to remain unchanged. Don't put any underscore in group names. 
 {:.ui.large.warning.message}
 
 On Jupyter Hub:  
@@ -284,14 +278,14 @@ The first column contains the **sample** names that have to **correspond to the 
 <span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> It is also possible to download and use directly SRA data! That's easy, just enter the SRRxxxx IDs in the first column instead of the sample names! 
 {:.ui.success.message}
 
-## config_main.yaml
+## config_wgbs.yaml
  
-The configuration of the workflow (see [step by step description](#running-your-analysis-step-by-step) below) is done in `config/config_main.yaml`. This is the most important file. It controls the workflow and many tool parameters. 
+The configuration of the workflow for BSseq (WGBS or RRBS) data (see [step by step description](#running-your-analysis-step-by-step) below) is done in `config/config_wgbs.yaml`. 
 
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The [yaml format](https://yaml.org/) is `key:[space]value`. The space is mandatory.
 {:.ui.large.warning.message}
 
-The configuration file contains 3 parts:  
+This configuration file contains 3 parts:  
 
 ### 1) Define a project name and the steps of the workflow you want to run
 
