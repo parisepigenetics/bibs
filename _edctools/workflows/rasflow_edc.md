@@ -1753,7 +1753,7 @@ If you use an old version of RASflow_EDC, you might have the following error:
 ```
 DRMAA Error: code 2: slurm_load_jobs error: Socket timed out on send/recv operation,job_id:xxxx
 ```
-This is because slurm-drmaa package is not maintained by the SLURM vendor SchedMD and less well supported. We decided to use a different way to allow Snakemake to talk to SLURM. Please use RASflow_EDC version `v1.3` or later. 
+This is because slurm-drmaa package is not maintained by the SLURM vendor and less well supported. We decided to use a different way to allow Snakemake to talk to SLURM. Please use RASflow_EDC version `v1.3` or later. 
 
 ## Good practice
 - Always save **job ID** or the **dateTtime** (ie 20200615T1540) in your notes when launching `Workflow.sh`. It's easier to find the outputs you're interested in days/weeks/months/years later.
