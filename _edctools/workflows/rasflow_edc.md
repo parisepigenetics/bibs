@@ -77,7 +77,7 @@ Before clonning RASflow_EDC, go to your project using the `cd` command.
 ```
 [username @ cpu-node-12 ]$ cd /shared/projects/YourProjectName
 ```
-Now you can clone the repository (use `-b v0.6.2` to specify the version). 
+Now you can clone the repository (use `-b v1.3` if you want to specify the version). 
 ```bash
 [username@clust-slurm-client YourProjectName]$ git clone https://github.com/parisepigenetics/RASflow_EDC
 Cloning into 'RASflow_EDC'...
@@ -846,7 +846,6 @@ Directory: /shared/projects/YourProjectName/RASflow_EDC
 RASflow_IFB version: v0.6.2
 -------------------------
 Main module versions:
-conda 4.10.1
 Python 3.9.5
 snakemake
 6.5.0
