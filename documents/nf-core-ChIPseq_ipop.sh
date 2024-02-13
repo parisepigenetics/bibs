@@ -32,15 +32,15 @@ echo 'ChIP_nf test 01'
 
 start0=`date +%s`
 
-## Export Java path 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
+# Export Java path 
+export JAVA_HOME=/shared/software/conda/envs/nextflow-23.04.1
 
 # load Nextflow environment module
 module purge
-module load nextflow/21.04.0 
+module load nextflow/23.04.1
 
 # Run a downloaded/git-cloned nextflow workflow 
-nextflow run nf-core/chipseq -name chip_ko -profile ipop_up -params-file nf-params.json
+nextflow run nf-core/chipseq -name chip_ko_1 -profile ipop_up -params-file nf-params.json
 
 echo '########################################'
 echo 'Job finished' $(date --iso-8601=seconds)

@@ -1,11 +1,10 @@
 {
     "input": "design.csv",
+    "outdir": "results",
     "single_end": "true",
     "fragment_size": 200,
-    "seq_center": "Goe",
-    "fasta": "/shared/bank/mus_musculus/mm10/fasta/mm10.fa",
-    "gtf": "/shared/projects/bi4edc/gtf/gencode.vM4.annotation.gtf",
-    "save_reference": "true",
-    "save_macs_pileup": "true",
-    "macs_gsize": "mm"
+    "fasta": "/shared/banks/genomes/mus_musculus/mm10/fasta/mm10.fa",
+    "gtf": "/shared/banks/genomes/mus_musculus/mm10/gtf/gencode.vM25.annotation.gtf",
+    "read_length": 150,
+    "aligner": "bowtie2",
 }

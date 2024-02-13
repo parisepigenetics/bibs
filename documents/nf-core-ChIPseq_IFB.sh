@@ -36,7 +36,7 @@ start0=`date +%s`
 
 ## Load Nextflow environment module
 module purge
-module load nextflow/20.04.1
+module load nextflow/23.04.1
 
 # Run a downloaded/git-cloned nextflow workflow 
 nextflow run nf-core/chipseq -name trial01 -profile ifb_core -params-file nf-params.json

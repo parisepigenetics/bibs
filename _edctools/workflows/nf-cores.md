@@ -50,29 +50,28 @@ In order to configure the workflow you have to create two files:
 - A **design file** in csv format that contains the sample names and paths to find the FASTQ. For instance: [design.csv]({{site.baseurl}}/documents/design.csv)
 
 ```
-group,replicate,fastq_1,fastq_2,antibody,control
-Neuron_K4me3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922213.fastq.gz,,H3K4me3,Neuron_H3
-Neuron_K4me3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922214.fastq.gz,,H3K4me3,Neuron_H3
-Non-neuron_K4me3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922215.fastq.gz,,H3K4me3,Non-neuron_H3
-Non-neuron_K4me3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922216.fastq.gz,,H3K4me3,Non-neuron_H3
-Neuron_H3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922277.fastq.gz,,,
-Neuron_H3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922278.fastq.gz,,,
-Non-neuron_H3,1,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922279.fastq.gz,,,
-Non-neuron_H3,2,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922280.fastq.gz,,,
+sample,fastq_1,fastq_2,antibody,control
+Neuron_K4me3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922213.fastq.gz,,H3K4me3,Neuron_H3
+Neuron_K4me3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922214.fastq.gz,,H3K4me3,Neuron_H3
+Non-neuron_K4me3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922215.fastq.gz,,H3K4me3,Non-neuron_H3
+Non-neuron_K4me3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922216.fastq.gz,,H3K4me3,Non-neuron_H3
+Neuron_H3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922277.fastq.gz,,,
+Neuron_H3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922278.fastq.gz,,,
+Non-neuron_H3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922279.fastq.gz,,,
+Non-neuron_H3,/shared/projects/bi4edc/ChIPseq/RawData/SRR2922280.fastq.gz,,,
 ```
 - A **configuration file** where you select the steps and options you want to run. For instance: [nf-params.json]({{site.baseurl}}/documents/nf-params.json)
 
 ```json
 {
     "input": "design.csv",
+    "outdir": "results",
     "single_end": "true",
     "fragment_size": 200,
-    "seq_center": "Goe",
-    "fasta": "/shared/bank/mus_musculus/mm10/fasta/mm10.fa",
-    "gtf": "/shared/projects/bi4edc/gtf/gencode.vM4.annotation.gtf",
-    "save_reference": "true",
-    "save_macs_pileup": "true",
-    "macs_gsize": "mm"
+    "fasta": "/shared/banks/genomes/mus_musculus/mm10/fasta/mm10.fa",
+    "gtf": "/shared/banks/genomes/mus_musculus/mm10/gtf/gencode.vM25.annotation.gtf",
+    "read_length": 150,
+    "aligner": "bowtie2",
 }
 ```
 
@@ -121,7 +120,7 @@ start0=`date +%s`
 
 ## Load Nextflow environment module
 module purge
-module load nextflow/20.04.1
+module load nextflow/23.04.1
 
 # Run a downloaded/git-cloned nextflow workflow 
 nextflow run nf-core/chipseq -name trial01 -profile ifb_core -params-file nf-params.json
@@ -185,15 +184,15 @@ echo 'ChIP_nf test 01'
 
 start0=`date +%s`
 
-## Export Java path 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
+# Export Java path 
+export JAVA_HOME=/shared/software/conda/envs/nextflow-23.04.1
 
 # load Nextflow environment module
 module purge
-module load nextflow/21.04.0 
+module load nextflow/23.04.1
 
 # Run a downloaded/git-cloned nextflow workflow 
-nextflow run nf-core/chipseq -name chip_ko -profile ipop_up -params-file nf-params.json
+nextflow run nf-core/chipseq -name chip_ko_1 -profile ipop_up -params-file nf-params.json
 
 echo '########################################'
 echo 'Job finished' $(date --iso-8601=seconds)
@@ -225,10 +224,12 @@ nf-core provides some test datasets for each workflow: To use them, you just nee
 #SBATCH --partition=ipop-up
 #SBATCH --mem=4G
 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-21.04.0
+# Export Java path 
+export JAVA_HOME=/shared/software/conda/envs/nextflow-23.04.1
 
+# load Nextflow environment module
 module purge
-module load nextflow/21.04.0 
+module load nextflow/23.04.1
 
 nextflow run nf-core/atacseq  -profile ipop_up,test
 ```
@@ -249,7 +250,7 @@ nextflow run nf-core/chipseq -name chip_ko -profile ipop_up -params-file nf-para
 
 ## Databanks
 
-A local copy of several genomes are available in `/shared/banks/` (iPOP-UP) or `/shared/bank/` (IFB) directory.
+A local copy of several genomes are available in `/shared/banks/genomes` (iPOP-UP) or `/shared/bank/` (IFB) directory.
 
 ---
 ## Getting help
