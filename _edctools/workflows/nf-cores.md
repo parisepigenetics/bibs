@@ -120,7 +120,7 @@ start0=`date +%s`
 
 ## Load Nextflow environment module
 module purge
-module load nextflow/23.04.1
+module load nextflow/22.10.4
 
 # Run a downloaded/git-cloned nextflow workflow 
 nextflow run nf-core/chipseq -name trial01 -profile ifb_core -params-file nf-params.json
@@ -185,11 +185,11 @@ echo 'ChIP_nf test 01'
 start0=`date +%s`
 
 # Export Java path 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-23.04.1
+export JAVA_HOME=/shared/software/conda/envs/nextflow-22.10.4
 
 # load Nextflow environment module
 module purge
-module load nextflow/23.04.1
+module load nextflow/22.10.4
 
 # Run a downloaded/git-cloned nextflow workflow 
 nextflow run nf-core/chipseq -name chip_ko_1 -profile ipop_up -params-file nf-params.json
@@ -225,11 +225,11 @@ nf-core provides some test datasets for each workflow: To use them, you just nee
 #SBATCH --mem=4G
 
 # Export Java path 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-23.04.1
+export JAVA_HOME=/shared/software/conda/envs/nextflow-22.10.4
 
 # load Nextflow environment module
 module purge
-module load nextflow/23.04.1
+module load nextflow/22.10.4
 
 nextflow run nf-core/atacseq  -profile ipop_up,test
 ```
