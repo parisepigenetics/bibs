@@ -259,3 +259,7 @@ If you want to get help to configure or start a workflow, please contact [the pl
 ---
 ## Having errors? 
 You'll find help to understand the errors at [https://nf-co.re/usage/troubleshooting](https://nf-co.re/usage/troubleshooting). 
+
+---
+<small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
+Last update : 13/02/2024</small>
