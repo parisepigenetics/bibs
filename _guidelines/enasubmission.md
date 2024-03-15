@@ -10,7 +10,7 @@ order: 1
 # ENA submission
 
 The European Nucleotide Archive provides a [general guide](
-https://ena-docs.readthedocs.io/en/latest/submit/general-guide.html) where all the information you need is available. As it is quite long and complicated. Below is a summary of the different steps one has to follow to put raw FASTQ files into the ENA.
+https://ena-docs.readthedocs.io/en/latest/submit/general-guide.html) where all the information you need is available. As it is quite long and complicated, below is a summary of the different steps one has to follow to put raw FASTQ files into the ENA.
 
 ## 1. Transfer the data 
 
@@ -89,7 +89,7 @@ Data release is controlled from the level of study objects. When a study is made
 
 Follow all the steps except `Register Study`. And put the correct study name in the spreadsheet for Read submission. 
 
-Right after submission the data is private. If the study is `public`, the new samples will turn public within a few days (??). 
+Right after submission the data is private. If the study is `public`, the new samples will turn public within a few days. 
 
 ---
 <small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
