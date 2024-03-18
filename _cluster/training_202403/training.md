@@ -15,7 +15,7 @@ Trainers: Olivier Kirsh, Julien Rey, Magali Hennion, Elouan Bethuel
 # Presentation
 {:.no_toc}
 
-The slides of the presentation can be downloaded [here]({{site.baseurl}}/documents/20240319_ipop_training.pdf). 
+The slides of the presentation can be downloaded [here]({{site.baseurl}}/documents/Cluster_formation_iPOP_UP_v3.pdf). 
 
 ---
 # Table of content
