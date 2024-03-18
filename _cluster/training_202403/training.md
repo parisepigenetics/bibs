@@ -51,7 +51,7 @@ Can you see the first 10 lines of the `mm10.fa` file? (mm10.fa = mouse genomic s
 
 There is a `training` project accessible to you, navigate to this folder and list what is inside. 
 
-Then go to one of your projects and create a folder named `230612_training`. This is where you will do all the exercices. 
+Then go to one of your projects and create a folder named `240319_training`. This is where you will do all the exercices. If you don't have a project, you can create a folder named `YourName` in the `training` folder and work there.  
 
 # Optional: use a file explorer
 
