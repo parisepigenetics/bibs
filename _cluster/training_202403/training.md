@@ -66,7 +66,7 @@ This way, you can modify your files directly using any local **text editor**.
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Be careful</b></span><br> Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**.
 {:.ui.warning.message}
 
-<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win), [Mac]({{site.baseurl}}/cluster/tips/mounting_macos) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
 {:.ui.success.message}
 
 
