@@ -13,7 +13,7 @@ module purge
 module load star/2.7.5a
 
 ### VARIABLES ###
-pathToIndex=/shared/banks/mus_musculus/mm39/star-2.7.5a
+pathToIndex=/shared/banks/genomes/mus_musculus/mm39/star-2.7.5a
 pathToFastq1=/shared/projects/training/test_fastq/D192red_R1.fastq.gz
 pathToFastq2=/shared/projects/training/test_fastq/D192red_R2.fastq.gz
 outputFileName=STAR_results/D192red
