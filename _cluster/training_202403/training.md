@@ -75,7 +75,7 @@ In order to make easier the work on the cluster, a Jupyter Hub is implemented. T
 
 - Open a web browser and go to [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr). 
 - Enter your login and password and sign in.
-- Select your project, the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press start. 
+- Select your project, the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press `Start`. 
 
 The launcher allows you to start a Terminal that can be used for the rest of this course. 
 
