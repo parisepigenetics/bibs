@@ -69,7 +69,15 @@ This way, you can modify your files directly using any local **text editor**.
 <span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win), [Mac]({{site.baseurl}}/cluster/tips/mounting_macos) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
 {:.ui.success.message}
 
+# Optional: use JupyterHub interface
 
+In order to make easier the work on the cluster, a Jupyter Hub is implemented. This way, you can access the cluster, modify your files, run your scripts, see your results, etc. in a simple web browser. 
+
+- Open a web browser and go to [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr). 
+- Enter your login and password and sign in.
+- Select your project, the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press start. 
+
+The launcher allows you to start a Terminal that can be used for the rest of this course. 
 
 # Get information about the cluster
 
