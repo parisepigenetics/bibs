@@ -91,7 +91,7 @@ sinfo
 
 ## Exercise 1: my first sbatch script
 
-Starting from [01_02_flatter.sh]({{site.baseurl}}/documents/templates/01_02_flatter.sh.txt), make a script named `flatter.sh` printing "What a nice training !"
+Starting from [01_02_flatter.sh]({{site.baseurl}}/documents/templates/01_02_flatter.sh), make a script named `flatter.sh` printing "What a nice training !"
 
 Then run the script: 
 
