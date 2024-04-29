@@ -26,7 +26,7 @@ Download the `.msi` file and install with your regular wizard.
 - Open a terminal
 - Type 
     ```
-    net use x: \\sshfs\username@ipop-up.rpbs.univ-paris-diderot.fr\..\..\..\shared\projects\awesome  
+    net use x: \\sshfs.r\username@ipop-up.rpbs.univ-paris-diderot.fr\..\..\..\shared\projects\awesome  
     ```
 
 Replacing `username` by your login (family name usually) and `awesome` by your project name. You can use another letter than `x` as your mounting point. 
