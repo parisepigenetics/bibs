@@ -151,3 +151,33 @@ Before running your analysis, please check if your reference is available in `sh
 
 
 ---
+
+## Use Jupyter Lab
+ A Jupyter Lab interface is available at [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr) to make our work easier! 
+ 
+### Use your own Conda environment to run Jupyter notebooks
+
+1. Connect to the cluster with your terminal using SSH.
+
+2. Create your Conda environment (named `my_env` in the following commands) with all the tools you will need.
+
+3. Add `ipykernel` in your environment : 
+```
+conda activate my_env
+conda install ipykernel
+```
+
+4. Add this new environment to your Jupyter Lab :
+```
+conda activate my_env
+python -m ipykernel install --user --name my_env --display-name "my_env"
+conda deactivate
+```
+
+5. Connect to Jupyter Lab at [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr). 
+
+6. Open your notebook, at the top right you can now choose the kernel "my_env" and run your analysis in this environment. 
+
+
+
+
