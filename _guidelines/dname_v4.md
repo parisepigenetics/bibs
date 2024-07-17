@@ -22,8 +22,8 @@ Collaboration between Laure Ferry (EpiG) and Magali Hennion (BiBs), with the hel
 {:toc}
 
 ---
-# Run 
-We followed [this protocol]({{site.baseurl}}/documents/ligation-sequencing-gdna-lsk114-rrms-RRMS_9180_v114_revC_08Feb2023-gridion.pdf).
+# Sequencing run 
+We follow [this protocol]({{site.baseurl}}/documents/ligation-sequencing-gdna-lsk114-rrms-RRMS_9180_v114_revC_08Feb2023-gridion.pdf).
 
 ---
 # Basecalling
