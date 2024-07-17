@@ -28,3 +28,9 @@ rule xy:
     default_target: True
 ```
 Regardless of where this rule appears in the Snakefile, it will be the default target. Usually, it is still recommended to keep the default target rule (and in fact all other rules that could act as optional targets) at the top of the file, such that it can be easily found. 
+
+# Migration to Snakemake 8
+
+See the [notes](https://snakemake.readthedocs.io/en/latest/getting_started/migration.html#migrating-to-snakemake-8) from Snakemake developers. 
+
+[Plugin catalog] (https://snakemake.github.io/snakemake-plugin-catalog/)
