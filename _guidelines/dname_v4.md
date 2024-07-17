@@ -141,7 +141,7 @@ More information about the use of the clusters can be found at [https://parisepi
 
 
 ---
-# Basic QC on IFB or iPOP-UP cluster
+# Basic QC on IFB or iPOP-UP cluster [TO UPDATE]
 See the [introduction to IFB cluster]({{site.baseurl}}/cluster/ifb/#/cluster) or [introduction to iPOP-UP cluster]({{site.baseurl}}/cluster/ipopup/#/cluster). Connect to [IFB ondemand](https://ondemand.cluster.france-bioinformatique.fr/) or to the [iPOP-UP Jupyter Hub](https://jupyterhub.rpbs.univ-paris-diderot.fr). You need 20 Gb to run the analysis, so you have to increase the RAM when starting your Jupyter session. 
 For now we work in `edc_nanopore` or `nano4edc` projects. 
 
@@ -545,7 +545,8 @@ echo "---- Total runtime $runtime s ; $((runtime/minute)) min ----"
 ```
 It generates big table with, for each reads, at each T position, a probability to be EdU (col 2) and a probability to be BrdU (col 3). 
 
-```[hennion @ cpu-node130 15:15]$ DNAscent_detect : head -20 UVplus.fail.DNAscent.detect
+```
+[hennion @ cpu-node130 15:15]$ DNAscent_detect : head -20 UVplus.fail.DNAscent.detect
 #Alignment Guppy/UVplus_fail.sorted.bam
 #Genome /shared/banks/genomes/homo_sapiens/hg38/fasta/hg38.fa
 #Index UVplus.DNAscent.index
