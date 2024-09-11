@@ -180,5 +180,7 @@ conda deactivate
 6. Open your notebook, at the top right you can now choose the kernel "my_env" and run your analysis in this environment. 
 
 
-
+---
+<small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
+Last update : 06/09/2024</small>
 

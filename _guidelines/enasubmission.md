@@ -12,7 +12,12 @@ order: 1
 The European Nucleotide Archive provides a [general guide](
 https://ena-docs.readthedocs.io/en/latest/submit/general-guide.html) where all the information you need is available. As it is quite long and complicated, below is a summary of the different steps one has to follow to put raw FASTQ files into the ENA.
 
-## 1. Transfer the data 
+## 1. Create a Webin account (only once)
+
+If you don't have one, you must create a **Webin account** at https://www.ebi.ac.uk/ena/submit/webin/accountInfo. 
+
+
+## 2. Transfer the data 
 
 You must upload data files, typically compressed FASTQ files (xxx.fastq.gz), into your private Webin file upload area at EMBL-EBI before you can submit the files through the Webin submission service. 
 
@@ -25,7 +30,7 @@ You have several options:
 The [documentation](https://ena-docs.readthedocs.io/en/latest/submit/fileprep/upload.html) is well done, please refer to it. 
 If you don't manage, don't hesitate to contact us at [bibsATparisepigenetics.com](mailto:bibsATparisepigenetics.com).
 
-## 2. Register the study, samples and runs
+## 3. Register the study, samples and runs
 
 The easiest is the Interactive submission. See [documentation]( 
 https://ena-docs.readthedocs.io/en/latest/submit/general-guide/interactive.html). 
@@ -35,10 +40,7 @@ There are two Webin Portal services: one for test submissions and another for pr
 - Test service URL: https://wwwdev.ebi.ac.uk/ena/submit/webin/login
 - Production service URL: https://www.ebi.ac.uk/ena/submit/webin/login
 
-
-If you don't have one, you must create a **Webin account** at https://www.ebi.ac.uk/ena/submit/webin/accountInfo. 
-
-Then login to your account at https://www.ebi.ac.uk/ena/submit/webin/login.
+First, you have to login to your Webin account at https://www.ebi.ac.uk/ena/submit/webin/login.
 
 ### Register Study
 

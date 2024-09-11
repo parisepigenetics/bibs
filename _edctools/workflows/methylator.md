@@ -230,10 +230,9 @@ Check that the transfer went fine using `md5sum`.
 
 # Preparing the run
 
-There are **2 files that you have to modify** before running your analysis: `metadata.tsv` and the yaml file corresponding to your sequencing technology (`config_wgbs.yaml` or `config_nanopore.yaml`) in the `configs` folder. They control the workflow and many tool parameters.
+There are **2 files that you have to modify** before running your analysis, `metadata.tsv` and the config yaml file associate withe your sequencing technologies (`config_wgbs.yaml` or `config_nanopore.yaml` in the `configs` folder). The config yaml file is the most important file. It controls the workflow and many tool parameters.
 
 To modify the text files from the terminal you can use **vi** or **nano** on iPOP-UP cluster,  plus **emacs** and **gedit** (the last one being easier to use) on IFB. 
-
 
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Nota</b></span><br> In order to use **gedit**, be sure that you included `-X` when connecting to the IFB cluster (`-X` option is necessary to run graphical applications remotely). See [common errors](#error-starting-gedit-on-ifb).
 {:.ui.info.message}
@@ -266,7 +265,10 @@ SRR11806588	1KO
 SRR11806589	DKO
 ```   
 
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The columns have to be **tab-separated** and the header to remain unchanged. Don't put any underscore in group names. 
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The columns have to be **tab-separated** and the header to remain unchanged.
+{:.ui.large.warning.message}
+
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> Please, don't name groups with and underscore
 {:.ui.large.warning.message}
 
 On Jupyter Hub:  
@@ -280,53 +282,147 @@ The first column contains the **sample** names that have to **correspond to the 
 
 ## config_wgbs.yaml
  
-The configuration of the workflow for BSseq (WGBS or RRBS) data (see [step by step description](#running-your-analysis-step-by-step) below) is done in `config/config_wgbs.yaml`. 
+The configuration of the workflow for BSseq (WGBS or RRBS) data (see [step by step description](#running-your-analysis-step-by-step) below) is done in `config/config_wgbs.yaml`.
 
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The [yaml format](https://yaml.org/) is `key:[space]value`. The space is mandatory.
 {:.ui.large.warning.message}
 
 This configuration file contains 3 parts:  
 
-### 1) Define a project name and the steps of the workflow you want to run
+### 1) Define a project name, paths and shared parameters
 
 ```yaml
-[username@clust-slurm-client Methylator]$ cat configs/config_main.yaml 
+[username@clust-slurm-client Methylator]$ cat configs/config_main.yaml
+
 # Project name
 PROJECT: Awesome_experience
 
+## paths for intermediate final results
+BIGDATAPATH: Big_Data # for big files
+RESULTPATH: Results 
 
-???????????????????
+# ===================== Configuration for BS-seq data =================== #
+# ===================================================================== #
+DATATYPE: "WGBS" # "WGBS" (Whole genome) or "RRBS" (Reduced representation) 
+METAFILE: /shared/projects/YourProjectName/configs/metadata_wgbs.tsv   # the meta file describing the experiment settings
+READSPATH: /shared/projects/YourProjectName/fastq # the path to fastq files
+COMPARISON: [["WT","1KO"], ["WT","DKO"], ["1KO","DKO"]]
 ```
 
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> if `QC` or `SRA` is set to `yes`, the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set both `QC` and `SRA` to `no`.
-{:.ui.large.warning.message}
-
-### 2) Shared parameters   
 Here you define where the FASTQ files are stored, where is the file describing the experimental set up, the name and localization of the folders where the results will be saved. The results (detailed in [Workflow results](#workflow-results)) are separated into two folders:  
 - the **big files**: trimmed FASTQ, bam files are in an specific folder defined at `BIGDATAPATH`
 - the **small files**: QC reports, count tables, BigWig, etc. are in the final result folder defined at `RESULTPATH`  
 Examples are given in the configuration file, but you're free to name and organise them as you want. **Be sure to include the full path** (starting from `/`). Here you also precise if your data are paired-end or single-end and the number of CPUs you want to use for your analysis. 
 
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> We haven't tested single-end data yet, there might be bugs. Please let [us](mailto:bibsATparisepigenetics.com) know if you test it.
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> For differentially methylation analysis, you need to give the comparison(s) you want to do. If multiple comparisons, specify each pair (CONTROL & TREAT) in order respectively.
 {:.ui.warning.message}
 
+### 2) Steps of the workflow you want to run
+
 ```yaml
-# ================== Shared parameters for some or all of the sub-workflows ==================
 
-## key file if the data is stored remotely, otherwise leave it empty
-KEY: 
+# ========================= Control of the workflow ========================= #
+# =========================================================================== #
 
-## the path to fastq files
-READSPATH: /shared/projects/YourProjectName/Raw_fastq
-????????????
+## Do you want to download FASTQ files from public from Sequence Read Archive (SRA) ? 
+SRA: no # "yes" or "no". 
+
+## Do you need to do quality control ?
+QC: no # "yes" or "no". 
+
+## Do you need to do trimming ?
+TRIMMED: no # "yes" or "no"
+
+## Do you need to do mapping ?
+MAPPING: no # "yes" or "no"
+
+## Do you want to do the globale exploration ?
+EXPLORATION: yes # "yes" or "no"
+
+## Do you need to do differentially methylation analysis ?
+DIFFERENTIAL: yes # "yes" or "no"
+
+## Do you need a final report ?
+REPORT: no # "yes" or "no"
 ```
+
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> if `QC` or `SRA` is set to `yes`, the workflow will stop after the QC to let you decide whether you want to trim your raw data or not. In order to run the rest of the workflow, you have to set both `QC` and `SRA` to `no`.
+{:.ui.large.warning.message}
+
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br>
+We recommend that you perform the exploration before starting the differential analysis. Exploration ensures that samples are sufficiently distinct for differential analysis to be useful. It also enables you to refine the choice of certain parameters appropriate to your data (minimum coverage, unification, etc.).
+{:.ui.success.message}
+
 
 ### 3) Configuration of the specific tools  
 Here you precise parameters that are specific to one of the steps of the workflow. See detailed description in [step by step analysis](#running-your-analysis-step-by-step).
 
 ```yaml
-??????
+
 ```
+
+## config_nanopore.yaml
+
+The configuration of the workflow for nanopore data. 
+
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> The [yaml format](https://yaml.org/) is `key:[space]value`. The space is mandatory.
+{:.ui.large.warning.message}
+
+Like the `config_wgbs` this configuration file contains 3 parts:  
+
+### 1) Define a project name, paths and shared parameters
+
+```yaml
+
+# Project name
+PROJECT: RRMS
+
+## paths for intermediate final results
+BIGDATAPATH: Big_Data # for big files
+RESULTPATH: Results
+
+## genome files
+GENOMEPATH: /shared/projects/edc_nanopore/mm39/mm39.fa  # path to the reference genome's folder 
+
+## genome
+ASSEMBLY: mm39 # mm10 name of the assembly used for the analysis (now use mm39, new version)
+
+# ===================== Configuration for Nanopore data ==================== #
+# ========================================================================== #
+DATATYPE: NANOPORE # do not touch!
+METAFILE: configs/metadata_rrms.tsv
+NANO_BAM_PATH: /shared/projects/edc_nanopore/BAM_files/
+COMPARISON: [["WT","NP95"]] 
+# Did you select specific regions during sequencing?
+RRMS: yes 
+BED_RRMS: /shared/projects/edc_nanopore/rrms_mm39_v2_corr_end.bed
+5HMC: yes
+```
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Important</b></span><br> if you have perform a RRMS (selection of specific regions during the sequencing), don't forget to put the path to the BED file used for selection below. 
+{:.ui.large.warning.message}
+
+Unlike BSseq sequencing, in nanopore it's possible to differentiate between 5mc and 5hmc methylation. If you have basecalled FAST5 files including 5hmC detection, you can explore this mark. 
+
+### 2) Steps of the workflow you want to run
+
+```yaml
+# ========================= Control of the workflow ========================= #
+# =========================================================================== #
+
+## Do you want to do the globale exploration ?
+EXPLORATION: yes # "yes" or "no"
+
+## Do you need to do differentially methylation analysis ?
+DIFFERENTIAL: yes # "yes" or "no"
+```
+
+With nanopore data, the first workflow steps are not necessary. Only the statistical analysis is common to both.
+
+### 3) Configuration of the specific tools 
+
+```yaml
+```
+
 
 [![Back to toc][1]][2]
 
@@ -334,10 +430,13 @@ Here you precise parameters that are specific to one of the steps of the workflo
 
 # Running your analysis step by step
 
-When the configuration files are ready, you can start the run by `sbatch Workflow.sh wgbs`.
+When the configuration files are ready, you can start the run by `sbatch Workflow.sh wgbs` or `sbatch Workflow.sh nanopore`. Specifying the data type allows the workflow to directly select the correct configuration file. 
 
 ```
 [username@clust-slurm-client Methylator]$ sbatch Workflow.sh wgbs
+```
+```
+[username@clust-slurm-client Methylator]$ sbatch Workflow.sh nanopore
 ```
 
 Please see below detailed explanation. 
@@ -378,13 +477,11 @@ The rest of the part `Control of the workflow` will be **ignored**. The software
 READSPATH: /shared/projects/YourProjectName/Raw_fastq
 
 ## the meta file describing the experiment settings
-METAFILE: /shared/projects/YourProjectName/Methylator/configs/metadata.tsv
+METAFILE: /shared/projects/YourProjectName/configs/metadata.tsv
 
 ## paths for intermediate and final results
-BIGDATAPATH: /shared/projects/YourProjectName/Methylator/data # for big files
-RESULTPATH: /shared/projects/YourProjectName/Methylator/results
-
-???????????
+BIGDATAPATH: /shared/projects/YourProjectName/data # for big files
+RESULTPATH: /shared/projects/YourProjectName/results
 ```
 
 When this is done, you can start the QC by running:
@@ -428,15 +525,12 @@ It's time to decide if how much trimming you need. Trimming is generally necessa
 
 
 ## Trimming
-??????? faire le trimming tout le temps????????
 
 If you put `TRIMMED: no`, there will be no trimming and the original FASTQ sequences will be mapped. 
 
 If you put `TRIMMED: yes`, [Trim Galore](https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md) will remove low quality and very short reads, and cut the adapters. If you also want to remove a fixed number of bases in 5' or 3', you have to configure it. For instance if you want to remove the first 10 bases: 
 
 ```yaml
-???????
-
 # ================== Configuration for trimming ==================
 
 ## Number of trimmed bases
@@ -499,23 +593,51 @@ If you don't find what you need, you can ask for it on [IFB](https://community.f
 - **GTF** files can be downloaded from [GenCode](https://www.gencodegenes.org/) (mouse and human), [ENSEMBL](https://www.ensembl.org/info/data/ftp/index.html), [NCBI](https://www.ncbi.nlm.nih.gov/assembly/) (RefSeq, help [here](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/#files)), ...
 Similarly you can download them to the server using `wget`. 
 
-- **CpG Islands** from [UCSC Table](https://genome.ucsc.edu/cgi-bin/hgTables) ????
+- **CpG Islands** files can be downloaded from [UCSC goldenPath](https://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/). For obtain the bed file, you can use this command (example with hg38): 
+
+```sh
+ wget -qO- http://hgdownload.cse.ucsc.edu/goldenpath/hg38/database/cpgIslandExt.txt.gz \
+   | gunzip -c \
+   | awk 'BEGIN{ OFS="\t"; }{ print $2, $3, $4, $5$6, $7, $8, $9, $10, $11, $12 }' \
+   | sort-bed - \
+   > cpgIslandExt.hg38.bed
+```
 
 <span>{% include icon.liquid id='info-circle' %} <b>Fill common banks!</b></span><br>Don't forget to give the links to the new references you made/downloaded to [IFB](https://community.france-bioinformatique.fr/) or to [iPOP-UP](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up) support so that they can add them to the common banks.
 {: .ui.info.message}
-
 
 Be sure you give the right path to those files and adjust the other settings to your need: 
 
 
 ```yaml
-# ================== Control of the workflow ==================
-??????????
+
+## genome
+ASSEMBLY: hg38 # short name of the assembly used for the analysis
+
+## Library type
+LIBRARY_TYPE_OPT: non_directional   # "directional", "non_directional" or "pbat" sequencing library 
+
+## params in Bismark alignment (--score_min {function},{val1},{val2}). 
+# More information about Bismark options: https://felixkrueger.github.io/Bismark/options/alignment/
+
+TYPEFUNC: L # 'L' or 'G' for linear or logarithmic fonction
+VARFUNCT1: 0 # first value for the function 0 is default
+VARFUNCT2: -0.6 # second value for the function -0.2 is default
+MISMATCH: 0 # nomber of mismatch wanted
+ADVANCE_OPT: # for advanced bismark user (mapping only), IMPLEMENTED IN THE CODE BUT NOT TESTED
 
 ```
 
-For an easy visualisation on a genome browser, BigWig files are generated. 
+Développer les paramètres pour bismark !! 
 
+
+For an easy visualisation on a genome browser, BigWig files are generated.
+The path to this file is : `/Results/YOUR_PROJECT/mapping_BOWTIE2/BigWig/`     
+Two types of BigWig are generated for each sample, a file with the methylation percentage for each CpG, and a file with the read coverage on each CpG 
+- BigWig/{sample}_methExtract.bw
+- BigWig/{sample}_cov.bw   
+
+You can open and view these files with IGV software. 
 
 
 As at the moment the default project quota in 250 Go you might be exceeding the space you have (and may or may not get error messages...). So if the mapping fails, try removing files to get more space, or ask to increase your quota on [IFB Community support](https://community.cluster.france-bioinformatique.fr) or [iPOP-UP Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up). To see the space you have you can run:
@@ -531,14 +653,80 @@ and
 ```
 
 
-## Differential methylation analysis
+##  Process BAM to BED (only for nanopore)
+
+If you're launching the workflow with nanopore data, the first step is to convert the BAM files to BED using the modbam2bed tool (recommended by oxford nanopore technologie). If you already have BED files from modbam2bed, you can enter the path to the folder containing them. ***Please note that the BED must be named Sample_Merged.cpg.bed.***
+
+```yaml
+# # ===================== Configuration for process BAM files  ================== #
+# =========================================================================== #
+
+STARTFROMBED: no # put no if you start from BAM files
+```
+
+
+## Statistical analysis
+
+**In this step, you select the global parameters for statistical analysis.**
+
+```yaml
+LEVEL: CpG # "CpG" or "Tiles" study by Tiles or by CpG 
+TILESIZE: 250 
+STEPSIZE: 1  # Tiles relative step size
+NB_CPG_TILES: 1 # minimal number of CpG to keep a tile in the analysis
+```
+If Tiles was selected, define tile size, step size, and minimal number of CpG by tile.   
+STEPSIZE corresponds to the relative size of the gap between two tiles. If set to 1, tiles are non-overlapping; if set to 0.5, tiles overlap by half.
+### Exploratory analysis 
+
+```yaml
+# ===== Exploratory analysis ===== #
+## params 
+MINCOV: 5  # int, minimum coverage depth for the analysis
+COV.PERC: 99.9 # to the coverage filter, choose the percentile for remove top ..% 
+MINQUALI: 20  # int, minimum quality to keep a CPG for the analysis
+DESTRAND: yes # combine information from F et R reads
+UNITE: all # 'all' or 'one' (at least one per group) or (2,3,4 ... per group)
+```
+COV.PERC corresponds to the percentage of the most covered CpG or tiles to be retained. For example, if COV.PERC = 99.9, only the top 1% are deleted. This parameter eliminates illumina sequencing bias (in repeated regions, for example). **Caution: in the case of RRBS, set this argument to 100 to avoid deleting intentionally enriched regions.**
+
+UNITE allows you to choose how you unify your replicates. By default (all), a CpG must be present in each replicate for it to be taken into account. Otherwise, specify the minimum number of times it must appear to be retained. For example, if you have three replicates per condition and you select 2, it is sufficient for a CpG to be present in two of the three replicates for it to be retained. If you select a number that is not compatible with your replicates, differential analysis is performed with 'all' by default. 
+
+### Differential methylation analysis
 
 Finally you have to set the parameters for the differential methylation analysis. You have to define the comparisons you want to do (pairs of conditions). 
 
 ```yaml
 COMPARISON : [["WT","1KO"], ["WT","DKO"], ["1KO","DKO"]] 
-
 ```
+And set your analysis parameters :  
+
+```yaml
+# ===== Differential analysis ===== #
+
+DMR: yes # if yes, run DMR
+
+## params (CPG or TILES)
+LIST_SIGNIDIF: [10, 20, 25, 30] # SigDiffMeth en %, used in MKit_diff_bed.R
+LIST_QVALUE : [0.001, 0.01, 0.05]  # used in MKit_diff_bed.R
+QVALUE: 0.05  # QValue (used in Mkit_differential.Rmd)
+SIGNIDIF: 10
+
+## params (only DMR)
+DMR_TYPE: regions  # regions or blocks, by default regions 
+MIN_CPG: 5  # minimum number of CpGs to consider for a candidate DMR, by default 5, minimum 3
+MAX_GAP: 1000 # maximum number of bp in between neighboring CpGs to be included in the same DMR, by default 1000
+CUTOFF: 0.1 # cutoff of the single CpG methylation difference that is used to discover candidate DMR. by default 0.1
+FDR: 0.05 # QVALUE for select significant DMR
+```
+LIST_SIGNIDIF: list of minimum percentage threshold values to consider that a CpG or a tile is differentially methylated under two distinct biological conditions.   
+LIST_QVALUE: list of q-values thresholds for considering a Cpg or a tile to be differentially methylated as being significantly different.   
+LIST_SIGNIDIF and LIST_QVALUE are used to generate bedgraphs. For each difference threshold and for each q-value threshold, a bedgraph is generated. Help with choosing SIGNIDIF and QVALUE parameters for differential analysis.
+
+If DMR is set to YES, you perform a DMR analysis with the same comparison peers as in CpG or Tiles.   
+The default parameters are designed to focus on local DMRs (call regions), generally in the range of hundreds to thousands of bp. If you choose blocks , the range increase on the order of hundreds of thousands to millions of bp. In this case, it's advised to decrease the CUTOFF. **Blocks are designed to analyze cancer data.**
+
+**Please note that the package used to infer DMR was designed for WGBS analysis. If you wish to perform an RRBS analysis, you can try removing smoothing, or modifying certain parameters: ?** 
 
 
 ## Start the workflow
@@ -580,11 +768,13 @@ Typically the main job output looks like :
 You can see at the end if this file if an error occured during the run. See [Errors](#having-errors).
 
 ## Snakefiles
- There are 4 snakefiles (visible in the `workflow` folder) that correspond to the different steps of the analysis:
+ There are 6 snakefiles (visible in the `workflow` folder) that correspond to the different steps of the analysis:
   - fastq_dump_QC.rules (QC)
   - trim.rules (reads trimming/filtering)
   - mapping.rules (mapping)
-  - methylator.rules (statistical analysis)
+  - exploration.rules (statistical analysis)
+  - differential.rules (statistical analysis)
+  - report.rules (build the final report)
 
 The SLURM outputs of those different steps are stored in the `logs` folder and named as the date plus the corresponding snakefile: for instance
 `20230615T1540_trim.txt` or  `20230615T1540_mapping.txt`. 
@@ -599,7 +789,6 @@ Building DAG of jobs...
 Using shell: /usr/bin/bash
 Provided cluster nodes: 30
 
-???
 ```
 
 - Start the first job (or jobs if there are several independant jobs). The rule is indicated, with the expected outputs. For the first steps one job is started per sample. 
@@ -652,9 +841,18 @@ Complete log: /shared/mfs/data/projects/lxactko_analyse/RASflow/.snakemake/log/2
 Every job generate a `slurm-JOBID.out` file. It is localised in the working directory as long as the workflow is running. It is then moved to the `slurm_output` folder. SLURM output specifies the rule, the sample (or samples) involved, and gives outputs specific to the tool:  
 
 ```
-[username@clust-slurm-client Methylator]$ cat slurm_output/
-??????
+[username@clust-slurm-client Methylator]$ cat slurm_output/slurm-4455334.out
 
+...
+
+[Mon Nov 27 09:14:54 2023]
+rule DMR:
+    input: Big_Data/Test_CD/Methylator_WGBS/Rdata/Prep_SRR1104848_5mC.RData, Big_Data/Test_CD/Methylator_WGBS/Rdata/Prep_SRR1104855_5mC.RData, Big_Data/Test_CD/Methylator_WGBS/Rdata/Prep_SRR1067571_5mC.RData, Big_Data/Test_CD/Methylator_WGBS/Rdata/Prep_SRR1067573_5mC.RData, Big_Data/Test_CD/Methylator_WGBS/Rdata/Prep_SRR1104851_5mC.RData, Big_Data/Test_CD/Methylator_WGBS/Rdata/Prep_SRR1104862_5mC.RData, Big_Data/Test_CD/Annotation/Annotatr.RData
+    output: Big_Data/Test_CD/Methylator_WGBS/Rdata/CpG_mincov5/CD14_CD56_DMR.RData
+    jobid: 0
+    reason: Missing output files: Big_Data/Test_CD/Methylator_WGBS/Rdata/CpG_mincov5/CD14_CD56_DMR.RData
+    wildcards: comparison=CD14_CD56
+    resources: mem_mb=3399, mem_mib=3242, disk_mb=3399, disk_mib=3242, tmpdir=/tmp
 ```
 ## Configuration and timing
 
@@ -674,11 +872,74 @@ Finish time: Fri May 26 16:30:09 2023
 
 - A log file named `20230526T1623_configuration.txt` keeps a track of the **configuration of the run** (`config_main.yaml` followed by `metadata.tsv`, the environment contained in the Apptainer image with all tool versions, and resource configuration `workflow/cluster.yaml`) ?????A changer en resources.yaml ??????? 
 
-```yaml
+
+```txt
 [username@clust-slurm-client Methylator]$: cat logs/20230526T1623_configuration.txt 
  
-??????????
+... 
+## aligner
+ALIGNER: BOWTIE2 # "BOWTIE2"
+
+## genome files
+GENOMEPATH: /shared/banks/genomes/homo_sapiens/hg38/fasta/hg38.fa #TestDataset/my_bank/mm39_chr19_mini.fa #path to the reference genome's folder 
+
+## genome
+ASSEMBLY: hg38 # short name of the assembly used for the analysis
+...
+
+==========================================
+
+SAMPLE PLAN
+sample	group
+SRR1104848	CD14
+SRR1104855	CD14
+SRR1067571	CD56
+SRR1067573	CD56
+SRR1104851	CD56d
+SRR1104862	CD56d
+
+==========================================
+
+SINGULARITY IMAGE - yaml file 
+
+name: wgbsflow
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1
+  - _openmp_mutex=4.5
+  - _r-mutex=1.0.1
+  - aioeasywebdav=2.4.0
+  - aiohttp=3.8.3
+  - aiosignal=1.3.1
+  - alsa-lib=1.2.8
+  - amply=0.1.5
+  - appdirs=1.4.4
+  - async-timeout=4.0.2
+  - asynctest=0.13.0
+  ...
+
+
+==========================================
+
+CLUSTER
+
+### The name visible in squeue is 8 characters long. mem unit is Mo.  
+
+__default__:
+  mem: 500
+  name: snakejob
+  cpus: 1
+
+fastqDump:
+  mem: 10000
+  name: fastqDump
+  cpus: 4
+...
 ```
+
 - A log file named `20200925T1057_free_disk.txt` stores the disk usage during the run (every minute, the remaining space is measured). 
 ```
 # quota:1 limit:1.5
@@ -710,10 +971,27 @@ BIGDATAPATH: /shared/projects/YourProjectName/Methylator/Big_Data # for big file
 ```
 [username@clust-slurm-client Methylator]$ tree -L 2 Big_Data/EXAMPLE/
 Big_Data/EXAMPLE/
-
-???
-
-
+.
+├── Annotation
+│   └── Annotatr.RData
+├── hg38.chrom_sizes
+├── mapping_BOWTIE2
+│   ├── bam_byName
+│   ├── bismark_genome
+│   ├── chrom.sizes
+│   ├── Deduplicate
+│   └── Meth_Extractor
+├── Methylator_WGBS
+│   └── Rdata
+└── trimmed
+    ├── SRR1067571_R1_clean_fastqc.html
+    ├── SRR1067571_R1_clean_fastqc.zip
+    ├── SRR1067571_R1_clean.fastq.gz
+    ├── SRR1067571_R1.fastq.gz_trimming_report.txt
+    ├── SRR1067571_R2_clean_fastqc.html
+    ├── SRR1067571_R2_clean_fastqc.zip
+    ├── SRR1067571_R2_clean.fastq.gz
+    ├── SRR1067571_R2.fastq.gz_trimming_report.txt
     ...
 ```
 
@@ -725,8 +1003,30 @@ RESULTPATH: /shared/projects/YourProjectName/Methylator/Results
 
 ```bash
 [username@clust-slurm-client Methylator]$ tree -L 2 Results/EXAMPLE/
-
-???????
+.
+├── logs
+│   ├── 20231120T1447_configuration.txt
+│   ├── 20231120T1447_free_disk.txt
+│   ├── 20231120T1447_mapping.txt
+│   ├── 20231120T1447_running_time.txt
+│   ├── 20231120T1447_trim_report.txt
+│   ├── 20231120T1447_trim.txt
+|   |    ... 
+├── mapping_BOWTIE2
+│   ├── alignmentQC
+│   ├── BigWig
+│   ├── bismark_summary_report.html
+│   ├── bismark_summary_report.txt
+│   ├── mapping_report_SRR11806587_sub500000_chr19.html
+│   ├── mapping_report_SRR11806588_sub500000_chr19.html
+|   |   ... 
+│   └── multiqc
+├── Methylator_WGBS
+│   ├── Annotatr.log
+│   └── CpG_mincov5
+└── trimmed
+    ├── fastqc_trimming
+    └── trimming
 ```
 
 This way you can **get all the results** on your computer by running (from your computer):
@@ -739,11 +1039,24 @@ and the huge files will stay on the server. You can of course download them as w
 
 ## Final report
 
-??? AJUSTER ??? 
-A report named as `20210727T1030_report.html` summarizes your experiment and your results. You'll find links to fastQC results, to mapping quality report, to exploratory analysis of all the samples and finally to pairwise differential expression analyses. Interactive plots are included in the report. They are very helpful to dig into the results. 
+A report named as `20210727T1030_report.html` summarizes your experiment and your results. You'll find links to fastQC results, to mapping quality report, to exploratory analysis of all the samples and finally to pairwise differential expression analyses.
 
-TODO???
 A compressed archive named `20210727T1030_report.tar.bz2` is also generated and contains the report and the targets of the different links, excluding big files to make it small enough to be sent to your collaborators. 
+
+```bash
+[username@clust-slurm-client Methylator]$ tree -L 2 Results/EXAMPLE/20210727T1030_report 
+.
+├── 1KO_DKO_DMR.html
+├── 1KO_DKO.html
+├── bismark_summary_report.html
+├── Exploration_5mC.html
+├── report_mapping_bismark.html
+├── report_quality_control_after_trimming.html
+├── WT_1KO_DMR.html
+├── WT_1KO.html
+├── WT_DKO_DMR.html
+└── WT_DKO.html
+```
 
 <span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip for Windows users</b></span><br> Unlike Linux and Mac, the `tar.bz2` format is not natively supported by Windows, but you can use the free [PeaZip](https://peazip.github.io/) or [7-zip](https://www.7-zip.org/) softwares to decompress the `xxx_report.tar.bz2` archive. 
 {:.ui.success.message}
@@ -867,18 +1180,57 @@ Snapshot of BigWig tracks visualized on [IGV](http://software.broadinstitute.org
 
 Once again **MultiQC** aggregates the results of all the samples and you can have a quick overview by looking at `Results/EXAMPLE/mapping_BOWTIE2/multiqc/report_mapping_bismark.html` or in the final report (ie `????_report.html`). 
 
-## ?????
+# Statisical analysis results 
 
-## Differential methylation results
+All files of the staticticals analysis are in `Results/EXAMPLE/Methylator_DATATYPE/LEVEL_mincovMINCOV/`  
+DATATYPE corresponding to the type of data ( : WGBS, RRBS or NANOPORE).  
+LEVEL corresponding to the level of analysis (per base or tiles).
+And MINCOV corresponding at the minimum of coverage choose for retain CpG.
+So, with the same samples, if you change this parameters to perform a new analysis a new folder is created for don't overwrite laste files. 
 
-Differential methylation results are in `???`.
+## Exploratory methylation analysis results
+
+Exploratory methylation results are in `Results/EXAMPLE/Methylator_DATATYPE/{LEVEL}_mincov{MINCOV}/exploratory/`
+This folder contain :
+- a HTML report file
+- a folder `Exploration_5mC_files/figure-html` with all figures generated by the report in .PNG format.
+
+```
+
+```
+
+## Differential methylation (DMC/DMT) results
+
+Differential methylation results are in `Results/EXAMPLE/Methylator_DATATYPE/{LEVEL}_mincov{MINCOV}/differential/`  
+This folder contain :  
+- a HTML report file for each comparison (indicate in the config file)
+- a bed folder for each comparisons with :
+- - a bed file for all DMC/DMT
+- - a bed file for significants DMC or DMT
+- - a bed file for hyper-methylated significants DMC or DMT
+- - a bed file for hypo-methylated significants DMCor DMT 
+
+**Please note! Each bed is generated for each combination of values in the LIST_DIFF and LIST_QV lists. So if the LIST_DIFF list has 4 threshold values and the LIST_QV list has 4 threshold values, we'll generate 16 x bed files for each condition, i.e. 16x4x3 = 192 bedgraphs !!!** 
 
 ```
 ???
 ```
 
+## Differential methylation (DMR only) results
 
-All those plots are included in the [final report](#final-report). 
+Differential methylation results are in `Results/EXAMPLE/Methylator_DATATYPE/LEVEL_mincovMINCOV/DMR/`  
+This folder contain for each comparaison a folder with : 
+- a HTML report file  (indicate in the config file)
+- a CSV file with all DMRs detected
+- a CSV file with only significant DMRs
+- a CSV file with only significant DMRS associate with genes annotations 
+
+The DMR gene file can be a starting point for Gene Set Enrichment Analysis (GSEA). This feature may later be added directly to the workflow.   
+**Care should be taken, however, as the presence of a DMR in a gene does not necessarily mean that the gene is over- or underexpressed. Additional analyses (e.g. RNAseq) are required.** 
+
+<br>
+
+All this HTML files are included in the [final report](#final-report). 
 
 <br>
 
@@ -1058,6 +1410,20 @@ Sometimes you may reach the quota you have for your project. To check the quota,
 
 In principle it should raise an error, but sometimes it doesn't and it's hard to find out what is the problem. So if a task fails with no error (typically during mapping), try to make more space (or ask for more space on [IFB Community support](https://community.cluster.france-bioinformatique.fr) or [iPOP-UP Community support](https://discourse.rpbs.univ-paris-diderot.fr/c/ipop-up)) before trying again. 
 
+### Paired-end or single-end ?
+
+If you're working with public data, directly download from SRA. Sometimes, sequencing is indicated as pair-end when it is actually single-end and vice versa. In this case, **the FASTQ quality control** step makes it easy to see.
+Open one of the `sample_R1_fastqc.html` files and look at the **Per base sequence content** section.
+If the data are pair-end when they were indicated as single-end, you will get a figure like this: 
+
+Ajouter image !! (j'en ai une au labo dans mon journal de bord)
+
+If the data are single-end when they were indicated as paired-end, you will get a figure like this: 
+
+Ajouter image !! 
+
+## 
+
 
 
 ## Good practice
@@ -1148,6 +1514,18 @@ D192T31_R2.fastq.gz
 D192T32_R1.fastq.gz  
 D192T32_R2.fastq.gz  
 ```
+
+##  Specificity of BSseq data 
+
+Ajouter des infos ici 
+
+### Per base sequence content
+In FASTQ quality control, the "Per base sequence content" section displays an error message. This is linked to the conversion of unmethylated cytosine to thymine. This error should be ignored. 
+
+### Mapping 
+
+### 
+
 
 [![Back to toc][1]][2]
 
