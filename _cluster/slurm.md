@@ -16,8 +16,8 @@ BiBs and iPOP-UP organize trainings to help you to use HPC resources with Slurm.
 
 The slides of the training we gave in November 2022 are [available here]({{site.baseurl}}/documents/Cluster_formation_iPOP_UP.pdf), as well as [exemplary sbatch scripts]({{site.baseurl}}/documents/corrections.zip) as corrections of the exercices.  
 
-The presentation, exercices and corrections of the 2nd session (June 2023) are [available here]({{site.baseurl}}/training/cluster_training_202403/training/#training).  
-The presentation, exercices and corrections of the 3rd session (March 2024) are [available here]({{site.baseurl}}/training/cluster_training_202403/training/#training).  
+The presentation, exercices and corrections of the 2nd session (June 2023) are [available here]({{site.baseurl}}/training/cluster_training_230612/#training).  
+The presentation, exercices and corrections of the 3rd session (March 2024) are [available here]({{site.baseurl}}/training/cluster_training_2403/#training).  
 
 ---
 
