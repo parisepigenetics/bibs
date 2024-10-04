@@ -28,6 +28,11 @@ collections:
     permalink: "/:collection/:path/"
     title: Guidelines
     tab-order: 4
+  training:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Training material
+    tab-order: 5
 
 highlighter: rouge
 kramdown:
