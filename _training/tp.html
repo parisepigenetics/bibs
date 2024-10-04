@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Introduction to Snakemake - Exercises</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style>
+body {
+max-width: 60em;;
+}
+p {
+text-align: left;
+font-size: large;
+}
+a, summary {
+color: purple;
+}
+h1 {
+
+font-size: 2em; font-weight: bold;
+color: rgb(66, 0, 66);
+text-align: left;
+}
+h2 {
+font-size: 1.25em; font-weight: bold;
+color: rgb(94, 0, 94);
+
+text-align: left;
+margin: 0;
+}
+h3 {
+font-size: 1em; font-weight: bold;
+color: rgb(114, 0, 114);
+
+text-align: left;
+margin: 0;
+}
+code {
+background-color: rgb(245, 245, 245);
+
+}
+pre {
+font-size: 1.1em;
+background-color: rgb(245, 245, 245);
+}
+
+details summary:hover {
+cursor:pointer;
+}
+img {
+max-height: 300px !important;
+}
+table td {
+vertical-align: middle;
+}
+figcaption {
+font-size: 0.8em !important;
+font-style: italic !important;
+}
+.subtitle {
+font-style: italic !important;
+font-size: 1.75em;
+text-align: center !important;
+}
+.date {
+font-size: 0.8em !important;
+}
+.title {
+font-size: 2em;
+font-weight: bold;
+text-align: center;
+}
+.sourceCode {
+background-color: rgb(245, 245, 245);
+max-width: max-content;
+}
+.boxed {
+padding: 1%;
+margin: 2%;
+border: solid 1px black;
+}
+.redblock{
+background-color: lightpink;
+padding: 2%;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.yellowblock{
+background-color: rgb(255, 247, 202);
+margin: 1px 0 1px 0;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+border-radius: 20px;
+}
+.redtxt{
+color: red;
+font-weight: bold;
+}
+.columns{
+align-items: center;
+}
+#maxcode{
+max-height: 500px;
+overflow: auto;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Introduction to Snakemake - Exercises</h1>
+</header>
+<hr />
+<h1 id="a.-setup">A. Setup</h1>
+<h2 id="connect-to-the-ifb-cluster">1. connect to the IFB cluster</h2>
+<p><strong>Through ssh:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-X</span> <span class="at">-o</span> ServerAliveInterval=60 <span class="at">-l</span> mylogin core.cluster.france-bioinformatique.fr</span></code></pre></div>
+<p>For more information: <a href="https://ifb-elixirfr.gitlab.io/cluster/doc/logging-in/" class="uri">https://ifb-elixirfr.gitlab.io/cluster/doc/logging-in/</a></p>
+<p><strong>Or through OpenOnDemand:</strong></p>
+<p>For more information: <a href="https://ifb-elixirfr.gitlab.io/cluster/doc/software/openondemand/" class="uri">https://ifb-elixirfr.gitlab.io/cluster/doc/software/openondemand/</a></p>
+<h2 id="prepare-your-working-environment">2. prepare your working
+environment</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /shared/projects/2417_wf4bioinfo/</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$USER</span>/day2-introsmk</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> snakemake-workshop/day2-introsmk/Snakefile <span class="va">$USER</span>/day2-introsmk</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$USER</span>/day2-introsmk</span></code></pre></div>
+<hr />
+<p><br /></p>
+<p><em>The following sections are divided into questions
+(<strong>Q</strong>) and tasks (<strong>T</strong>). Explanations and
+answers can be found in the relative sections by developping the
+dedicated links.</em></p>
+<h1 id="b.-understanding-the-pipeline">B. Understanding the
+pipeline</h1>
+<p>A colleague gave me a Snakemake pipeline, <em>now what?!</em></p>
+<div class="yellowblock">
+<p><strong>Q1: plot the rule graph to visualise the pipeline &amp;
+understand what it does</strong></p>
+</div>
+<p><em>Hints</em>:</p>
+<ul>
+<li>you’ll need to load <code>snakemake</code> and <code>graphviz</code>
+modules before running <code>snakemake</code></li>
+<li>to run Snakemake, make sure you’re in the folder containing the
+<code>Snakefile</code> or use the <code>-s path/to/Snakefile</code>
+option</li>
+</ul>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Make sure you’re in the right folder:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /shared/projects/2417_wf4bioinfo/<span class="va">$USER</span>/day2-introsmk</span></code></pre></div>
+<p>Load the right modules:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load graphviz/2.40.1</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load snakemake/8.9.0</span></code></pre></div>
+<p>Run <code>snakemake</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--rulegraph</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tpng</span> <span class="op">&gt;</span> rule.png</span></code></pre></div>
+</div>
+</details>
+<details>
+<summary>
+Click here for explanations
+</summary>
+<div class="boxed">
+<div class="columns">
+<div class="column">
+<p><a href="images/TP_rule_graph.png"><img role="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGsAAAFbCAYAAADSsnAVAAAABmJLR0QA/wD/AP+gvaeTAAAgAElEQVR4nO2df3QT153oP6OftiTLtmzLlm3AhrTJmgSw4TSmbJMmW4qTesuWZltgCw7Jvm1fssQcH5ae5Oxytn3seS3ZrAMvbTcvvAdJoAmlhDTlNdmGpSVJiyHAS8i+GGcJIbaxbPmHsCVZlvVj3h+SJza2sWWNbI88n3M4ZzyjufcyH83o3jv3fq8giqKIihI4opnpEqhMHlWWglBlKQhdMhOPRPrx+t7D63ufQOBTgqFOwuF+QPk/k4KgR6sxYTAWkW5chMVcjsn0J4CQvDyTUcEIhrrp6j5KX98fiIgBuZOftej1ediyqsjOWoMgyH4fHJFVligO0t1znO6eX42SpNNlYzA40GkzSOa3b7oQxSChUB+BwVYiEf+IYwZDAfl5NVjM5XJmKZ+swGArrdf+mcFgu7TPYCggO/MrZFi+gF5vlyObWUgEv/8/6fX8gd6+t0eIs2Z8kcKC7yEIBjkykkeWr/8DrrU9TTjiA0CrNZNrewBb9hrmUh0mHPbS1f1Leq7/FogAkGYsobhoB3qdLdHkE5fV5/kDbe0/RRTDAFgz7qTA/l/Qai2JFk6xDAxcodX5NMGgCwC9LocF836AXp+bSLKJNYr7/Zdoa/9XSZQtq4oix7Y5LQogLW0hpfP/CVP6nwDRClfLtR8RifQnlO6UZQWDLlrbnkIUgwDk2x8k3/4gqVB5kAOtNoP5xU9gNt0BRH/Trzn/B0OPx6kwRVkibe0/Ixz2ANE7ypZVNeVCpCqCoKe4sA6jcR4AXt//pcf9b1NOb0qy+jx/pN/fCIDJtJh8++YpFyDV0WjSKS7cjkaTBkBX9y8Jh/umlla8J0QiATo6DwEgCFoc9oenksycwqDPJ9f2DQDCER+ursNTSifuq9zbd4pQqAeA7Kz7MBgKp5TxXMOW/TUMBgcAvX2/JxRyx51G3LKu9/4OiD6Pc21fjzvDuYog6MjJjl4vUQzT2/dW3GnEJSsY6mYgcBWADEsFWq017gznMtaML6IRjAB4vOfjPj8uWX7/JYZ6zC3mirgzm+toNEZMpjIA/AOXpWbPpM+P58MDgWZpOy1tUVwZqURJS1sY24oQGLwW17lxyQqHeqVtvS6hrpM5y/DrFhp2PSdDXLKGv/bQaIxxZaQSZai9BRCJDMR37tSznVy3UmVlJfv27Zt6NhPQ3t6OIAh0dXUlLQ95GX7d4utDV1uzCiLlZFVVVSEIAoIgkJ6ezsKFC/nOd77DuXPn4kpnxYoVHDhwIDmFnCIpJwugtrYWURTp7e3l9ddfx+FwsHLlSo4dOzbTRUuIaZflcrnYuHEjdrud/Px8ampq6OnpkY5XV1cjCAIajYbS0lJ27drF8PejTqeT6upqrFYrZWVlHD16dNy8DAYDt956K08++SSbN29m69atUlo3y2f9+vWcP3+eLVu2IAgClZWVkypbspl2Wd/61rfo7e3lvffe49y5c7S0tLBp0ybp+PHjxxFFkWAwyCuvvMLzzz/PSy+9JB3/9re/TVpaGpcvX+bXv/71pB9Vf/VXf8W1a9doamqaMJ+XX36Z5cuXs3//fkRRpKGhYVJlSzbTKuvKlSucOnWKn/zkJxQWFjJv3jz27t3Lb37zG5xO54jParVaysvL2bp1K6+99hoAH3/8MW+//TY//elPsdvtLFq0iB/96EeTynvevOg7pe7u7gnzmYipnCMH0yqrpaUFnU5HSUmJtO+WW26RjgEcOXKEiooKLBYLgiBQW1tLa2srAK2trZjNZuz2z0ZKLVo0uZ6UofRzc3MnzGc8pnKOnEyrrHnz5hEKhWhu/qzb6vLly9Kxjo4ONmzYwM6dO3E6nUQiEerr6wmFQgAUFxfj8/lwuVzS+VeuXJlU3ocOHaK4uJjPf/7zE+YDoNGMvDSTOSfZTKushQsXctddd/Hoo4/idDppaWnhscce47777sPhcOD3+4lEImRmZmIwGGhoaKC+vl46f9GiRaxatYq//du/pbOzkytXrvD444+Pm18wGKSpqYkdO3bwwgsvsHfvXgRBmDAfAIfDwcWLFyUZkzkn2Ux7BePw4cNYLBaWLFnC8uXLKSoq4oUXXgCgpKSE3bt3s2HDBqxWK3V1daxbt27U+V6vl0WLFlFdXc3mzaOHFOzZswdBEMjIyKCqqoq2tjZOnz7NN77xjUnns2PHDl5//XXS09OprKyc1DnJJq5xg9ece+jznAbgTz7/ctIKlcr0eRq45nwagCLHNqwZlZM9VZ1MpyRUWQpClaUg4pT12ceHhkyrxMtnI3IFQRvXmXHJ0mpMn2WZ4LjtuUo47JW2NZr0uM6NS5ZenyNtxzt+QCXK4GCbtK3X58V1blyyjMZSadvvb4orI5Uo/QMfAdG7yhDnBMO4ZJnSb0MQ9AB4vO/GlZEKBIOdDAx8AhCbXRLfjJu4ZGk0RizmZUB03NvAwOT65VSiuHvfZGjchTXjzrjPj7vqnp31VWm7o+tg3BnOVYLBLtyx6T46bSYZli/EnUbcssymOzCblwLQ3/8hfZ6GuDOdi7i6XpSG8uXm/qX0cxIPU2oU5+dtktoIHZ0HCIZ6JjhjbtPn+QN9njNAdEJ4dua9U0pnSrKMhmKys9YAEApdp/Xa7rgHLM4V/AP/SVv7v8b+0sSm8k6t42jK3U323I3SIPuBwFWuOetVYTcwEPiU1mv//Nm867zvYEq/bcrpTVmWIOgodtRJE8S8vve52rKTYEgpI2OTi9f3Pp+2/COhcHQ8e1bmPdiy708ozYTjYAwGO2i59t8ZHIxGltHpssjPezCe9zQpRSQyQFfPK3T3HGeoHzDT+qc48v9r3H2BNyBPhJlw2Eur81/o7/9Q2mcylZGf+51hU1xSG1EM0+f5A66ul4ZNQRXIy/lLcnO+gQwhJ+SL3SSKIVxdP8d9/d9G9Minpy0iw/IF0tNvxWgojAU0Uf6bGVEMEgr3Egg04/NdpM/bQCh0XTqu02VRYN9ChiX+xu84yBsVDaIdlR2dL+D1vSdnsopBELRkZ64mL/fbcfeqT4D8sobw9X+A+/pv8frei3s6ZiIMBooB0Gj96HTdE3xaPnS6LDIz/pTsrK8mKwJc8mQNEYkE6PdfIhC4SjDYSTjSTyIhcSbi8kfRGH+WDDcFjqtJyycaydOMwVBEetoi0tJKSXIopOTLmm5OnToFQF5eHmVlZTNcGllRRzcpCVWWglBlKQhVloJQZSkIVZaCUGUpCFWWglBlKQhVloJQZSkIVZaCUGUpCFWWglBlKQhVloJQZSkIVZaCUGUpCFWWglBlKQhVloJQZSkIVZaCUGUpCFWWglBlKQhVloJQZSkIVZaC0M10AaZKKBQatcrCcPx+vxR4fwiDwUB+fn6yi5Y0FCtLp9PR1tbGwMDYsTe8Xi9er3fEvqElLpSKoh+Dw5e5SMbnZxtzRpbJZMJisSSxNMlH0bLMZjNms3lSn1X6XQUKlwWTl6DKmgVMpnZntVpJT5c1JsWMoHhZRqMRq9V608+kwl0FKSALJpaRlxdfSO7ZSsrIEoSxA4ZkZ2djMBimuUTJISVk6fV6srOzxzyWKo9ASBFZMLYUjUYjrfGYCqSMrNzc3FHrNNpsNnQ6xfaojSJlZGm1WnJyckbsS6VHIMjQkdseDHLe66XR76c5EMATDuOPJC/q2c1YGAyyJrY9KAjU9fQQdLtvek4yEACTVkueTkeJ0cgSs5llZjMmTWL3xpRlfdDfz7GeHhr7+5ktYdU+TUtjUKPBEIlwNS2N4Dg1xGQjAr5wGF84zNVAgN/39WEUBFZZrXwzJ4ecKT6a4w5h5woGebGzk3dveP2gFQQcej05ej3pCX6DEmFBRwe23l4+Liqib5L9hnIjAp5wGOfgIO4b1jE2CgJrbTaqbTYM8X2Z4os3eLK3l/0uF8HYKQKwxGzmHquVpWbzjEoawu1209jYyMqVK8dte00nrmCQs14vJ3p7aR8clPYX6PVsLyqiePJtwMnJEoGj3d38cti69KVGIw/a7dw6y/rcRFGkubmZBQsWzHRRRiACb/f1cbCzk75wNOBzukbDVoeDisk9ASaWJQJ7nE4aPB4g+riryctjdVZWcoOMJoAoirPirhoLbzjMcy4XZ4Zdz0cKCliVkTHRqRNH8jzU2SmJMmu1PFFUxFdnsShg1ooCsGi1bHM4eCAnBwEIiyI/bW/n//VPvIbmTWWd7O3leKzqa9Fq+cG8eSw2mW52isokEIAHcnKoibUDw6LI004nruDNo3SPK8sVDLLf5QKit+o2hyOeH0OVSVCVlUVVVhYQrT0+095+02bQuLJe7OyUan01eXncrt5RSWGz3S49rT7y+/lj7CdnLMaU9UF/v9SOWpSWxuqYfRX50QAP2+1oY7+zhzo7CYzTAzSmrGOxKroAbMrLm9WViVSg0GCQHoc9oRBv9fWN+blRstoHB2n0+wFYajZz2yxrR6Uqa2029LG762Rv75ifGSXrvM8n/ch9eYKxDSryYdVqqYiNa7waCNB9QzcVjCFr6K7SCgJLZ6hvba4y1JMhApdiHoYzSlZLILo8q2OGO2TnIguNRml7yMNwRtm4Huu3ytPHv46uSmLkDrvmveHwqOOjZA3Gqo1G9a6adtKGXfOBMarvo4wMVS7iqa4Hg0FqamrIyMjg9ttvj7eMKjEmuuay3D6/+tWvePfdd2ltbeU//uM/Ek6vsrKSffv2yVCy1EIWWe+99x533nknmZmZciRHQ0MDf/3Xfy1LWgBVVVUIgjDiX1VVVUJprlixggMHDshTwEkii6ze3l6Mw2oys5Ha2lpEUZT+vfHGGzNdpLhJWFZ1dTXPPPMMzz77LIIg8Pd///cAFBcXc+LECelzra2tCILA9evR5WH37t1LaWkpZrOZL33pS1y4cEH67I2PQZfLxcaNG7Hb7eTn51NTU0NPT490fNmyZfzDP/wD9957L1arlVtvvZXf/va3kyq7IAhoNBpKS0vZtWsXw9/FjlfG9evXc/78ebZs2YIgCFRWVk4qvYQRb+DbTU3it5uaxKfb2m48NC6PPvqo+N3vfnfEvqKiIvHNN9+U/m5paREB0e12i01NTaJerxffeecd0e/3i6dPnxa3b98uffbOO+8Un3vuOenvu+++W7z//vvFa9euic3NzeI999wj3n///dLxpUuXivPnzxfPnDkj+nw+cdeuXaLdbhcjkYgoiqK4Zs0asba2dtzyh0Ih8cKFC+Itt9wiHjp0SBRFccIyLl++XNy/f/+k05ssN7n+v5iR+rler8dgMGC1WklLS6OyspInn3xyzM9euXKFU6dO8ZOf/ITCwkLmzZvH3r17+c1vfjNitn5tbS1f+MIXMJlMPPLII7hcLtra2qTje/bsGfGb9eqrr0rHtFot5eXlbN26lddeey3uMt7IWOnJwYzIKi0t5aWXXuLv/u7vWLFiBQ899BDvv//+mJ9taWlBp9NRUlIi7bvlllukY0MMH307NHHOP6zL5sbfrL/4i7/gyJEjVFRUYLFYEASB2tpaWltb4y7jEDdLTw6SJis9PX3ExXLF3joP8ed//ue88cYbnD17lnvvvZe77rqL/jHGIcybN49QKERzc7O07/Lly9KxqdLR0cGGDRvYuXMnTqeTSCRCfX09oWEdqDcr443j6ieTXqIkTdayZcvYv38/169f59NPP+X73/++dOzNN9/kiSee4PLlywSDQcLhMH6/n8gYrfaFCxdy11138eijj+J0OmlpaeGxxx7jvvvuw+FwTLl8Q/llZmZiMBhoaGigvr5+0mV0OBxcvHhRkjFRenKQNFk//vGP6erqoqioiOrqatatWycdu/vuu8nKyuK+++4jOzub+vp6fvGLX4wb+uDw4cNYLBaWLFnC8uXLKSoq4oUXXkiofCUlJezevZsNGzZgtVqpq6uLq4w7duzg9ddfJz09ncrKygnTk4NR4wbXf/QRACszMqhN4JurMjVucv3VFcCVhCpLQaiyFMQoWUNDosJydpOoTIrh13ysu2jUvqFX+b4Zmr04lxl+zceaJTlqT25sVl7bsLlEKtPD8GueO8awilGySmKvOtyh0IQD5VXkpWlYj0/JGK+cRsm6Y9jws7M3TEVVSS5D11svCGMOrh0lq9xsxhirZJzo7UX95ZoergwM8HEshGy52TzmgKVRe0waDatiI3HbBwc5EXtZqJJcDnZ1SdvjTQQZs531QE6OZPZwdzeeMcawqcjHaY+HD2O9+YtNJu4YZ3rVmLJsOh1rY4GrfOEw+1yuWRPrItXoCYV4vrMTiLZxt9wkKs64PRjVNhsFserjGY+Hw8NuUxV5GIhE2H3tGtdjr1nWZGXddHbpuLIMgsD2oiKpcfZqTw9vqL9fsjEQiVDvdHI1Nqa9zGRi4wQR3G7aN1hsMLCtsFDqgjrgcvFcR4faFZUg7lCIH7a28r7PB4Bdr2ebw4FugigDkwpa8k5fH892dEhzjBebTDxst1OoTgiPmwaPhwOdndKjr8Bg4PGiIvInnggy+XBAl/x+nmprk2qGWkGgKiuLtTYbVq02kfLPCa4MDHCwq0uq9UH00VfncGCZ3PWLL3ZTRzDIz9rbR0z00gsCFWYzFRYLpUYjeeq8LiJEI8m0DQ7S5Pdz1uuVGrwQ/aKvycpiY27uhI++YcQna4jzPh/7XS661L7DuFlsMlGTl8f8+IebT00WQCAS4a2+Pk729vLJGLP0ZoriWFn8Wi3dsyTkql4QKDebWZ2VNW6DdxJMXdZwukMhLsUiefbNYCRPgPLYgBN3RgZXZ2jAj4Zot12eXk+J0chtJpPU35oA8siaTZw6dQqIBt4vKyub4dLIijq6SUmoshSEKktBqLIUhCpLQaiyFIQqS0GoshSEKktBqLIUhCpLQaiyFIQqS0GoshSEKktBqLIUhCpLQaiyFIQqS0GoshSEKktBqLIUhCpLQaiyFIQqS0GoshSEKktBqLIUhCpLQaiyFMTsmG02BUKh0IgVE27E7/ePCNIPYDAYyM/PT3bRkoZiZel0Otra2hgYNld3OF6vF+8NUd0SCdo/G1D0Y9B+k9A5cnx+tjFnZJlMpnGD/CsFRcsym82YJ7mWstLvKlC4LJi8BFXWLGAytTur1Sot06RkFC/LaDRijUUeHY9UuKsgBWTBxDLy8vKmqSTJJWVkCeMEBcnOzsaQItHbUkKWXq8nOxYm9kZS5REIKSILxpai0WjInSA6ppJIGVm5ubmj1mG02WzoZkmwLTlIGVlarZacnJwR+1LpEQgz0JEbbG/He/48/sZGAs3NhD0eIsOCTSaU9sKFsGYNAMLgID11dbjliIkoCGhNJnR5eRhLSjAvWYJ52TI0Uw9HNyWmTVb/Bx/Qc+wY/Y2NkKRAbGmffopmcJCIwUDa1asIcgWvFEXCPh9hn4/A1av0/f73CEYj1lWryPnmN9HdcEcni6SHsAu6XHS++CLed98dmbFWi97hQJ+Tg0bG3oWOBQvotdko+vhjzH198iQqioQ9HgadTkJu94hDgtGIbe1abNXVCMltIiQ33mDvyZO49u9HHPqGCwLmJUuw3nMP5qVLZZU0hNvtprGxkZUrV47b9kqEoMuF9+xZek+cYLC9XdqvLyigaPt2DMXFsucZI0myRJHuo0fp/uUvpV3G0lLsDz5I+q23yp7dyKxFmpubWbBgQVLzQRTpe/ttOg8eJBy7gzXp6Ti2bsVcUZGMHJMgSxRx7tmDp6EBiD7u8mpqyFq9GpLwTR+7CGJS7qqxCHu9uJ57Ds+ZM0D0/1vwyCNkrFold1byy+o8eBD38eMAaM1mHHV1mBYvljOL2cfQk+ToURBFBK2WoieekPv/LW/Y1d6TJz8TZbEw7wc/SH1RAIJAzgMPYK+pAUAMh3E+/TRBl0vWbGSTFXS5cO3fD0QfBY5t25L5YzsryaqqIquqCoCwx0P7M8/I2kyRTVbniy9Ktb68mhpMt98uV9KKwr55s/Q08X/0EZ4//lG2tGWR1f/BB1I7Km3RomhlYq6i0WB/+GGE2PoinYcOEZFpkQJZZHUfOxbdEATyNm2atlrfbMVQWCg9DkM9PfS99ZYs6SYsa7C9HX9jIwDmpUtJv+22hAuVCtjWrkWILbPUe/KkLGkmLMt3/rz0I2r98pcTTS5l0FqtWGKN48DVq4S6uxNOM2FZQ3eVoNViXro04QKlElJPhijiv3Qp4fQSlhWIDf7XOxxJ6etTMsaFC6XtwA2TJKZCwrLCsUU79SkygkhO9MOGFIR7exNOL2FZkcHBaELxL96V8mjS0qTtyDizXeJKL+EUhlros7i6HgqFeOihh8jIyOD2WGP96NGjzJ8/H0EQOHfuXHIylvmapM5okptw/PhxGhoaaG1tJTMzk2AwyPe+9z1+/vOfs1pBDfiUGTBzMy5cuMCdd95JZmYmAC0tLfT09PCVr3xF+syKFSs4cODADJVwcswJWW63G+Ow31S3241er5+2d15yMetkLVu2jLq6Or70pS9hsVgoKyvjzJkzPPXUUxQXF5OZmcnf/M3fEBm2rmR1dTWCIKDRaCgtLWXXrl0Mvaarrq7mmWee4dlnn0UQBARBYMWKFQQCAQRBoLi4mPXr13P+/Hm2bNmCIAhUVlbO1H//psw6WQDHjh3j6aefpr29ncrKSlavXk1TUxMXL17k3Llz/PrXv+bo0aPS548fP44oigSDQV555RWef/55XnrpJenYo48+yne/+11EUUQURd59912MRiOiKNLa2srLL7/M8uXL2b9/P6Io0hB7yz3bmJWyHnvsMZYvX47FYmHz5s14vV7q6+ux2Wx87nOf48/+7M+4cOHCqPO0Wi3l5eVs3bqV1157bQZKnlxmpazhU3TS0tIwmUwjpqOmpaXhHzYw9MiRI1RUVGCxWBAEgdraWlpbW6e1zNPBrJQVDx0dHWzYsIGdO3fidDqJRCLU19cTCoXiSufGcfKzkdlfwgnw+/1EIhEyMzMxGAw0NDRQX18fdzoOh4OLFy/GLXk6UbyskpISdu/ezYYNG7BardTV1bFu3bq409mxYwevv/466enps7Y2mPBQtI/WrwcgY+VKHLW1shQqlZDx+qgrgCsJVZaCUGUpiIRlDQ25EsPhhAuTaoy4JjI0DRJOYehVfsTnS7gwqcbwayLHLMmEZelir64H29oSLkyqMfya6GWIGpCwLGNJCQAht1v2gfhKx9/UJG0PXadESFiW+Y47pG3v2bOJJpdSDF0PQa+XZfBr4rLKyxFiL/Z6T5yAYe+Z5jIDV64w8PHHQPQayTGgKPEKhsmENTbLb7C9nesnTiRcqFSg6+BBaVuuiRqytLNyHnhA+uZ0Hz5M2OORI1nF4jl9mv4PPwTAtHgxpmE/FYkgiyydzUb22rUAhH0+XPv2JS3WxWwn1NND5/PPA9E2qH3LFtnSlq0Hw1Zdjb6gAADPmTN0HT4sV9KKITIwwLXduwnFRilnrVkj6+xP2WQJBgNF27dLjb+eV1/l+htvyJX8rCcyMICzvp7A1asAmMrKyN24UdY8ZO0bNBQXU7htm9QF5TpwgI7nnkv5rqiQ203rD3+I7/33AdDb7Ti2bUOQOSJbUoKW9L3zDh3PPivNMTYtXoz94YcxFBbKndWM42looPPAAenRZygooOjxx9HLv4xG8sIB+S9dou2pp6SaoaDVklVVhW3tWrQTBCBWAgNXrtB18KBU64Poo89RV4c2OcH+kxu7KdjRQfvPfjZiIpmg12OuqMBSUYGxtBR9Xt7sn9cViRD2ehlsa8Pf1IT37FmpwQuxL+KaNeRu3Cj7o28YyZU1hO/8eVz79xPs6kp2VtOOafFi8mpqMM6fn+yspkcWQCQQoO+tt+g9eZLAJ58kLZ9ArKqs9fvRyTCPdywEvR5zeTlZq1fL1uCdBNMnazih7m78ly5FI3n29ckWyRPgo/JyADLcbhyxanTCaDRoTCb0sUiepttuk/pDp5GZkZVMTp06BURH9ZaVlc1waWRFHd2kJFRZCkKVpSBUWQpClaUgVFkKQpWlIFRZCkKVpSBUWQpClaUgVFkKQpWlIFRZCkKVpSBUWQpClaUgVFkKQpWlIFRZCkKVpSBUWQpClaUgVFkKQpWlIFRZCkKVpSBUWQpClaUgVFkKQrFLMoVCIZxO57jH/X4/LTcs3WcwGMiXf2L2tKFYWTqdjra2NgbGWfHN6/Xi9XpH7Js3b950FC1pKPoxaLfbk/r52cackWUymbAkJ+TBtKFoWWazecSCMjdD6XcVKFwWTF6CKmsWMJnandVqJX22B0aZBIqXZTQasU4QXigV7ipIAVkwsYy8FFmdPGVkjbcyanZ2NgaDYZpLlBxSQpZeryc7O3vMY6nyCIQUkQVjS9FoNOTKsFLBbCFlZOXm5o5at9Fms6FLXki5aSdlZGm1WnJyckbsS6VHIMxAR25HsJ3z3vM0+htpDjTjCXsYiMgTFa00uJCvsgaAoDDI9p46gu5gwukKCJi0JvJ0eSwwlrDEvISl5mWYNImv3BMP0ybrg/4P+FXPMRr7GxFJTiC25rRPGdQMYogY+CTtKkEhcVEAIiK+sA9f2MfVwFVO9f0eo2Dki9ZVrMv5Jjm6nIkTkYGkh7BzBV0c7HyRc953R+zXCloK9A5y9TmkaeTrXZjfsQBbr42Piz7GY+6TKVURT9iDc9CJO+QeccQoGPm6bS1fs1VjEJLaREhuvMHf9Z7kgGs/QTH6DRcQWGJewpet97DEvJR0GSUN4Xa7aWxsZOXKleO2vRLBFXTxrvcs/957gvbBdml/vr6A7UXbKTLIF3T/BpIjS0Tkle6jHO3+pbSv1FhKjf1BPp9+q9zZjcxbFGlubmbBggXJzQeRd/re5lDnQfrC0Ts4TZPOVsdWys0VychSflkiInudezjjaQCij7tNeTWszlqNgPzf9DHLIIpJuavGwhv28r9cz3HGcwaI/n+/V/AIqzJWydY7AAsAAAU3SURBVJ2V/LIOdR7k/7iPA2DWmtnmqGOxabGcWcw6hp4kr3QfRUREK2h5vOgJyuT9f8sbdvV3vSclURathX+c94OUFwXR3+Jv5jzAJnsNAGExzB7n07iC8i6rKJssV9DFAdd+IPooeMyxLZk/trOSqqwq1mRVAeAJe/hp+zOyNlNkk3Ww80Wp1rcpr4bbTbfLlbSi2GTfLD3+PvJ/xGnPH2VLWxZZH/R/ILWjFqYtYnWWPMvmKRENGh6yP4xWiK509PPOQwQiAZnSloFXu48B0Wf3prxN01brm60UGgqlx2FPqIe3+96SJd2EZbUPtnPJ3wjAUvNSbk1PfInXVODrtrXoBT0QrXjJQcKyLvjOSz+id1u/nGhyKYNVa6XCEm0cXw1cpTuU+LooCctqjN1VWkHLEvPShAuUSgz1ZIiIXPJfmuDTE5OwrNZAdPB/gd6RlL4+JVNqXChtD12nREhY1vVwdPm8PH1qjCCSkzz9Z0MKesO9CaeXsKzByCAARs20L1E06zFq0qTtQGTs2S7xkLCsocrFbKuuV1ZWsm/fvnH/ng6GXxM5+jFSZgzGXECVpSBUWQpCsbKqq6sRBAGNRkNpaSm7du0ixVZEHIViR0AePx59bxYOh7l48SLf+ta3WLhwIRtlXs9+NqHYO2sIrVZLeXk5W7du5bXXXpvp4iQVxco6cuQIFRUVWCwWBEGgtraW1tbWmS5WUlGkrI6ODjZs2MDOnTtxOp1EIhHq6+sJhUIzXbSkokhZfr+fSCRCZmYmBoOBhoYG6uvrZ7pYSUeRFYySkhJ2797Nhg0bcLvdVFRUsG7dOk6fPj3TRUsqipQFsH37drZv3z7u8YaGhpv+rUQU+Ricq6iyFIQqS0EkLGtoyFVYDCdcmFRj+DXRyHBfJJzC0Kv8/ogv4cKkGr5h10SOWZIJy8rRRV9dtw22JVyYVGP4NcnVJx41IGFZJcYSANwht+wD8ZXOR/4maXtB7DolQsKy7jDfIW2f9Z5NNLmUYuh66AU9t8kw+DVhWcvM5RiF6GCZk70niBBJuFCpwCcDV7gy8DEQu0YyDChKWJZJY+KL1ugsv/bBdv79+omEC5UKHOo6KG1/RaaJGrK0s76Z84D0zflF92E8YY8cySqWBs9pPuz/EIDFpsXcYbpjgjMmhyyybDobX89eC4Av7ON/u/YlLdbFbKcn1MMLnc8D0TZojX2LbGnL1oPxNVs1+foCAM54zvCLrsNyJa0YBiIDPHltN9dD0VHKa7LWUCzj7E/ZZBkEA9uLtkuNv1/1vMob19+QK/lZz0BkgD3Oej4NXAWgzFTG+lx5x4PI2jdYZCjmscJtUhfUC64D7Ot4LuW7otwhN/+t9Ye873sfALvezmOObegEed9AJSVoyR/63uF/djwrzTEuMy3mIfvDFBoK5c5qxjnjaeD5zgPSo6/AUMD3ix4nXy/7MhrJCwfU5L/Ev7Q9JdUMtYKWNVlVfN22Fqv25gGIlcCVgSv8vOugVOuD6KNvm6MOizYpwf6TG7upI9jBv7b/jKZhE8n0gp5ycwUVlgpKjaXk6vNm/byuCBG8YS/OwTaa/E2c9Z6VGrww9EVcw/rcjbI/+oaRXFlDXPCd54BrP13BrmRnNe2UmRZTk1fDPOP8ZGc1PbIAApEAb/e9xe96T/JJ4JPpyDJp6AU9y8zlfCVrtWwN3kkwfbKG0x3q5pL/Ei2BZvrCffhliuSZLDRoMGlM5OmjkTxvM90m9YdOIzMjS2VKyBtoSyW5qLIUhA44MtOFUJkUDf8fhjzE4P0/TRcAAAAASUVORK5CYII=" width="150" /></a></p>
+</div><div class="column">
+<p>We can see from the rule graph, that there are 4 rules:</p>
+<ul>
+<li><code>loadData</code></li>
+<li><code>fusionFasta</code></li>
+<li><code>mafft</code></li>
+<li><code>all</code></li>
+</ul>
+<p>Given the linear look of the graph, all rules seem to be applied
+sequentially (i.e. the output of the first is the input of the next, and
+so on)</p>
+</div>
+</div>
+</div>
+</details>
+<div class="yellowblock">
+<p><strong>Q2: find in snakemake options how to list rules and possible
+target rules</strong></p>
+</div>
+<p><em>Hints</em>:</p>
+<ul>
+<li><code>snakemake --help</code> to get the help, you can combine it
+with <code>grep</code> for example</li>
+</ul>
+<details>
+<summary>
+Click to see the answer
+</summary>
+<div class="boxed">
+<p>The options are <code>--list-rules</code> and
+<code>--list-target-rules</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--list-rules</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--list-target-rules</span></span></code></pre></div>
+</div>
+</details>
+<details>
+<summary>
+Click here for explanations
+</summary>
+<div class="boxed">
+<p>Rule list:</p>
+<pre class="text"><code>all
+fusionFasta
+loadData
+mafft</code></pre>
+<p>The list of all rules outputted by the command line corresponds to
+the ones we see in the rule graph.</p>
+<p>Target rule list:</p>
+<pre class="text"><code>all</code></pre>
+<p>There seems to be only one official target rule in the Snakefile:
+<code>all</code></p>
+</div>
+</details>
+<div class="yellowblock">
+<p><strong>T3: let’s have a look at the Snakefile</strong></p>
+</div>
+<p>Open up the Snakefile with your favorite editor
+(e.g. <code>vi</code>, <code>nano</code>, <code>emacs</code>, …) or
+viewer (e.g. <code>less</code>, <code>more</code>, <code>cat</code>, …).
+Look at the rules in the same order as in the rule graph &amp; try to
+understand what they do (pay specific attention to the
+<code>shell</code> directives).</p>
+<p>Explanation:</p>
+<ul>
+<li><code>loadData</code>: runs <code>wget</code> to fetch fasta
+sequences from the UniProt website</li>
+<li><code>fusionFasta</code>: runs <code>cat</code> to concatenate 2
+fasta files</li>
+<li><code>mafft</code>: runs <code>mafft</code> to align the 2 sequences
+within the fused output of <code>fusionFasta</code></li>
+<li><code>all</code>: specifies the final output. It’s the target rule
+because it’s the first rule in the Snakefile.</li>
+</ul>
+<p><em>In a nutshell:</em></p>
+<p>This pipeline doesn’t need any input files, it downloads sequences
+given their UniProt identifier directly from the web, then fuses them
+into a single file to align them with <code>mafft</code></p>
+<p><em>Side note: Python within Snakemake</em></p>
+<p>If you’re familiar with Python, you’ll have recognised plenty of
+Python-like bits in this Snakefile. Although you don’t have to know
+Python to understand Snakemake, it’s still a good thing to keep it in
+mind while you’re using it. If you have a look at more advanced code,
+you’ll see that you can transfer quite a bit of your Python skills into
+Snakemake (you can import packages for example, or create functions).
+Also, keep in mind that, as for Python, Snakemake is sensitive to
+indents in the code.</p>
+<div class="yellowblock">
+<p><strong>Q4: dry-run the code</strong></p>
+</div>
+<p>Dry-running the code is a good way on doing a final check to make
+sure everything will work once you run the pipeline on the slave nodes
+of the cluster.</p>
+<p><em>NB: Dry-runs don’t actually use any major resources so running it
+directly from the cluster’s master node is ok.</em></p>
+<p><em>Hints</em>:</p>
+<ul>
+<li>you’ll need to load the <code>snakemake</code> module before running
+<code>snakemake</code> (if not already done)</li>
+<li>to run Snakemake, make sure you’re in the folder containing the
+<code>Snakefile</code> or use the <code>-s path/to/Snakefile</code>
+option</li>
+<li>to get help on the options: <code>snakemake --help</code></li>
+</ul>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Make sure you’re in the right folder:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /shared/projects/2417_wf4bioinfo/<span class="va">$USER</span>/day2-introsmk</span></code></pre></div>
+<p>Load the right modules:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load snakemake/8.9.0</span></code></pre></div>
+<p>Run <code>snakemake</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--dry-run</span></span></code></pre></div>
+</div>
+</details>
+<details>
+<summary>
+Click here for explanations
+</summary>
+<div class="boxed">
+<p>You should get an output on your screen similar to the following:</p>
+<div class="sourceCode" id="maxcode" data-startFrom="1"><pre class="sourceCode numberSource text numberLines"><code class="sourceCode"><span id="maxcode-1"><a href="#maxcode-1"></a>Building DAG of jobs...</span>
+<span id="maxcode-2"><a href="#maxcode-2"></a>Job stats:</span>
+<span id="maxcode-3"><a href="#maxcode-3"></a>job            count</span>
+<span id="maxcode-4"><a href="#maxcode-4"></a>-----------  -------</span>
+<span id="maxcode-5"><a href="#maxcode-5"></a>all                1</span>
+<span id="maxcode-6"><a href="#maxcode-6"></a>fusionFasta        1</span>
+<span id="maxcode-7"><a href="#maxcode-7"></a>loadData           2</span>
+<span id="maxcode-8"><a href="#maxcode-8"></a>mafft              1</span>
+<span id="maxcode-9"><a href="#maxcode-9"></a>total              5</span>
+<span id="maxcode-10"><a href="#maxcode-10"></a></span>
+<span id="maxcode-11"><a href="#maxcode-11"></a>Execute 2 jobs...</span>
+<span id="maxcode-12"><a href="#maxcode-12"></a></span>
+<span id="maxcode-13"><a href="#maxcode-13"></a>[Mon Aug 19 08:32:28 2024]</span>
+<span id="maxcode-14"><a href="#maxcode-14"></a>localrule loadData:</span>
+<span id="maxcode-15"><a href="#maxcode-15"></a>    output: results/data/P01308.fasta</span>
+<span id="maxcode-16"><a href="#maxcode-16"></a>    jobid: 4</span>
+<span id="maxcode-17"><a href="#maxcode-17"></a>    reason: Missing output files: results/data/P01308.fasta</span>
+<span id="maxcode-18"><a href="#maxcode-18"></a>    wildcards: sample=P01308</span>
+<span id="maxcode-19"><a href="#maxcode-19"></a>    resources: tmpdir=&lt;TBD&gt;</span>
+<span id="maxcode-20"><a href="#maxcode-20"></a></span>
+<span id="maxcode-21"><a href="#maxcode-21"></a></span>
+<span id="maxcode-22"><a href="#maxcode-22"></a>[Mon Aug 19 08:32:28 2024]</span>
+<span id="maxcode-23"><a href="#maxcode-23"></a>localrule loadData:</span>
+<span id="maxcode-24"><a href="#maxcode-24"></a>    output: results/data/P10415.fasta</span>
+<span id="maxcode-25"><a href="#maxcode-25"></a>    jobid: 3</span>
+<span id="maxcode-26"><a href="#maxcode-26"></a>    reason: Missing output files: results/data/P10415.fasta</span>
+<span id="maxcode-27"><a href="#maxcode-27"></a>    wildcards: sample=P10415</span>
+<span id="maxcode-28"><a href="#maxcode-28"></a>    resources: tmpdir=&lt;TBD&gt;</span>
+<span id="maxcode-29"><a href="#maxcode-29"></a></span>
+<span id="maxcode-30"><a href="#maxcode-30"></a>Execute 1 jobs...</span>
+<span id="maxcode-31"><a href="#maxcode-31"></a></span>
+<span id="maxcode-32"><a href="#maxcode-32"></a>[Mon Aug 19 08:32:28 2024]</span>
+<span id="maxcode-33"><a href="#maxcode-33"></a>localrule fusionFasta:</span>
+<span id="maxcode-34"><a href="#maxcode-34"></a>    input: results/data/P10415.fasta, results/data/P01308.fasta</span>
+<span id="maxcode-35"><a href="#maxcode-35"></a>    output: results/alignment/P10415_P01308.fasta</span>
+<span id="maxcode-36"><a href="#maxcode-36"></a>    jobid: 2</span>
+<span id="maxcode-37"><a href="#maxcode-37"></a>    reason: Missing output files: results/alignment/P10415_P01308.fasta; Input files updated by another job: results/data/P10415.fasta, results/data/P01308.fasta</span>
+<span id="maxcode-38"><a href="#maxcode-38"></a>    wildcards: uniprotid1=P10415, uniprotid2=P01308</span>
+<span id="maxcode-39"><a href="#maxcode-39"></a>    resources: tmpdir=&lt;TBD&gt;</span>
+<span id="maxcode-40"><a href="#maxcode-40"></a></span>
+<span id="maxcode-41"><a href="#maxcode-41"></a>Execute 1 jobs...</span>
+<span id="maxcode-42"><a href="#maxcode-42"></a></span>
+<span id="maxcode-43"><a href="#maxcode-43"></a>[Mon Aug 19 08:32:28 2024]</span>
+<span id="maxcode-44"><a href="#maxcode-44"></a>localrule mafft:</span>
+<span id="maxcode-45"><a href="#maxcode-45"></a>    input: results/alignment/P10415_P01308.fasta</span>
+<span id="maxcode-46"><a href="#maxcode-46"></a>    output: results/alignment/P10415_P01308_aligned.fasta</span>
+<span id="maxcode-47"><a href="#maxcode-47"></a>    jobid: 1</span>
+<span id="maxcode-48"><a href="#maxcode-48"></a>    reason: Missing output files: results/alignment/P10415_P01308_aligned.fasta; Input files updated by another job: results/alignment/P10415_P01308.fasta</span>
+<span id="maxcode-49"><a href="#maxcode-49"></a>    wildcards: prefix=P10415_P01308</span>
+<span id="maxcode-50"><a href="#maxcode-50"></a>    resources: tmpdir=&lt;TBD&gt;</span>
+<span id="maxcode-51"><a href="#maxcode-51"></a></span>
+<span id="maxcode-52"><a href="#maxcode-52"></a>Execute 1 jobs...</span>
+<span id="maxcode-53"><a href="#maxcode-53"></a></span>
+<span id="maxcode-54"><a href="#maxcode-54"></a>[Mon Aug 19 08:32:28 2024]</span>
+<span id="maxcode-55"><a href="#maxcode-55"></a>localrule all:</span>
+<span id="maxcode-56"><a href="#maxcode-56"></a>    input: results/alignment/P10415_P01308_aligned.fasta</span>
+<span id="maxcode-57"><a href="#maxcode-57"></a>    jobid: 0</span>
+<span id="maxcode-58"><a href="#maxcode-58"></a>    reason: Input files updated by another job: results/alignment/P10415_P01308_aligned.fasta</span>
+<span id="maxcode-59"><a href="#maxcode-59"></a>    resources: tmpdir=&lt;TBD&gt;</span>
+<span id="maxcode-60"><a href="#maxcode-60"></a></span>
+<span id="maxcode-61"><a href="#maxcode-61"></a>Job stats:</span>
+<span id="maxcode-62"><a href="#maxcode-62"></a>job            count</span>
+<span id="maxcode-63"><a href="#maxcode-63"></a>-----------  -------</span>
+<span id="maxcode-64"><a href="#maxcode-64"></a>all                1</span>
+<span id="maxcode-65"><a href="#maxcode-65"></a>fusionFasta        1</span>
+<span id="maxcode-66"><a href="#maxcode-66"></a>loadData           2</span>
+<span id="maxcode-67"><a href="#maxcode-67"></a>mafft              1</span>
+<span id="maxcode-68"><a href="#maxcode-68"></a>total              5</span>
+<span id="maxcode-69"><a href="#maxcode-69"></a></span>
+<span id="maxcode-70"><a href="#maxcode-70"></a>Reasons:</span>
+<span id="maxcode-71"><a href="#maxcode-71"></a>    (check individual jobs above for details)</span>
+<span id="maxcode-72"><a href="#maxcode-72"></a>    input files updated by another job:</span>
+<span id="maxcode-73"><a href="#maxcode-73"></a>        all, fusionFasta, mafft</span>
+<span id="maxcode-74"><a href="#maxcode-74"></a>    output files have to be generated:</span>
+<span id="maxcode-75"><a href="#maxcode-75"></a>        fusionFasta, loadData, mafft</span>
+<span id="maxcode-76"><a href="#maxcode-76"></a></span>
+<span id="maxcode-77"><a href="#maxcode-77"></a>This was a dry-run (flag -n). The order of jobs does not reflect the order of execution.</span></code></pre></div>
+<p>The <code>Job stats</code> section (lines 2-9, and again lines 61-68)
+tells you that 5 jobs will be run in total and the <code>Reasons</code>
+section (lines 70-75) will explain why. In this case, output files are
+missing, and depending on which ones are missing some or all of the
+rules will have to be rerun.</p>
+<p>In the log, there is also 1 section dedicated to each job that would
+have been run by Snakemake (e.g. <code>loadData</code> for P01308 lines
+13-19). Each section shows the input and output file paths, the reason
+why it’s run and information specific to that job i.e. the resources
+used, its jobid, the wildcard values…</p>
+</div>
+</details>
+<hr />
+<h1 id="c.-running-the-pipeline">C. Running the pipeline</h1>
+<p>Let’s run the pipeline on the IFB cluster. We’ll go through a SLURM
+submission script to run the Snakefile within a SLURM job. SLURM
+quick-start guide: <a href="https://ifb-elixirfr.gitlab.io/cluster/doc/quick-start/" class="uri">https://ifb-elixirfr.gitlab.io/cluster/doc/quick-start/</a></p>
+<div class="yellowblock">
+<p><strong>Q5: Create a SLURM submission script</strong></p>
+</div>
+<p><em>Hints</em>:</p>
+<ul>
+<li>don’t forget to add the <code>2417_wf4bioinfo</code> project with
+<code>--account</code></li>
+<li>you’ll need to load <code>snakemake</code> and <code>mafft</code>
+modules before running <code>snakemake</code></li>
+<li>to run Snakemake: <code>snakemake -c 1</code> from within the folder
+containing the <code>Snakefile</code></li>
+</ul>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Example <code>run_script.sh</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=day2-introsmk</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=100Mb</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=2417_wf4bioinfo</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:10:00</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># load necessary modules</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load snakemake/8.9.0</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load mafft/7.515</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># move to WD</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /shared/projects/2417_wf4bioinfo/<span class="va">$USER</span>/day2-introsmk</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># run snakemake with minimum options</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c</span> 1</span></code></pre></div>
+</div>
+</details>
+<div class="yellowblock">
+<p><strong>Q6: Run the pipeline (i.e. submit the script) &amp; follow
+your job</strong></p>
+</div>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Assuming you have all SLURM options within your run script:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> run_script.sh</span></code></pre></div>
+<p>Then follow your submitted jobs with:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USER</span></span></code></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--me</span></span></code></pre></div>
+</div>
+</details>
+<hr />
+<h1 id="d.-checking-the-output">D. Checking the output</h1>
+<div class="yellowblock">
+<p><strong>T8: Have a look at your working directory</strong></p>
+</div>
+<p>For example with <code>ls</code> or with <code>tree</code>. You see a
+results folder (output of the pipeline), your script, the
+<code>Snakefile</code> and the slurm output log. At a first glance, all
+outputs seem to have been generated.</p>
+<p>Output of <code>tree</code> command:</p>
+<pre class="text"><code>.
+├── results
+│   ├── alignment
+│   │   ├── P10415_P01308_aligned.fasta
+│   │   └── P10415_P01308.fasta
+│   └── data
+│       ├── P01308.fasta
+│       └── P10415.fasta
+├── run_script.sh
+├── slurm-41257618.out
+└── Snakefile
+
+3 directories, 7 files</code></pre>
+<div class="yellowblock">
+<p><strong>T9: Have a closer look at slurm’s output log:</strong></p>
+</div>
+<p>For example with <code>cat slurm-41257618.out</code>. The output
+shoud look a lot like the one you’ve generated during dry-run. We can
+also see from the log that the pipeline ended without an error cf. 
+<code>5 of 5 steps (100%) done</code> and no mention of errors:</p>
+<pre><code>[Fri Aug 16 18:35:03 2024]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: .snakemake/log/2024-08-16T183501.992097.snakemake.log</code></pre>
+<p>As you can see, <code>Snakemake</code> also saves the log outputted
+on the screen in a <code>&lt;date-time&gt;.snakemake.log</code> file
+within the <code>.snakemake</code> folder.</p>
+<div class="yellowblock">
+<p><strong>T10: Have a quick glance at the <code>.snakemake</code>
+folder:</strong></p>
+</div>
+<p><code>.snakemake</code> is a hidden folder and is the default working
+directory of <code>Snakemake</code>. It’s generated within the directory
+within which <code>Snakemake</code> is run (you can change this with the
+<code>--directory</code> option). This folder contains log files,
+metadata (such as run statistics) and environments that
+<code>Snakemake</code> collects and generates during a run. Thus, it can
+get quite big (in volume &amp; number of files) and is <strong>not
+automatically deleted</strong>.</p>
+<pre class="text"><code>.snakemake/
+├── auxiliary
+├── conda
+├── conda-archive
+├── incomplete
+├── locks
+├── log
+│   └── 2024-08-16T183501.992097.snakemake.log
+├── metadata
+│   ├── cmVzdWx0cy9hbGlnbm1lbnQvUDEwNDE1X1AwMTMwOC5mYXN0YQ==
+│   ├── cmVzdWx0cy9hbGlnbm1lbnQvUDEwNDE1X1AwMTMwOF9hbGlnbmVkLmZhc3Rh
+│   ├── cmVzdWx0cy9kYXRhL1AwMTMwOC5mYXN0YQ==
+│   └── cmVzdWx0cy9kYXRhL1AxMDQxNS5mYXN0YQ==
+├── shadow
+└── singularity
+
+9 directories, 5 files</code></pre>
+<hr />
+<h1 id="e.-conclusion">E. Conclusion</h1>
+<p><strong>Accomplished objectives:</strong></p>
+<ul>
+<li>how to understand &amp; analyse an unknown pipeline that is given to
+you</li>
+<li>how to run the pipeline</li>
+<li>how to understand Snakemake’s outputs (log, working directory,
+etc.)</li>
+</ul>
+<p><strong>Command summary for Snakemake:</strong></p>
+<ul>
+<li>basic command: <code>snakemake --cores N</code> (N: number of cores
+accessible to Snakemake)</li>
+<li>useful options:
+<ul>
+<li><code>-s path/to/Snakefile</code> if the Snakefile is called
+differently or is somewhere else</li>
+<li><code>--dry-run</code> to run a dry run of your pipeline</li>
+<li><code>--help</code> to get the list of all options</li>
+</ul></li>
+<li>create graphs:
+<ul>
+<li><code>snakemake [-s path/to/Snakefile] --dag | dot -Tpng &gt; dag.png</code>
+(all jobs and rules)</li>
+<li><code>snakemake [-s path/to/Snakefile] --rulegraph | dot -Tpng &gt; rulegraph.png</code>
+(just the rules)</li>
+<li><code>snakemake [-s path/to/Snakefile] --filegraph | dot -Tpng &gt; filegraph.png</code>
+(a condensed version of the dag)</li>
+</ul></li>
+</ul>
+<div class="yellowblock">
+<p><strong>T11: The last task of this exercise: clean up your current
+directory</strong></p>
+</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> .snakemake/</span></code></pre></div>
+<p><em>You can also delete the results and SLURM’s output file if you
+wish.</em></p>
+</body>
+</html>

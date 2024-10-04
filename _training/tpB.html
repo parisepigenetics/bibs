@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Introduction to Snakemake</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style>
+body {
+max-width: 60em;;
+}
+p {
+text-align: left;
+font-size: large;
+}
+a, summary {
+color: purple;
+}
+h1 {
+
+font-size: 2em; font-weight: bold;
+color: rgb(66, 0, 66);
+text-align: left;
+padding-top: 1%;
+border-top: 1px solid rgb(66, 0, 66);
+}
+h2 {
+font-size: 1.25em; font-weight: bold;
+color: rgb(94, 0, 94);
+
+text-align: left;
+margin: 0;
+margin-top: 1%;
+}
+h3 {
+font-size: 1em; font-weight: bold;
+color: rgb(114, 0, 114);
+
+text-align: left;
+margin: 0;
+}
+code {
+background-color: rgb(245, 245, 245);
+
+}
+pre {
+font-size: 1.1em;
+background-color: rgb(245, 245, 245);
+overflow-y: auto;
+max-height: var(--md-codeblock-height, 500px);
+min-width: 100vw;
+padding: 1%;
+}
+
+details summary:hover {
+cursor:pointer;
+}
+img {
+max-height: 300px !important;
+}
+table td {
+vertical-align: middle;
+}
+figcaption {
+font-size: 0.8em !important;
+font-style: italic !important;
+}
+.subtitle {
+font-style: italic !important;
+font-size: 1.75em;
+text-align: center !important;
+}
+.date {
+font-size: 0.8em !important;
+}
+.title {
+font-size: 2em;
+font-weight: bold;
+text-align: center;
+}
+.sourceCode {
+background-color: rgb(245, 245, 245);
+max-width: max-content;
+}
+.boxed {
+padding: 1%;
+margin: 2%;
+border: solid 1px black;
+}
+.redblock{
+background-color: lightpink;
+padding: 2%;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.yellowblock{
+background-color: rgb(255, 247, 202);
+margin: 1px 0 1px 0;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+border-radius: 20px;
+padding: 1%;
+}
+.redtxt{
+color: red;
+font-weight: bold;
+}
+.columns{
+align-items: center;
+vertical-align: top;
+}
+#maxcode{
+max-height: 500px;
+overflow: auto;
+}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Introduction to Snakemake</h1>
+<p class="subtitle">Exercise B - improving your pipeline</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#setup" id="toc-setup">Setup</a></li>
+<li><a href="#objective-1---glob_wildcards" id="toc-objective-1---glob_wildcards">Objective 1 - glob_wildcards()</a>
+<ul>
+<li><a href="#where-to-start" id="toc-where-to-start">Where to
+start?</a></li>
+<li><a href="#test-the-script" id="toc-test-the-script">Test the
+script</a></li>
+<li><a href="#observe-the-output" id="toc-observe-the-output">Observe
+the output</a></li>
+</ul></li>
+<li><a href="#objective-2---config-file" id="toc-objective-2---config-file">Objective 2 - config file</a>
+<ul>
+<li><a href="#where-to-start-1" id="toc-where-to-start-1">Where to
+start?</a></li>
+<li><a href="#test-the-script-1" id="toc-test-the-script-1">Test the
+script</a></li>
+<li><a href="#observe-the-output-1" id="toc-observe-the-output-1">Observe the output</a></li>
+<li><a href="#to-go-further---more-parameters" id="toc-to-go-further---more-parameters">To go further - more
+parameters</a></li>
+<li><a href="#how-values-of-directives-are-used-in-shell" id="toc-how-values-of-directives-are-used-in-shell">How values of
+directives are used in “shell”</a></li>
+<li><a href="#transfer-your-python-skills---bonus-for-python-addicts-only" id="toc-transfer-your-python-skills---bonus-for-python-addicts-only">Transfer
+your Python skills - bonus for Python addicts only 😉</a></li>
+</ul></li>
+<li><a href="#objective-3---logs" id="toc-objective-3---logs">Objective
+3 - logs</a>
+<ul>
+<li><a href="#where-to-start-2" id="toc-where-to-start-2">Where to
+start?</a></li>
+<li><a href="#test-the-script-2" id="toc-test-the-script-2">Test the
+script</a></li>
+<li><a href="#observe-the-output-2" id="toc-observe-the-output-2">Observe the output</a></li>
+</ul></li>
+<li><a href="#objective-4---rerun" id="toc-objective-4---rerun">Objective 4 - rerun</a>
+<ul>
+<li><a href="#motivation" id="toc-motivation">Motivation</a></li>
+<li><a href="#how-to-control-re-running-criteria" id="toc-how-to-control-re-running-criteria">How to control re-running
+criteria?</a></li>
+<li><a href="#force-re-run" id="toc-force-re-run">Force re-run</a></li>
+</ul></li>
+<li><a href="#recap" id="toc-recap">Recap</a>
+<ul>
+<li><a href="#some-more-useful-options-when-running-snakemake" id="toc-some-more-useful-options-when-running-snakemake">Some more
+useful options when running Snakemake</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introduction">Introduction</h1>
+<p>In this Exercise, we’ll be starting where we left off in Exercise A
+and we’ll be using the snakefile you wrote in the objective 6.</p>
+<p><strong>For this practical exercise, we will:</strong></p>
+<ul>
+<li>learn how to get file names from the file system directly using
+glob_wildcards (o1)</li>
+<li>learn how to use a configuration file to specify paths and
+parameters outside of the code (o2)</li>
+<li>learn more about specifying directive values &amp; ways of calling
+them within the shell directive (o2)</li>
+<li>bonus: we will see a quick demo on how to integrate your Python
+skills into Snakemake (o2)</li>
+<li>learn how to redirect stdout and stderr streams (log) (o3)</li>
+<li>learn more about re-running options (o4)</li>
+</ul>
+<p><strong>Reminder about the final pipeline:</strong></p>
+<p>In the following objectives, we will be building on the Snakefile
+from Exercise 1A which successively runs FastQC then MultiQC on a set of
+RNA-seq data.</p>
+<figure>
+<img role="img" aria-label="final workflow" src="data:image/png;base64,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" title="workflow" alt="final workflow" />
+<figcaption aria-hidden="true">final workflow</figcaption>
+</figure>
+<p><strong>How this exercise is organised:</strong></p>
+<p>Each step will reply to an objective. Thus, we will be doing several
+cycles of executing snakemake, observing the results and improving the
+code. Each code version will be noted <code>ex1b_oX.smk</code>, with
+<code>X</code> a progressive digit corresponding to the objective
+number.</p>
+<h1 id="setup">Setup</h1>
+<p><strong>It’s the same setup as for Exercise A</strong>, we will work
+on a node of the cluster with Snakemake, FastQC and MultiQC modules
+loaded.</p>
+<p>As a reminder, you should be in your working directory from Exercise
+A in which you have the <code>Data/</code> folder containing all example
+files.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">login@node06:/shared/projects/2417_wf4bioinfo/login/day2-session$</span> ls <span class="at">-a</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span>  ..  .snakemake  Data  FastQC  multiqc_data  multiqc_report.html</span></code></pre></div>
+<p>You should also have snakemake, FastQC and MultiQC loaded.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load snakemake/8.9.0 fastqc/0.12.1 multiqc/1.13 graphviz/2.40.1</span></code></pre></div>
+<p>NB: If you’ve skipped Exercise A, you can copy-paste the example
+solution script from Exercise A objective 6.</p>
+<h1 id="objective-1---glob_wildcards">Objective 1 -
+glob_wildcards()</h1>
+<p>Make Snakemake find your input files for you, using the
+<code>glob_wildcards()</code> function (similar to the <code>glob</code>
+module in Python).</p>
+<h2 id="where-to-start">Where to start?</h2>
+<ul>
+<li><strong>Replace <code>SAMPLES</code></strong>: try using the
+<code>glob_wildcards()</code> syntax to create your list instead of
+listing all the “variable” parts of your sample file names manually with
+<code>SAMPLES = [&quot;SRR3099585_chr18&quot;,&quot;SRR3099586_chr18&quot;,&quot;SRR3099587_chr18&quot;]</code>.</li>
+</ul>
+<details>
+<summary>
+Click to see an example using <code>glob_wildcards()</code>
+</summary>
+<div class="boxed">
+<p>Let’s imagine we have a folder that looks like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">john.doe@PC1:~$</span> ls mydir/</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">batchA_sample1.txt</span>   batchB_sample1.txt   batchB_sample3.txt </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">batchA_sample2.txt</span>   batchB_sample2.txt   </span></code></pre></div>
+<p><em>Defining the search pattern:</em></p>
+<p>Look for common roots between your files. In this case, the search
+pattern for all batchA files could look like this:</p>
+<p><code>samplelist = glob_wildcards(&quot;mydir/batchA_sample{sampleid}.txt&quot;)</code></p>
+<p>The above function will search through the current directory for
+files fitting this pattern and infer the possible values for your
+<code>{sampleid}</code> wildcard.</p>
+<p><em>The output format:</em></p>
+<p>Whatever the number of wildcards in your pattern,
+<code>glob_wildcards()</code> will <strong>always output a “tuple”
+(=immutable list) of lists</strong> (that is why the comma in
+“<code>samplelist, =</code>” above is important). Each list corresponds
+to the output of a wildcard.</p>
+<p>In the example above, we only have 1 wildcard, thus it will return a
+tuple containing a single list of all possible values for
+<code>{sampleid}</code>: <code>[&quot;1&quot;, &quot;2&quot;]</code>.</p>
+<p><em>A search pattern with 2 wildcards:</em></p>
+<p>To include batchB, we can use a second wildcard like this:</p>
+<p><code>batchlist, samplelist = glob_wildcards(&quot;mydir/batch{batchid}_sample{sampleid}.txt&quot;)</code></p>
+<p>In this example, the output will look like this:
+<code>[&quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;B&quot;]</code> (for <code>batchlist</code>) and
+<code>[&quot;1&quot;, &quot;2&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;]</code> (for
+<code>samplelist</code>).</p>
+</div>
+</details>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<pre class="snakemake"><code>SAMPLES, = glob_wildcards(&quot;Data/{sample}.fastq.gz&quot;)
+
+rule all:
+  input:
+    expand(&quot;FastQC/{sample}_fastqc.html&quot;, sample=SAMPLES),
+    &quot;multiqc_report.html&quot;
+
+rule fastqc:
+  input:
+    &quot;Data/{sample}.fastq.gz&quot;
+  output:
+    &quot;FastQC/{sample}_fastqc.zip&quot;,
+    &quot;FastQC/{sample}_fastqc.html&quot;
+  shell: &quot;fastqc --outdir FastQC {input}&quot;
+
+rule multiqc:
+  input:
+    expand(&quot;FastQC/{sample}_fastqc.zip&quot;, sample = SAMPLES)
+  output:
+    &quot;multiqc_report.html&quot;,
+    directory(&quot;multiqc_data&quot;)
+  shell: &quot;multiqc {input}&quot;</code></pre>
+<p>As you might have noticed, we simplified the input of the “all”
+target rule to just 2 files: the html outputs of the fastqc rule and the
+html output of the multiqc rule, since the zip files are always
+generated with the html outputs in fastqc and the multiqc_data directory
+with the html report in multiqc.</p>
+</div>
+</details>
+<h2 id="test-the-script">Test the script</h2>
+<p>Next, let’s check if your pipeline still works as it should using the
+following command:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o1.smk <span class="at">-c</span> 1 <span class="at">-p</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -c is short for --cores</span></span></code></pre></div>
+<h2 id="observe-the-output">Observe the output</h2>
+<p>You should see something similar to the following output on your
+screen.</p>
+<div class="sourceCode" id="cb6" style="--md-codeblock-height: 150px"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Assuming unrestricted shared filesystem usage.</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Building DAG of jobs...</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Using shell: /usr/bin/bash</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Provided cores: 1 (use --cores to define parallelism)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>Rules claiming more threads will be scaled down.</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>Job stats:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>job        count</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>-------  -------</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>all            1</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fastqc         3</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>multiqc        1</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>total          5</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:00:35 2024]</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3105697_chr18_fastqc.zip, FastQC/SRR3105697_chr18_fastqc.html</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    jobid: 6</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    reason: Missing output files: FastQC/SRR3105697_chr18_fastqc.html, FastQC/SRR3105697_chr18_fastqc.zip</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3105697_chr18</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>application/gzip</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>Started analysis of SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>Approx 5% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>Approx 10% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>Approx 15% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>Approx 20% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>Approx 25% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>Approx 30% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>Approx 35% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>Approx 40% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>Approx 45% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>Approx 50% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>Approx 55% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>Approx 60% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>Approx 65% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>Approx 70% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>Approx 75% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>Approx 80% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>Approx 85% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>Approx 90% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>Approx 95% complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>Analysis complete for SRR3105697_chr18.fastq.gz</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:00:44 2024]</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>Finished job 6.</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>1 of 5 steps (20%) done</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:00:45 2024]</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.html</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>    jobid: 4</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    reason: Missing output files: FastQC/SRR3105698_chr18_fastqc.html, FastQC/SRR3105698_chr18_fastqc.zip</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3105698_chr18</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>application/gzip</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>Started analysis of SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>Approx 5% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>Approx 10% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>Approx 15% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>Approx 20% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>Approx 25% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>Approx 30% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>Approx 35% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>Approx 40% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>Approx 45% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>Approx 50% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>Approx 55% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>Approx 60% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>Approx 65% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>Approx 70% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>Approx 75% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>Approx 80% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>Approx 85% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>Approx 90% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>Approx 95% complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>Analysis complete for SRR3105698_chr18.fastq.gz</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:00:55 2024]</span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>Finished job 4.</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>2 of 5 steps (40%) done</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:00:55 2024]</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3105699_chr18_fastqc.html</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a>    jobid: 2</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>    reason: Missing output files: FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3105699_chr18_fastqc.html</span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3105699_chr18</span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a>application/gzip</span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>Started analysis of SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a>Approx 5% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a>Approx 10% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a>Approx 15% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>Approx 20% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a>Approx 25% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>Approx 30% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a>Approx 35% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>Approx 40% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a>Approx 45% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a>Approx 50% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a>Approx 55% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a>Approx 60% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a>Approx 65% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>Approx 70% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a>Approx 75% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a>Approx 80% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a>Approx 85% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a>Approx 90% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a>Approx 95% complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>Analysis complete for SRR3105699_chr18.fastq.gz</span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:01:05 2024]</span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>Finished job 2.</span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a>3 of 5 steps (60%) done</span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:01:05 2024]</span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a>localrule multiqc:</span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a>    input: FastQC/SRR3099585_chr18_fastqc.zip, FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3099586_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3099587_chr18_fastqc.zip, FastQC/SRR3105697_chr18_fastqc.zip</span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>    output: multiqc_report.html, multiqc_data</span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a>    jobid: 7</span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>    reason: Input files updated by another job: FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105697_chr18_fastqc.zip; Set of input files has changed since last execution</span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a>multiqc FastQC/SRR3099585_chr18_fastqc.zip FastQC/SRR3105699_chr18_fastqc.zip FastQC/SRR3099586_chr18_fastqc.zip FastQC/SRR3105698_chr18_fastqc.zip FastQC/SRR3099587_chr18_fastqc.zip FastQC/SRR3105697_chr18_fastqc.zip</span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a>  /// MultiQC 🔍 | v1.13</span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a>|           multiqc | MultiQC Version v1.25.1 now available!</span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a>|           multiqc | Search path : /shared/ifbstor1/projects/2417_wf4bioinfo/cquignot/day2-session1/FastQC/SRR3099585_chr18_fastqc.zip</span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a>|           multiqc | Search path : /shared/ifbstor1/projects/2417_wf4bioinfo/cquignot/day2-session1/FastQC/SRR3105699_chr18_fastqc.zip</span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a>|           multiqc | Search path : /shared/ifbstor1/projects/2417_wf4bioinfo/cquignot/day2-session1/FastQC/SRR3099586_chr18_fastqc.zip</span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a>|           multiqc | Search path : /shared/ifbstor1/projects/2417_wf4bioinfo/cquignot/day2-session1/FastQC/SRR3105698_chr18_fastqc.zip</span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a>|           multiqc | Search path : /shared/ifbstor1/projects/2417_wf4bioinfo/cquignot/day2-session1/FastQC/SRR3099587_chr18_fastqc.zip</span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>|           multiqc | Search path : /shared/ifbstor1/projects/2417_wf4bioinfo/cquignot/day2-session1/FastQC/SRR3105697_chr18_fastqc.zip</span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a>|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 6/6  </span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a>|            fastqc | Found 6 reports</span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a>|           multiqc | Compressing plot data</span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a>|           multiqc | Report      : multiqc_report.html</span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a>|           multiqc | Data        : multiqc_data</span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a>|           multiqc | MultiQC complete</span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:01:09 2024]</span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a>Finished job 7.</span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a>4 of 5 steps (80%) done</span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:01:09 2024]</span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a>localrule all:</span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a>    input: FastQC/SRR3099585_chr18_fastqc.html, FastQC/SRR3105699_chr18_fastqc.html, FastQC/SRR3099586_chr18_fastqc.html, FastQC/SRR3105698_chr18_fastqc.html, FastQC/SRR3099587_chr18_fastqc.html, FastQC/SRR3105697_chr18_fastqc.html, multiqc_report.html</span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a>    jobid: 0</span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a>    reason: Input files updated by another job: FastQC/SRR3105699_chr18_fastqc.html, multiqc_report.html, FastQC/SRR3105697_chr18_fastqc.html, FastQC/SRR3105698_chr18_fastqc.html</span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:01:09 2024]</span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a>Finished job 0.</span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a>5 of 5 steps (100%) done</span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a>Complete log: .snakemake/log/2024-10-03T170034.983240.snakemake.log </span></code></pre></div>
+<p>As you can see, Snakemake found 3 extra files in you
+<code>Data/</code> directory to run FastQC on and regenerated the
+MultiQC report to include them.</p>
+<h1 id="objective-2---config-file">Objective 2 - config file</h1>
+<p>Adapt your pipeline (<code>ex1b_o2.smk</code>) to use a configuration
+file called <code>myConfig.yml</code> that specifies the path of the
+input data directory, and replace the hard-coding values
+(<code>Data/</code>) in the snakefile.</p>
+<h2 id="where-to-start-1">Where to start?</h2>
+<ul>
+<li><strong>Create the configfile</strong>: Snakemake accepts both <a href="https://fr.wikipedia.org/wiki/YAML#Exemple">yaml</a> and <a href="https://en.wikipedia.org/wiki/JSON#Syntax">json</a> formats.</li>
+<li><strong>Import it in the Snakefile</strong>: you can read and load
+any variable in the configuration file from your Snakefile by using the
+following syntax: <code>config[&quot;myItem&quot;]</code> (“myItem” being the name
+of your variable in the configfile).</li>
+<li><strong>At run time</strong>: so that Snakemake knows where to look,
+you have to add the <code>--configfile ex1.yml</code> to Snakemake’s
+command line option. NB: Alternativelly, you can add the directive
+<code>configfile: ex1.yml</code> at the beginning of your snakefile
+instead*</li>
+</ul>
+<p><strong>Why use a configuration file?</strong> In this file, you will
+place all hard-coding values of the snakefile (paths to files, core
+numbers, parameter values, etc). In this way, you have a generalised
+analysis pipeline that you can easily apply to new input data by simply
+changing the configfile rather than the snakefile directly.</p>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p><strong>Your configuration file</strong></p>
+<p>Your <code>ex1.yml</code> configfile should look like this (YAML
+syntax):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dataDir</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="st">&quot;Data&quot;</span></span></code></pre></div>
+<p><strong>The snakefile:</strong></p>
+<p>Your code in <code>ex1b_o2.smk</code> should look like this:</p>
+<pre class="snakemake"><code>SAMPLES, = glob_wildcards(config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot;)
+
+rule all:
+  input:
+    expand(&quot;FastQC/{sample}_fastqc.html&quot;, sample=SAMPLES),
+    &quot;multiqc_report.html&quot;,
+
+rule fastqc:
+  input:
+    config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot;,
+  output:
+    &quot;FastQC/{sample}_fastqc.zip&quot;,
+    &quot;FastQC/{sample}_fastqc.html&quot;
+  shell: &quot;fastqc --outdir FastQC {input}&quot;
+
+rule multiqc:
+  input:
+    expand(&quot;FastQC/{sample}_fastqc.zip&quot;, sample = SAMPLES),
+  output:
+    &quot;multiqc_report.html&quot;,
+    directory(&quot;multiqc_data&quot;)
+  shell: &quot;multiqc {input}&quot;</code></pre>
+</div>
+</details>
+<h2 id="test-the-script-1">Test the script</h2>
+<p>Next, let’s check if your pipeline still works as it should using the
+following command:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o2.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">--configfile</span> ex1.yml</span></code></pre></div>
+<h2 id="observe-the-output-1">Observe the output</h2>
+<p>You should see something similar to the following output on your
+screen.</p>
+<pre class="text"><code>Assuming unrestricted shared filesystem usage for local execution.
+Building DAG of jobs...
+Nothing to be done (all requested files are present and up to date).</code></pre>
+<p>As you can see, Snakemake doesn’t see anything that changed that
+might influence the outputs that were already generated and tells you
+that there’s “<em>Nothing to be done</em>”.</p>
+<h2 id="to-go-further---more-parameters">To go further - more
+parameters</h2>
+<p>The configfile can be used to specify as many parameters as you want,
+for example, the name of the output directory in the fastqc rule. In
+order to add parameters to the shell command line, you can use the
+<code>params</code> directive:</p>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Your configfile <code>ex1.yml</code> could look like this:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dataDir</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="st">&quot;Data&quot;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fastqcOutDir</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="st">&quot;FastQC&quot;</span></span></code></pre></div>
+<p>And your code in <code>ex1b_o2b.smk</code> could look like this:</p>
+<pre class="snakemake"><code>SAMPLES, = glob_wildcards(config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot;)
+
+rule all:
+  input:
+    expand(config[&quot;fastqcOutDir&quot;]+&quot;/{sample}_fastqc.html&quot;, sample=SAMPLES),
+    &quot;multiqc_report.html&quot;,
+
+rule fastqc:
+  input:
+    config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot;,
+  output:
+    config[&quot;fastqcOutDir&quot;]+&quot;/{sample}_fastqc.zip&quot;,
+    config[&quot;fastqcOutDir&quot;]+&quot;/{sample}_fastqc.html&quot;,
+  params:
+    outdir=config[&quot;fastqcOutDir&quot;],
+  shell: &quot;fastqc --outdir {params.outdir} {input} &quot;
+
+rule multiqc:
+  input:
+    expand(config[&quot;fastqcOutDir&quot;]+&quot;/{sample}_fastqc.zip&quot;, sample = SAMPLES),
+  output:
+    &quot;multiqc_report.html&quot;,
+    directory(&quot;multiqc_data&quot;),
+  shell: &quot;multiqc {input}&quot;</code></pre>
+</div>
+</details>
+<h2 id="how-values-of-directives-are-used-in-shell">How values of
+directives are used in “shell”</h2>
+<p>Let’s take a moment to compare the various
+“<strong>wildcards</strong>” that we’ve used within the shell calls and
+the way we specify the files in our directives. For example, in the
+fastqc rule:</p>
+<pre class="snakemake"><code>rule fastqc: 
+  input: 
+    config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot; 
+  output:  
+    config[&quot;fastqcOutDir&quot;]+&quot;/{sample}_fastqc.zip&quot;,  
+    config[&quot;fastqcOutDir&quot;]+&quot;/{sample}_fastqc.html&quot;  
+  params:
+    outdir=config[&quot;fastqcOutDir&quot;] 
+  shell: &quot;fastqc --outdir {params.outdir} {input} &quot;</code></pre>
+<p>As you can see, you are free to add as many files to your directives
+as you wish: <code>input</code> has only 1, <code>output</code> has 2
+and <code>params</code> has only 1 (and we’ve named it “outdir”). Note
+that if you provide more than one file to a directive, these should be
+separated by a comma (see <code>output</code> directive above for an
+example). If you are afraid of forgetting it, you can systematically add
+a comma at the end of your directive lines.</p>
+<p>To use the files specified in your directives within the shell
+directive, you can use the wildcard syntax (<code>{variable}</code>). In
+the case of our input directive, as we only have 1 file, we used the
+directive name directly (<code>{input}</code>). However, as soon as you
+have several files, you can use Python’s list syntax. For example, if we
+had to explicitly mention our output files in the shell command, we
+would have specified them with <code>{output[0]}</code> and
+<code>{output[1]}</code>. We can also give names to each element if
+there are several to avoid using indexing (i.e. <code>[0]</code>,
+<code>[1]</code> etc.). For example, in the <code>params</code>
+directive, we chose to name the file, so we use the syntax
+<code>{directive.name}</code> instead.</p>
+<p><a href="https://carpentries-incubator.github.io/workflows-snakemake/03-wildcards/index.html">more
+about wildcards</a></p>
+<h2 id="transfer-your-python-skills---bonus-for-python-addicts-only">Transfer
+your Python skills - bonus for Python addicts only 😉</h2>
+<p>And finally, it’s important to note that the language Snakemake uses
+is Python, so don’t hesitate to use Python’s modules within the
+snakefile if you’re familiar with the language. For example, you could
+use the <code>os.path</code> module’s <code>join()</code> function
+instead of concatenating your paths with the <code>+</code> operator.
+You could also use Python’s string formats or triple quote strings
+too.</p>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Here’s an example with a few Python “upgrades”
+<code>ex1_o7c.smk</code>:</p>
+<pre class="snakemake"><code>from os.path import join
+
+SAMPLES, = glob_wildcards(join(config[&quot;dataDir&quot;],&quot;{sample}.fastq.gz&quot;))
+
+rule all:
+  input:
+    expand(join(config[&quot;fastqcOutDir&quot;],&quot;{sample}_fastqc.html&quot;), sample=SAMPLES),
+    &quot;multiqc_report.html&quot;
+
+rule fastqc:
+  input:
+    join(config[&quot;dataDir&quot;],&quot;{sample}.fastq.gz&quot;)
+  output:
+    join(config[&quot;fastqcOutDir&quot;],&quot;{sample}_fastqc.zip&quot;),
+    join(config[&quot;fastqcOutDir&quot;],&quot;{sample}_fastqc.html&quot;)
+  shell: 
+    f&quot;&quot;&quot;fastqc --outdir {config[&quot;fastqcOutDir&quot;]} {{input}}&quot;&quot;&quot;
+
+rule multiqc:
+  input:
+    expand(join(config[&quot;fastqcOutDir&quot;],&quot;{sample}_fastqc.zip&quot;), sample = SAMPLES)
+  output:
+    &quot;multiqc_report.html&quot;,
+    directory(&quot;multiqc_data&quot;)
+  shell: &quot;multiqc {input}&quot;</code></pre>
+<p>Note that if you use Python’s string formatting
+(e.g. <code>f&quot;mystring&quot;</code>), you should replace braces in wildcard
+annotations with double braces (e.g. <code>f&quot;{{input}}&quot;</code>).</p>
+</div>
+</details>
+<h1 id="objective-3---logs">Objective 3 - logs</h1>
+<p>Create a new snakefile named <code>ex1b_o3.smk</code> in which we
+redirect the standard output and error streams to log files.</p>
+<h2 id="where-to-start-2">Where to start?</h2>
+<ul>
+<li><strong>About stdout/stderr</strong>: In Unix systems, the output of
+a command is usually sent to 2 separate streams: the expected output to
+Standard Out (stdout, or “&gt;” or “1&gt;”), and the error messages to
+Standard Error (stderr, or “2&gt;”).</li>
+<li><strong>Add the log directive</strong>: redirect the stdout and
+stderr streams of the fastqc and multiqc rules to a file by adding a
+“<code>log:</code>” directive (similar to the already existing
+<code>input:</code> or <code>output:</code> directives) with two
+variables, <code>out</code> and <code>err</code>, to separately redirect
+each stream.</li>
+<li><strong>Adapt the shell commands</strong>: add stdout and stderr
+redirections using <code>1&gt; stdout.txt</code> and
+<code>2&gt; stderr.txt</code> in the shell command lines of your rules.
+Use wildcards to specify the chosen file names (e.g.
+“<code>1&gt;{log.std} 2&gt;{log.err}</code>”).</li>
+</ul>
+<details>
+<summary>
+Click to see an example solution
+</summary>
+<div class="boxed">
+<p>Your code for <code>ex1b_o3.smk</code> should look like this:</p>
+<pre class="snakemake"><code>SAMPLES, = glob_wildcards(config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot;)
+
+rule all:
+  input:
+    expand(&quot;FastQC/{sample}_fastqc.html&quot;, sample=SAMPLES),
+    &quot;multiqc_report.html&quot;
+
+rule fastqc:
+  input:
+    config[&quot;dataDir&quot;]+&quot;/{sample}.fastq.gz&quot;
+  output:
+    &quot;FastQC/{sample}_fastqc.zip&quot;,
+    &quot;FastQC/{sample}_fastqc.html&quot;
+  log:
+    &quot;Logs/{sample}_fastqc.std&quot;,
+    &quot;Logs/{sample}_fastqc.err&quot;
+  shell: &quot;fastqc --outdir FastQC {input} 1&gt;{log[0]} 2&gt;{log[1]}&quot;
+
+rule multiqc:
+  input:
+    expand(&quot;FastQC/{sample}_fastqc.zip&quot;, sample = SAMPLES)
+  output:
+    &quot;multiqc_report.html&quot;,
+    directory(&quot;multiqc_data&quot;)
+  log:
+    std=&quot;Logs/multiqc.std&quot;,
+    err=&quot;Logs/multiqc.err&quot;
+  shell: &quot;multiqc {input} 1&gt;{log.std} 2&gt;{log.err}&quot;</code></pre>
+<p>As you can see, we specify the log files differently in the fastqc
+rule and in the multiqc rule (for demonstration reasons). In the multiqc
+rule, both log files are named (“std” and “err”) and are used in the
+shell directive like so: “<code>{log.std}</code>” and
+“<code>{log.err}</code>”. In the fastqc rule, we don’t specify names and
+use them in the shell directive with Python’s list syntax instead:
+“<code>{log[0]}</code>” and “<code>{log[1]}</code>”.</p>
+</div>
+</details>
+<h2 id="test-the-script-2">Test the script</h2>
+<p>Next, let’s check if your pipeline works as expected:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o3.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">--configfile</span> ex1.yml</span></code></pre></div>
+<h2 id="observe-the-output-2">Observe the output</h2>
+<p>You should see something similar to the following output on your
+screen.</p>
+<div class="sourceCode" id="cb17" style="--md-codeblock-height: 150px"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Assuming unrestricted shared filesystem usage.</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Building DAG of jobs...</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>Using shell: /usr/bin/bash</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>Provided cores: 1 (use --cores to define parallelism)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>Rules claiming more threads will be scaled down.</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>Job stats:</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>job        count</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>-------  -------</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>all            1</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>fastqc         6</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>multiqc        1</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>total          8</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:05:46 2024]</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3105697_chr18.fastq.gz</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3105697_chr18_fastqc.zip, FastQC/SRR3105697_chr18_fastqc.html</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    log: Logs/SRR3105697_chr18_fastqc.std, Logs/SRR3105697_chr18_fastqc.err</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    jobid: 6</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    reason: Code has changed since last execution; Params have changed since last execution</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3105697_chr18</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3105697_chr18.fastq.gz 1&gt;Logs/SRR3105697_chr18_fastqc.std 2&gt;Logs/SRR3105697_chr18_fastqc.err</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:05:57 2024]</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>Finished job 6.</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>1 of 8 steps (12%) done</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:05:57 2024]</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3105699_chr18.fastq.gz</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3105699_chr18_fastqc.html</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    log: Logs/SRR3105699_chr18_fastqc.std, Logs/SRR3105699_chr18_fastqc.err</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    jobid: 2</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    reason: Code has changed since last execution; Params have changed since last execution</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3105699_chr18</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3105699_chr18.fastq.gz 1&gt;Logs/SRR3105699_chr18_fastqc.std 2&gt;Logs/SRR3105699_chr18_fastqc.err</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:07 2024]</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>Finished job 2.</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>2 of 8 steps (25%) done</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:07 2024]</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3099585_chr18.fastq.gz</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3099585_chr18_fastqc.zip, FastQC/SRR3099585_chr18_fastqc.html</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>    log: Logs/SRR3099585_chr18_fastqc.std, Logs/SRR3099585_chr18_fastqc.err</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>    jobid: 1</span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>    reason: Code has changed since last execution; Params have changed since last execution</span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3099585_chr18</span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3099585_chr18.fastq.gz 1&gt;Logs/SRR3099585_chr18_fastqc.std 2&gt;Logs/SRR3099585_chr18_fastqc.err</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:17 2024]</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>Finished job 1.</span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>3 of 8 steps (38%) done</span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:17 2024]</span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3099587_chr18.fastq.gz</span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3099587_chr18_fastqc.zip, FastQC/SRR3099587_chr18_fastqc.html</span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>    log: Logs/SRR3099587_chr18_fastqc.std, Logs/SRR3099587_chr18_fastqc.err</span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>    jobid: 5</span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>    reason: Code has changed since last execution; Params have changed since last execution</span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3099587_chr18</span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3099587_chr18.fastq.gz 1&gt;Logs/SRR3099587_chr18_fastqc.std 2&gt;Logs/SRR3099587_chr18_fastqc.err</span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:27 2024]</span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>Finished job 5.</span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>4 of 8 steps (50%) done</span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:27 2024]</span>
+<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3099586_chr18.fastq.gz</span>
+<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3099586_chr18_fastqc.zip, FastQC/SRR3099586_chr18_fastqc.html</span>
+<span id="cb17-89"><a href="#cb17-89" aria-hidden="true" tabindex="-1"></a>    log: Logs/SRR3099586_chr18_fastqc.std, Logs/SRR3099586_chr18_fastqc.err</span>
+<span id="cb17-90"><a href="#cb17-90" aria-hidden="true" tabindex="-1"></a>    jobid: 3</span>
+<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a>    reason: Code has changed since last execution; Params have changed since last execution</span>
+<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3099586_chr18</span>
+<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3099586_chr18.fastq.gz 1&gt;Logs/SRR3099586_chr18_fastqc.std 2&gt;Logs/SRR3099586_chr18_fastqc.err</span>
+<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:37 2024]</span>
+<span id="cb17-97"><a href="#cb17-97" aria-hidden="true" tabindex="-1"></a>Finished job 3.</span>
+<span id="cb17-98"><a href="#cb17-98" aria-hidden="true" tabindex="-1"></a>5 of 8 steps (62%) done</span>
+<span id="cb17-99"><a href="#cb17-99" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:37 2024]</span>
+<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a>localrule fastqc:</span>
+<span id="cb17-104"><a href="#cb17-104" aria-hidden="true" tabindex="-1"></a>    input: Data/SRR3105698_chr18.fastq.gz</span>
+<span id="cb17-105"><a href="#cb17-105" aria-hidden="true" tabindex="-1"></a>    output: FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.html</span>
+<span id="cb17-106"><a href="#cb17-106" aria-hidden="true" tabindex="-1"></a>    log: Logs/SRR3105698_chr18_fastqc.std, Logs/SRR3105698_chr18_fastqc.err</span>
+<span id="cb17-107"><a href="#cb17-107" aria-hidden="true" tabindex="-1"></a>    jobid: 4</span>
+<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a>    reason: Code has changed since last execution; Params have changed since last execution</span>
+<span id="cb17-109"><a href="#cb17-109" aria-hidden="true" tabindex="-1"></a>    wildcards: sample=SRR3105698_chr18</span>
+<span id="cb17-110"><a href="#cb17-110" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a>fastqc --outdir FastQC Data/SRR3105698_chr18.fastq.gz 1&gt;Logs/SRR3105698_chr18_fastqc.std 2&gt;Logs/SRR3105698_chr18_fastqc.err</span>
+<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:48 2024]</span>
+<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a>Finished job 4.</span>
+<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a>6 of 8 steps (75%) done</span>
+<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-117"><a href="#cb17-117" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-118"><a href="#cb17-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:48 2024]</span>
+<span id="cb17-120"><a href="#cb17-120" aria-hidden="true" tabindex="-1"></a>localrule multiqc:</span>
+<span id="cb17-121"><a href="#cb17-121" aria-hidden="true" tabindex="-1"></a>    input: FastQC/SRR3099585_chr18_fastqc.zip, FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3099586_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3099587_chr18_fastqc.zip, FastQC/SRR3105697_chr18_fastqc.zip</span>
+<span id="cb17-122"><a href="#cb17-122" aria-hidden="true" tabindex="-1"></a>    output: multiqc_report.html, multiqc_data</span>
+<span id="cb17-123"><a href="#cb17-123" aria-hidden="true" tabindex="-1"></a>    log: Logs/multiqc.std, Logs/multiqc.err</span>
+<span id="cb17-124"><a href="#cb17-124" aria-hidden="true" tabindex="-1"></a>    jobid: 7</span>
+<span id="cb17-125"><a href="#cb17-125" aria-hidden="true" tabindex="-1"></a>    reason: Input files updated by another job: FastQC/SRR3099587_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105699_chr18_fastqc.zip, FastQC/SRR3099586_chr18_fastqc.zip, FastQC/SRR3105697_chr18_fastqc.zip, FastQC/SRR3099585_chr18_fastqc.zip</span>
+<span id="cb17-126"><a href="#cb17-126" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-127"><a href="#cb17-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-128"><a href="#cb17-128" aria-hidden="true" tabindex="-1"></a>multiqc FastQC/SRR3099585_chr18_fastqc.zip FastQC/SRR3105699_chr18_fastqc.zip FastQC/SRR3099586_chr18_fastqc.zip FastQC/SRR3105698_chr18_fastqc.zip FastQC/SRR3099587_chr18_fastqc.zip FastQC/SRR3105697_chr18_fastqc.zip 1&gt;Logs/multiqc.std 2&gt;Logs/multiqc.err</span>
+<span id="cb17-129"><a href="#cb17-129" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:53 2024]</span>
+<span id="cb17-130"><a href="#cb17-130" aria-hidden="true" tabindex="-1"></a>Finished job 7.</span>
+<span id="cb17-131"><a href="#cb17-131" aria-hidden="true" tabindex="-1"></a>7 of 8 steps (88%) done</span>
+<span id="cb17-132"><a href="#cb17-132" aria-hidden="true" tabindex="-1"></a>Select jobs to execute...</span>
+<span id="cb17-133"><a href="#cb17-133" aria-hidden="true" tabindex="-1"></a>Execute 1 jobs...</span>
+<span id="cb17-134"><a href="#cb17-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-135"><a href="#cb17-135" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:53 2024]</span>
+<span id="cb17-136"><a href="#cb17-136" aria-hidden="true" tabindex="-1"></a>localrule all:</span>
+<span id="cb17-137"><a href="#cb17-137" aria-hidden="true" tabindex="-1"></a>    input: FastQC/SRR3099585_chr18_fastqc.html, FastQC/SRR3105699_chr18_fastqc.html, FastQC/SRR3099586_chr18_fastqc.html, FastQC/SRR3105698_chr18_fastqc.html, FastQC/SRR3099587_chr18_fastqc.html, FastQC/SRR3105697_chr18_fastqc.html, multiqc_report.html</span>
+<span id="cb17-138"><a href="#cb17-138" aria-hidden="true" tabindex="-1"></a>    jobid: 0</span>
+<span id="cb17-139"><a href="#cb17-139" aria-hidden="true" tabindex="-1"></a>    reason: Input files updated by another job: multiqc_report.html, FastQC/SRR3099586_chr18_fastqc.html, FastQC/SRR3105698_chr18_fastqc.html, FastQC/SRR3099585_chr18_fastqc.html, FastQC/SRR3105697_chr18_fastqc.html, FastQC/SRR3099587_chr18_fastqc.html, FastQC/SRR3105699_chr18_fastqc.html</span>
+<span id="cb17-140"><a href="#cb17-140" aria-hidden="true" tabindex="-1"></a>    resources: tmpdir=/tmp</span>
+<span id="cb17-141"><a href="#cb17-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-142"><a href="#cb17-142" aria-hidden="true" tabindex="-1"></a>[Thu Oct  3 17:06:53 2024]</span>
+<span id="cb17-143"><a href="#cb17-143" aria-hidden="true" tabindex="-1"></a>Finished job 0.</span>
+<span id="cb17-144"><a href="#cb17-144" aria-hidden="true" tabindex="-1"></a>8 of 8 steps (100%) done</span>
+<span id="cb17-145"><a href="#cb17-145" aria-hidden="true" tabindex="-1"></a>Complete log: .snakemake/log/2024-10-03T170546.019954.snakemake.log</span></code></pre></div>
+<p>As you can see, the fastqc steps don’t generate as much text as
+before. Also, if you have a look at your working directory, you should
+see a <code>Logs</code> folder in there now, containing all the
+individual logs of your input files and rules:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">john.doe@cluster-i2bc:/data/work/I2BC/john.doe/snakemake_tutorial$</span> ls Logs/</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc.err</span>                  SRR3099586_chr18_fastqc.err  SRR3105697_chr18_fastqc.err  SRR3105699_chr18_fastqc.err</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc.std</span>                  SRR3099586_chr18_fastqc.std  SRR3105697_chr18_fastqc.std  SRR3105699_chr18_fastqc.std</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">SRR3099585_chr18_fastqc.err</span>  SRR3099587_chr18_fastqc.err  SRR3105698_chr18_fastqc.err</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">SRR3099585_chr18_fastqc.std</span>  SRR3099587_chr18_fastqc.std  SRR3105698_chr18_fastqc.std</span></code></pre></div>
+<h1 id="objective-4---rerun">Objective 4 - rerun</h1>
+<p>In this objective, we’ll learn how to control when Snakemake re-runs
+rules.</p>
+<h2 id="motivation">Motivation</h2>
+<p><em>Have you noticed how Snakemake sometimes decides to re-run
+everything (although output files already exist) and sometimes
+not?</em></p>
+<p>Snakemake always justifies its choices in the output log. Sometimes
+its because the files are missing, other times it might because the code
+has changed, <em>etc</em>.. For example:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource txt numberLines"><code class="sourceCode default"><span id="cb19-1"><a href="#cb19-1"></a>[Tue Feb 20 15:35:31 2024]</span>
+<span id="cb19-2"><a href="#cb19-2"></a>localrule fastqc:</span>
+<span id="cb19-3"><a href="#cb19-3"></a>    input: Data/SRR3105698_chr18.fastq.gz</span>
+<span id="cb19-4"><a href="#cb19-4"></a>    output: FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.html</span>
+<span id="cb19-5"><a href="#cb19-5"></a>    log: Logs/SRR3105698_chr18_fastqc.std, Logs/SRR3105698_chr18_fastqc.err</span>
+<span id="cb19-6"><a href="#cb19-6"></a>    jobid: 2</span>
+<span id="cb19-7"><a href="#cb19-7"></a>    reason: Code has changed since last execution</span>
+<span id="cb19-8"><a href="#cb19-8"></a>    wildcards: sample=SRR3105698_chr18</span>
+<span id="cb19-9"><a href="#cb19-9"></a>    resources: tmpdir=/var/tmp/pbs.743371.pbsserver</span>
+<span id="cb19-10"><a href="#cb19-10"></a></span>
+<span id="cb19-11"><a href="#cb19-11"></a>fastqc --outdir FastQC Data/SRR3105698_chr18.fastq.gz 1&gt;Logs/SRR3105698_chr18_fastqc.std 2&gt;Logs/SRR3105698_chr18_fastqc.err</span></code></pre></div>
+<p>Or:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource txt numberLines"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1"></a>[Tue Feb 20 15:06:06 2024]</span>
+<span id="cb20-2"><a href="#cb20-2"></a>localrule fastqc:</span>
+<span id="cb20-3"><a href="#cb20-3"></a>    input: Data/SRR3105698_chr18.fastq.gz</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    output: FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.html</span>
+<span id="cb20-5"><a href="#cb20-5"></a>    jobid: 2</span>
+<span id="cb20-6"><a href="#cb20-6"></a>    reason: Missing output files: FastQC/SRR3105698_chr18_fastqc.zip, FastQC/SRR3105698_chr18_fastqc.html</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    wildcards: sample=SRR3105698_chr18</span>
+<span id="cb20-8"><a href="#cb20-8"></a>    resources: tmpdir=/var/tmp/pbs.743371.pbsserver</span>
+<span id="cb20-9"><a href="#cb20-9"></a></span>
+<span id="cb20-10"><a href="#cb20-10"></a>fastqc --outdir FastQC Data/SRR3105698_chr18.fastq.gz</span></code></pre></div>
+<p>This behaviour is because Snakemake takes into account
+<strong><em>all provenance information</em></strong> to define which
+jobs to rerun and not solely the fact that outputs exist or not. Thus,
+parameter, code and software environment changes, as well as changes in
+the set of input files of a job will make Snakemake rerun all the steps,
+even if the output files already exist.</p>
+<p><em>Of note:</em> in previous versions of Snakemake (before v.7.8.0),
+rerunning jobs relied purely on file modification times so Snakemake
+would only re-execute the pipeline if the timestamp of output files were
+older than the ones of input files.</p>
+<h2 id="how-to-control-re-running-criteria">How to control re-running
+criteria?</h2>
+<p>There is a command line option that you can use in Snakemake in order
+to specify your re-running criteria: <code>--rerun-triggers</code>. By
+default, all triggers are used
+(<code>code,input,mtime,params,software-env</code>), which guarantees
+that results are consistent with the workflow code and configuration. To
+revert to Snakemake’s behaviour before v.7.8.0, you can use 
+<code>--rerun-triggers mtime</code>. This option will tell Snakemake to
+only use modification time when determining whether a job should be
+executed or not. For example:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o3.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">--rerun-triggers</span> mtime</span></code></pre></div>
+<h2 id="force-re-run">Force re-run</h2>
+<p>If you rerun your snakemake command line now, without changing
+anything to the code (with or without the
+<code>--rerun-trigger mtime</code> option), you should see a message
+from Snakemake telling you that nothing needs doing:</p>
+<pre class="text"><code>Building DAG of jobs...
+Nothing to be done (all requested files are present and up to date).</code></pre>
+<p>However, if you’d like to force Snakemake to re-run the whole
+pipeline, you can do one of the following:</p>
+<p>– delete all output folders and results before re-running the
+Snakemake command</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> FastQC multiqc<span class="pp">*</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o3.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">--configfile</span> ex1.yml</span></code></pre></div>
+<p>– use Snakemake’s <code>--forcerun</code> (<code>-R</code>) or 
+<code>--forceall</code> (<code>-F</code>) options when you run the
+Snakemake command. <code>--forcerun</code> reruns a specific rule or
+input which you will have to specify in the command line.
+<code>--forceall</code> forces everything to be re-run. For example:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify a rule</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o3.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">-R</span> fastqc <span class="at">--configfile</span> ex1.yml</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># specify an input/output file</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o3.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">-R</span> FastQC/SRR3099585_chr18_fastqc.zip <span class="at">--configfile</span> ex1.yml</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># rerun everything</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> ex1b_o3.smk <span class="at">-c</span> 1 <span class="at">-p</span> <span class="at">-F</span> <span class="at">--configfile</span> ex1.yml</span></code></pre></div>
+<h1 id="recap">Recap</h1>
+<p><strong>In this exercise, we’ve seen:</strong></p>
+<ul>
+<li>how to get file names from the file system directly (o1)</li>
+<li>how to use a configuration file to specify paths and parameters
+outside of the code (o2)</li>
+<li>more about specifying directive values &amp; ways of calling them
+within the shell directive (o2)</li>
+<li>quick demo on how to integrate your Python skills into Snakemake
+(o2)</li>
+<li>how to redirect stdout and stderr streams (log) (o3)</li>
+<li>re-running options (o4)</li>
+</ul>
+<h2 id="some-more-useful-options-when-running-snakemake">Some more
+useful options when running Snakemake</h2>
+<p>– print the reason for each rule execution: <code>-r --reason</code>
+(for Snakemake version &lt;8 only)</p>
+<p>– print a summary and status of a rule: <code>-D</code></p>
+<p>– automatically create HTML reports
+(<code>--report report.html</code>) containing runtime statistics, a
+visualisation of the workflow topology, used software and data
+provenance information (need to add the <code>jinja2</code> package as a
+dependency)</p>
+<p><a href="https://snakemake.readthedocs.io/en/stable/executing/cli.html#all-option">all
+Snakemake options</a></p>
+</body>
+</html>
