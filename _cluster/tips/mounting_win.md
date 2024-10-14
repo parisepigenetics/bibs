@@ -1,13 +1,13 @@
 ---
 layout: page
-title: Easy navigation on iPOP-UP (Windows) 
-description: Navigating on iPOP-UP server on Windows
+title: Easy navigation on HPCs (Windows) 
+description: Navigating on HPC servers on Windows
 order: 2
 ---
 
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
-# Navigating on iPOP-UP server on Windows 10
+# Navigating on iPOP-UP/IFB server on Windows 10
 
 ---
 ## Download and install WinFsp and SSHFS-Win
@@ -23,15 +23,18 @@ Download the `.msi` file and install with your regular wizard.
 ---
 ## Mount the distant server 
 
+The examples are given for iPOP-UP cluster, but it works for IFB core as well using `core.cluster.france-bioinformatique.fr` instead of `ipop-up.rpbs.univ-paris-diderot.fr`.  
+
 - Open a terminal
 - Type 
     ```
     net use x: \\sshfs.r\username@ipop-up.rpbs.univ-paris-diderot.fr\..\..\..\shared\projects\awesome  
     ```
 
-Replacing `username` by your login (family name usually) and `awesome` by your project name. You can use another letter than `x` as your mounting point. 
+Replacing `username` by your login (family name usually) and `awesome` by your project name. You can use another letter than `x` as your mounting point.  
+For IFB cluster, use `username@core.cluster.france-bioinformatique.fr`. 
 
-- Enter your iPOP-UP login and password when asked. 
+- Enter your login and password when asked. 
 
 Your terminal should look like (in French) : 
 

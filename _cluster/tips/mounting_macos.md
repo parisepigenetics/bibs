@@ -1,17 +1,17 @@
 ---
 layout: page
-title: Easy navigation on iPOP-UP (Mac OS)
-description: Navigating on iPOP-UP server on Mac OS
+title: Easy navigation on HPCs (Mac OS)
+description: Navigating on HPC servers on Mac OS
 ---
 
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
-# Navigating on iPOP-UP server on Mac OS 
+# Navigating on iPOP-UP/IFB server on Mac OS 
 
 ---
 ## Create a mounting point 
 
-You can create a mounting point on your computer that point to your project on iPOP-UP server.  
+You can create a mounting point on your computer that point to your project on iPOP-UP or IFB server.  
 
 ### Install macFUSE and SSHFS
 
@@ -22,6 +22,8 @@ Download the dmg files and install them.
 ### Allow system extension in Security and Privacy
 
 ### Create a directory
+
+The examples are given for iPOP-UP cluster, but it works for IFB core as well using `core.cluster.france-bioinformatique.fr` instead of `ipop-up.rpbs.univ-paris-diderot.fr`.  
 
 In a terminal, you first create a directory on your computer. It will be the mounting point for your project folder. In the terminal type:
 ```

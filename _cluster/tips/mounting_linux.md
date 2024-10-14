@@ -1,12 +1,14 @@
 ---
 layout: page
-title: Easy navigation on iPOP-UP (Linux)
-description: Navigating on iPOP-UP server on Linux
+title: Easy navigation on HPCs (Linux)
+description: Navigating on HPC servers on Linux
 ---
 
 <img src="{{site.baseurl}}/images/banner.png" alt="drawing" width="600"/>
 
-# Navigating on iPOP-UP server on Linux
+# Navigating on iPOP-UP or IFB server on Linux
+
+The examples are given for iPOP-UP cluster, but it works for IFB core as well using `core.cluster.france-bioinformatique.fr` instead of `ipop-up.rpbs.univ-paris-diderot.fr`. 
 
 ---
 ## With Dolphin
