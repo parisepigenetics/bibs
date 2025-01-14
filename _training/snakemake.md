@@ -10,7 +10,7 @@ order: 1
 - [Presentation]({{site.baseurl}}/training/Snakemake_oct2024_beta/day2_introsmk.html)
 - [Exercices]({{site.baseurl}}/training/Snakemake_oct2024_beta/tp.html)
 
-# Practival session
+# Practical session
 
 - [Presentation]({{site.baseurl}}/training/Snakemake_oct2024_beta/day2_session.html)
 - [Part A]({{site.baseurl}}/training/Snakemake_oct2024_beta/tpA.html)
