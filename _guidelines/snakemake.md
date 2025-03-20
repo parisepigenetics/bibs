@@ -9,6 +9,15 @@ order: 1
 
 # Tips for Snakemake workflow development
 
+# Building a dag to understand a wokflow
+On a cluster, need for Snakemake and Graphviz modules. 
+
+```
+[hennion @ ipop-up 12:45]$ : module load graphviz/2.40.1 snakemake/7.32.4
+[hennion @ ipop-up 13:48]$ : srun snakemake --profile=configs/ --dag | dot -Tpng > dag.png
+```
+See also : --rulegraph 
+
 ## Of notes
 
 ### 1st rule must be the target
