@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Training
+title: Cluster Training 2024
 description: Exercices for the training (19/03/24)
 order: 1
 ---

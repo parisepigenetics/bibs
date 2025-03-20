@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Training
+title: Cluster Training 2023
 description: Exercices for the training (12/06/23)
 order: 1
 ---

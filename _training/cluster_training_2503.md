@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Training
+title: Cluster Training 2025
 description: Exercices for the training (24/03/25)
 order: 1
 ---
