@@ -373,13 +373,14 @@ You have to
 
 
 [Correction]({{site.baseurl}}/documents/corrections/09_nf-core_v2.txt)  
-[samplesheet.csv]({{site.baseurl}}/documents/corrections/samplesheet.csv)  
+[samplesheet.csv]({{site.baseurl}}/documents/corrections/samplesheet.csv.txt)  
 
 Look at the results of the workfow. 
 Check the resource usage in `pipeline_info/execution_report_xxx.html`. 
 
 ## Exercice 10: nf-core workflows, adjust resources
-You can see in the execution report or using `sacct` that the default memory resources defined by nf-core are too high for our little dataset. The resources allocated to the different steps can be modified (increased or decreased) in a dedicated configuration file. See the [documentation](https://nf-co.re/docs/usage/configuration). 
+You can see in the execution report or using `sacct` that the default memory resources defined by nf-core are too high for our little dataset. The resources allocated to the different steps can be modified (increased or decreased) in a dedicated configuration file. See the [documentation](https://nf-co.re/docs/usage/configuration).  
+
 For instance : `demo.config`
 ```json
 process {
@@ -399,7 +400,7 @@ Create a configuration file adjusting the resources to the real needs, and modif
 {:.ui.success.message}
 
 [Correction]({{site.baseurl}}/documents/corrections/10_nf-core_config.txt)  
-[demo.config]({{site.baseurl}}/documents/corrections/demo.config)
+[demo.config]({{site.baseurl}}/documents/corrections/demo.config.txt)
 
 
 
