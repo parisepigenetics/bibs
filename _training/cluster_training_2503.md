@@ -403,8 +403,6 @@ Create a configuration file adjusting the resources to the real needs, and modif
 [demo.config]({{site.baseurl}}/documents/corrections/demo.config.txt)
 
 
-
-
 # Useful resources
 
 - To find out more, read the SLURM manual : `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html)
@@ -416,6 +414,8 @@ Create a configuration file adjusting the resources to the real needs, and modif
 - BiBs practical guide: [https://parisepigenetics.github.io/bibs/cluster/ipopup](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster/)
 
 - IFB community support : [https://community.france-bioinformatique.fr/](https://community.france-bioinformatique.fr/)
+
+- nf-core documentation and tutorials [https://nf-co.re/docs/](https://nf-co.re/docs/)
     
 # Thanks
 - iPOP-UP's technical and steering committees

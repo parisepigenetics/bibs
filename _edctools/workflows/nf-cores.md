@@ -46,7 +46,7 @@ In order to run the pipelines, you first need an account and a project on IFB co
 Below is a short description of the steps to run a workflow with a simple example of ChIPseq. Please refer to the full documentation of the workflow you want to use to set up the parameters correctly. 
 
 
-In order to configure the workflow you have to create two files: 
+In order to configure the workflow you have to create two files (their format depends on the workflow!): 
 - A **design file** in csv format that contains the sample names and paths to find the FASTQ. For instance: [design.csv]({{site.baseurl}}/documents/design.csv)
 
 ```
@@ -184,15 +184,12 @@ echo 'ChIP_nf test 01'
 
 start0=`date +%s`
 
-# Export Java path 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-22.10.4
-
 # load Nextflow environment module
 module purge
-module load nextflow/22.10.4
+module load nextflow/24.04.4
 
 # Run a downloaded/git-cloned nextflow workflow 
-nextflow run nf-core/chipseq -name chip_ko_1 -profile ipop_up -params-file nf-params.json
+nextflow run nf-core/chipseq -name chip_ko_1 -profile ipop_up -params-file nf-params.json 
 
 echo '########################################'
 echo 'Job finished' $(date --iso-8601=seconds)
@@ -224,14 +221,11 @@ nf-core provides some test datasets for each workflow: To use them, you just nee
 #SBATCH --partition=ipop-up
 #SBATCH --mem=4G
 
-# Export Java path 
-export JAVA_HOME=/shared/software/conda/envs/nextflow-22.10.4
-
 # load Nextflow environment module
 module purge
-module load nextflow/22.10.4
+module load nextflow/24.04.4
 
-nextflow run nf-core/atacseq  -profile ipop_up,test
+nextflow run nf-core/chipseq  -profile ipop_up,test --outdir results
 ```
 ### Custom configuration [advanced user]
 For some steps, you might need to modify default values used to run the different tools. This can be done using a custom configuration file. Please see the [documentation](https://nf-co.re/docs/usage/configuration). If you need to increase the memory and the number of CPUs allocated to one job, you should add a `custom.config` file that should look like this: 
@@ -262,4 +256,4 @@ You'll find help to understand the errors at [https://nf-co.re/usage/troubleshoo
 
 ---
 <small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
-Last update : 13/02/2024</small>
+Last update : 21/03/2025</small>
