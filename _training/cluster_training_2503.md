@@ -327,7 +327,7 @@ You will see using `squeue` command that some of the tasks are pending until the
 
 # Job arrays examples
 
-## Take all files matching a patern in a directory
+## Take all files matching a pattern in a directory
 Example
 ```sh
 #SBATCH --array=0-7   # if 8 files to proccess 
@@ -363,12 +363,46 @@ Use workflow managers such as Snakemake or Nextflow.
 
 ## Exercice 9: nf-core workflows
 
-Starting from [09_nf-core.sh]({{site.baseurl}}/documents/templates/09_nf-core.sh), write a script running ChIP-seq workflow on nf-core test data. 
+Starting from [09_nf-core_v2.sh]({{site.baseurl}}/documents/templates/09_nf-core_v2.sh), write a script running the demo workflow on the FASTQ files from exercice 5. 
 
-Some help can be found [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). Please also see the [full documentation](https://nf-co.re/chipseq). 
+Some help can be found on the [nf-core demo pipeline page](https://nf-co.re/demo/1.0.1/) as well as [here](https://parisepigenetics.github.io/bibs/edctools/workflows/nf-cores/#/edctools/). 
+You have to 
+- use `ipop_up` profile
+- create a sample sheet following the format described in [nf-core demo pipeline page](https://nf-co.re/demo/1.0.1/) and use it as input
+- give a name to the output directory
 
-[Correction]({{site.baseurl}}/documents/corrections/09_nf-core.txt)  
-[Of note, even with the test dataset, it takes a lot of time and resources!]
+
+[Correction]({{site.baseurl}}/documents/corrections/09_nf-core_v2.txt)  
+[samplesheet.csv]({{site.baseurl}}/documents/corrections/samplesheet.csv)  
+
+Look at the results of the workfow. 
+Check the resource usage in `pipeline_info/execution_report_xxx.html`. 
+
+## Exercice 10: nf-core workflows, adjust resources
+You can see in the execution report or using `sacct` that the default memory resources defined by nf-core are too high for our little dataset. The resources allocated to the different steps can be modified (increased or decreased) in a dedicated configuration file. See the [documentation](https://nf-co.re/docs/usage/configuration). 
+For instance : `demo.config`
+```json
+process {
+    withName: 'NFCORE_DEMO:DEMO:SEQTK_TRIM' {
+        memory = 1.GB
+    }
+    withName: 'NFCORE_DEMO:DEMO:FASTQC' {
+        memory = 2.GB
+    }
+}
+```
+Then this configuration file can be given to nextflow command line using the option `-c demo.config`. 
+
+Create a configuration file adjusting the resources to the real needs, and modify your previous script to use it. Rerun the workflow. Check the execution report. 
+
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> You can rerun the whole workflow ignoring previous results with the `-resume false` option. 
+{:.ui.success.message}
+
+[Correction]({{site.baseurl}}/documents/corrections/10_nf-core_config.txt)  
+[demo.config]({{site.baseurl}}/documents/corrections/demo.config)
+
+
+
 
 # Useful resources
 

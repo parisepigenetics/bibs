@@ -317,7 +317,7 @@ You will see using `squeue` command that some of the tasks are pending until the
 
 # Job arrays examples
 
-## Take all files matching a patern in a directory
+## Take all files matching a pattern in a directory
 Example
 ```sh
 #SBATCH --array=0-7   # if 8 files to proccess 

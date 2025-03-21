@@ -1,0 +1,2 @@
+sample,fastq_1,fastq_2
+SAMPLE1_PE,/shared/projects/training/test_fastq/D192red_R1.fastq.gz,/shared/projects/training/test_fastq/D192red_R2.fastq.gz
