@@ -36,6 +36,20 @@ Never leave your computer unsupervised with your session open and iPOP-UP server
 
 You won't see anything when you type your password, this is normal, don't panic! 
 
+
+## Set the default account
+The first time you use the cluster, it is necessary to define your default account. To do so, run the following command: 
+```
+sacctmgr update user $USER set defaultaccount=YourProjectName
+```
+If you don't do it, your jobs will quickly be blocked forever in the queue with the `AssocGrpCPUMinutesLimit` reason. 
+
+An alternative in to add the account in your sbatch scripts (see below) using 
+
+```sh
+#SBATCH --account=training
+```
+
 ## Warm-up
 
 Where are you on the cluster?  

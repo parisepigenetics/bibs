@@ -114,7 +114,7 @@ If you don't do it, your jobs will quickly be blocked forever in the queue with 
 An alternative in to add the account in your sbatch scripts (see below) using 
 
 ```sh
-#SBATCH --partition=ipop-up
+#SBATCH --account=training
 ```
 
 ---
