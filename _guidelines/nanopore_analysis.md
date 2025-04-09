@@ -137,6 +137,8 @@ More information about the use of the clusters can be found at [https://parisepi
 
 ### Demultiplexing
 
+### Seq summary
+
 ## Basecalling on the local computer (command line)
 You can also use Dorado on P2 computer which has a powerful graphics card. 
 Nota: if you download directly Dorado on the computer there will be errors in creating symbolic links when decompressing. To overcome this problem, I download and decompress Dorado on a cluster and download the obtained folder to the local computer.  
