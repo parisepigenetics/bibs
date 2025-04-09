@@ -135,11 +135,23 @@ sbatch Dorado_RUNID.sh
 ```
 More information about the use of the clusters can be found at [https://parisepigenetics.github.io/bibs/cluster/slurm/#/cluster/](https://parisepigenetics.github.io/bibs/cluster/slurm/#/cluster/). 
 
+### Demultiplexing
 
 ## Basecalling on the local computer (command line)
 You can also use Dorado on P2 computer which has a powerful graphics card. 
 Nota: if you download directly Dorado on the computer there will be errors in creating symbolic links when decompressing. To overcome this problem, I download and decompress Dorado on a cluster and download the onbtained folder to the local computer.  
 
+```
+promethion@edc-056:/mnt/d/Nanopore$ dorado-0.9.5-linux-x64/bin/dorado basecaller sup,5mCG_5hmCG 20250402_HCT116_AS_J4_P2/HCT116-D1_J4_Pool/test_calling
+```
+With demultiplexing (add --kit-name)
+```
+promethion@edc-056:/mnt/d/Nanopore$ dorado-0.9.5-linux-x64/bin/dorado basecaller sup,5mCG_5hmCG 20250402_HCT116_AS_J4_P2/HCT116-D1_J4_Pool/test_calling --reference References/hg38.mmi  --min-qscore 10 --kit-name EXP-NBD114-24 > 20250402_HCT116_AS_J4_P2/HCT116-D1_J4_Pool/dorado_test_mux.bam
+```
+Then separate the big bma into one file / sample:
+```
+promethion@edc-056:/mnt/d/Nanopore$ dorado-0.9.5-linux-x64/bin/dorado demux --output-dir 20250402_HCT116_AS_J4_P2/HCT116-D1_J4_Pool/dorado_demux --no-classify 20250402_HCT116_AS_J4_P2/HCT116-D1_J4_Pool/dorado_test_mux.bam
+```
 
 ---
 # Basic QC on IFB or iPOP-UP cluster [TO UPDATE]
