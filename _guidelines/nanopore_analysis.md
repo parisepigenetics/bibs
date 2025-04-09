@@ -139,7 +139,7 @@ More information about the use of the clusters can be found at [https://parisepi
 
 ## Basecalling on the local computer (command line)
 You can also use Dorado on P2 computer which has a powerful graphics card. 
-Nota: if you download directly Dorado on the computer there will be errors in creating symbolic links when decompressing. To overcome this problem, I download and decompress Dorado on a cluster and download the onbtained folder to the local computer.  
+Nota: if you download directly Dorado on the computer there will be errors in creating symbolic links when decompressing. To overcome this problem, I download and decompress Dorado on a cluster and download the obtained folder to the local computer.  
 
 ```
 promethion@edc-056:/mnt/d/Nanopore$ dorado-0.9.5-linux-x64/bin/dorado basecaller sup,5mCG_5hmCG 20250402_HCT116_AS_J4_P2/HCT116-D1_J4_Pool/test_calling
