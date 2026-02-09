@@ -99,22 +99,11 @@ Summary of the different steps one has to follow to put raw FASTQ files into the
 <span> <b>Magali Hennion</b></span><br> Head of BiBs, CNRS research engineer
 {:.ui.success.message}
 
-<span> <b>Olivier Kirsh</b></span><br> Assistant professor, Université Paris Cité
-{:.ui.success.message}
-
-<span> <b>Elouan Bethuel</b></span><br> M2 [BI-IPFB](https://odf.u-paris.fr/fr/offre-de-formation/master-XB/sciences-technologies-sante-STS/bio-informatique-K2VO60MU.html), CNRS apprentice
+<span> <b>Mélina Farshchi</b></span><br> M2 [BI-IPFB](https://odf.u-paris.fr/fr/offre-de-formation/master-XB/sciences-technologies-sante-STS/bio-informatique-K2VO60MU.html), CNRS apprentice
 {:.ui.success.message}
 
 <br/>
 
-## Steering committee
-
-- Magali Hennion
-- Olivier Kirsh
-- Valérie Mezger
-- Jean-François Ouimette
-- Pierre Poulain (Institut Jacques Monod)
-- Claire Rougeulle
 
 ## Feedback request
 
@@ -128,4 +117,4 @@ This website is always evolving. We kindly ask our users to provide some feedbac
 
 ---
 <small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
-Last update : 20/10/2023</small>
+Last update : 01/02/2026</small>
