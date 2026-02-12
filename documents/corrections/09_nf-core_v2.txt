@@ -13,6 +13,7 @@
 
 ################################################################################
 
+echo ''
 echo '########################################'
 echo 'Date:' $(date --iso-8601=seconds)
 echo 'User:' $USER
@@ -38,4 +39,5 @@ echo 'Job finished' $(date --iso-8601=seconds)
 end=`date +%s`
 runtime=$((end-start0))
 minute=60
-echo "---- Total runtime $runtime s ; $((runtime/minute)) min ----"
+echo "---- Total runtime $runtime s ; i.e. $((runtime/minute)) min $((runtime%minute)) sec ----"
+echo ''
