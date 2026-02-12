@@ -23,4 +23,4 @@ STAR --genomeDir $pathToIndex \
 --outFileNamePrefix $outputFileName \
 --readFilesCommand zcat
 
-# --runThreadN ??  # exercice 6 : use 4 threads. Tip! use can a Slurm variable to adjust the number of threads to available CPUs
+# --runThreadN ??  # exercice 6 : use 4 threads. Tip! use the appropriate Slurm variable to adjust the number of threads to available CPUs.
