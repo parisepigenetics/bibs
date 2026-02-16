@@ -1,14 +1,14 @@
 ---
 layout: page
 title: Cluster Training 2026
-description: Exercices for the training (17/03/26)
+description: Exercices for the training (17/02/26)
 order: 1
 ---
 
 # iPOP-UP training: hands-on
 {:.no_toc}
 
-Date: 17/03/2026  
+Date: 17/02/2026  
 Trainers: Olivier Kirsh, Julien Rey, Magali Hennion
 
 ---
@@ -343,7 +343,7 @@ You will see using `squeue` command that some of the tasks are pending until the
 # Job arrays examples
 
 ## Take all files matching a pattern in a directory
-Example
+Example:
 ```sh
 #SBATCH --array=0-7   # if 8 files to proccess 
 FQ=(*fastq.gz)  #Create a bash array
@@ -364,8 +364,8 @@ echo $INPUT
 
 - The index of bash arrays starts at 0
 - Don't forget to have different output files for each task of the array
-- Same with your log names (\%a or \%J in the name will do the trick)
-- Do not overload the cluster! Please use \%50 (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
+- Same with your log names (`%a` or `%J` in the name will do the trick)
+- Do not overload the cluster! Please use `%50` (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
 - The RAM defined using `#SBATCH --mem=25G` is for **each task**
     
 # Complex workflows
