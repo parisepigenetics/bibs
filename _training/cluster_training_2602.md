@@ -127,15 +127,16 @@ Modify `flatter.sh` to add this line:
 ```
 #SBATCH -o flatter.out
 ```
-then run it. Anything different ?
+then run it. Notice anything different?
 
 [Correction]({{site.baseurl}}/documents/corrections/02_flatter_o.txt)
 
 ## Exercise 3: hostname
 
-Run using sbatch the command `hostname` in a way that the sbatch outfile is called `hostname.out`. 
+Using the previous exercise as an example, create a new script named `hostname.sh`.\
+When submitted with sbatch, your script must run the `hostname` command and the output file must be named `hostname.out`.
 
-What is the output ? How does it differ from typing directly `hostname` in the terminal and why ?
+Run it. What is the output? How does it differ from typing `hostname` directly in the terminal and why?
 
 [Correction]({{site.baseurl}}/documents/corrections/03_hostname.txt)
 
