@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Cluster Training 2025
-description: Exercices for the training (24/03/25)
+title: Cluster Training 2026
+description: Exercices for the training (17/03/26)
 order: 1
 ---
 
 # iPOP-UP training: hands-on
 {:.no_toc}
 
-Date: 24/03/2025  
+Date: 17/03/2026  
 Trainers: Olivier Kirsh, Julien Rey, Magali Hennion
 
 ---
