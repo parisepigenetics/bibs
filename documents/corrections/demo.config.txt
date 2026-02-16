@@ -1,11 +1,14 @@
 process {
     withName: 'NFCORE_DEMO:DEMO:SEQTK_TRIM' {
         memory = 100.MB
+        cpus = 2
     }
     withName: 'NFCORE_DEMO:DEMO:FASTQC' {
-        memory = 2.GB
+        memory = 3.GB
+        cpus = 3
     }
     withName: 'NFCORE_DEMO:DEMO:MULTIQC' {
         memory = 1.GB
+        cpus = 1
     }
 }
