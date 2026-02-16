@@ -428,7 +428,7 @@ Then this configuration file can be given to nextflow command line using the opt
 
 Create a configuration file adjusting the resources to the real needs, and modify your previous script to use it. Rerun the workflow. Check the execution report. 
 
-<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> You can rerun the whole workflow ignoring previous results with the `-resume false` option. 
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> By default, rerunning a Nextflow workflow does not reuse previously computed results. You can reuse cached results (= previous results) by adding the `-resume` option to the `nextflow run` command. 
 {:.ui.success.message}
 
 [Correction]({{site.baseurl}}/documents/corrections/10_nf-core_config.txt)  
@@ -441,6 +441,8 @@ Create a configuration file adjusting the resources to the real needs, and modif
     
 - Ask for help or signal problems on the cluster : [https://discourse.rpbs.univ-paris-diderot.fr/](https://discourse.rpbs.univ-paris-diderot.fr/)
 
+- introductory tutorial to the iPOP-U cluster: [https://ipop.u-paris.fr/documentation-du-cluster-ipop-uprpbs/](https://ipop.u-paris.fr/documentation-du-cluster-ipop-uprpbs/)
+  
 - iPOP-UP cluster documentation: [https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
 
 - BiBs practical guide: [https://parisepigenetics.github.io/bibs/cluster/ipopup](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster/)
