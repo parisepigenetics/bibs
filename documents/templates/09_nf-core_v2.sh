@@ -13,6 +13,7 @@
 
 ################################################################################
 
+echo ''
 echo '########################################'
 echo 'Date:' $(date --iso-8601=seconds)
 echo 'User:' $USER
@@ -26,11 +27,11 @@ echo 'nf-core demo'
 
 start0=`date +%s`
 
-# load Nextflow environment module
+# Load Nextflow environment module
 module purge
 module load ?? # find a nextflow module version 24
 
-# Run a the demo workflow
+# Run the demo workflow
 nextflow run ?? -profile ?? --input ?? --outdir ??
 
 echo '########################################'
@@ -38,4 +39,5 @@ echo 'Job finished' $(date --iso-8601=seconds)
 end=`date +%s`
 runtime=$((end-start0))
 minute=60
-echo "---- Total runtime $runtime s ; $((runtime/minute)) min ----"
+echo "---- Total runtime $runtime s ; i.e. $((runtime/minute)) min $((runtime%minute)) sec ----"
+echo ''
