@@ -1,21 +1,21 @@
 ---
 layout: page
 title: Cluster Training 2026
-description: Exercices for the training (17/03/26)
+description: Exercices for the training (17/02/26)
 order: 1
 ---
 
 # iPOP-UP training: hands-on
 {:.no_toc}
 
-Date: 17/03/2026  
-Trainers: Olivier Kirsh, Julien Rey, Magali Hennion
+Date: 17/02/2026  
+Trainers: Olivier Kirsh, Julien Rey, Magali Hennion, Emeline Bruyère, Mélina Farshchi
 
 ---
 # Presentation
 {:.no_toc}
 
-The slides of the presentation can be downloaded [here]({{site.baseurl}}/documents/Cluster_formation_iPOP_UP_v4.pdf). 
+The slides of the presentation can be downloaded [here]({{site.baseurl}}/documents/Cluster_formation_iPOP_UP_v5.pdf). 
 
 ---
 # Table of content
@@ -26,7 +26,30 @@ The slides of the presentation can be downloaded [here]({{site.baseurl}}/documen
 {:toc}
 
 ---
-# Connect to the cluster
+# Connect to the cluster 
+
+## 1. via Ondemand
+
+In order to make easier the work on the cluster, an On Demand instance is implemented. This way, you can access the cluster, modify your files, run your scripts, see your results, etc. in a simple web browser. 
+
+- Open a web browser and go to [https://ondemand.rpbs.univ-paris-diderot.fr](https://ondemand.rpbs.univ-paris-diderot.fr). 
+- Enter your username and password and log in.
+
+Now you can
+ - Browse and modify your files using the "Files" menu. You should have access to the `training` project. 
+ - Follow your jobs using the "Jobs" menu
+ - Launch a terminal to do all the exercices of this training using "Apps/RPBS Shell Access"
+ - Launch Jupyter Lab or RStudio for more advance analyses
+
+## 2. via JupyterHub interface (might be deprecated in the future)
+
+- Open a web browser and go to [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr). 
+- Enter your login and password and sign in.
+- Select your project, the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press `Start`. 
+
+The launcher allows you to start a Terminal that can be used for the rest of this course. 
+
+## 3. via SSH
 ```
 ssh -o PubkeyAuthentication=no username@ipop-up.rpbs.univ-paris-diderot.fr
 ```
@@ -36,6 +59,21 @@ Never leave your computer unsupervised with your session open and iPOP-UP server
 
 You won't see anything when you type your password, this is normal, don't panic! 
 
+## Optional: use a file explorer
+
+In you don't use Ondemand or JupyterHub, you can use the file manager from GNOME to navigate easily on iPOP-UP file server. 
+- Open the file manager `Fichiers`.
+- Click on `Autres emplacements` on the side bar.
+- In the bar `Connexion à un serveur`, type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
+- Enter your login and password.  
+
+This way, you can modify your files directly using any local **text editor**.
+
+<span>{% include icon.liquid id='exclamation-triangle' %} <b>Be careful</b></span><br> Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**.
+{:.ui.warning.message}
+
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win), [Mac]({{site.baseurl}}/cluster/tips/mounting_macos) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
+{:.ui.success.message}
 
 ## Set the default account
 The first time you use the cluster, it is necessary to define your default account. To do so, run the following command: 
@@ -44,11 +82,13 @@ sacctmgr update user $USER set defaultaccount=YourProjectName
 ```
 If you don't do it, your jobs will quickly be blocked forever in the queue with the `AssocGrpCPUMinutesLimit` reason. 
 
-An alternative in to add the account in your sbatch scripts (see below) using 
+An alternative in to add the account in all your sbatch scripts (see below) using 
 
 ```sh
 #SBATCH --account=training
 ```
+
+
 
 ## Warm-up
 
@@ -69,31 +109,6 @@ There is a `training` project accessible to you, navigate to this folder and lis
 
 Then go to one of your projects and create a folder named `250324_training`. This is where you will do all the exercices. If you don't have a project, you can create a folder named `YourName` in the `training` folder and work there.  
 
-# Optional: use a file explorer
-
-Using the file manager from GNOME, you can navigate easily on iPOP-UP file server. 
-- Open the file manager `Fichiers`.
-- Click on `Autres emplacements` on the side bar.
-- In the bar `Connexion à un serveur`, type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
-- Enter your login and password.  
-
-This way, you can modify your files directly using any local **text editor**.
-
-<span>{% include icon.liquid id='exclamation-triangle' %} <b>Be careful</b></span><br> Never use word processor (like Microsoft Word or LibreOffice Writer) to modify your code and never copy/past code to/from those softwares. Use **only text editors** and **UTF-8 encoding**.
-{:.ui.warning.message}
-
-<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win), [Mac]({{site.baseurl}}/cluster/tips/mounting_macos) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
-{:.ui.success.message}
-
-# Optional: use JupyterHub interface
-
-In order to make easier the work on the cluster, a Jupyter Hub is implemented. This way, you can access the cluster, modify your files, run your scripts, see your results, etc. in a simple web browser. 
-
-- Open a web browser and go to [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr). 
-- Enter your login and password and sign in.
-- Select your project, the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press `Start`. 
-
-The launcher allows you to start a Terminal that can be used for the rest of this course. 
 
 # Get information about the cluster
 
