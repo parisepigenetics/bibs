@@ -28,9 +28,9 @@ The slides of the presentation can be downloaded [here]({{site.baseurl}}/documen
 ---
 # Connect to the cluster 
 
-## 1. via Ondemand
+## 1. via Open Ondemand
 
-In order to make easier the work on the cluster, an On Demand instance is implemented. This way, you can access the cluster, modify your files, run your scripts, see your results, etc. in a simple web browser. 
+In order to make easier the work on the cluster, an Open OnDemand single point of access has been implemented. This way, you can access the cluster, modify your files, run your scripts, see your results, etc. in a simple web browser. 
 
 - Open a web browser and go to [https://ondemand.rpbs.univ-paris-diderot.fr](https://ondemand.rpbs.univ-paris-diderot.fr). 
 - Enter your username and password and log in.
@@ -50,18 +50,20 @@ Now you can
 The launcher allows you to start a Terminal that can be used for the rest of this course. 
 
 ## 3. via SSH
+Open your local terminal and type
 ```
 ssh -o PubkeyAuthentication=no username@ipop-up.rpbs.univ-paris-diderot.fr
 ```
+You won't see anything when you type your password, this is normal, don't panic! 
+
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Security warning</b></span><br>
 Never leave your computer unsupervised with your session open and iPOP-UP server connected.  
 {:.ui.large.warning.message}
 
-You won't see anything when you type your password, this is normal, don't panic! 
 
 ## Optional: use a file explorer
 
-In you don't use Ondemand or JupyterHub, you can use the file manager from GNOME to navigate easily on iPOP-UP file server. 
+In you don't use OnDemand or JupyterHub, you can use the file manager from GNOME to navigate easily on iPOP-UP file server. 
 - Open the file manager `Fichiers`.
 - Click on `Autres emplacements` on the side bar.
 - In the bar `Connexion à un serveur`, type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
@@ -78,7 +80,7 @@ This way, you can modify your files directly using any local **text editor**.
 ## Set the default account
 The first time you use the cluster, it is necessary to define your default account. To do so, run the following command: 
 ```
-sacctmgr update user $USER set defaultaccount=YourProjectName
+set_project YourProjectName
 ```
 If you don't do it, your jobs will quickly be blocked forever in the queue with the `AssocGrpCPUMinutesLimit` reason. 
 
