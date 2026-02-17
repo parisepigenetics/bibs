@@ -437,19 +437,22 @@ Create a configuration file adjusting the resources to the real needs, and modif
 
 # Useful resources
 
-- To find out more, read the SLURM manual : `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html)
+- To find out more, read the SLURM manual: `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html)
     
-- Ask for help or signal problems on the cluster : [https://discourse.rpbs.univ-paris-diderot.fr/](https://discourse.rpbs.univ-paris-diderot.fr/)
+- Ask for help or signal problems on the cluster: [https://discourse.rpbs.univ-paris-diderot.fr/](https://discourse.rpbs.univ-paris-diderot.fr/)
 
-- introductory tutorial to the iPOP-U cluster: [https://ipop.u-paris.fr/documentation-du-cluster-ipop-uprpbs/](https://ipop.u-paris.fr/documentation-du-cluster-ipop-uprpbs/)
+- Introductory tutorial to the iPOP-U cluster: [https://ipop.u-paris.fr/documentation-du-cluster-ipop-uprpbs/](https://ipop.u-paris.fr/documentation-du-cluster-ipop-uprpbs/)
   
 - iPOP-UP cluster documentation: [https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/](https://ipop-up.docs.rpbs.univ-paris-diderot.fr/documentation/)
 
 - BiBs practical guide: [https://parisepigenetics.github.io/bibs/cluster/ipopup](https://parisepigenetics.github.io/bibs/cluster/ipopup/#/cluster/)
 
-- IFB community support : [https://community.france-bioinformatique.fr/](https://community.france-bioinformatique.fr/)
+- IFB community support: [https://community.france-bioinformatique.fr/](https://community.france-bioinformatique.fr/)
 
-- nf-core documentation and tutorials [https://nf-co.re/docs/](https://nf-co.re/docs/)
+- Nf-core documentation and tutorials: [https://nf-co.re/docs/](https://nf-co.re/docs/)
+  
+- To know more about iPOP-UP: [https://ipop.u-paris.fr/](https://ipop.u-paris.fr/)
+
     
 # Thanks
 - iPOP-UP's technical and steering committees
