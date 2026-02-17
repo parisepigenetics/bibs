@@ -262,13 +262,14 @@ sacct --format=JobID,JobName,Start,Elapsed,CPUTime,NCPUS,NodeList,MaxRSS,ReqMeM,
 
 To see every options, run `sacct --helpformat`
 
-## Job efficiency : seff
+## Job efficiency : reportseff
 
-After the run, the `seff` command allows you to access information about the efficiency of a job.
+After the run, the `reportseff` command allows you to access information about the efficiency of a job.
 ```
-seff <jobid>
+module load reportseff
+reportseff <jobid>
 ```
-<img src="{{site.baseurl}}/images/seff.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/reportseff.png" alt="drawing" width="400"/>
 
 # Practical example
 
