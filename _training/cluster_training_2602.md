@@ -269,7 +269,7 @@ After the run, the `reportseff` command allows you to access information about t
 module load reportseff
 reportseff <jobid>
 ```
-<img src="{{site.baseurl}}/images/reportseff.png" alt="drawing" width="400"/>
+<img src="{{site.baseurl}}/images/reportseff.png" alt="drawing" width="800"/>
 
 # Practical example
 
