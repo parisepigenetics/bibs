@@ -15,7 +15,7 @@ Trainers: Olivier Kirsh, Julien Rey, Magali Hennion, Emeline Bruyère, Mélina F
 # Presentation
 {:.no_toc}
 
-The slides of the presentation can be downloaded [here]({{site.baseurl}}/documents/Cluster_formation_iPOP_UP_v5.pdf). 
+The slides of the presentation can be downloaded [here](https://formation-d2cda7.docs.rpbs.univ-paris-diderot.fr/Cluster_formation_iPOP_UP_v5.pdf). 
 
 ---
 # Table of content
@@ -291,7 +291,7 @@ Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.
 
 
 ## After the run
-Check the resource that was used using `seff`.  
+Check the resource that was used using `seff` or `reportseff`.  
 
 [Correction]({{site.baseurl}}/documents/corrections/05_star.txt)
 
@@ -442,6 +442,12 @@ Create a configuration file adjusting the resources to the real needs, and modif
 
 [Correction]({{site.baseurl}}/documents/corrections/10_nf-core_config.txt)  
 [demo.config]({{site.baseurl}}/documents/corrections/demo.config.txt)
+
+# At the end of the day
+
+You can check all the slurm outputs from a folder using `reportseff`. 
+
+<img src="{{site.baseurl}}/images/reportsefffolder.png" alt="drawing" width="800"/>
 
 
 # Useful resources
