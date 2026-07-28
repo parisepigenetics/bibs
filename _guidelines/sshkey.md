@@ -26,7 +26,7 @@ This will create a folder in your home directory called `.ssh` containing a file
 
 You're done! 
 
-You can make several SSH keys from your different devices, or you can use the same one for all. It that case you have to copy your `.ssh` folder into the home directory of the other devices (for instance on the HPC clusters). 
+You can make several SSH keys from your different devices, or you can use the same one for all. In that case you have to copy your `.ssh` folder into the home directory of the other devices (for instance on the HPC clusters). 
 
 ---
 <small>Author : [Magali Hennion](mailto:magali.hennion@cnrs.fr)  
