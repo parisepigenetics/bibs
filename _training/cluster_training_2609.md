@@ -1,15 +1,15 @@
 ---
 layout: page
-title: Cluster Training 2026 - Feb. session
-description: Exercices for the training (17/02/26)
+title: Cluster Training 2026 - Sept. session
+description: Exercices for the training (29/09/26)
 order: 1
 ---
 
 # iPOP-UP training: hands-on
 {:.no_toc}
 
-Date: 17/02/2026  
-Trainers: Olivier Kirsh, Julien Rey, Magali Hennion, Emeline Bruyère, Mélina Farshchi
+Date: 29/09/2026  
+Trainers: Julien Rey, Magali Hennion, Emeline Bruyère
 
 ---
 # Presentation
