@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Cluster Training 2026
+title: Cluster Training 2026 - Feb. session
 description: Exercices for the training (17/02/26)
 order: 1
 ---
