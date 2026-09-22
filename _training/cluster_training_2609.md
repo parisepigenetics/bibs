@@ -28,26 +28,29 @@ The slides of the presentation can be downloaded [here](https://formation-d2cda7
 ---
 # Connect to the cluster 
 
+There are several ways to connect to the cluster and use it. Choose the one that works best for you (web interface? local terminal? ...).
+
 ## 1. via Open Ondemand
 
 In order to make easier the work on the cluster, an Open OnDemand single point of access has been implemented. This way, you can access the cluster, modify your files, run your scripts, see your results, etc. in a simple web browser. 
 
 - Open a web browser and go to [https://ondemand.rpbs.univ-paris-diderot.fr](https://ondemand.rpbs.univ-paris-diderot.fr). 
-- Enter your username and password and log in.
+- Enter your cluster username and password and log in.
 
 Now you can
  - Browse and modify your files using the "Files" menu. You should have access to the `training` project. 
  - Follow your jobs using the "Jobs" menu
- - Launch a terminal to do all the exercices of this training using "Apps/RPBS Shell Access"
- - Launch Jupyter Lab or RStudio for more advance analyses
+ - **Launch a terminal** to do all the exercises of this training using "Apps/RPBS Shell Access"
+ - Launch RStudio, VS Code or Jupyter Lab for more advance analyses
+ - Launch Virtual Desktop to use graphical sotfware such as IGV
 
 ## 2. via JupyterHub interface (might be deprecated in the future)
 
 - Open a web browser and go to [https://jupyterhub.rpbs.univ-paris-diderot.fr](https://jupyterhub.rpbs.univ-paris-diderot.fr). 
-- Enter your login and password and sign in.
-- Select your project, the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press `Start`. 
+- Enter your cluster username and password and sign in.
+- Select your project (here: training), the resources you need (default resources are sufficient unless you want to run calculations within Jupyter Notebooks or RStudio), and press `Start`. 
 
-The launcher allows you to start a Terminal that can be used for the rest of this course. 
+The launcher allows you to **start a Terminal** that can be used for the rest of this course. 
 
 ## 3. via SSH
 Open your local terminal and type
@@ -55,6 +58,8 @@ Open your local terminal and type
 ssh -o PubkeyAuthentication=no username@ipop-up.rpbs.univ-paris-diderot.fr
 ```
 You won't see anything when you type your password, this is normal, don't panic! 
+  
+Once connected to the cluster, **use this terminal** for the rest of this course.
 
 <span>{% include icon.liquid id='exclamation-triangle' %} <b>Security warning</b></span><br>
 Never leave your computer unsupervised with your session open and iPOP-UP server connected.  
@@ -63,11 +68,11 @@ Never leave your computer unsupervised with your session open and iPOP-UP server
 
 ## Optional: use a file explorer
 
-In you don't use OnDemand or JupyterHub, you can use the file manager from GNOME to navigate easily on iPOP-UP file server. 
+In you don't use Open OnDemand or JupyterHub, you can use the file manager from GNOME to navigate easily on iPOP-UP file server. 
 - Open the file manager `Fichiers`.
 - Click on `Autres emplacements` on the side bar.
 - In the bar `Connexion à un serveur`, type `sftp://ipop-up.rpbs.univ-paris-diderot.fr/` and press the enter key.
-- Enter your login and password.  
+- Enter your cluster login and password.  
 
 This way, you can modify your files directly using any local **text editor**.
 
@@ -77,8 +82,10 @@ This way, you can modify your files directly using any local **text editor**.
 <span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> For other systems, please see the instructions for [Windows]({{site.baseurl}}/cluster/tips/mounting_win), [Mac]({{site.baseurl}}/cluster/tips/mounting_macos) or [Linux]({{site.baseurl}}/cluster/tips/mounting_linux). 
 {:.ui.success.message}
 
-## Set the default account
-The first time you use the cluster, it is necessary to define your default account. To do so, run the following command: 
+
+## Set the default project account
+The first time you use the cluster, it is necessary to define your default project account.  
+To do so, run the following command in the terminal: 
 ```
 set_project YourProjectName
 ```
@@ -91,10 +98,10 @@ An alternative in to add the account in all your sbatch scripts (see below) usin
 ```
 
 
-
 ## Warm-up
 
-Where are you on the cluster?  
+Now that you're connected to the cluster via the interface of your choice, let's explore the cluster's file system architecture.  
+Using a terminal, answer this question: Where are you on the cluster? (hint: use the following command) 
 ```
 pwd
 ```
@@ -102,25 +109,37 @@ Then explore the `/shared` folder.
 ```
 tree -L 1 /shared
 ```
+or
+```
+ls /shared
+```
 
-`/shared/banks` folder contains commonly used data and resources. Explore it by yourself with commmands like `ls` or `cd`. 
+`/shared/banks` folder contains commonly used data and resources. Explore it by yourself with commands like `ls` or `cd`. 
 
 Can you see the first 10 lines of the `mm10.fa` file? (mm10.fa = mouse genomic sequence version 10) 
 
 There is a `training` project accessible to you, navigate to this folder and list what is inside. 
+```
+cd /shared/projects/training
+ls
+```
 
 Then go to one of your projects and create a folder named `260217_training`. This is where you will do all the exercices. If you don't have a project, you can create a folder named `YourName` in the `training` folder and work there.  
 
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> If you don't like to navigate through the files using the terminal, you can use OnDemand Files tab or Jupiter Lab file explorer menu. 
+{:.ui.success.message}
 
+---
 # Get information about the cluster
 
 ```
 sinfo
 ```
 
-# Slurm sbatch command 
+---
+# Submit job on the cluster
 
-`sbatch` allows you to send an executable file to be ran on a computation node.
+Slurm `sbatch` command allows you to send an executable file to be ran on a computation node of the cluster.
 
 ## Exercise 1: my first sbatch script
 
@@ -157,6 +176,7 @@ Run it. What is the output? How does it differ from typing `hostname` directly i
 
 [Correction]({{site.baseurl}}/documents/corrections/03_hostname.txt)
 
+---
 # Useful sbatch options 1/2
 
 | Options     | Flag | Function                                            |
@@ -172,7 +192,8 @@ Run it. What is the output? How does it differ from typing `hostname` directly i
 To find out more, the Slurm manual `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html).
     
 
-# Modules
+---
+# Use software on the cluster: Modules
 A lot of tools are installed on the cluster. To list them, use one of the following commands. 
 ```
 module available
@@ -201,7 +222,8 @@ module purge
 
 
 
-# Job handling and monitoring
+---
+# Handle and monitor jobs
 
 ## Exercise 4: follow your jobs
 
@@ -245,6 +267,7 @@ scancel jobID
 ```
 You can stop the previous `sleep` job with this command. 
 
+
 ## sacct
 
 Re-run `sleep.sh` and type 
@@ -262,6 +285,7 @@ sacct --format=JobID,JobName,Start,Elapsed,CPUTime,NCPUS,NodeList,MaxRSS,ReqMeM,
 
 To see every options, run `sacct --helpformat`
 
+
 ## Job efficiency : seff
 
 After the run, the `seff` command allows you to access information about the efficiency of a job.
@@ -269,6 +293,7 @@ After the run, the `seff` command allows you to access information about the eff
 seff <jobid>
 ```
 <img src="{{site.baseurl}}/images/seff2.png" alt="drawing" width="400"/>
+
 
 ## Job efficiency : reportseff
 
@@ -279,9 +304,9 @@ reportseff <jobid>
 ```
 <img src="{{site.baseurl}}/images/reportseff.png" alt="drawing" width="900"/>
 
-# Practical example
 
-## Exercise 5 : Alignment
+
+## Exercise 5 : A practical example - Alignment
 
 Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.baseurl}}/documents/templates/05_06_star.sh). 
 
@@ -290,13 +315,12 @@ Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.
 - You have to increase the RAM to 25G. 
 
 
-## After the run
+### After the run
 Check the resource that was used using `seff` or `reportseff`.  
 
 [Correction]({{site.baseurl}}/documents/corrections/05_star.txt)
 
-# Parallelization
-
+---
 # Useful sbatch options 2/2
 
 
@@ -310,15 +334,19 @@ Check the resource that was used using `seff` or `reportseff`.
 | −−mem-per-cpu     | 2GB     | Memory required per allocated CPU                             |
 | −−array           |         | Submit multiple jobs to be executed with identical parameters |
 
-# Multi-threading
+
+---
+# Parallelization
+
+## Multi-threading
 
 Some tools allow multi-threading, i.e. the use of several CPUs to accelerate one task. It is the case of STAR with the `--runThreadN` option. 
 
-## Exercise 6: Alignment, parallel
+### Exercise 6: Alignment, parallel
 
 Modify the previous sbatch file to use 4 threads to align the FASTQ files on the reference. Run and check time and memory usage.
 
-# Use Slurm variables
+### Use Slurm variables
 
 The Slurm controller will set some variables in the environment of the batch script. They can be very useful. For instance, you can improve the previous script using `$SLURM_CPUS_PER_TASK`. 
 
@@ -340,20 +368,20 @@ Of note, Bash shell variables can also be used in the sbatch script:
 - $PWD
 - $PATH
 
-# Job arrays
+## Job arrays
 Job arrays allow to start the same job a lot of times (same executable, same resources) on different files for example. If you add the following line to your script, the job will be launch 6 times (at the same time), the variable `$SLURM_ARRAY_TASK_ID` taking the value 0 to 5. 
 
 ```
 #SBATCH --array=0-5
 ```
 
-## Exercice 7 : Job array
+### Exercice 7 : Job array
 
 Starting from [07_08_array_example.sh]({{site.baseurl}}/documents/templates/07_08_array_example.sh), make a simple script launching 6 jobs in parallel. 
 
 [Correction]({{site.baseurl}}/documents/corrections/07_array_example.txt)
 
-## Exercice 8 : fair resource sharing
+### Exercice 8 : fair resource sharing
 It is possible to limit the number of jobs running at the same time using `%max_running_jobs` in `#SBATCH --array` option. 
 
 Modify your script to run only 2 jobs at the time.  
@@ -366,9 +394,9 @@ You will see using `squeue` command that some of the tasks are pending until the
 
 
 
-# Job arrays examples
+### Job arrays examples
 
-## Take all files matching a pattern in a directory
+#### Take all files matching a pattern in a directory
 Example:
 ```sh
 #SBATCH --array=0-7   # if 8 files to proccess 
@@ -378,7 +406,7 @@ INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}") #Each elements of t
 echo $INPUT     #Echos simplified names of the fastq files
 ```
 
-## List or find files to process 
+#### List or find files to process 
 If for any reason you can't use bash array, you can alternatively use `ls` or `find` to identify the files to process and get the nth with `sed` (or `awk`).   
 ```sh
 #SBATCH --array=1-4   # If 4 files, as sed index start at 1
@@ -386,14 +414,16 @@ INPUT=$(ls $PATH2/*.fq.gz | sed -n ${SLURM_ARRAY_TASK_ID}p)
 echo $INPUT
 ```
 
-# Job Array Common Mistakes
+### Job Array Common Mistakes
 
 - The index of bash arrays starts at 0
 - Don't forget to have different output files for each task of the array
 - Same with your log names (`%a` or `%J` in the name will do the trick)
 - Do not overload the cluster! Please use `%50` (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
 - The RAM defined using `#SBATCH --mem=25G` is for **each task**
-    
+
+
+---
 # Complex workflows
 
 <img src="{{site.baseurl}}/images/snakemake.png" alt="drawing" width="800"/>
@@ -443,6 +473,8 @@ Create a configuration file adjusting the resources to the real needs, and modif
 [Correction]({{site.baseurl}}/documents/corrections/10_nf-core_config.txt)  
 [demo.config]({{site.baseurl}}/documents/corrections/demo.config.txt)
 
+
+---
 # At the end of the day
 
 You can check all the slurm outputs from a folder using `reportseff`. 
@@ -450,6 +482,7 @@ You can check all the slurm outputs from a folder using `reportseff`.
 <img src="{{site.baseurl}}/images/reportsefffolder.png" alt="drawing" width="800"/>
 
 
+---
 # Useful resources
 
 - To find out more, read the SLURM manual: `man sbatch` or [https://slurm.schedmd.com/sbatch.html](https://slurm.schedmd.com/sbatch.html)
@@ -469,6 +502,7 @@ You can check all the slurm outputs from a folder using `reportseff`.
 - To know more about iPOP-UP: [https://ipop.u-paris.fr/](https://ipop.u-paris.fr/)
 
     
+---
 # Thanks
 - iPOP-UP's technical and steering committees
 
