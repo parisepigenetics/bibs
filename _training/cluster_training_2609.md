@@ -132,9 +132,27 @@ Then go to one of your projects and create a folder named `260217_training`. Thi
 ---
 # Get information about the cluster
 
+In a terminal, try the following command.
 ```
 sinfo
 ```
+Slurm `sinfo` command allows you to view the state and configuration of the cluster partitions and compute nodes.  
+Can you see how many partitions are on this cluster ?  _(→ Answer: 6, "rpbs", "ipop-up", "cmpli" ...)_
+  
+iPOP-UP gives you access to the ipop-up partition. Let's restrict the `sinfo` command to this partition (-p attribute).  
+How many nodes are there in total? And what are the 2 types of nodes ?  _(→ Answer: 19, "cpu-node" and "gpu-node")_
+```
+sinfo -p ipop-up
+```
+You can even check which compute nodes are available and which one are completely allocated (-N attribute).  
+How many nodes are available ?
+```
+sinfo -p ipop-up -N
+```
+Nodes can be in one of the following states : completely available (idle or I), partially available (mix), allocated (alloc or A), drained or down.
+
+<span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> You can find out more about `sinfo` command on the [Slurm documentation](https://slurm.schedmd.com/sinfo.html). 
+{:.ui.success.message}
 
 ---
 # Submit job on the cluster
