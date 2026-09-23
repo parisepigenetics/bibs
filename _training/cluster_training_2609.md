@@ -333,7 +333,7 @@ Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.
 - You have to increase the RAM to 25G. 
 
 
-### After the run
+## After the run
 Check the resource that was used using `seff` or `reportseff`.  
 
 [Correction]({{site.baseurl}}/documents/corrections/05_star.txt)
@@ -360,7 +360,7 @@ Check the resource that was used using `seff` or `reportseff`.
 
 Some tools allow multi-threading, i.e. the use of several CPUs to accelerate one task. It is the case of STAR with the `--runThreadN` option. 
 
-### Exercise 6: Alignment, parallel
+## Exercise 6: Alignment, parallel
 
 Modify the previous sbatch file to use 4 threads to align the FASTQ files on the reference. Run and check time and memory usage.
 
@@ -393,7 +393,7 @@ Job arrays allow to start the same job a lot of times (same executable, same res
 #SBATCH --array=0-5
 ```
 
-### Exercice 7 : Job array
+## Exercice 7 : Job array
 
 Starting from [07_08_array_example.sh]({{site.baseurl}}/documents/templates/07_08_array_example.sh), make a simple script launching 6 jobs in parallel. 
 
@@ -412,9 +412,9 @@ You will see using `squeue` command that some of the tasks are pending until the
 
 
 
-### Job arrays examples
+## Job arrays examples
 
-#### Take all files matching a pattern in a directory
+### Take all files matching a pattern in a directory
 Example:
 ```sh
 #SBATCH --array=0-7   # if 8 files to proccess 
@@ -424,7 +424,7 @@ INPUT=$(basename -s .fastq.gz "${FQ[$SLURM_ARRAY_TASK_ID]}") #Each elements of t
 echo $INPUT     #Echos simplified names of the fastq files
 ```
 
-#### List or find files to process 
+### List or find files to process 
 If for any reason you can't use bash array, you can alternatively use `ls` or `find` to identify the files to process and get the nth with `sed` (or `awk`).   
 ```sh
 #SBATCH --array=1-4   # If 4 files, as sed index start at 1
@@ -432,7 +432,7 @@ INPUT=$(ls $PATH2/*.fq.gz | sed -n ${SLURM_ARRAY_TASK_ID}p)
 echo $INPUT
 ```
 
-### Job Array Common Mistakes
+## Job Array Common Mistakes
 
 - The index of bash arrays starts at 0
 - Don't forget to have different output files for each task of the array
