@@ -40,9 +40,9 @@ In order to make easier the work on the cluster, an Open OnDemand single point o
 Now you can
  - Browse and modify your files using the "Files" menu. You should have access to the `training` project. 
  - Follow your jobs using the "Jobs" menu
- - **Launch a terminal** to do all the exercises of this training using "Apps/RPBS Shell Access"
- - Launch RStudio, VS Code or Jupyter Lab for more advance analyses
- - Launch Virtual Desktop to use graphical sotfware such as IGV
+ - **Launch a terminal** to do all the exercises of this training using "Clusters/RPBS Shell Access"
+ - Launch RStudio, VS Code or Jupyter Lab for more advance analyses using the "Interactive Apps" menu
+ - Launch Virtual Desktop using the "Interactive Apps" menu to use graphical sotfware such as IGV
 
 ## 2. via JupyterHub interface (might be deprecated in the future)
 
