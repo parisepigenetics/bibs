@@ -326,17 +326,31 @@ reportseff <jobid>
 
 ## Exercise 5 : A practical example - Alignment
 
-Run an alignment using STAR version 2.7.5a starting from [05_06_star.sh]({{site.baseurl}}/documents/templates/05_06_star.sh). 
+Run an alignment using STAR version 2.7.5a starting from [05_06_star_hg.sh]({{site.baseurl}}/documents/templates/05_06_star_hg.sh). 
 
 - The FASTQ files to align are in `/shared/projects/training/test_fastq`.  
-- You need an index folder for STAR (version 2.7.5a) for the mouse mm39 genome, look for it in the banks.  
+- You need an index folder for STAR (version 2.7.5a) for the human hg38 genome, look for it in the banks.  
 - You have to increase the RAM to 25G. 
 
 
 ## After the run
 Check the resource that was used using `seff` or `reportseff`.  
 
-[Correction]({{site.baseurl}}/documents/corrections/05_star.txt)
+[Correction]({{site.baseurl}}/documents/corrections/05_star_hg.txt)
+
+# Optional interlude: Viewing sequencing data in IGV
+
+In OnDemand interface, you can start a virtual desktop that allows you to run resource-intensive graphical tools such as [IGV](https://igv.org/). 
+To do so, go to the `Apps` menu and click on `Vitual Desktop`. 
+Select your project  (`training` for this course), the partition,  the ressources you need (2 CPUs, 8 Go for you example), and the duration of your session. Then click on `Launch`. After few seconds your virtual desktop will be running and you can connect to it clicking on `Launch Virtual Desktop`.  
+Now you see a (simple) desktop, where you can start a terminal and type: 
+```
+module load igv/2.19.7
+igv
+```
+IGV should start. Select you genome of interest (hg38 in our example) and load the sam file resulted from STAR alignment using `File/Load from file...`. 
+Then you can navigate to chr22, for instance to gene `BCR` to see your reads aligned on the genome. 
+
 
 ---
 # Useful sbatch options 2/2
@@ -368,7 +382,7 @@ Modify the previous sbatch file to use 4 threads to align the FASTQ files on the
 
 The Slurm controller will set some variables in the environment of the batch script. They can be very useful. For instance, you can improve the previous script using `$SLURM_CPUS_PER_TASK`. 
 
-[Correction]({{site.baseurl}}/documents/corrections/06_star_4cpu.txt)
+[Correction]({{site.baseurl}}/documents/corrections/06_star_hg_4cpu.txt)
 
 The full list of variables is visible [here](https://slurm.schedmd.com/sbatch.html). 
 

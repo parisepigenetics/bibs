@@ -1,0 +1,26 @@
+#!/bin/bash
+
+### SBATCH OPTIONS ###
+#SBATCH --partition=ipop-up
+#SBATCH --job-name=Alignment
+#SBATCH --output=star-alignment-%j.out
+#SBATCH --error=star-alignment-%j.err
+#SBATCH --mem=25G # increase memory to 25G
+
+### MODULES ###
+module purge
+module load star/2.7.5a # find appropriate STAR module (2.7.5a)
+
+### VARIABLES ###
+pathToIndex=/shared/banks/genomes/homo_sapiens/hg38/star-2.7.5a
+pathToFastq1=/shared/projects/training/test_fastq/humanTestReads_R1.fastq.gz
+pathToFastq2=/shared/projects/training/test_fastq/humanTestReads_R2.fastq.gz
+outputFileName=STAR_results/humanTestReads
+
+### COMMANDS ###
+STAR --genomeDir $pathToIndex \
+--outSAMtype BAM SortedByCoordinate \
+--readFilesIn $pathToFastq1 $pathToFastq2 \
+--outFileNamePrefix $outputFileName \
+--readFilesCommand zcat \
+
