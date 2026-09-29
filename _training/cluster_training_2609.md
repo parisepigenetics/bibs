@@ -426,7 +426,7 @@ Starting from [07_08_array_example.sh]({{site.baseurl}}/documents/templates/07_0
 
 [Correction]({{site.baseurl}}/documents/corrections/07_array_example.txt)
 
-### Exercice 8 : fair resource sharing
+## Exercice 8 : fair resource sharing
 It is possible to limit the number of jobs running at the same time using `%max_running_jobs` in `#SBATCH --array` option. 
 
 Modify your script to run only 2 jobs at the time.  
