@@ -1,0 +1,15 @@
+#!/bin/bash
+
+### SBATCH OPTIONS ###
+#SBATCH --partition=ipop-up
+#SBATCH --job-name=Index
+#SBATCH --output=%x-%j.out
+
+### MODULES ###
+module purge
+module load samtools/1.23.1
+
+### COMMANDS ###
+samtools index STAR_results/humanTestReadsAligned.sortedByCoord.out.bam
+
+

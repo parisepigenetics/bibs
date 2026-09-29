@@ -342,14 +342,14 @@ Check the resource that was used using `seff` or `reportseff`.
 
 In OnDemand interface, you can start a virtual desktop that allows you to run resource-intensive graphical tools such as [IGV](https://igv.org/). 
 To do so, go to the `Apps` menu and click on `Vitual Desktop`. 
-Select your project  (`training` for this course), the partition,  the ressources you need (2 CPUs, 8 Go for you example), and the duration of your session. Then click on `Launch`. After few seconds your virtual desktop will be running and you can connect to it clicking on `Launch Virtual Desktop`.  
+Select your project  (`training` for this course), the partition,  the ressources you need (2 CPUs, 8 Go for our example), and the duration of your session. Then click on `Launch`. After few seconds your virtual desktop will be running and you can connect to it clicking on `Launch Virtual Desktop`.  
 Now you see a (simple) desktop, where you can start a terminal and type: 
 ```
 module load igv/2.19.7
 igv
 ```
-IGV should start. Select you genome of interest (hg38 in our example) and load the sam file resulted from STAR alignment using `File/Load from file...`. 
-Then you can navigate to chr22, for instance to gene `BCR` to see your reads aligned on the genome. 
+IGV should start. Select you genome of interest (hg38 in our example) and load the BAM file resulted from STAR alignment using `File/Load from file...`. 
+Then you can navigate to chr22, for instance to the gene `BCR` to see your reads aligned on the genome. 
 
 
 ---
