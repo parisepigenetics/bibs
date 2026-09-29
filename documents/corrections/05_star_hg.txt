@@ -5,7 +5,7 @@
 #SBATCH --job-name=Alignment
 #SBATCH --output=star-alignment-%j.out
 #SBATCH --error=star-alignment-%j.err
-#SBATCH --mem=25G # increase memory to 25G
+#SBATCH --mem=30G # increase memory to 30G, 25G in not enough for the human genome! 
 
 ### MODULES ###
 module purge

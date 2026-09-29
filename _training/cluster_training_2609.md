@@ -124,7 +124,7 @@ cd /shared/projects/training
 ls
 ```
 
-Then go to one of your projects and create a folder named `260217_training`. This is where you will do all the exercices. If you don't have a project, you can create a folder named `YourName` in the `training` folder and work there.  
+Then go to one of your projects and create a folder named `20260929_training`. This is where you will do all the exercices. If you don't have a project, you can create a folder named `YourName` in the `training` folder and work there.  
 
 <span>{% include icon.liquid id='lightbulb-outline' %} <b>Tip</b></span><br> If you don't like to navigate through the files using the terminal, you can use OnDemand Files tab or Jupiter Lab file explorer menu. 
 {:.ui.success.message}
@@ -332,6 +332,8 @@ Run an alignment using STAR version 2.7.5a starting from [05_06_star_hg.sh]({{si
 - You need an index folder for STAR (version 2.7.5a) for the human hg38 genome, look for it in the banks.  
 - You have to increase the RAM to 25G. 
 
+## You have an error? 
+Look at the error file to understand what went wrong and restart after correcting your script. 
 
 ## After the run
 Check the resource that was used using `seff` or `reportseff`.  
@@ -358,7 +360,7 @@ module load igv/2.19.7
 igv
 ```
 IGV should start. Select you genome of interest (hg38 in our example) and load the BAM file resulted from STAR alignment using `File/Load from file...`. 
-Then you can navigate to chr22, for instance to the gene `BCR` to see your reads aligned on the genome. 
+Then you can navigate to chr22, for instance to `BCR` gene to see your reads aligned on the genome. 
 
 
 ---
@@ -465,10 +467,10 @@ echo $INPUT
 
 | Variable | Signification                    | Exemple    |
 |----------|----------------------------------|------------|
-| `%j`     | **Job ID**                       | `123456`   |
-| `%J`     | **Job ID + Array Job ID**        | `123456_7` |
-| `%A`     | **Job ID principal** du job array | `123456`   |
-| `%a`     | **Array Task ID**                | `7`        |
+| `%j`     | **Job ID**                       | `51400`, `51401`, `51402`   |
+| `%J`     | **Job ID + Array Job ID**        | `51400_0`, `51400_1`, `51400_2` |
+| `%A`     | **Job ID principal** du job array | `51400`   |
+| `%a`     | **Array Task ID**                | `0`, `1`, `2`        |
 | `%x`     | **Job name**                     | `mon_job`  |  
 
 - Do not overload the cluster! Please use `%50` (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
