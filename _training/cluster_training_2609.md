@@ -468,8 +468,8 @@ echo $INPUT
 | Variable | Signification                    | Exemple    |
 |----------|----------------------------------|------------|
 | `%j`     | **Job ID**                       | `51400`, `51401`, `51402`   |
-| `%J`     | **Job ID + Array Job ID**        | `51400_0`, `51400_1`, `51400_2` |
-| `%A`     | **Job ID principal** du job array | `51400`   |
+| `%J`     | **Array ID + Array Task ID**        | `51400_0`, `51400_1`, `51400_2` |
+| `%A`     | **Array ID**  | `51400`   |
 | `%a`     | **Array Task ID**                | `0`, `1`, `2`        |
 | `%x`     | **Job name**                     | `mon_job`  |  
 
