@@ -340,8 +340,10 @@ Check the resource that was used using `seff` or `reportseff`.
 
 [Correction]({{site.baseurl}}/documents/corrections/05_star_hg.txt)
 
-## Generate index file
-To visualise a BAM on IGV, you need to build an index. To do so, you can use [samtools](https://www.htslib.org/). The command to use is 
+## Generate BAM index
+{:.no_toc}
+
+To visualise a BAM file on IGV, you need to build its index. To do so, you can use [samtools](https://www.htslib.org/). The command to use is 
 ```
 samtools index BAMFILE
 ```
@@ -352,7 +354,7 @@ You can write a small sbatch script to do so.
 # Optional interlude: Viewing sequencing data in IGV
 
 In OnDemand interface, you can start a virtual desktop that allows you to run resource-intensive graphical tools such as [IGV](https://igv.org/). 
-To do so, go to the `Apps` menu and click on `Vitual Desktop`. 
+To do so, go to the `Apps` menu and click on `Virtual Desktop`. 
 Select your project  (`training` for this course), the partition,  the ressources you need (2 CPUs, 8 Go for our example), and the duration of your session. Then click on `Launch`. After few seconds your virtual desktop will be running and you can connect to it clicking on `Launch Virtual Desktop`.  
 Now you see a (simple) desktop, where you can start a terminal and type: 
 ```
