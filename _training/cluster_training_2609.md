@@ -338,6 +338,15 @@ Check the resource that was used using `seff` or `reportseff`.
 
 [Correction]({{site.baseurl}}/documents/corrections/05_star_hg.txt)
 
+## Generate index file
+To visualise a BAM on IGV, you need to build an index. To do so, you can use [samtools](https://www.htslib.org/). The command to use is 
+```
+samtools index BAMFILE
+```
+You can write a small sbatch script to do so. 
+
+[Correction]({{site.baseurl}}/documents/corrections/05_star_index.txt)
+
 # Optional interlude: Viewing sequencing data in IGV
 
 In OnDemand interface, you can start a virtual desktop that allows you to run resource-intensive graphical tools such as [IGV](https://igv.org/). 
@@ -449,8 +458,19 @@ echo $INPUT
 ## Job Array Common Mistakes
 
 - The index of bash arrays starts at 0
-- Don't forget to have different output files for each task of the array
-- Same with your log names (`%a` or `%J` in the name will do the trick)
+- Don't forget to have different output files for each task of the array. It is the same for log names. You can use `%a` or `%J` in the names. For example:  
+```
+#SBATCH --output=%x-%J.out
+```
+
+| Variable | Signification                    | Exemple    |
+|----------|----------------------------------|------------|
+| `%j`     | **Job ID**                       | `123456`   |
+| `%J`     | **Job ID + Array Job ID**        | `123456_7` |
+| `%A`     | **Job ID principal** du job array | `123456`   |
+| `%a`     | **Array Task ID**                | `7`        |
+| `%x`     | **Job name**                     | `mon_job`  |  
+
 - Do not overload the cluster! Please use `%50` (for example) at the end of your indexes to limit the number of tasks (here to 50) running at the same time. The 51st will start as soon as one finishes!
 - The RAM defined using `#SBATCH --mem=25G` is for **each task**
 
